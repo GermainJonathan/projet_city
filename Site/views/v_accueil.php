@@ -18,7 +18,7 @@ require_once(PATH_VIEWS.'header.php');?>
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
 
-
+<div class="parallax-window" data-parallax="scroll" data-image-src="./assets/images/lyon.jpg" style="min-height: 600px;background: transparent;"></div>
 <!--  Fin de la page -->
 
 <!--  Pied de page -->
