@@ -18,7 +18,7 @@ $photoDAO = new PhotoDAO(DEBUG);
 if($res = $photoDAO->getPhotosIds($categorieID))
 	$res = $photoDAO->getPhotosIds($categorieID);
 else
-	$alert = choixAlert('query'); //si la catégorie est invalide, on retourne une erreur
+	//$alert = choixAlert('query'); //si la catégorie est invalide, on retourne une erreur
 
 
 $nbPhotos = count($res);

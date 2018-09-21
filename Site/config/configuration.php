@@ -9,7 +9,7 @@
  * http://www.opensource.org/licenses/MIT
  */
  
-const DEBUG = true; // production : false; dev : true
+const DEBUG = false; // production : false; dev : true
 
 // Accès base de données. A modifier pour se connecter
 const BD_HOST = 'localhost';
