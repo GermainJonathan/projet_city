@@ -1,15 +1,3 @@
-/*
- * TP PHP
- * css du site
- *
- * Copyright 2016, Eric Dufour
- * http://techfacile.fr
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
- 
-
 .bouton{
 	border:none;
 	margin-bottom:4%;
@@ -26,14 +14,7 @@
 .error {
 	color:#a94442;
 }
-.footer{	
-	bottom: auto;
-	background-color: #818181;
-	color: #fff;
-	width: 100%;
-	height:auto;
-	margin-top: 40px;
-}
+
 .header {
 	background-color: #49B47C;
 	color: #fff;
@@ -363,3 +344,56 @@ ul#demo-block li a{
     cursor: pointer;
 }
 
+.footer{
+	background-color: #818181;
+	color: #fff;
+	width: 100%;
+	height:auto;
+    bottom:0;
+    position:absolute;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+#iconInsta{
+    background-image:url(images/instagram.svg);
+}
+
+#iconTwitter{
+    background-image:url(images/twitter.svg);
+}
+
+#iconFb{
+    background-image:url(images/facebook.svg);
+}
+
+.icon{
+    background-position: center;
+    width:20px;
+    background-repeat: no-repeat;
+    height:20px;
+    background-size: contain;
+    float:left;
+    margin-right:15px;
+}
+
+.footerText{
+    font-size:11px;
+}
+
+
+@media  screen and (max-width: 576px){
+    .no-small{
+        display:none;
+    }
+
+    .footer{
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    .footerText.center{
+        text-align:center;
+    }
+    
+}
