@@ -25,13 +25,13 @@ const AUTEUR = 'Polo et Gaby';
 
 
 //dossiers racines du site
-define('PATH_CONTROLLERS','./controllers/c_');
-define('PATH_ENTITY','./entity/');
-define('PATH_ASSETS','./assets/');
-define('PATH_LIB','./lib/');
-define('PATH_MODELS','./models/');
-define('PATH_VIEWS','./views/v_');
-define('PATH_TEXTES','./languages/');
+define('PATH_CONTROLLERS','controllers/c_');
+define('PATH_ENTITY','entity/');
+define('PATH_ASSETS','assets/');
+define('PATH_LIB','lib/');
+define('PATH_MODELS','models/');
+define('PATH_VIEWS','views/v_');
+define('PATH_TEXTES','languages/');
 define('ERREUR_INSCRIPTION','AAAAAAAAAAAAAAH');
 
 //sous dossiers
