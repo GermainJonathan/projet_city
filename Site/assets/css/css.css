@@ -27,7 +27,8 @@
 	color:#a94442;
 }
 .footer{	
-	bottom: auto;
+    bottom: 0;
+    position: absolute;
 	background-color: #818181;
 	color: #fff;
 	width: 100%;
@@ -363,3 +364,13 @@ ul#demo-block li a{
     cursor: pointer;
 }
 
+#mapid {
+    position: absolute;
+    height: 50%;
+    width: 100%
+}
+
+.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
