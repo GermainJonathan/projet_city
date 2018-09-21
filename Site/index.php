@@ -1,4 +1,14 @@
 <?php
+/*
+ * MODULE DE PHP
+ * Index du site
+ *
+ * Copyright 2016, Eric Dufour
+ * http://techfacile.fr
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
 
 // Initialisation des paramètres du site
 require_once('./config/configuration.php');

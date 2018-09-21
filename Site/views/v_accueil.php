@@ -79,14 +79,14 @@ switch($categorieID)
 	
 	//Pour chaque résultat de la requete (récuperer les images dans la bdd) on crée l'image correspondante, avec un href 
 	//qui redéfinit l'adresse pour accéder à sa page de description
-	foreach($res as $r)
-	{
-		?>
-		<div class="col-md-2 col-sm-4 col-xs-8">
-			<a href="index.php?page=photo&photoID=<?= $r['photoID'] ?>"><img src = "<?= PATH_IMAGES . $r['nomFiche'] ?>" alt = "<?= $r['description'] ?>" class="img-responsive"></a>
-		</div>
-		<?php
-	}
+	// foreach($res as $r)
+	// {
+	?>
+	<!-- // 	<div class="col-md-2 col-sm-4 col-xs-8">
+	// 		<a href="index.php?page=photo&photoID=<?= $r['photoID'] ?>"><img src = "<?= PATH_IMAGES . $r['nomFiche'] ?>" alt = "<?= $r['description'] ?>" class="img-responsive"></a>
+	// 	</div>
+	<?php
+	// }
 ?>
 
 

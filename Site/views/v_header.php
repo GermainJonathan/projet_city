@@ -20,7 +20,7 @@
 		<meta name="Language" content="<?= LANG ?>"/>
 		<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; user-scalable=0"/> 
 
-		<link href="<?= PATH_CSS ?>bootstrap.css" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link href="<?= PATH_CSS ?>css.css" rel="stylesheet">
 		
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>jquery-3.1.1.js"></script>
