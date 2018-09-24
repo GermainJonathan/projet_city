@@ -3,7 +3,7 @@
 // En tête de page
 require_once(PATH_VIEWS.'header.php');
 
-// menu vavigation
+// menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
 <div class="parallax" id="parallax-1" data-image-src="./assets/images/lyon.jpg" data-height="60">
@@ -25,7 +25,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 </div>
 
 <div class="row no-padding no-margin">
-    <div id="mapid"data-height="60"></div>
+    <div id="mapid" data-height="60"></div>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>map.js"></script>
 <!--  Fin de la page -->
