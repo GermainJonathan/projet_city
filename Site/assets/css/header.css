@@ -26,6 +26,12 @@
 	border-bottom: 2px solid #B3B3B3;
 }
 
+.nav-link:hover{
+	color: #E98B39;
+	border-bottom: 2px solid #E98B39;
+}
+
+
 
 
  @media  screen and (max-width: 992px){
@@ -41,8 +47,6 @@
 	.button-menu{
 		margin-right: -40px;
 	}
-
-	
 
 	.navbar-nav{
 		align-items: center;
