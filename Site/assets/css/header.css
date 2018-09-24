@@ -1,6 +1,17 @@
-.header {
-	background-color: #49B47C;
-	color: #fff;
-	width: 100%;
-	padding:10px 0px;
+
+
+.nav-item{
+	margin: 10px;
+	font-size: 18px;
+}
+
+#navbarSupportedContent{
+	justify-content: center;
+}
+
+#logo-header{
+	width: 200px;
+	position: absolute;
+	z-index: 2;
+	margin-top: -30px;
 }
