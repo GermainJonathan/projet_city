@@ -4,6 +4,23 @@
     height: 700px;
     width: 100%;
     z-index: 5;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 0px 0px 0px;
 }
 
+.legend {
+    line-height: 18px;
+    color: #B3B3B3;
+    height: 33em;
+    width: 25em;
+    border: 1px solid black;
+}
+
+.leaflet-left {
+    left: 15% !important;
+    transform: translate(-15%, 0%);
+}
+
+.leaflet-top {
+    top: 15% !important;
+    transform: translate(-15%, 0%);
+}

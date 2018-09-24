@@ -7,3 +7,24 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.btn-primary {
+    background-color: #B3B3B3;
+    border-color: #444;
+    text-decoration-color: black;
+}
+
+.leaflet-container a {
+    color: black !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #E98B39 !important;
+    color: white !important;
+    border-color: black !important;
+}
+
+.card-title {
+    color: black;
+}

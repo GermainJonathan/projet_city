@@ -4,7 +4,7 @@
  */
 var mymap = L.map('mapid', {
   zoomControl: false  // On desactive les boutons de zoom
-}).setView([45.755411, 4.798842
+}).setView([45.756411, 4.798842
 ], 14);
 L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
@@ -37,7 +37,6 @@ function highlightFeature(e) {
  * @param {event} e 
  */
 function resetHighlight(e) {
-  console.log("mouse out");
   geojson.resetStyle(e.target);
 }
 
@@ -77,28 +76,19 @@ var geojson = L.geoJson(states, {
     style: style
 }).addTo(mymap);
 
-var LeafIcon = L.Icon.extend({
-    options: {
-        shadowUrl: 'leaf-shadow.png',
-        iconSize:     [28, 37],
-        shadowSize:   [0, 0],
-        iconAnchor:   [0, 0],
-        shadowAnchor: [0, 0],
-        popupAnchor:  [19, -3]
-    }
-});
+var legend = L.control({position: 'topleft'});
 
-var fourchette = new LeafIcon({iconUrl: 'utensils-solid.png'});
-const marker = L.marker([45.756331, 4.835529], {icon: fourchette}).bindPopup("Restaurant Sud<br> <a href='https://www.brasseries-bocuse.com/'>brasseries-bocuse</a>");
-var shelterMarkers = new L.FeatureGroup();
+legend.onAdd = function(mymap) {
+  var main_card = L.DomUtil.create('div', 'card legend');
+  main_card.innerHTML += `
+  <img class="card-img-top" src="assets/images/perrache.jpg" alt="Photo de Perrache">
+  <div class="card-body">
+    <h5 class="card-title">Perrache</h5>
+    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
+    <a href="#" class="btn btn-primary btn-block">Perrache</a>
+  </div>
+  `;
+  return main_card;
+};
 
-shelterMarkers.addLayer(marker);
-
-mymap.on('zoomend', function() {
-    if (mymap.getZoom() < 17) {
-            mymap.removeLayer(shelterMarkers);
-    }
-    else {
-            mymap.addLayer(shelterMarkers);
-    }
-});
+legend.addTo(mymap);
