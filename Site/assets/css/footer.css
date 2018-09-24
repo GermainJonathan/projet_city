@@ -4,18 +4,31 @@
 #iconFb{
     background-image:url(../images/facebook.svg);
 }
+    #iconFb:hover{
+        background-image:url(../images/facebookHover.svg);
+        cursor:pointer;
+    }
 
 #iconInsta{
     background-image:url(../images/instagram.svg);
 }
+    #iconInsta:hover{
+        background-image:url(../images/instagramHover.svg);
+        cursor:pointer;
+    }
 
 #iconTwitter{
     background-image:url(../images/twitter.svg);
 }
 
+    #iconTwitter:hover{
+        background-image:url(../images/twitterHover.svg);
+        cursor:pointer;
+    }
+
 /* Classe générale du footer */
 .footer{
-	background-color: #818181;
+	background-color: #9e9e9e;
 	color: #fff;
 	width: 100%;
 	height:auto;
@@ -23,11 +36,24 @@
     position: relative;
     padding-top:40px;
     padding-bottom:40px;
+    cursor: default;
 }
 
 .footerText{
     font-size:11px;
 }
+
+.footer a{
+    color:white;
+    font-size:11px;
+}
+.footer a:hover{
+    color:#E98B39;
+    cursor:pointer;
+    text-decoration: none;
+    font-weight:bold;
+}
+
 
 .icon{
     background-position: center;
