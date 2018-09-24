@@ -1,17 +1,3 @@
-<?php
-/*
- * DS PHP
- * Vue Entete HTML du site
- *
- *
- * Copyright 2017, Eric Dufour
- * http://techfacile.fr
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- *
- */
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,35 +22,4 @@
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>parallax.js"></script>
 	</head> 
 	<body>
-
-	<div class="main-header">
-		<div class="nav-icon"></div>
-
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<a class="navbar-brand" href="#"><img src="./assets/images/logo.svg" id="logo-header"></a>
-			<div class="button-menu">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav row">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Accueil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Terreaux</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Bellecour</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Perrache</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</nav> 
-	</div>
+    <?php require_once(PATH_VIEWS.'menu.php');

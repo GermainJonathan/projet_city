@@ -1,11 +1,10 @@
 <?php
 
-//  En tête de page
+// En tête de page
+require_once(PATH_VIEWS.'header.php');
 
-require_once(PATH_VIEWS.'header.php');?>
-
-<!--  Zone message d'alerte -->
-<?php require_once(PATH_VIEWS.'alert.php');?>
+// menu vavigation
+require_once(PATH_VIEWS.'alert.php');?>
 
 <div class="parallax" id="parallax-1" data-image-src="./assets/images/lyon.jpg" data-height="60">
     <div class="caption">
