@@ -13,7 +13,7 @@ define('MENU_INSCRIPTION', 'Inscription');
 define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");
 
-define('TITRE', 'Mes Photos');
+define('TITRE', 'Presqu\'île');
 
 define('TITRE_PAGE_ACCUEIL_TOUS','Accueil');
 define('TITRE_PAGE_ACCUEIL_ANIMAUX','Les photos de la catégorie Animaux');
