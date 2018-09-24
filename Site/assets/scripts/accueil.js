@@ -1,10 +1,19 @@
 jQuery(document).ready(function () {
-    $('.parallax').each(function (index) {
-        var imageSrc = $(this).data('image-src')
-        var imageHeight = $(this).data('height')
-        $(this).css('background-image', 'url(' + imageSrc + ')')
-        $(this).css('height', imageHeight)
+
+    setParallax();
+    
+    $(window).resize(function () {
+        setParallax();
     })
+
+    function setParallax(index){
+        $('.parallax').each(function (index) {
+            var imageSrc = $(this).data('image-src')
+            var imageHeight = $(window).height() * $(this).data('height') / 100
+            $(this).css('background-image', 'url(' + imageSrc + ')')
+            $(this).css('height', imageHeight)
+        })
+    }
 
     $(window).scroll(function () {
         var scrolled = $(window).scrollTop()

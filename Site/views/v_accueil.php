@@ -7,7 +7,7 @@ require_once(PATH_VIEWS.'header.php');?>
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
-<div class="parallax" id="parallax-1" data-image-src="./assets/images/lyon.jpg" data-height="650px">
+<div class="parallax" id="parallax-1" data-image-src="./assets/images/lyon.jpg" data-height="60">
     <div class="caption">
         <span class="border">Presqu'île</span>
     </div>
