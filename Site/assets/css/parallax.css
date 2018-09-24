@@ -1,0 +1,46 @@
+.parallax {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    /**
+     * Default height
+     */
+    height: 100%;
+  }
+  
+  .caption {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  
+    height: 100%;
+  }
+  
+  .caption .border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+  }
+
+  .texttest {
+    color: #777777;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 50px 80px;
+  }

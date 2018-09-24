@@ -1,0 +1,60 @@
+/** FOOTER **/
+
+/* Icon */
+#iconFb{
+    background-image:url(../images/facebook.svg);
+}
+
+#iconInsta{
+    background-image:url(../images/instagram.svg);
+}
+
+#iconTwitter{
+    background-image:url(../images/twitter.svg);
+}
+
+/* Classe générale du footer */
+.footer{
+	background-color: #818181;
+	color: #fff;
+	width: 100%;
+	height:auto;
+    bottom:0;
+    position: relative;
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.footerText{
+    font-size:11px;
+}
+
+.icon{
+    background-position: center;
+    width:20px;
+    background-repeat: no-repeat;
+    height:20px;
+    background-size: contain;
+    float:left;
+    margin-right:15px;
+}
+
+
+
+@media  screen and (max-width: 576px){
+
+    .footer{
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    .footerText.center{
+        text-align:center;
+    }
+
+    .no-small{
+        display:none;
+    }
+
+    
+}
