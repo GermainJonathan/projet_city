@@ -28,17 +28,28 @@
 
 
 
-/* @media  screen and (max-width: 576px){
+ @media  screen and (max-width: 992px){
 
-    .footer{
-        padding-top:20px;
-        padding-bottom:20px;
-    }
+    .navbar{
+		justify-content: center;
+	}
 
-    .footerText.center{
-        text-align:center;
-    }
+	.navbar-toggler{
+		border-color: #fff!important;
+	}
 
-    .no-small{
-        display:none;
-    } */
+	.button-menu{
+		margin-right: -40px;
+	}
+
+	
+
+	.navbar-nav{
+		align-items: center;
+	}
+
+	#logo-header{
+		position: relative;
+		margin-top: 0px;
+	}
+ }
