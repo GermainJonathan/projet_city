@@ -25,7 +25,7 @@ require_once(PATH_VIEWS.'header.php');?>
     </p>
 </div>
 
-<div class="row no-padding">
+<div class="row no-padding no-margin">
     <div id="mapid"></div>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>map.js"></script>
