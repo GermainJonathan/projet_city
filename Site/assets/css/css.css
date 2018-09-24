@@ -3,6 +3,7 @@
     position: relative;
     height: 700px;
     width: 100%;
+    z-index: 5;
     margin: 10px 10px 0px 10px;
 }
 
