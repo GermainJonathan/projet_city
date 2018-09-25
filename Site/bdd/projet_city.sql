@@ -126,7 +126,7 @@ CREATE TABLE `monument` (
 CREATE TABLE `pays` (
   `codePays` int(5) NOT NULL,
   `libellePays` varchar(50) NOT NULL,
-  `libellePaysCourt` int(3) NOT NULL
+  `libellePaysCourt` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

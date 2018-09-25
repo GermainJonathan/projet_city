@@ -50,7 +50,28 @@
     }
 }
 
-@media screen and (min-width: 1367px) {
+@media screen and (max-height: 748px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 20em;
+        border: 1px solid black;
+    }
+
+    .card-img-top {
+        height: 11em;
+    }
+
+    .card-text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: auto;        
+        overflow-x: hidden;    
+    }
+}
+
+@media screen and (min-width: 1367px) and (min-height: 748px) {
     .legend {
         line-height: 18px;
         color: #B3B3B3;
