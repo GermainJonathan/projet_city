@@ -13,34 +13,41 @@ require_once(PATH_VIEWS.'alert.php');?>
 </div>
 
 <div id="textAccueil">
-    <h3 class="titreAccueil">DÉCOUVREZ LA PRESQU'ÎLE</h3>
+    <div class = "col-lg-12">
+        <h3>DÉCOUVREZ LA PRESQU'ÎLE</h3>
+    </div>
     <div class = "row no-padding no-margin">
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="AccueilIcon" id="monument"></div>
+        <div class = "col-lg-3 col-md-6 col-sm-6">
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <a href="#mapid"><img class="AccueilIcon" src="./Assets/images/monument.svg"/></a>
+            </div> 
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <div class="sousTitreAccueil">Ses Monuments</div> 
+            </div>  
         </div>
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="AccueilIcon" id="activity"></div>
+        <div class = "col-lg-3 col-md-6 col-sm-6">
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <a href="#mapid"><img src="./Assets/images/activity.svg" class="AccueilIcon"/></a>
+            </div> 
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <div class="sousTitreAccueil">Ses Activités</div> 
+            </div>  
         </div>
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="AccueilIcon" id="histoire"></div>
+        <div class = "col-lg-3 col-md-6 col-sm-6">
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <a href="#mapid"><img class="AccueilIcon" src="./Assets/images/histoire.svg"/></a>
+            </div> 
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <div class="sousTitreAccueil">Son Histoire</div> 
+            </div>  
         </div>
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="AccueilIcon" id="restaurant"></div>
-        </div>
-    </div>    
-
-        <div class = "row no-padding no-margin">
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="sousTitreAccueil">Ses Monuments</div>
-        </div>
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="sousTitreAccueil">Ses Activités</div>
-        </div>
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="sousTitreAccueil">Son Histoire</div>
-        </div>
-        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
-            <div class="sousTitreAccueil">Ses Restaurants</div>
+        <div class = "col-lg-3 col-md-6 col-sm-6">
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <a href="#mapid"><img class="AccueilIcon" src="./Assets/images/restaurant.svg"/></a>
+            </div> 
+            <div class = "col-lg-12 d-flex justify-content-center">
+                <div class="sousTitreAccueil">Ses Restaurants</div> 
+            </div>
         </div>
     </div>    
 </div>
