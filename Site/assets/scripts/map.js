@@ -79,16 +79,25 @@ var geojson = L.geoJson(states, {
 var legend = L.control({position: 'topleft'});
 
 legend.onAdd = function(mymap) {
-  var main_card = L.DomUtil.create('div', 'card legend');
+  let main_card = L.DomUtil.create('div', 'card legend ');
   main_card.innerHTML += `
   <img class="card-img-top" src="assets/images/perrache.jpg" alt="Photo de Perrache">
   <div class="card-body">
     <h5 class="card-title">Perrache</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
-    <a href="#" class="btn btn-primary btn-block">Perrache</a>
+    <p class="card-text" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
+    <a href="#" class="btn btn-primary btn-block">En savoir plus</a>
   </div>
   `;
   return main_card;
 };
+
+function factoryCard(imgURL, descriptText, title) {
+  let children_card = "";
+  children_card += '<img class="card-img-top" src="' + imgURL + '" alt="' + title + '">';
+  children_card += '<div class="card-body"><h5 class="card-title">' + title + '</h5>';
+  children_card += '<p class="card-text">' + descriptText + '</p>' + '<a href="#" class="btn btn-primary btn-block">En savoir plus</a>';
+  children_card += '</div>';
+  return children_card;
+}
 
 legend.addTo(mymap);

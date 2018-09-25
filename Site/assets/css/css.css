@@ -7,13 +7,44 @@
     margin: 10px 0px 0px 0px;
 }
 
-.legend {
-    line-height: 18px;
-    color: #B3B3B3;
-    height: 33em;
-    width: 25em;
-    border: 1px solid black;
+@media screen and (max-width: 576px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: 13em;
+        width: 10em;
+        border: 1px solid black;
+        display: none;
+    }
 }
+
+@media screen and (min-width: 576px) and (max-width: 1200px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 20em;
+        border: 1px solid black;
+    }
+
+    .card-text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: auto;        
+        overflow-x: hidden;    
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 25em;
+        border: 1px solid black;
+    }
+}
+
 
 .leaflet-left {
     left: 15% !important;
