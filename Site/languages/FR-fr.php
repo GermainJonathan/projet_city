@@ -3,8 +3,7 @@
 //Les textes affichés sur le site, sous forme de constantes
 //Les constantes se comprennent sans commentaires. 
 
-
-define('LOGO', 'Logo de la compagnie'); 
+// titre de page
 define('MENU_ACCUEIL','Accueil');
 define('MENU_TERREAUX', 'Terreaux');
 define('MENU_PERRACHE', 'Perrache');
@@ -15,15 +14,19 @@ define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");
 
 define('TITRE', 'Presqu\'île');
+define('TITRE_HISTOIRE', 'Histoire');
+define('TITRE_MONUMENT', 'Monument');
+define('TITRE_ACTIVITE', 'Activité');
+define('TITRE_RESTAURANT', 'Restaurant');
+define('TITRE_MENU', 'Menu');
 
-define('TITRE_PAGE_ACCUEIL_TOUS','Accueil');
-define('TITRE_PAGE_ACCUEIL_ANIMAUX','Les photos de la catégorie Animaux');
-define('TITRE_PAGE_ACCUEIL_REPAS','Les photos de la catégorie Repas');
-define('TITRE_PAGE_ACCUEIL_MONUMANTS','Les photos de la catégorie Monuments');
+define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 
 define('INFO_DECONNEXION', 'Merci à bientôt');
 define('INFO_CONNEXION', 'Vous êtes maintenant connecté');
 define('INFO_UPLOAD_SUCSESS', 'Upload effectué avec succès !');
 define('INFO_UPLOAD_FAIL', 'Echec de l\'upload !');
+
+define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son, sa gastronomie, ses activités    ');
 
 

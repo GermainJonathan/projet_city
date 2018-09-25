@@ -8,45 +8,45 @@ require_once(PATH_VIEWS.'alert.php');?>
 
 <div class="parallax" id="parallax-1" data-image-src="./assets/images/lyon.jpg" data-height="60">
     <div class="caption">
-        <span class="border">Presqu'île</span>
+        <span class="border"><?= TITRE ?></span>
     </div>
 </div>
 
 <div id="textAccueil">
     <div class = "col-lg-12">
-        <h3>DÉCOUVREZ LA PRESQU'ÎLE</h3>
+        <h3><?= TITRE_PAGE_ACCUEIL ?></h3>
     </div>
     <div class = "row no-padding no-margin">
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img class="AccueilIcon" src="./Assets/images/monument.svg"/></a>
+                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_IMAGES.'monument.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil">Ses Monuments</div> 
+                <div class="sousTitreAccueil"><?= TITRE_MONUMENT ?></div>
             </div>  
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img src="./Assets/images/activity.svg" class="AccueilIcon"/></a>
+                <a href="#mapid"><img src="<?= PATH_IMAGES.'activity.svg' ?>" class="AccueilIcon"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil">Ses Activités</div> 
+                <div class="sousTitreAccueil"><?= TITRE_ACTIVITE ?></div>
             </div>  
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img class="AccueilIcon" src="./Assets/images/histoire.svg"/></a>
+                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_IMAGES.'histoire.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil">Son Histoire</div> 
+                <div class="sousTitreAccueil"><?= TITRE_HISTOIRE ?></div>
             </div>  
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img class="AccueilIcon" src="./Assets/images/restaurant.svg"/></a>
+                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_IMAGES.'restaurant.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil">Ses Restaurants</div> 
+                <div class="sousTitreAccueil"><?= TITRE_RESTAURANT ?></div>
             </div>
         </div>
     </div>    
