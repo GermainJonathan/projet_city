@@ -1,3 +1,3 @@
 <?php
 
-require_once PATH_VIEWS.'bellecour.php';
+require_once PATH_VIEWS.'contact.php';
