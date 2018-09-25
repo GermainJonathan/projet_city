@@ -13,7 +13,7 @@
                         </div>
                         <div class = "col-lg-3 col-md-4 col-sm-4 d-flex justify-content-center">
                                 
-                                <div class="footerText center"><h6> CONTACT </h6> <p>Besoin d'informations ? <br/> Contactez nous :<br/> <a href="tel:0484251692">0484251692</a><br/><a href="mailto:lgastard@g-4.fr">lgastard@g-4.fr
+                                <div class="footerText center"><h6> CONTACT </h6> <p>Besoin d'informations ? <br/> Contactez-nous :<br/> <a href="tel:0484251692">04 84 25 16 92</a><br/><a href="mailto:lgastard@g-4.fr">lgastard@g-4.fr
 </a></p></div>
                         </div>
                         <div class = "col-lg-3 col-md-4 col-sm-4 no-small">

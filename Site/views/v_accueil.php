@@ -12,16 +12,37 @@ require_once(PATH_VIEWS.'alert.php');?>
     </div>
 </div>
 
-<div class="texttest">
-    <h3>Parallax Demo</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas
-        vehicula orci, sodales vulputate diam sodales nec.
-        Vivamus sagittis orci id leo gravida, luctus posuere neque tincidunt. Praesent facilisis iaculis pulvinar. In
-        porta pulvinar mi, eget congue nulla laoreet vitae.
-        Ut vestibulum vel lorem et facilisis. In malesuada ornare enim eget tempor. In vitae ipsum odio. Cras sodales
-        mauris non augue tincidunt porttitor.
-        Nam ultricies consectetur quam eget fermentum.
-    </p>
+<div id="textAccueil">
+    <h3 class="titreAccueil">DÉCOUVREZ LA PRESQU'ÎLE</h3>
+    <div class = "row no-padding no-margin">
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="AccueilIcon" id="monument"></div>
+        </div>
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="AccueilIcon" id="activity"></div>
+        </div>
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="AccueilIcon" id="histoire"></div>
+        </div>
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="AccueilIcon" id="restaurant"></div>
+        </div>
+    </div>    
+
+        <div class = "row no-padding no-margin">
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="sousTitreAccueil">Ses Monuments</div>
+        </div>
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="sousTitreAccueil">Ses Activités</div>
+        </div>
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="sousTitreAccueil">Son Histoire</div>
+        </div>
+        <div class = "col-lg-3 col-md-3 col-sm-3 d-flex justify-content-center align-items-center">
+            <div class="sousTitreAccueil">Ses Restaurants</div>
+        </div>
+    </div>    
 </div>
 
 <div class="row no-padding no-margin">
