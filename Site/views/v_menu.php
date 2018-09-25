@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Terreaux</a>
+                    <a class="nav-link" href="<?= "?page=terreaux" ?>" Terreaux</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Bellecour</a>
