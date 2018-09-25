@@ -7,13 +7,64 @@
     margin: 10px 0px 0px 0px;
 }
 
+<<<<<<< HEAD
+.AccueilIcon{
+    width:60px;
+    height:60px;
+    float:left;
+    padding-top:20px;
+}
+
+.AccueilIcon:hover{
+    cursor:pointer;
+}
+
 .legend {
     line-height: 18px;
     color: #B3B3B3;
     height: 33em;
     width: 25em;
     border: 1px solid black;
+=======
+@media screen and (max-width: 576px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: 13em;
+        width: 10em;
+        border: 1px solid black;
+        display: none;
+    }
+>>>>>>> b1a211628d9e69baedb0e3b71c6c1f3782945faa
 }
+
+@media screen and (min-width: 576px) and (max-width: 1200px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 20em;
+        border: 1px solid black;
+    }
+
+    .card-text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: auto;        
+        overflow-x: hidden;    
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 25em;
+        border: 1px solid black;
+    }
+}
+
 
 .leaflet-left {
     left: 15% !important;
@@ -23,35 +74,6 @@
 .leaflet-top {
     top: 15% !important;
     transform: translate(-15%, 0%);
-}
-
-.AccueilIcon{
-    background-position: center;
-    width:50px;
-    background-repeat: no-repeat;
-    height:50px;
-    background-size: contain;
-    float:left;
-}
-
-.AccueilIcon#activity{
-    background-image:url("../images/ampoule.svg");
-}
-
-.AccueilIcon#histoire{
-    background-image:url("../images/histoire.svg");
-}
-
-.AccueilIcon#monument{
-    background-image:url("../images/monument.svg");
-}
-
-.AccueilIcon#restaurant{
-    background-image:url("../images/restaurant.svg");
-}
-
-.titreAccueil{
-    padding-bottom:20px;
 }
 
 .sousTitreAccueil{
