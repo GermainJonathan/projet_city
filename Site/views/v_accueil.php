@@ -49,7 +49,6 @@ require_once(PATH_VIEWS.'alert.php');?>
     <div id="mapid" data-height="60"></div>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>map.js"></script>
-<!--  Fin de la page -->
 
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');
