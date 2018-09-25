@@ -4,7 +4,7 @@
  */
 var mymap = L.map('mapid', {
   zoomControl: false  // On desactive les boutons de zoom
-}).setView([45.756411, 4.798842
+}).setView([45.754411, 4.796842
 ], 14);
 L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
