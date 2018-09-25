@@ -11,8 +11,8 @@
     left: 0px;
     top: 0px;
     content: '';
-    background: #000;
-    opacity: 0.3;
+    background: #B3B3B3;
+    opacity: 0.5;
     transition: all 0.3s;
 }
 
