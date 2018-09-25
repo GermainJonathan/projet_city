@@ -13,19 +13,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav row">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
+                    <a class="nav-link" href="?page=accueil"><?= MENU_ACCUEIL ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Terreaux</a>
+                    <a class="nav-link" href="?page=terreaux"><?= MENU_TERREAUX ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bellecour</a>
+                    <a class="nav-link" href="?page=bellecour"><?= MENU_BELLECOUR ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Perrache</a>
+                    <a class="nav-link" href="?page=perrache"><?= MENU_PERRACHE ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="?page=contact"><?= MENU_CONTACT ?></a>
                 </li>
             </ul>
         </div>

@@ -1,22 +1,9 @@
 <?php
-/*
- * MODULE DE PHP
- * Index du site
- *
- * Copyright 2016, Eric Dufour
- * http://techfacile.fr
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
 
 // Initialisation des paramètres du site
 require_once('./config/configuration.php');
 require_once('./lib/foncBase.php');
 require_once(PATH_TEXTES.LANG.'.php');
-
-session_name("p1605237");
-session_start();
 
 
 //vérification de la page demandée 
@@ -43,60 +30,5 @@ if($page == "photo" && isset($_GET['photoID']))
 		$page = '404';
 }
 
-if(!empty($_POST['connexion'])) //si le post 'connexion' n'est pas vide ; autrement dit, si on a cliqué sur connexion dans le menu
-{
-	if($_POST['connexion'] == 'connexion')
-		$page = $_POST['connexion']; //on passe à la page connexion
-	else
-	{
-		$page = 'accueil'; //sinon on retourne à la page accueil
-		$alert['messageAlert'] = INFO_DECONNEXION;
-		$alert['classAlert'] = 'success';
-		
-		$_SESSION = array();
-		
-		session_destroy(); //et on détruit la session 
-	}
-}
-
-
-//détection standard des pages restantes
-if(!empty($_POST['inscription']))
-	$page = $_POST['inscription'];
-
-if(!empty($_POST['user']))
-	$page = $_POST['user'];
-
-if(!empty($_POST['ajout']))
-	$page = $_POST['ajout'];
-
-if(!empty($_POST['changepwd']))
-	$page = $_POST['changepwd'];
-
-
-if(isset($_SESSION['inscription'])) //si c'est une session d'inscription
-{
-	$alert['messageAlert'] = INFO_INSCRIPTION;
-	$alert['classAlert'] = 'success';
-	
-	unset($_SESSION['inscription']);
-}
-
-if(isset($_POST['pwdChanged'])) 
-{
-	$alert['messageAlert'] = INFO_CHANGED_PWD;
-	$alert['classAlert'] = 'success';
-}
-
-if(isset($_SESSION['connexion'])) //si c'est une session de connexion
-{
-	$alert['messageAlert'] = INFO_CONNEXION . $_SESSION['prenom'] . " " . $_SESSION['nom'] . " !!";
-	$alert['classAlert'] = 'success';
-	
-	unset($_SESSION['connexion']);
-}
-
 //appel du controller
-require_once(PATH_CONTROLLERS.$page.'.php'); 
-
-?>
+require_once(PATH_CONTROLLERS.$page.'.php');
