@@ -29,13 +29,17 @@
     }
 }
 
-@media screen and (min-width: 576px) and (max-width: 1200px) {
+@media screen and (min-width: 576px) and (max-width: 1366px) {
     .legend {
         line-height: 18px;
         color: #B3B3B3;
         height: auto;
         width: 20em;
         border: 1px solid black;
+    }
+
+    .card-img-top {
+        height: 11em;
     }
 
     .card-text {
@@ -46,7 +50,7 @@
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1367px) {
     .legend {
         line-height: 18px;
         color: #B3B3B3;
