@@ -10,10 +10,32 @@ L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
 }).addTo(mymap);
 
+legend = L.control({position: 'topleft'});
+
 // On desactive le zoom molette, double click et bouger la carte
 mymap.scrollWheelZoom.disable();
 mymap.doubleClickZoom.disable();
 mymap.dragging.disable();
+
+var geojson = L.geoJson(states, {
+    onEachFeature: onEachFeature,
+    style: style
+}).addTo(mymap);
+
+legend.onAdd = function(mymap) {
+  let main_card = L.DomUtil.create('div', 'card legend ');
+  main_card.innerHTML += `
+  <img class="card-img-top" src="assets/images/perrache.jpg" alt="Photo de Perrache">
+  <div class="card-body">
+    <h5 class="card-title">Perrache</h5>
+    <p class="card-text" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
+    <a href="#" class="btn btn-primary btn-block">En savoir plus</a>
+  </div>
+  `;
+  return main_card;
+};
+
+legend.addTo(mymap);
 
 /**
  * Fonction evenement Leaflet pour colorier les zones
@@ -30,6 +52,8 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
     }
+    setupCard(e.target.feature.properties.name);
+    legend.addTo(mymap);
 }
 
 /**
@@ -49,7 +73,7 @@ function zoomToFeature(e) {
 }
 
 /**
- * 
+ * Mappage des events vers les fonctions js
  * @param {*} feature 
  * @param {*} layer 
  */
@@ -61,6 +85,10 @@ function onEachFeature(feature, layer) {
     });
 }
 
+/**
+ * Style appliquer aux features
+ * @param {Feature} feature 
+ */
 function style(feature) {
   return {
     fillColor: '#9e9e9e',
@@ -71,33 +99,45 @@ function style(feature) {
   };
 }
 
-var geojson = L.geoJson(states, {
-    onEachFeature: onEachFeature,
-    style: style
-}).addTo(mymap);
 
-var legend = L.control({position: 'topleft'});
-
-legend.onAdd = function(mymap) {
-  let main_card = L.DomUtil.create('div', 'card legend ');
-  main_card.innerHTML += `
-  <img class="card-img-top" src="assets/images/perrache.jpg" alt="Photo de Perrache">
-  <div class="card-body">
-    <h5 class="card-title">Perrache</h5>
-    <p class="card-text" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
-    <a href="#" class="btn btn-primary btn-block">En savoir plus</a>
-  </div>
-  `;
-  return main_card;
-};
-
+/**
+ * Fabrique de carte descriptif
+ * @param {string} imgURL 
+ * @param {string} descriptText 
+ * @param {string} title 
+ */
 function factoryCard(imgURL, descriptText, title) {
-  let children_card = "";
-  children_card += '<img class="card-img-top" src="' + imgURL + '" alt="' + title + '">';
-  children_card += '<div class="card-body"><h5 class="card-title">' + title + '</h5>';
-  children_card += '<p class="card-text">' + descriptText + '</p>' + '<a href="#" class="btn btn-primary btn-block">En savoir plus</a>';
-  children_card += '</div>';
-  return children_card;
+  return function(mymap) {
+    let children_card = L.DomUtil.create('div', 'card legend');
+    children_card.innerHTML += '<img class="card-img-top" src="' + imgURL + '" alt="' + title + '"/>';
+    children_card.innerHTML += '<div class="card-body"><h5 class="card-title">' + title + '</h5><p class="card-text" title=' + descriptText + '>' + descriptText + '</p>' + '<a href="?page=' + title + '" class="btn btn-primary btn-block">En savoir plus</a></div>';
+    return children_card;
+  };
+
 }
 
-legend.addTo(mymap);
+/**
+ * Mise à jour de la carte descriptif du quartier
+ * @param {string} quarterName 
+ */
+function setupCard(quarterName) {
+  let lastCard = legend;
+  legend.remove();
+
+  legend = L.control({position: 'topleft'});
+
+  switch (quarterName) {
+    case "Perrache" :
+      legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.', quarterName);
+      break;
+    case "Bellecour" :
+      legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Test de description Ouha !!!', quarterName);
+      break;
+    case "Terreaux":
+      legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Test de description. incroyable', quarterName);
+      break;
+    default:
+      legend.onAdd = lastCard.onAdd;
+      break;
+  }
+}

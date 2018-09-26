@@ -4,6 +4,7 @@ const states = {
     {
       "type": "Feature",
       "properties": {
+        "name": "Perrache",
         "stroke": "#555555",
         "stroke-width": 1,
         "stroke-opacity": 0.5,
@@ -197,6 +198,7 @@ const states = {
     {
       "type": "Feature",
       "properties": {
+        "name": "Bellecour",
         "stroke": "#555555",
         "stroke-width": 1,
         "stroke-opacity": 0,
@@ -358,6 +360,7 @@ const states = {
     {
       "type": "Feature",
       "properties": {
+        "name": "Terreaux",
         "stroke": "#555555",
         "stroke-width": 2,
         "stroke-opacity": 1,
