@@ -55,21 +55,18 @@ function checkVarAjoutPhoto()
 
 function getLangage(){
 
-    if(isset($_SESSION["lang"]))
-        return $_SESSION["lang"];
-    else
-    {
-        $lang = explode('-',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
+    require_once PATH_MODELS.'manager.php';
 
-        $manager = new manager();
-        $listPays = $manager->getPays();
+    $lang = explode('-',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
 
-        foreach ($listPays as $pays){
-            if($pays->getLibelleCourt() == $lang) {
-                $_SESSION["lang"] = $pays->getFicher();
-                return $pays->getFicher();
-            }
+    $manager = new manager();
+    $listPays = $manager->getPays();
+
+    foreach ($listPays as $pays){
+        if($pays->getLibelleCourt() == $lang) {
+            $_SESSION["lang"] = $pays->getFicher();
+            return $pays->getFicher();
         }
-        return "FR-fr";
     }
+    return "FR-fr";
 }

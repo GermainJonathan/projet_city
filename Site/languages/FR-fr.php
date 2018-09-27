@@ -20,6 +20,8 @@ define('TITRE_MONUMENT', 'Monument');
 define('TITRE_ACTIVITE', 'Activité');
 define('TITRE_RESTAURANT', 'Restaurant');
 define('TITRE_MENU', 'Menu');
+define('TITRE_DATE', 'Date de parution');
+define('TITRE_TOPIC', 'Titre du Topic');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 

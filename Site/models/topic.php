@@ -52,5 +52,10 @@ class topic
         return $this->_date;
     }
 
+    public function __toString()
+    {
+        return $this->_id.$this->_idLang.$this->_titre.$this->_description.$this->_etat.$this->_date;
+    }
+
 
 }

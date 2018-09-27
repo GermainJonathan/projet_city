@@ -3,10 +3,13 @@
 // Initialisation des paramètres du site
 require_once './config/configuration.php';
 require_once './lib/foncBase.php';
-require_once PATH_MODELS.'manager.php';
+
 //selection de la langue
 session_start();
-$lang = getLangage();
+if(isset($_SESSION["lang"]))
+    $lang = $_SESSION["lang"];
+else
+    $lang = getLangage();
 require_once(PATH_TEXTES.$lang.'.php');
 
 //vérification de la page demandée
