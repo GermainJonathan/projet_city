@@ -31,5 +31,6 @@ define('INFO_UPLOAD_SUCSESS', 'Upload effectué avec succès !');
 define('INFO_UPLOAD_FAIL', 'Echec de l\'upload !');
 
 define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son, sa gastronomie, ses activités    ');
-
+define('TXT_TITRE_TOPIC', 'Titre du topic');
+define('TXT_TITRE_DESCRIPTION', 'Description du topic');
 

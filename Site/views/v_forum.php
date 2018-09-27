@@ -33,6 +33,15 @@ require_once(PATH_VIEWS.'alert.php');?>
 
     ?>
 </table>
+<div>
+    <form action="" name="formTopic" method="post">
+        <label for="titreTopic"><?= TXT_TITRE_TOPIC ?></label>
+        <input type="text" name="titreTopic" id="titreTopic" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>"/><br>
+        <textarea name="descriptionTopic" id="descriptionTopic" placeholder="<?= TXT_TITRE_DESCRIPTION ?>">
+
+        </textarea>
+    </form>
+</div>
 
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');
