@@ -2,27 +2,27 @@
 
 /* Icon */
 #iconFb{
-    background-image:url(../images/facebook.svg);
+    background-image:url(../images/core/facebook.svg);
 }
     #iconFb:hover{
-        background-image:url(../images/facebookHover.svg);
+        background-image:url(../images/core/facebookHover.svg);
         cursor:pointer;
     }
 
 #iconInsta{
-    background-image:url(../images/instagram.svg);
+    background-image:url(../images/core/instagram.svg);
 }
     #iconInsta:hover{
-        background-image:url(../images/instagramHover.svg);
+        background-image:url(../images/core/instagramHover.svg);
         cursor:pointer;
     }
 
 #iconTwitter{
-    background-image:url(../images/twitter.svg);
+    background-image:url(../images/core/twitter.svg);
 }
 
     #iconTwitter:hover{
-        background-image:url(../images/twitterHover.svg);
+        background-image:url(../images/core/twitterHover.svg);
         cursor:pointer;
     }
 
