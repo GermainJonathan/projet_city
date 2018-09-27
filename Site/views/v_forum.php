@@ -5,7 +5,12 @@ require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <table>
     <thead>
         <tr>
