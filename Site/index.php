@@ -1,13 +1,15 @@
 <?php
 
 // Initialisation des paramètres du site
-require_once('./config/configuration.php');
-require_once('./lib/foncBase.php');
-require_once(PATH_TEXTES.LANG.'.php');
+require_once './config/configuration.php';
+require_once './lib/foncBase.php';
+require_once PATH_MODELS.'manager.php';
+//selection de la langue
+session_start();
+$lang = getLangage();
+require_once(PATH_TEXTES.$lang.'.php');
 
-
-//vérification de la page demandée 
-
+//vérification de la page demandée
 if(isset($_GET['page']))
 {
   $page = htmlspecialchars($_GET['page']); // http://.../index.php?page=toto
