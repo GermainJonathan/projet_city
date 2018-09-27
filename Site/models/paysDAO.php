@@ -13,7 +13,7 @@ class paysDAO extends DAO
         $listPays = array();
         for($i = 0; $i<(sizeof($result)); $i++)
         {
-            $pays = new pays($result[$i][0], $result[$i][1], $result[$i][2]);
+            $pays = new pays($result[$i][0], $result[$i][1], $result[$i][2], $result[$i][3]);
             $listPays[] = $pays;
         }
 
