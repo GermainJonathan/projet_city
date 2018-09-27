@@ -29,7 +29,7 @@ legend.onAdd = function(mymap) {
   <div class="card-body">
     <h5 class="card-title">Perrache</h5>
     <p class="card-text" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
-    <a href="#" class="btn btn-primary btn-block">En savoir plus</a>
+    <a href="?page=perrache" class="btn btn-primary btn-block">En savoir plus</a>
   </div>
   `;
   return main_card;
@@ -110,7 +110,7 @@ function factoryCard(imgURL, descriptText, title) {
   return function(mymap) {
     let children_card = L.DomUtil.create('div', 'card legend');
     children_card.innerHTML += '<img class="card-img-top" src="' + imgURL + '" alt="' + title + '"/>';
-    children_card.innerHTML += '<div class="card-body"><h5 class="card-title">' + title + '</h5><p class="card-text" title=' + descriptText + '>' + descriptText + '</p>' + '<a href="?page=' + title + '" class="btn btn-primary btn-block">En savoir plus</a></div>';
+    children_card.innerHTML += '<div class="card-body"><h5 class="card-title">' + title + '</h5><p class="card-text" title=' + descriptText + '>' + descriptText + '</p>' + '<a href="?page=' + title.toLowerCase() + '" class="btn btn-primary btn-block">En savoir plus</a></div>';
     return children_card;
   };
 
