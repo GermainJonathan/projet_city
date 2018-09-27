@@ -10,7 +10,7 @@ const BD_USER = 'root';
 const BD_PWD = '';
 
 // Langue du site
-//const LANG ='FR-fr';
+const LANG ='FR-fr';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'AG4île';
