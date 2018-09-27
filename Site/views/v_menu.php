@@ -25,6 +25,9 @@
                     <a class="nav-link" href="?page=perrache"><?= MENU_PERRACHE ?></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="?page=forum"><?= MENU_FORUM ?></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="?page=contact"><?= MENU_CONTACT ?></a>
                 </li>
             </ul>
