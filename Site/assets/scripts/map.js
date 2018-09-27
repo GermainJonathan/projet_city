@@ -124,13 +124,13 @@ function setupCard(quarterName) {
 
   switch (quarterName) {
     case "Perrache" :
-      legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.', quarterName);
+      legend.onAdd = factoryCard("assets/images/perrache/perrache.jpg", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.', quarterName);
       break;
     case "Bellecour" :
-      legend.onAdd = factoryCard("assets/images/bellecour.jpg", 'Test de description Ouha !!!', quarterName);
+      legend.onAdd = factoryCard("assets/images/bellecour/bellecour.jpg", 'Test de description Ouha !!!', quarterName);
       break;
     case "Terreaux":
-      legend.onAdd = factoryCard("assets/images/terreaux.jpg", 'Test de description. incroyable', quarterName);
+      legend.onAdd = factoryCard("assets/images/terreaux/terreaux.jpg", 'Test de description. incroyable', quarterName);
       break;
     default:
       legend.onAdd = lastCard.onAdd;

@@ -6,7 +6,7 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-<div class="parallax" id="parallax-1" data-image-src="./assets/images/lyon.jpg" data-height="60">
+<div class="parallax" id="parallax-1" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
     <div class="caption">
         <span class="border"><?= TITRE ?></span>
     </div>
@@ -19,7 +19,7 @@ require_once(PATH_VIEWS.'alert.php');?>
     <div class = "row no-padding no-margin">
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_IMAGES.'monument.svg' ?>"/></a>
+                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_CORE.'monument.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
                 <span class="sousTitreAccueil"><?= TITRE_MONUMENT ?></span>
@@ -27,7 +27,7 @@ require_once(PATH_VIEWS.'alert.php');?>
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img src="<?= PATH_IMAGES.'activity.svg' ?>" class="AccueilIcon"/></a>
+                <a href="#mapid"><img src="<?= PATH_CORE.'activity.svg' ?>" class="AccueilIcon"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
                 <span class="sousTitreAccueil"><?= TITRE_ACTIVITE ?></span>
@@ -35,7 +35,7 @@ require_once(PATH_VIEWS.'alert.php');?>
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_IMAGES.'histoire.svg' ?>"/></a>
+                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_CORE.'histoire.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
                 <span class="sousTitreAccueil"><?= TITRE_HISTOIRE ?></span>
@@ -43,7 +43,7 @@ require_once(PATH_VIEWS.'alert.php');?>
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
             <div class = "col-lg-12 d-flex justify-content-center">
-                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_IMAGES.'restaurant.svg' ?>"/></a>
+                <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_CORE.'restaurant.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
                 <span class="sousTitreAccueil"><?= TITRE_RESTAURANT ?></span>

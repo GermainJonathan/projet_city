@@ -106,19 +106,19 @@ abstract class DAO
   //ou false
   protected function queryAll($sql, $args = null)
   {
- 	try
-	{
-		$pdos = $this->_requete($sql, $args);
-		$res = $pdos->fetchAll();
-                $pdos->closeCursor();
-	}
-	catch(PDOException $e)
-	{ 
-	  if($this->_debug)
-            die($e->getMessage());
-          $this->_erreur = 'query';
-	  $res = false;
-	} 
+    try
+    {
+      $pdos = $this->_requete($sql, $args);
+      $res = $pdos->fetchAll();
+      $pdos->closeCursor();
+    }
+    catch(PDOException $e)
+    { 
+      if($this->_debug)
+        die($e->getMessage());
+      $this->_erreur = 'query';
+      $res = false;
+    }
     return $res;
   }
 }
