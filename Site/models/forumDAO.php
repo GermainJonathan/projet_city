@@ -11,7 +11,7 @@ class forumDAO extends DAO
 
     }
 
-    public function getMessagebyTopic($idTopic){
+    public function getMessageByTopic($idTopic){
 
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
 
