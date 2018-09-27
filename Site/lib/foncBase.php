@@ -23,6 +23,7 @@ function choixAlert($message)
   }
   return $alert;
 }
+
 //fonction qui vérifie la validité du fichier photo uploadé. retourne l'erreur adaptée au problème potentiel.
 function checkVarAjoutPhoto()
 {
@@ -50,4 +51,25 @@ function checkVarAjoutPhoto()
 		if($taille > $taille_maxi)
 			return ERREUR_FILE_TAIL;
 	}
+}
+
+function getLangage(){
+
+    if(isset($_SESSION["lang"]))
+        return $_SESSION["lang"];
+    else
+    {
+        $lang = explode('-',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
+
+        $manager = new manager();
+        $listPays = $manager->getPays();
+
+        foreach ($listPays as $pays){
+            if($pays->getLibelleCourt() == $lang) {
+                $_SESSION["lang"] = $pays->getFicher();
+                return $pays->getFicher();
+            }
+        }
+        return "FR-fr";
+    }
 }

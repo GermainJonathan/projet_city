@@ -22,7 +22,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_CORE.'monument.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil"><?= TITRE_MONUMENT ?></div>
+                <span class="sousTitreAccueil"><?= TITRE_MONUMENT ?></span>
             </div>  
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
@@ -30,7 +30,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <a href="#mapid"><img src="<?= PATH_CORE.'activity.svg' ?>" class="AccueilIcon"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil"><?= TITRE_ACTIVITE ?></div>
+                <span class="sousTitreAccueil"><?= TITRE_ACTIVITE ?></span>
             </div>  
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
@@ -38,7 +38,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_CORE.'histoire.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil"><?= TITRE_HISTOIRE ?></div>
+                <span class="sousTitreAccueil"><?= TITRE_HISTOIRE ?></span>
             </div>  
         </div>
         <div class = "col-lg-3 col-md-6 col-sm-6">
@@ -46,7 +46,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <a href="#mapid"><img class="AccueilIcon" src="<?= PATH_CORE.'restaurant.svg' ?>"/></a>
             </div> 
             <div class = "col-lg-12 d-flex justify-content-center">
-                <div class="sousTitreAccueil"><?= TITRE_RESTAURANT ?></div>
+                <span class="sousTitreAccueil"><?= TITRE_RESTAURANT ?></span>
             </div>
         </div>
     </div>    
