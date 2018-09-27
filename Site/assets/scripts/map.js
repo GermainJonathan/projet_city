@@ -22,20 +22,16 @@ var geojson = L.geoJson(states, {
     style: style
 }).addTo(mymap);
 
-legend.onAdd = function(mymap) {
-  let main_card = L.DomUtil.create('div', 'card legend ');
-  main_card.innerHTML += `
-  <img class="card-img-top" src="assets/images/perrache.jpg" alt="Photo de Perrache">
-  <div class="card-body">
-    <h5 class="card-title">Perrache</h5>
-    <p class="card-text" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.</p>
-    <a href="?page=perrache" class="btn btn-primary btn-block">En savoir plus</a>
-  </div>
-  `;
-  return main_card;
-};
-
-legend.addTo(mymap);
+/**
+ * Evenement lors du resize de la page // Responsive
+ */
+$(window).resize(function () {
+  if($(window).width() < 1000) {
+    mymap.setView(new L.LatLng(45.754411, 4.806842), 14);
+  } else {
+    mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
+  }
+})
 
 /**
  * Fonction evenement Leaflet pour colorier les zones
@@ -131,10 +127,10 @@ function setupCard(quarterName) {
       legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.', quarterName);
       break;
     case "Bellecour" :
-      legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Test de description Ouha !!!', quarterName);
+      legend.onAdd = factoryCard("assets/images/bellecour.jpg", 'Test de description Ouha !!!', quarterName);
       break;
     case "Terreaux":
-      legend.onAdd = factoryCard("assets/images/perrache.jpg", 'Test de description. incroyable', quarterName);
+      legend.onAdd = factoryCard("assets/images/terreaux.jpg", 'Test de description. incroyable', quarterName);
       break;
     default:
       legend.onAdd = lastCard.onAdd;
