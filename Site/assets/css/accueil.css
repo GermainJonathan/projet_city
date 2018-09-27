@@ -1,0 +1,96 @@
+#mapid {
+    position: relative;
+    height: 700px;
+    width: 100%;
+    z-index: 5;
+    margin: 10px 0px 0px 0px;
+}
+
+
+@media screen and (max-width: 576px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: 13em;
+        width: 10em;
+        border: 1px solid black;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1366px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 20em;
+        border: 1px solid black;
+    }
+    
+    .card-img-top {
+        height: 11em;
+    }
+
+    .card-text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: auto;        
+        overflow-x: hidden;    
+    }
+}
+
+@media screen and (max-height: 748px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 20em;
+        border: 1px solid black;
+    }
+    
+    .card-img-top {
+        height: 11em;
+    }
+
+    .card-text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: auto;        
+        overflow-x: hidden;    
+    }
+}
+
+@media screen and (min-width: 1367px) and (min-height: 748px) {
+    .legend {
+        line-height: 18px;
+        color: #B3B3B3;
+        height: auto;
+        width: 25em;
+        border: 1px solid black;
+    }
+}
+
+
+.leaflet-left {
+    left: 15% !important;
+    transform: translate(-15%, 0%);
+}
+
+.leaflet-top {
+    top: 15% !important;
+    transform: translate(-15%, 0%);
+}
+
+.AccueilIcon{
+    width:80px;
+    height:80px;
+    float:left;
+    padding-top:20px;
+}
+
+.AccueilIcon:hover{
+    cursor:pointer;
+}
+.sousTitreAccueil{
+    padding-top:20px;
+}
