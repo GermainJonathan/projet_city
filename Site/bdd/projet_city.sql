@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  lun. 24 sep. 2018 à 15:04
--- Version du serveur :  10.1.35-MariaDB
--- Version de PHP :  7.2.9
+-- Généré le :  ven. 28 sep. 2018 à 17:27
+-- Version du serveur :  10.1.36-MariaDB
+-- Version de PHP :  7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,6 +74,15 @@ CREATE TABLE `etatTopic` (
   `libelleEtat` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `etatTopic`
+--
+
+INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
+(1, 'En attente'),
+(2, 'Valider'),
+(3, 'Annuler');
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +105,29 @@ CREATE TABLE `histoire` (
 CREATE TABLE `message` (
   `codeMessage` int(5) NOT NULL,
   `codeTopic` int(5) DEFAULT NULL,
+  `message` text,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `message`
+--
+
+INSERT INTO `message` (`codeMessage`, `codeTopic`, `message`, `date`) VALUES
+(1, 1, 'test message 1', '2018-09-28');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messageContact`
+--
+
+CREATE TABLE `messageContact` (
+  `codeMessage` int(5) NOT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
+  `mail` varchar(50) DEFAULT NULL,
+  `objet` varchar(50) DEFAULT NULL,
   `message` text,
   `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -125,9 +157,17 @@ CREATE TABLE `monument` (
 
 CREATE TABLE `pays` (
   `codePays` int(5) NOT NULL,
-  `libellePays` varchar(50) NOT NULL,
-  `libellePaysCourt` varchar(3) NOT NULL
+  `libellePays` varchar(50) DEFAULT NULL,
+  `libellePaysCourt` varchar(3) DEFAULT NULL,
+  `fichier` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `pays`
+--
+
+INSERT INTO `pays` (`codePays`, `libellePays`, `libellePaysCourt`, `fichier`) VALUES
+(1, 'France', 'FR', '');
 
 -- --------------------------------------------------------
 
@@ -165,10 +205,19 @@ CREATE TABLE `restaurant` (
 CREATE TABLE `topic` (
   `codeTopic` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
-  `libelleTopic` int(50) DEFAULT NULL,
+  `libelleTopic` varchar(50) DEFAULT NULL,
   `description` text,
-  `codeEtat` int(5) DEFAULT NULL
+  `codeEtat` int(5) DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `topic`
+--
+
+INSERT INTO `topic` (`codeTopic`, `codePays`, `libelleTopic`, `description`, `codeEtat`, `date`) VALUES
+(1, 1, 'test1', 'ceci est un test', 1, '2018-09-27'),
+(2, 1, 'testSite', 'test depuis le site', 1, '2018-09-28');
 
 --
 -- Index pour les tables déchargées

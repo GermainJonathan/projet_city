@@ -25,4 +25,4 @@
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>parallax.js"></script>
 	</head> 
 	<body>
-    <?php require_once(PATH_VIEWS.'menu.php');
+	<?php require_once(PATH_VIEWS.'menu.php');
