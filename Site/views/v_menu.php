@@ -4,8 +4,12 @@
     <div class="nav-icon"></div>
 
     <nav class="navbar navbar-expand-lg navbar-light">
+<<<<<<< HEAD
         <a class="navbar-brand" href="#"><img src="<?= PATH_CORE.'logo.svg'?>" id="logo-header"></a>
         <!-- burger menu mobile and medium -->
+=======
+        <a class="navbar-brand" href="index.php"><img src="<?= PATH_CORE.'logo.svg'?>" id="logo-header"></a>
+>>>>>>> 27b57150d31f7949be65e06c7da8a565a895dcae
         <div class="button-menu">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

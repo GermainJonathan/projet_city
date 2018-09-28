@@ -1,6 +1,6 @@
 <?php
 
-
+// class des pays pour e choix de la langue
 class pays
 {
 

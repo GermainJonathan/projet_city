@@ -3,6 +3,7 @@
 require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS.'pays.php';
 
+// classe de communicaton avec la bd pour les pays et le choix de la langue
 class paysDAO extends DAO
 {
 
@@ -11,11 +12,8 @@ class paysDAO extends DAO
         $result = $this->queryAll("SELECT * FROM pays");
 
         $listPays = array();
-        for($i = 0; $i<(sizeof($result)); $i++)
-        {
-            $pays = new pays($result[$i][0], $result[$i][1], $result[$i][2], $result[$i][3]);
-            $listPays[] = $pays;
-        }
+        foreach($result as $temp)
+            $listPays[] =  new pays($temp[0], $temp[1], $temp[2], $temp[3]);
 
         return $listPays;
     }
