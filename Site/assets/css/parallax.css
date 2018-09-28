@@ -8,17 +8,17 @@
 
 
 .parallax {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-  
-    /**
-     * Default height
-     */
-    height: 100%;
-  }
+  position: relative;
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /**
+    * Default height
+    */
+  height: 100%;
+}
   
   .caption {
     display: -webkit-box;

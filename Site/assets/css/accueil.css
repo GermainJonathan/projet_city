@@ -70,6 +70,13 @@
     }
 }
 
+.view {
+    background-image: url(../images/core/expand-solid.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-position: center center;
+}
 
 .leaflet-left {
     left: 15% !important;
