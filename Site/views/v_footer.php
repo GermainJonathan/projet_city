@@ -1,12 +1,16 @@
-		<div class="container-fluid no-padding">
+		<?php /***Footer de la page responsive***/ ?>
+        <div class="container-fluid no-padding">
             <div class="footer">
                 <div class="container" >
+
+                <?php /***Footer Description***/ ?>
                     <div class = "row d-flex justify-content-center">
                         <div class = "col-lg-3 col-md-4 col-sm-4 no-small text-justify">
                             <h6><?= TITRE ?></h6>
                             <div class="footerText"><p><?= TXT_FOOTER_DESCRIPTION ?></p></div>
-                
                         </div>
+
+                        <?php /***Footer Menu Contact***/ ?>
                         <div class = "col-lg-3 col-md-4 col-sm-4 smallFooter">
                             <div class="footerText center">
                                 <h6><?= MENU_CONTACT ?></h6>
@@ -16,6 +20,8 @@
                                 </p>
                             </div>
                         </div>
+
+                        <?php /***Footer description du menu ***/ ?>
                         <div class = "col-lg-3 col-md-4 col-sm-4 no-small">
                                 <h6><?= TITRE_MENU ?></h6>
                                 <div class="footerText"><a href="?page=accueil"><?= MENU_ACCUEIL ?></a><br/>
@@ -24,6 +30,7 @@
                                     <a href="?page=perrache"><?= MENU_PERRACHE ?></a>
                                 </div>
                         </div>
+                        <?php /***Footer présentation ***/ ?>
                         <div class = "col-lg-2 col-md-3 col-sm-12 d-flex justify-content-center align-items-center">
                                 <div class="icon" id="iconInsta"></div><div class="icon" id="iconTwitter"></div><div class="icon" id="iconFb"></div>
                         </div>

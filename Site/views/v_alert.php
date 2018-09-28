@@ -1,5 +1,5 @@
 <?php
-
+// Alerte pour une erreur, une information ou une confirmation
 if(isset($alert))
 {
 ?>

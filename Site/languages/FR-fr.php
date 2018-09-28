@@ -15,10 +15,10 @@ define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");
 
 define('TITRE', 'Presqu\'île');
-define('TITRE_HISTOIRE', 'Histoire');
-define('TITRE_MONUMENT', 'Monument');
-define('TITRE_ACTIVITE', 'Activité');
-define('TITRE_RESTAURANT', 'Restaurant');
+define('TITRE_HISTOIRE', 'Histoires');
+define('TITRE_MONUMENT', 'Monuments');
+define('TITRE_ACTIVITE', 'Activités');
+define('TITRE_RESTAURANT', 'Restaurants');
 define('TITRE_MENU', 'Menu');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
@@ -28,6 +28,6 @@ define('INFO_CONNEXION', 'Vous êtes maintenant connecté');
 define('INFO_UPLOAD_SUCSESS', 'Upload effectué avec succès !');
 define('INFO_UPLOAD_FAIL', 'Echec de l\'upload !');
 
-define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son, sa gastronomie, ses activités    ');
+define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son histoire, sa gastronomie, ses activités    ');
 
 
