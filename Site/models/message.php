@@ -38,5 +38,10 @@ class message
         return $this->_date;
     }
 
+    public function __toString()
+    {
+        return $this->_idMessage.$this->_message.$this->_date;
+    }
+
 
 }

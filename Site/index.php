@@ -15,7 +15,7 @@ require_once(PATH_TEXTES.$lang.'.php');
 //vérification de la page demandée
 if(isset($_GET['page']))
 {
-  $page = htmlspecialchars($_GET['page']); // http://.../index.php?page=toto
+  $page = htmlspecialchars($_GET['page']);
   if(!is_file(PATH_CONTROLLERS . htmlspecialchars($_GET['page']) . ".php"))
   { 
     $page = '404'; //page demandée inexistante

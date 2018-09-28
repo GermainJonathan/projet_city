@@ -6,21 +6,11 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
-topic<br>
+<?php
+
+foreach ($listMessage as $message)
+    echo $message;
+?>
 
 
 <!--  Pied de page -->
