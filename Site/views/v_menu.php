@@ -37,5 +37,3 @@
         </div>
     </nav>
 </div>
-<?php require_once(PATH_VIEWS.'spinner.php'); ?>
-<div id="basePage">

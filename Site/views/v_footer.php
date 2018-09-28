@@ -1,4 +1,3 @@
-        </div>
         <div class="container-fluid no-padding">
             <div class="footer">
                 <div class="container" >

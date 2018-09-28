@@ -2,13 +2,13 @@
  * Initialisation de la carte Leaflet
  * Gestion des évenements
  */
-  var mymap = L.map('mapid', {
-    zoomControl: false  // On desactive les boutons de zoom
-  }).setView([45.754411, 4.796842
-  ], 14);
-  L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-  }).addTo(mymap);
+var mymap = L.map('mapid', {
+  zoomControl: false  // On desactive les boutons de zoom
+}).setView([45.754411, 4.796842
+], 14);
+L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+}).addTo(mymap);
 
 legend = L.control({position: 'topleft'});
 
