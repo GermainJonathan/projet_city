@@ -4,13 +4,13 @@
 require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
-require_once(PATH_VIEWS.'alert.php');
+require_once(PATH_VIEWS.'alert.php');?>
 
-require_once(PATH_VIEWS.'spinner.php');?>
+<?php
 
-
-
-
+foreach ($listMessage as $message)
+    echo $message;
+?>
 
 
 <!--  Pied de page -->

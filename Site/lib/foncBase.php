@@ -24,6 +24,18 @@ function choixAlert($message)
   return $alert;
 }
 
+function dateSiteToBase($dateSite){
+    $tdate = explode("/", $dateSite);
+    $dateBase = date($tdate[2]."-".$tdate[1]."-".$tdate[0]);
+    return $dateBase;
+}
+
+function dateBaseToSite($dateBase){
+    $tdate = explode("-", $dateBase);
+    $dateSite = date($tdate[2]."/".$tdate[1]."/".$tdate[0]);
+    return $dateSite;
+}
+
 //fonction qui vérifie la validité du fichier photo uploadé. retourne l'erreur adaptée au problème potentiel.
 function checkVarAjoutPhoto()
 {
@@ -55,21 +67,20 @@ function checkVarAjoutPhoto()
 
 function getLangage(){
 
-    if(isset($_SESSION["lang"]))
-        return $_SESSION["lang"];
-    else
-    {
-        $lang = explode('-',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
+    require_once PATH_MODELS.'manager.php';
 
-        $manager = new manager();
-        $listPays = $manager->getPays();
+    $lang = explode('-',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
 
-        foreach ($listPays as $pays){
-            if($pays->getLibelleCourt() == $lang) {
-                $_SESSION["lang"] = $pays->getFicher();
-                return $pays->getFicher();
-            }
+    $manager = new manager();
+    $listPays = $manager->getPays();
+
+    foreach ($listPays as $pays){
+        if($pays->getLibelleCourt() == $lang) {
+            $_SESSION["lang"] = $pays->getFicher();
+            $_SESSION["idLang"] = $pays->getId();
+            return $pays->getFicher();
         }
-        return "FR-fr";
     }
+    $_SESSION["idLang"] = 1;
+    return "FR-fr";
 }

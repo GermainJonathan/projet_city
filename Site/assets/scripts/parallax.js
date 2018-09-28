@@ -1,22 +1,33 @@
+/**
+ * Manage all parallax effect.
+ * To use the parallax effect, set the class of the div to parallax, the data-height attribute to the height of the parallax in percent
+ * and the data-image-src attribute to the picture to use.
+ */
 jQuery(document).ready(function () {
 
     setParallax();
 
+    /**
+     * Resize all parallax element on resize.
+     */
     $(window).resize(function () {
-        setParallax();
-        var imageHeight = $(window).height() * $('#mapid').data('height') / 100
-        $('#mapid').css('height', imageHeight)
+        updateElementSize($('.parallax'));
     })
 
+    /**
+     * Function that initialize all parallax element in current page.
+     */
     function setParallax(){
         $('.parallax').each(function (index) {
-            var imageSrc = $(this).data('image-src')
-            var imageHeight = $(window).height() * $(this).data('height') / 100
-            $(this).css('background-image', 'url(' + imageSrc + ')')
-            $(this).css('height', imageHeight)
+            updateElementSize($(this));
+            var imageSrc = $(this).data('image-src');
+            $(this).css('background-image', 'url(' + imageSrc + ')');
         })
     }
 
+    /**
+     * Sync the movement of the picture with the scroll.
+     */
     $(window).scroll(function () {
         var scrolled = $(window).scrollTop()
         $('.parallax').each(function (index, element) {
@@ -34,6 +45,10 @@ jQuery(document).ready(function () {
         })
     })
 
+    /**
+     * return true if the element is in ViewPort, else return false.
+     * @param {*} node element to select 
+     */
     function isInViewport(node) {
         var rect = node.getBoundingClientRect()
         return (

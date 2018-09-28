@@ -20,6 +20,8 @@ define('TITRE_MONUMENT', 'Monument');
 define('TITRE_ACTIVITE', 'Activité');
 define('TITRE_RESTAURANT', 'Restaurant');
 define('TITRE_MENU', 'Menu');
+define('TITRE_DATE', 'Date de parution');
+define('TITRE_TOPIC', 'Titre du Topic');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 
@@ -29,5 +31,9 @@ define('INFO_UPLOAD_SUCSESS', 'Upload effectué avec succès !');
 define('INFO_UPLOAD_FAIL', 'Echec de l\'upload !');
 
 define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son, sa gastronomie, ses activités    ');
+define('TXT_TITRE_TOPIC', 'Titre du topic');
+define('TXT_TITRE_DESCRIPTION', 'Description du topic');
 
+define('ERREUR_TOPC_DSC', 'Il manque la description');
+define('ERREUR_TOPC_TITRE', 'Il manque le titre');
 
