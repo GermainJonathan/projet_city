@@ -4,9 +4,11 @@ require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS."topic.php";
 require_once PATH_MODELS."message.php";
 
+// class de discustion avec la bd pour la partie forum
 class forumDAO extends DAO
 {
 
+    // sort tous les topics
     public function getTopic(){
 
         $result = $this->queryAll("SELECT * FROM topic");
@@ -19,6 +21,7 @@ class forumDAO extends DAO
 
     }
 
+    // sort un topic ou false par un ID
     public function getTopicById($idTopic){
 
         $result = $this->queryRow("SELECT * FROM topic WHERE codeTopic  = ?", array($idTopic));
@@ -27,6 +30,7 @@ class forumDAO extends DAO
 
     }
 
+    // sort les messages d'un topic
     public function getMessageByTopic($idTopic){
 
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
@@ -39,6 +43,7 @@ class forumDAO extends DAO
 
     }
 
+    // vérifi si un topic exciste et est actif
     public function verifyTopic($idTopic){
 
         return $this->queryRow("SELECT * FROM topic WHERE codeTopic = ?", array($idTopic));

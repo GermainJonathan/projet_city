@@ -3,6 +3,7 @@
 require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS.'pays.php';
 
+// classe de communicaton avec la bd pour les pays et le choix de la langue
 class paysDAO extends DAO
 {
 

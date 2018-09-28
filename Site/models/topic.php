@@ -1,6 +1,6 @@
 <?php
 
-
+// class des topics du forum
 class topic
 {
 

@@ -3,6 +3,9 @@
 require_once PATH_MODELS.'paysDAO.php';
 require_once PATH_MODELS.'forumDAO.php';
 
+// class central
+// c'est la seul class appalé par les controleur
+// elle fait le ien entre les moedels et les controlleurs
 class manager
 {
     public function getPays($id = null)
