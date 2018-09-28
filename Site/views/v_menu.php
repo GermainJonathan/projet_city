@@ -5,13 +5,16 @@
 
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#"><img src="<?= PATH_CORE.'logo.svg'?>" id="logo-header"></a>
+        <!-- burger menu mobile and medium -->
         <div class="button-menu">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+        <!-- Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav row">
+            <!-- Navbar items -->
                 <li class="nav-item">
                     <a class="nav-link" href="?page=accueil"><?= MENU_ACCUEIL ?></a>
                 </li>

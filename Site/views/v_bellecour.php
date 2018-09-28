@@ -9,5 +9,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 
 
 
+
+
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');
