@@ -17,6 +17,9 @@ mymap.scrollWheelZoom.disable();
 mymap.doubleClickZoom.disable();
 mymap.dragging.disable();
 
+/**
+ * Création du layer avec les zones de quartier
+ */
 var geojson = L.geoJson(states, {
     onEachFeature: onEachFeature,
     style: style
@@ -33,16 +36,21 @@ $(window).resize(function () {
   }
 })
 
-
+/**
+ * Geolocalisation
+ */
 if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
-    console.log(position);
     L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
   }, function(){}, {
     maximumAge:600000,
     enableHighAccuracy: true
   });
 }
+
+/**
+ * Bouton Recentrer
+ */
 var viewButton = L.control({position: 'bottomright'});
 var button = L.DomUtil.create('div');
 button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();"></button>'
@@ -51,6 +59,9 @@ viewButton.onAdd = function() {
 };
 viewButton.addTo(mymap);
 
+/**
+ * Action du bouton recentrer
+ */
 function resetView() {
   if($(window).width() < 1000) {
     mymap.setView(new L.LatLng(45.754411, 4.806842), 14);

@@ -67,3 +67,7 @@
         opacity: 0;
     }
 }
+
+#basePage {
+    display: none;
+}

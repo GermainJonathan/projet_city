@@ -1,4 +1,5 @@
-		<div class="container-fluid no-padding">
+        </div>
+        <div class="container-fluid no-padding">
             <div class="footer">
                 <div class="container" >
                     <div class = "row d-flex justify-content-center">

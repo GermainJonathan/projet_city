@@ -3,12 +3,10 @@
 // En tête de page
 require_once(PATH_VIEWS.'header.php');
 
-//spinner
-require_once(PATH_VIEWS.'spinner.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-<div class="parallax" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
+<div class="parallax" id="parallax-1" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
     <div class="caption">
         <span class="border"><?= TITRE ?></span>
     </div>

@@ -2,6 +2,7 @@ jQuery(document).ready(function () {
     $(".spinner").fadeOut(function() {
         $( "#parallax-1:hidden:first" ).fadeIn( "slow" );
         $( "#textAccueil:hidden:first" ).fadeIn( "slow" );
+        $( "#basePage:hidden:first" ).fadeIn("slow");
 
         //INIT
         setResize($('#mapid'));
