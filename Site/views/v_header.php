@@ -11,6 +11,7 @@
 		<link href="<?= PATH_CSS ?>accueil.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>parallax.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>communTheme.css" rel="stylesheet"/>
+		<link href="<?= PATH_CSS ?>quartier.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>header.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>footer.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
@@ -22,5 +23,5 @@
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>accueil.js"></script>
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>parallax.js"></script>
 	</head> 
-	<body>
+	<body data-spy="scroll" data-target="#sideBar" data-offset="20">
     <?php require_once(PATH_VIEWS.'menu.php');
