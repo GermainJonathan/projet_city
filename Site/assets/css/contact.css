@@ -1,0 +1,32 @@
+/*Partie à propos*/
+
+#contact-block-aPropos{
+    margin-top: 30px;
+}
+
+.contact-desc{
+    text-align:justify;
+}
+
+.contact-title{
+    text-align:center;
+}
+
+/*Fin partie à propos*/
+
+/*Debut partie formulaire*/
+
+#contact-block-formulaire{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.contact-text-area{
+    height:195px!important;
+}
+
+.contact-btn{
+    text-align: end;
+}
+
+/*FIN Debut partie formulaire*/
