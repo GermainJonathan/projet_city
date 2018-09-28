@@ -26,7 +26,7 @@
 }
 
 .contact-btn{
-    text-align: end;
+    justify-content:end;
 }
 
 /*FIN Debut partie formulaire*/
