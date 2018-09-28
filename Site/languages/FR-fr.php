@@ -34,3 +34,6 @@ define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de
 define('TXT_TITRE_TOPIC', 'Titre du topic');
 define('TXT_TITRE_DESCRIPTION', 'Description du topic');
 
+define('ERREUR_TOPC_DSC', 'Il manque la description');
+define('ERREUR_TOPC_TITRE', 'Il manque le titre');
+

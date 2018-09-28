@@ -37,5 +37,10 @@ class manager
             return true;
     }
 
+    public function createTopic($titre, $description){
+        $forumDAO = new forumDAO(DEBUG);
+        return $forumDAO->createNewTopic($titre, $description, $_SESSION['idLang']);
+    }
+
 }
 

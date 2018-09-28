@@ -24,6 +24,18 @@ function choixAlert($message)
   return $alert;
 }
 
+function dateSiteToBase($dateSite){
+    $tdate = explode("/", $dateSite);
+    $dateBase = date($tdate[2]."-".$tdate[1]."-".$tdate[0]);
+    return $dateBase;
+}
+
+function dateBaseToSite($dateBase){
+    $tdate = explode("-", $dateBase);
+    $dateSite = date($tdate[2]."/".$tdate[1]."/".$tdate[0]);
+    return $dateSite;
+}
+
 //fonction qui vérifie la validité du fichier photo uploadé. retourne l'erreur adaptée au problème potentiel.
 function checkVarAjoutPhoto()
 {
@@ -65,8 +77,10 @@ function getLangage(){
     foreach ($listPays as $pays){
         if($pays->getLibelleCourt() == $lang) {
             $_SESSION["lang"] = $pays->getFicher();
+            $_SESSION["idLang"] = $pays->getId();
             return $pays->getFicher();
         }
     }
+    $_SESSION["idLang"] = 1;
     return "FR-fr";
 }
