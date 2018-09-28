@@ -1,17 +1,21 @@
 jQuery(document).ready(function () {
+    $(".spinner").fadeOut(function() {
+        $( "#parallax-1:hidden:first" ).fadeIn( "slow" );
+        $( "#textAccueil:hidden:first" ).fadeIn( "slow" );
 
-    //INIT
-    setResize($('#mapid'));
-
-    //active selected nav-item
-    $('.nav-item').each(function () {
-        $(this).find('a[href*=' + $_GET('page') + ']').parent()
-            .toggleClass("nav-item").toggleClass("nav-item-active");
-    });
-
-    $(window).resize(function () {
+        //INIT
         setResize($('#mapid'));
-    })
+    
+        //active selected nav-item
+        $('.nav-item').each(function () {
+            $(this).find('a[href*=' + $_GET('page') + ']').parent()
+                .toggleClass("nav-item").toggleClass("nav-item-active");
+        });
+    
+        $(window).resize(function () {
+            setResize($('#mapid'));
+        })
+    });
 
     function setResize(element) {
         var imageHeight = $(window).height() * element.data('height') / 100

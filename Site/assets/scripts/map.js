@@ -2,13 +2,13 @@
  * Initialisation de la carte Leaflet
  * Gestion des évenements
  */
-var mymap = L.map('mapid', {
-  zoomControl: false  // On desactive les boutons de zoom
-}).setView([45.754411, 4.796842
-], 14);
-L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-}).addTo(mymap);
+  var mymap = L.map('mapid', {
+    zoomControl: false  // On desactive les boutons de zoom
+  }).setView([45.754411, 4.796842
+  ], 14);
+  L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+  }).addTo(mymap);
 
 legend = L.control({position: 'topleft'});
 
@@ -32,6 +32,32 @@ $(window).resize(function () {
     mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
   }
 })
+
+
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    console.log(position);
+    L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
+  }, function(){}, {
+    maximumAge:600000,
+    enableHighAccuracy: true
+  });
+}
+var viewButton = L.control({position: 'bottomright'});
+var button = L.DomUtil.create('div');
+button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();"></button>'
+viewButton.onAdd = function() {
+  return button;
+};
+viewButton.addTo(mymap);
+
+function resetView() {
+  if($(window).width() < 1000) {
+    mymap.setView(new L.LatLng(45.754411, 4.806842), 14);
+  } else {
+    mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
+  }
+}
 
 /**
  * Fonction evenement Leaflet pour colorier les zones
