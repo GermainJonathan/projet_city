@@ -9,20 +9,16 @@
 }
 
 .btn-primary {
-    background-color: #B3B3B3;
-    border-color: #444;
-    text-decoration-color: black;
-}
-
-.leaflet-container a {
-    color: black !important;
+    background-color:white;
+    border-color: #E98B39 !important;
+    color: #E98B39 !important; 
 }
 
 .btn-primary:hover,
 .btn-primary:active {
     background-color: #E98B39 !important;
     color: white !important;
-    border-color: black !important;
+    border-color: #E98B39 !important;
 }
 
 .card-title {
