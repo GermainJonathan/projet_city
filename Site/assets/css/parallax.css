@@ -4,21 +4,23 @@
   background-color: #ffffff;
   text-align: center;
   padding: 50px 80px;
+  display: none;
 }
 
 
 .parallax {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-  
-    /**
-     * Default height
-     */
-    height: 100%;
-  }
+  display: none;
+  position: relative;
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /**
+    * Default height
+    */
+  height: 100%;
+}
   
   .caption {
     display: -webkit-box;

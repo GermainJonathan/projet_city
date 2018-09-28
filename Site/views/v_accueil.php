@@ -3,6 +3,8 @@
 // En tête de page
 require_once(PATH_VIEWS.'header.php');
 
+//spinner
+require_once(PATH_VIEWS.'spinner.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
