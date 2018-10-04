@@ -16,14 +16,12 @@ legend = L.control({position: 'topleft'});
 mymap.scrollWheelZoom.disable();
 mymap.doubleClickZoom.disable();
 mymap.dragging.disable();
+addRecentrerButton();
+addGeoJSONInfo();
+addGeoPosition();
 
-/**
- * Création du layer avec les zones de quartier
- */
-var geojson = L.geoJson(states, {
-    onEachFeature: onEachFeature,
-    style: style
-}).addTo(mymap);
+myCard = new card("Test", "Blabla",["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"], true);
+console.log(myCard);
 
 /**
  * Evenement lors du resize de la page // Responsive
@@ -39,25 +37,39 @@ $(window).resize(function () {
 /**
  * Geolocalisation
  */
-if(navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
-  }, function(){}, {
-    maximumAge:600000,
-    enableHighAccuracy: true
-  });
+function addGeoPosition() {
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
+    }, function(){}, {
+      maximumAge:600000,
+      enableHighAccuracy: true
+    });
+  }
 }
 
 /**
  * Bouton Recentrer
  */
-var viewButton = L.control({position: 'bottomright'});
-var button = L.DomUtil.create('div');
-button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();"></button>'
-viewButton.onAdd = function() {
-  return button;
-};
-viewButton.addTo(mymap);
+function addRecentrerButton() {
+  var viewButton = L.control({position: 'bottomright'});
+  var button = L.DomUtil.create('div');
+  button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();"></button>'
+  viewButton.onAdd = function() {
+    return button;
+  };
+  viewButton.addTo(mymap);  
+}
+
+/**
+ * Création du layer avec les zones de quartier
+ */
+function addGeoJSONInfo() {
+  geojson = L.geoJson(states, { // State est défini dans le fichier presquileGEOJSON.js inclut avant dans le template
+    onEachFeature: onEachFeature,
+    style: style
+  }).addTo(mymap);
+}
 
 /**
  * Action du bouton recentrer
@@ -132,7 +144,6 @@ function style(feature) {
   };
 }
 
-
 /**
  * Fabrique de carte descriptif
  * @param {string} imgURL 
@@ -140,9 +151,9 @@ function style(feature) {
  * @param {string} title 
  */
 function factoryCard(imgURL, descriptText, title) {
-  return function(mymap) {
+  return function() {
     let children_card = L.DomUtil.create('div', 'card legend');
-    children_card.innerHTML += '<img class="card-img-top" src="' + imgURL + '" alt="' + title + '"/>';
+    children_card.innerHTML += '<img class="card-img-top d-block w-100" src="' + imgURL + '" alt="' + title + '"/>';
     children_card.innerHTML += '<div class="card-body"><h5 class="card-title">' + title + '</h5><p class="card-text" title=' + descriptText + '>' + descriptText + '</p>' + '<a href="?page=' + title.toLowerCase() + '" class="btn btn-primary btn-block">En savoir plus</a></div>';
     return children_card;
   };

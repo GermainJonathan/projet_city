@@ -55,6 +55,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 <div class="row no-padding no-margin">
     <div id="mapid" data-height="60"></div>
 </div>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>cardMapFactory.js"></script>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>map.js"></script>
 
 <!--  Pied de page -->
