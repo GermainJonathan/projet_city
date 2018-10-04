@@ -11,6 +11,7 @@
 		<link href="<?= PATH_CSS ?>accueil.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>parallax.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>communTheme.css" rel="stylesheet"/>
+		<link href="<?= PATH_CSS ?>quartier.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>header.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>footer.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>contact.css" rel="stylesheet"/>
@@ -24,8 +25,8 @@
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>accueil.js"></script>
 		<script type="text/javascript" src="<?= PATH_SCRIPTS ?>parallax.js"></script>
 	</head> 
-	<body>
-	<?php require_once(PATH_VIEWS.'menu.php');?>
+	<body data-spy="scroll" data-target="#sideBar" data-offset="20">
+		<?php require_once(PATH_VIEWS.'menu.php');?>
 		<?php require_once(PATH_VIEWS.'spinner.php');?>
 		<div id="basePage">
 			
