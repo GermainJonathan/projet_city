@@ -20,9 +20,6 @@ addRecentrerButton();
 addGeoJSONInfo();
 addGeoPosition();
 
-myCard = new card("Test", "Blabla",["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"], true);
-console.log(myCard);
-
 /**
  * Evenement lors du resize de la page // Responsive
  */
@@ -165,6 +162,7 @@ function factoryCard(imgURL, descriptText, title) {
  * @param {string} quarterName 
  */
 function setupCard(quarterName) {
+  const textDescriptionFactice = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.';
   let lastCard = legend;
   legend.remove();
 
@@ -172,7 +170,8 @@ function setupCard(quarterName) {
 
   switch (quarterName) {
     case "Perrache" :
-      legend.onAdd = factoryCard("assets/images/perrache/perrache.jpg", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.', quarterName);
+      var perracheCard = new Card(quarterName, textDescriptionFactice,["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"], true);
+      legend.onAdd = perracheCard.createCard();
       break;
     case "Bellecour" :
       legend.onAdd = factoryCard("assets/images/bellecour/bellecour.jpg", 'Test de description Ouha !!!', quarterName);
