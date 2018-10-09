@@ -67,3 +67,8 @@
 #basePage {
     display: none;
 }
+
+/* TODO: Responsive du carousel */
+.carousel {
+    height: 215px;
+}

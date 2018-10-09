@@ -67,12 +67,15 @@ class Card {
         var title = $("<h5></h5>", {
             class: "card-title"
         }).attr("title", this.title);
+        title.append(this.title);
         var text = $("<p></p>", {
             class: "card-text"
         }).attr("title", this.description);
+        text.append(this.description);
         var link = $("<a></a>", {
             class: "btn btn-primary btn-block"
         }).attr("href", "?page='" + this.title.toLowerCase() + "'");
+        link.append("En savoir plus");
         coreCard.prepend(title);
         coreCard.append(text);
         coreCard.append(link);
@@ -91,7 +94,7 @@ class Card {
                 throw new Error("Error - images should contain more then 1 element");
             }
             var imageCard = $("<div></div>", {
-                class: "card-img-top carousel slide"
+                class: "carousel slide carousel-fade"
             }).attr("data-ride", "carousel");
             var carousel = $("<div></div>", {
                 class: "carousel-inner"
@@ -107,11 +110,13 @@ class Card {
                 div.append(image);
                 carousel.append(div);
             }
+            carousel.children(":first-child").addClass("active")
         } else {
             imageCard = $("<img>", {
                 class: "d-block w-100 card-img-top"
             }).attr("src", this.image);
         }
+        imageCard.carousel();
         return imageCard[0];
     }
 }
