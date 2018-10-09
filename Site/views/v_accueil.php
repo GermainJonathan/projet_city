@@ -69,6 +69,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 </div>
 
 <!--  Script pour la carte  -->
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>cardMapFactory.js"></script>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>map.js"></script>
 
 <!--  Pied de page  -->
