@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.6
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  ven. 28 sep. 2018 à 17:27
--- Version du serveur :  10.1.36-MariaDB
+-- Généré le :  mer. 10 oct. 2018 à 12:14
+-- Version du serveur :  10.2.18-MariaDB
 -- Version de PHP :  7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -144,10 +144,18 @@ CREATE TABLE `monument` (
   `codeQuartier` int(5) DEFAULT NULL,
   `libelleMonument` varchar(50) DEFAULT NULL,
   `imageMonument` varchar(50) DEFAULT NULL,
+  `coordonnees` point NOT NULL,
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
   `commentaire` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `monument`
+--
+
+INSERT INTO `monument` (`codeMonument`, `codePays`, `codeQuartier`, `libelleMonument`, `imageMonument`, `coordonnees`, `dateConstruction`, `architecte`, `commentaire`) VALUES
+(1, 1, 3, 'Hôtel de ville de Lyon', 'assets\\images\\terreaux\\hotel-de-ville-lyon-1.jpg', '\0\0\0\0\0\0\0��9D�F@6��W@', '1672-01-01', 'Simon Maupin', NULL);
 
 -- --------------------------------------------------------
 
@@ -179,6 +187,15 @@ CREATE TABLE `quartier` (
   `codeQuartier` int(5) NOT NULL,
   `libelleQuartier` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `quartier`
+--
+
+INSERT INTO `quartier` (`codeQuartier`, `libelleQuartier`) VALUES
+(1, 'Perrache'),
+(2, 'Bellecour'),
+(3, 'Terreaux');
 
 -- --------------------------------------------------------
 
@@ -278,7 +295,8 @@ ALTER TABLE `monument`
   ADD PRIMARY KEY (`codeMonument`),
   ADD KEY `codeMonument` (`codeMonument`),
   ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
+  ADD KEY `codeQuartier` (`codeQuartier`),
+  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
 
 --
 -- Index pour la table `pays`
