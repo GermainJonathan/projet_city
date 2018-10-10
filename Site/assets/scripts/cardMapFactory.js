@@ -16,6 +16,11 @@ class Card {
         this.slider = slider;
     }
 
+    /**
+     * Méthode principal de la classe
+     * Permet de générer la carte suivant les paramètres de l'objet et renvoie le dom créé dans un fonction
+     * A ajouter a l'evenement "onAdd" des contrôles Leaflet
+     */
     createCard() {
         var mapCard = L.DomUtil.create("div", "card legend");   // Création de la div de base
         mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
@@ -110,13 +115,13 @@ class Card {
                 div.append(image);
                 carousel.append(div);
             }
-            carousel.children(":first-child").addClass("active")
+            carousel.children(":first-child").addClass("active");
+            imageCard.carousel();
         } else {
-            imageCard = $("<img>", {
-                class: "d-block w-100 card-img-top"
-            }).attr("src", this.image);
+            var imageCard = $("<img>", {
+                class: "card-img-top d-block w-100"
+            }).attr("src", this.images);
         }
-        imageCard.carousel();
         return imageCard[0];
     }
 }

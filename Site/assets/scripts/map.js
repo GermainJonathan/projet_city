@@ -19,6 +19,7 @@ mymap.dragging.disable();
 addRecentrerButton();
 addGeoJSONInfo();
 addGeoPosition();
+setupQuarterCard("Terreaux");
 
 /**
  * Evenement lors du resize de la page // Responsive
@@ -55,7 +56,7 @@ function addRecentrerButton() {
   viewButton.onAdd = function() {
     return button;
   };
-  viewButton.addTo(mymap);  
+  viewButton.addTo(mymap);
 }
 
 /**
@@ -94,8 +95,7 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
     }
-    setupCard(e.target.feature.properties.name);
-    legend.addTo(mymap);
+    setupQuarterCard(e.target.feature.properties.name);
 }
 
 /**
@@ -142,26 +142,10 @@ function style(feature) {
 }
 
 /**
- * Fabrique de carte descriptif
- * @param {string} imgURL 
- * @param {string} descriptText 
- * @param {string} title 
- */
-function factoryCard(imgURL, descriptText, title) {
-  return function() {
-    let children_card = L.DomUtil.create('div', 'card legend');
-    children_card.innerHTML += '<img class="card-img-top d-block w-100" src="' + imgURL + '" alt="' + title + '"/>';
-    children_card.innerHTML += '<div class="card-body"><h5 class="card-title">' + title + '</h5><p class="card-text" title=' + descriptText + '>' + descriptText + '</p>' + '<a href="?page=' + title.toLowerCase() + '" class="btn btn-primary btn-block">En savoir plus</a></div>';
-    return children_card;
-  };
-
-}
-
-/**
  * Mise à jour de la carte descriptif du quartier
  * @param {string} quarterName 
  */
-function setupCard(quarterName) {
+function setupQuarterCard(quarterName) {
   const textDescriptionFactice = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.';
   let lastCard = legend;
   legend.remove();
@@ -174,13 +158,16 @@ function setupCard(quarterName) {
       legend.onAdd = perracheCard.createCard();
       break;
     case "Bellecour" :
-      legend.onAdd = factoryCard("assets/images/bellecour/bellecour.jpg", 'Test de description Ouha !!!', quarterName);
+      var bellecourCard = new Card(quarterName, textDescriptionFactice,"assets/images/bellecour/bellecour.jpg", false);
+      legend.onAdd = bellecourCard.createCard();
       break;
     case "Terreaux":
-      legend.onAdd = factoryCard("assets/images/terreaux/terreaux.jpg", 'Test de description. incroyable', quarterName);
+      var terreauxCard = new Card(quarterName, textDescriptionFactice,"assets/images/terreaux/terreaux.jpg", false);
+      legend.onAdd = terreauxCard.createCard();
       break;
     default:
       legend.onAdd = lastCard.onAdd;
       break;
   }
+  legend.addTo(mymap);
 }
