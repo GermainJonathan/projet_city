@@ -6,7 +6,6 @@
     margin: 10px 0px 0px 0px;
 }
 
-
 @media screen and (max-width: 576px) {
     .legend {
         line-height: 18px;
@@ -87,6 +86,23 @@
     top: 15% !important;
     transform: translate(-15%, 0%);
 }
+
+/* Animation des Cartes */
+
+.card.legend.leaflet-control {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+}
+
+.card.legend.leaflet-control:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+}
+/* Fin Animation des cartes */
 
 .AccueilIcon{
     width:80px;

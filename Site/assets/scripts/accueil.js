@@ -3,6 +3,9 @@ $(function () {
         $("#basePage:hidden:first" ).fadeIn("slow", function() {
             if(typeof mymap !== 'undefined')
                 mymap.invalidateSize();
+            if(window.scrollY == 0) {
+                $("ul.nav.navbar-nav").children(":first").children(":first").addClass("active");
+            }
         });
     });
 
