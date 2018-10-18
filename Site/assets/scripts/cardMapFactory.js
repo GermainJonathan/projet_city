@@ -79,7 +79,7 @@ class Card {
         text.append(this.description);
         var link = $("<a></a>", {
             class: "btn btn-primary btn-block"
-        }).attr("href", "?page='" + this.title.toLowerCase() + "'");
+        }).attr("href", "?page=" + this.title.toLowerCase());
         link.append("En savoir plus");
         coreCard.prepend(title);
         coreCard.append(text);

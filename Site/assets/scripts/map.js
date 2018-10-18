@@ -25,11 +25,7 @@ setupQuarterCard("Terreaux");
  * Evenement lors du resize de la page // Responsive
  */
 $(window).resize(function () {
-  if($(window).width() < 1000) {
-    mymap.setView(new L.LatLng(45.754411, 4.806842), 14);
-  } else {
-    mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
-  }
+  resetView();
 })
 
 /**

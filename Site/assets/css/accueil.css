@@ -6,6 +6,10 @@
     margin: 10px 0px 0px 0px;
 }
 
+.card-title {
+    color: black;
+}
+
 @media screen and (max-width: 576px) {
     .legend {
         line-height: 18px;
@@ -26,8 +30,9 @@
         border: 1px solid black;
     }
     
+    .carousel img,
     .card-img-top {
-        height: 11em;
+        height: 13em;
     }
 
     .card-text {
@@ -46,16 +51,17 @@
         width: 20em;
         border: 1px solid black;
     }
-    
-    .card-img-top {
-        height: 11em;
-    }
 
     .card-text {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: auto;        
         overflow-x: hidden;    
+    }
+
+    .carousel img,
+    .card-img-top {
+        height: 13em;
     }
 }
 
@@ -67,6 +73,12 @@
         width: 25em;
         border: 1px solid black;
     }
+
+    .carousel img,
+    .card-img-top {
+        height: 15em;
+    }
+
 }
 
 .view {
