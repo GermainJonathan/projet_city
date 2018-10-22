@@ -25,11 +25,7 @@ setupQuarterCard("Terreaux");
  * Evenement lors du resize de la page // Responsive
  */
 $(window).resize(function () {
-  if($(window).width() < 1000) {
-    mymap.setView(new L.LatLng(45.754411, 4.806842), 14);
-  } else {
-    mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
-  }
+  resetView();
 })
 
 /**
@@ -52,7 +48,7 @@ function addGeoPosition() {
 function addRecentrerButton() {
   var viewButton = L.control({position: 'bottomright'});
   var button = L.DomUtil.create('div');
-  button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();"></button>'
+  button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();" title="Recentrer"></button>'
   viewButton.onAdd = function() {
     return button;
   };

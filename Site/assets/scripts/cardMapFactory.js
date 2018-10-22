@@ -79,7 +79,7 @@ class Card {
         text.append(this.description);
         var link = $("<a></a>", {
             class: "btn btn-primary btn-block"
-        }).attr("href", "?page='" + this.title.toLowerCase() + "'");
+        }).attr("href", "?page=" + this.title.toLowerCase());
         link.append("En savoir plus");
         coreCard.prepend(title);
         coreCard.append(text);
@@ -93,7 +93,7 @@ class Card {
     _createImgCard() {
         if (this.slider) {
             if (!Array.isArray(this.images)) {
-                throw new Error("Error - images would be an array");
+                throw new Error("Error - images must be an array");
             }
             if (this.images.length < 2) {
                 throw new Error("Error - images should contain more then 1 element");
