@@ -93,7 +93,7 @@ class Card {
     _createImgCard() {
         if (this.slider) {
             if (!Array.isArray(this.images)) {
-                throw new Error("Error - images would be an array");
+                throw new Error("Error - images must be an array");
             }
             if (this.images.length < 2) {
                 throw new Error("Error - images should contain more then 1 element");

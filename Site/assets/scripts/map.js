@@ -48,7 +48,7 @@ function addGeoPosition() {
 function addRecentrerButton() {
   var viewButton = L.control({position: 'bottomright'});
   var button = L.DomUtil.create('div');
-  button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();"></button>'
+  button.innerHTML += '<button class="btn btn-primary view" onclick="resetView();" title="Recentrer"></button>'
   viewButton.onAdd = function() {
     return button;
   };
