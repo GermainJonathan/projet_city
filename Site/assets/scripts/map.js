@@ -108,6 +108,12 @@ function resetHighlight(e) {
  */
 function zoomToFeature(e) {
     mymap.fitBounds(e.target.getBounds());
+    $.ajax({
+      method: "GET",
+      url: "?service=quartier&feature="+e.target.feature.properties.name.toLowerCase()
+    }).done(function(data) {
+      console.log(data);
+    });
 }
 
 /**

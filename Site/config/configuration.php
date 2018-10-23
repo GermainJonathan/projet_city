@@ -18,6 +18,7 @@ const AUTEUR = 'AG4île';
 
 //dossiers racines du site
 define('PATH_CONTROLLERS','controllers/c_');
+define('PATH_SERVICES', 'services/');
 define('PATH_ENTITY','entity/');
 define('PATH_ASSETS','assets/');
 define('PATH_LIB','lib/');

@@ -26,5 +26,12 @@ else {
 	$page='accueil'; //page d'accueil du site - http://.../index.php
 }
 
+// Demande de service
+if(isset($_GET['service']))
+{
+  $service = htmlspecialchars($_GET['service']);
+  require_once(PATH_SERVICES.$service.'.php');
+}
+
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');

@@ -40,7 +40,6 @@ class forumDAO extends DAO
             $listMessage[] = new message($temp[0], $temp[1], $temp[2], $temp[3]);
 
         return $listMessage;
-
     }
 
     // vérifi si un topic exciste et est actif
