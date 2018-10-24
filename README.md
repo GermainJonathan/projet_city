@@ -15,4 +15,6 @@ Thème : Promouvoir sa ville à travers son quartier
 
 > MVC : Modèle Vue Contrôleur
 
-> Service PHP REST : https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
+> Service PHP **REST** : https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
+
+pourquoi REST : Simple et efficace.

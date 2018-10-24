@@ -110,7 +110,7 @@ function zoomToFeature(e) {
     mymap.fitBounds(e.target.getBounds());
     $.ajax({
       method: "GET",
-      url: "?service=quartier&feature="+e.target.feature.properties.name.toLowerCase()
+      url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
     }).done(function(data) {
       console.log(data);
     });
