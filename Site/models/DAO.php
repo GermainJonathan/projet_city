@@ -1,5 +1,5 @@
 <?php
-require_once(PATH_MODELS.'Connexion.php');
+require_once('Connexion.php');
 abstract class DAO
 {
     private $_erreur; //stocke les messages d'erreurs associées au PDOException
@@ -34,7 +34,9 @@ abstract class DAO
             $pdos = Connexion::getInstance()->getBdd()->query($sql);// exécution directe
         } else {
             $pdos = Connexion::getInstance()->getBdd()->prepare($sql);// requête préparée
-            $pdos->execute($args);
+            if(!$pdos->execute($args)) {
+                $this->erreur = $pdos->errorInfo();
+            }
         }
         return $pdos;
     }
@@ -99,7 +101,7 @@ abstract class DAO
     {
         try {
             $pdos = $this->_requete($sql, $args);
-            $res = $pdos->fetchAll();
+            $res = $pdos->fetchAll(PDO::FETCH_ASSOC);
             $pdos->closeCursor();
         } catch (PDOException $e) {
             if ($this->_debug) {
