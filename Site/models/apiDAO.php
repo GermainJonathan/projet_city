@@ -7,63 +7,74 @@ require_once 'DAO.php';
 
 class Api extends DAO
 {
-    // TODO: Model Monument
     /**
      * Renvoie un tableau contenant les données des Monuments enregistrés par quartier
-     * @var quarter nom du quartier
+     * @var string quarter nom du quartier
      * @return array monument[]
      */
     public function getDataMonumentByQuarter($quarter) {
-        $sql = "SELECT mon.libelleMonument, mon.imageMonument, AsText(mon.coordonnees) as coordonees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y'), mon.architecte
+        $sql = "SELECT mon.codeMonument as id, mon.codeQuartier as idQuartier, mon.libelleMonument, mon.imageMonument, AsText(mon.coordonnees) as coordonees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y') as dateConstruction, mon.architecte, mon.commentaire
                 FROM monument mon
                 INNER JOIN quartier qua ON mon.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
         $monumentResult = $this->queryAll($sql, array('quartier' => $quarter));
         // TODO: Remonter d'erreur BDD - Notification TOAST
+        // FIXME: Compléter le if avec isArray
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         }
         return $monumentResult;
     }
 
-    // TODO: Model Restaurant
     /**
      * Renvoie un tableau contenant les données des Restaurants enregistrés par quartier
-     * @var quarter nom du quartier
+     * @var string quarter nom du quartier
      * @return array restaurant[]
      */
     public function getDataRestaurantByQuarter($quarter) {
-        // TODO: Terminer la requête
-        $sql = "SELECT AsText(res.coordonnees) as coordonees, DATE_FORMAT(res.dateConstruction, '%d %m %Y')
+        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.nom, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
                 FROM restaurant res
                 INNER JOIN quartier qua ON res.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
         $restaurantResult = $this->queryAll($sql, array('quartier' => $quarter));
         // TODO: Remonter d'erreur BDD - Notification TOAST
+        // FIXME: Compléter le if avec isArray
         if(!$restaurantResult) {
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
         }
         return $restaurantResult;
     }
 
-    // TODO: Model Activité
     /**
      * Renvoie un tableau contenant les données des Activités enregistrés par quartier
-     * @var quarter nom du quartier
+     * @var string quarter nom du quartier
      * @return array monument[]
      */
     public function getDataActiviteByQuarter($quarter) {
         // TODO: Terminer la requête
-        $sql = "SELECT AsText(act.coordonnees) as coordonees, DATE_FORMAT(act.dateConstruction, '%d %m %Y')
+        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as titreActivite, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.commentaire
                 FROM activite act
                 INNER JOIN quartier qua ON act.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
         $activiteResult = $this->queryAll($sql, array('quartier' => $quarter));
         // TODO: Remonter d'erreur BDD - Notification TOAST
+        // FIXME: Compléter le if avec isArray
         if(!$activiteResult) {
             error_log('Activité - Erreur lors de l\'execution de la requête');
         }
         return $activiteResult;
     }
 
+    /**
+     * Renvoie tout les patrimoines d'un quartier sous forme de tableau 2D
+     * 
+     * @var string quarter nom du quartier 
+     * @return array [activites[], restaurants[], monuments[]]
+     */
+    public function getAllDataByQuarter($quarter) {
+        $activites = $this->getDataActiviteByQuarter($quarter);
+        $restaurants = $this->getDataRestaurantByQuarter($quarter);
+        $monuments = $this->getDataMonumentByQuarter($quarter);
+        return array($activites, $restaurants, $monuments);
+    }
 }

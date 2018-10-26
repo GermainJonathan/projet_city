@@ -104,6 +104,7 @@ abstract class DAO
             $res = $pdos->fetchAll(PDO::FETCH_ASSOC);
             $pdos->closeCursor();
         } catch (PDOException $e) {
+            error_log('$e : '.print_r($e->getMessage(),true));
             if ($this->_debug) {
                 die($e->getMessage());
             }

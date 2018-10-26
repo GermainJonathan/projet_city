@@ -18,7 +18,7 @@ $code = 200;
 $bo = new Api(DEBUG);
 
 if (!empty($_GET['quartier'])) {
-    $responses = $bo->getDataMonumentByQuarter($_GET['quartier']);
+    $responses = $bo->getAllDataByQuarter($_GET['quartier']);
 } else {
     $code = 404;
     $responses = array(
@@ -26,7 +26,6 @@ if (!empty($_GET['quartier'])) {
         'message' => 'This service need quarter parameter'
     );
 }
-
 // Envoie de la réponse
 http_response_code($code);
 echo json_encode($responses);
