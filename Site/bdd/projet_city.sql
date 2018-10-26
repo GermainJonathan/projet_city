@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 10 oct. 2018 à 12:14
+-- Généré le :  ven. 26 oct. 2018 à 12:01
 -- Version du serveur :  10.2.18-MariaDB
 -- Version de PHP :  7.2.10
 
@@ -29,14 +29,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activite` (
-  `codeActivte` int(5) NOT NULL,
+  `codeActivite` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
   `codeCategorie` int(5) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `nomLieux` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `coordonnees` point NOT NULL,
+  `commentaire` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `activite`
+--
+
+INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategorie`, `nom`, `nomLieux`, `coordonnees`, `commentaire`) VALUES
+(1, 1, 1, 100, 'Le Musée des Tissus et des Arts Décoratifs', NULL, GeomFromText('POINT(45.7518938 4.8256525)'), NULL);
 
 -- --------------------------------------------------------
 
@@ -48,6 +56,13 @@ CREATE TABLE `categorie` (
   `codeCategorie` int(5) NOT NULL,
   `libelleCategorie` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`codeCategorie`, `libelleCategorie`) VALUES
+(100, 'Musée');
 
 -- --------------------------------------------------------
 
@@ -155,7 +170,8 @@ CREATE TABLE `monument` (
 --
 
 INSERT INTO `monument` (`codeMonument`, `codePays`, `codeQuartier`, `libelleMonument`, `imageMonument`, `coordonnees`, `dateConstruction`, `architecte`, `commentaire`) VALUES
-(1, 1, 3, 'Hôtel de ville de Lyon', 'assets\\images\\terreaux\\hotel-de-ville-lyon-1.jpg', '\0\0\0\0\0\0\0��9D�F@6��W@', '1672-01-01', 'Simon Maupin', NULL);
+(1, 1, 3, 'Hôtel de ville de Lyon', 'assets\\images\\terreaux\\hotel-de-ville-lyon-1.jpg', '\0\0\0\0\0\0\0��9D�F@6��W@', '1672-01-01', 'Simon Maupin', NULL),
+(2, 1, 1, 'Statue de la République', 'assets\\images\\perrache\\statut-de-la-republique.jpg', '\0\0\0\0\0\0\0��q�F@���yNO@', '1880-01-01', 'Victor-Auguste Blavette', NULL);
 
 -- --------------------------------------------------------
 
@@ -210,8 +226,16 @@ CREATE TABLE `restaurant` (
   `nom` varchar(50) DEFAULT NULL,
   `adresse` varchar(50) DEFAULT NULL,
   `numeroTelephone` varchar(20) DEFAULT NULL,
+  `coordonnees` point NOT NULL,
   `commentaire` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `restaurant`
+--
+
+INSERT INTO `restaurant` (`codeRestaurant`, `codePays`, `codeQuartier`, `nom`, `adresse`, `numeroTelephone`, `coordonnees`, `commentaire`) VALUES
+(1, 1, 1, 'Brasserie Georges', '30 Cours de Verdun Perrache, 69002 Lyon', '04 72 56 54 54', GeomFromText('POINT(45.7482404 4.8273476)'), NULL);
 
 -- --------------------------------------------------------
 
@@ -246,7 +270,8 @@ INSERT INTO `topic` (`codeTopic`, `codePays`, `libelleTopic`, `description`, `co
 ALTER TABLE `activite`
   ADD KEY `codePays` (`codePays`),
   ADD KEY `codeQuartier` (`codeQuartier`),
-  ADD KEY `codeCategorie` (`codeCategorie`);
+  ADD KEY `codeCategorie` (`codeCategorie`),
+  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
 
 --
 -- Index pour la table `categorie`
@@ -317,7 +342,8 @@ ALTER TABLE `quartier`
 --
 ALTER TABLE `restaurant`
   ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
+  ADD KEY `codeQuartier` (`codeQuartier`),
+  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
 
 --
 -- Index pour la table `topic`
