@@ -3,6 +3,7 @@
 require_once PATH_MODELS."manager.php";
 
 $manager = new manager();
+$valFormTest = false;
 
 if(isset($_POST["valFormTopic"])){
 
@@ -18,9 +19,12 @@ if(isset($_POST["valFormTopic"])){
         $alert['messageAlert'] = $erreur;
     else{
         $manager->createTopic($_POST["titreTopic"], $_POST["descriptionTopic"]);
+        $alert['messageAlert'] = SUCCESS_CREATE_TOPIC;
+        $alert['classAlert'] = 'success';
+        $valFormTest = true;
     }
 }
 
-$listTopic = $manager->getTopic();
+$listTopic = $manager->getTopicValid();
 
 require_once PATH_VIEWS.'forum.php';
