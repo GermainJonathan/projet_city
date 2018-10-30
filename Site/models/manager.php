@@ -14,9 +14,14 @@ class manager
         return $paysDAO->getPays();
     }
 
-    public function getTopic(){
+    public function getTopicValid(){
         $forumDAO = new forumDAO(DEBUG);
-        return $forumDAO->getTopic();
+        return $forumDAO->getTopicValid();
+    }
+
+    public function getTopicAll(){
+        $forumDAO = new forumDAO(DEBUG);
+        return $forumDAO->getTopicAll();
     }
 
     public function getTopicById($idTopic){
