@@ -10,6 +10,10 @@ L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
 }).addTo(mymap);
 
+var restaurantIcon = new LeafIcon({iconUrl: '../images/core/restaurant.svg'}),
+    activiteIcon = new LeafIcon({iconUrl: '../images/core/activity.svg'}),
+    monumentIcon = new LeafIcon({iconUrl: '../images/core/monument.svg'});
+
 legend = L.control({position: 'topleft'});
 
 // On desactive le zoom molette, double click et bouger la carte
@@ -112,7 +116,9 @@ function zoomToFeature(e) {
       method: "GET",
       url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
     }).done(function(data) {
-      console.log(data);
+      addMarkerMonument(data.monuments);
+      addMarkerActivites(data.activites);
+      addMarkerRestaurants(data.restaurants);
     });
 }
 
@@ -172,4 +178,10 @@ function setupQuarterCard(quarterName) {
       break;
   }
   legend.addTo(mymap);
+}
+
+function addMarkerMonument(monuments) {
+  for(let monument of monuments) {
+    L.marker([monument.coordonnes.x, monument.coordonnes.y], {icon: monumentIcon}).addTo(mymap);
+  }
 }

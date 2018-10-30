@@ -8,6 +8,23 @@ require_once 'DAO.php';
 class Api extends DAO
 {
     /**
+     * @var array $arrayToConvert
+     * @return array $result
+     */
+    private function convertCoordonees($arrayToConvert) {
+        $result = array();
+        foreach($arrayToConvert as $key => $elem) {
+            preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
+            $chaine[0] = explode(' ', $chaine[0]);
+            $elem['coordonnees'] = ['x' => intval($chaine[0][0]), 'y' => intval($chaine[0][1])];
+            $arrayToConvert[$key] = $elem;
+            error_log('$elem : '.print_r($elem, true));
+        }
+        error_log('$arrayToConvert : '.print_r($arrayToConvert, true));
+        return $arrayToConvert;
+    }
+
+    /**
      * Renvoie un tableau contenant les données des Monuments enregistrés par quartier
      * @var string quarter nom du quartier
      * @return array monument[]
@@ -22,6 +39,8 @@ class Api extends DAO
         // FIXME: Compléter le if avec isArray
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
+        } else {
+            $monumentResult = $this->convertCoordonees($monumentResult);
         }
         return $monumentResult;
     }
@@ -41,6 +60,8 @@ class Api extends DAO
         // FIXME: Compléter le if avec isArray
         if(!$restaurantResult) {
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
+        } else {
+            $this->convertCoordonees($restaurantResult);
         }
         return $restaurantResult;
     }
@@ -61,6 +82,8 @@ class Api extends DAO
         // FIXME: Compléter le if avec isArray
         if(!$activiteResult) {
             error_log('Activité - Erreur lors de l\'execution de la requête');
+        } else {
+            $this->convertCoordonees($activiteResult);
         }
         return $activiteResult;
     }
