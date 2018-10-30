@@ -10,7 +10,8 @@ require_once(PATH_VIEWS.'alert.php');?>
 <div class="parallax" style="background-size: auto;" data-height="30" data-image-src="<?= PATH_CONTACT.'lyon2.jpg' ?>"></div>
 
 <!-- Partie a propos -->
-<div class="row" id="contact-block-aPropos">
+
+<div class="row container-fluid" id="contact-block-aPropos">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
         <h1 class="contact-title"> A propos </h1>
@@ -25,9 +26,11 @@ require_once(PATH_VIEWS.'alert.php');?>
     <div class="col-lg-4"></div>
 </div>
 <!-- Fin Partie a propos -->
-<div class="row" id="contact-block-formulaire">
+
+<!--  Partie formulaire -->
+<div class="row container-fluid" id="contact-block-formulaire">
     <div class="col-lg-1"></div>
-    <div class="col-lg-4 sm-12">
+    <div class="col-lg-4 col-md-6 col-sm-12">
         <h1>Contact</h1>
         <form>
             <label for="validationServer01">Nom</label>
@@ -46,7 +49,7 @@ require_once(PATH_VIEWS.'alert.php');?>
             </div>
         </form>
     </div>
-    <div class="col-lg-6 sm-12">
+    <div class="col-lg-6 col-md-6 col-sm-12">
         <form>
             <div class="form-group">
                 <label for="formGroupExampleInput">Objet</label>
@@ -55,7 +58,6 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control contact-text-area" id="exampleFormControlTextarea1" rows="3"></textarea>
-                
             </div>
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -64,6 +66,7 @@ require_once(PATH_VIEWS.'alert.php');?>
     </div>
     <div class="col-lg-1"></div>
 </div>
+<!--  Fin Partie formulaire -->
 
 
 <!--  Pied de page -->

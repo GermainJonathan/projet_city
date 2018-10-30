@@ -1,9 +1,13 @@
-jQuery(document).ready(function () {
+$(function () {
     $(".spinner").fadeOut(function() {
-        $( "#parallax-1:hidden:first" ).fadeIn( "slow" );
-        $( "#textAccueil:hidden:first" ).fadeIn( "slow" );
+        $("#basePage:hidden:first" ).fadeIn("slow", function() {
+            if(typeof mymap !== 'undefined')
+                mymap.invalidateSize();
+            if(window.scrollY == 0) {
+                $("ul.nav.navbar-nav").children(":first").children(":first").addClass("active");
+            }
+        });
     });
-    $( "#basePage:hidden:first" ).fadeIn("slow");
 
     //INIT
     setResize($('#mapid'));

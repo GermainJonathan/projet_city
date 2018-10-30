@@ -1,6 +1,6 @@
 <!-- Menu du site -->
 
-<div class="main-header">
+<div class="sticky-top">
     <div class="nav-icon"></div>
 
     <nav class="navbar navbar-expand-lg navbar-light">

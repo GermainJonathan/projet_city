@@ -1,3 +1,8 @@
+html,body {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
 .no-margin{
     margin-left: 0;
     margin-right: 0;
@@ -9,24 +14,16 @@
 }
 
 .btn-primary {
-    background-color: #B3B3B3;
-    border-color: #444;
-    text-decoration-color: black;
-}
-
-.leaflet-container a {
-    color: black !important;
+    background-color:white;
+    border-color: #E98B39 !important;
+    color: #E98B39 !important; 
 }
 
 .btn-primary:hover,
 .btn-primary:active {
     background-color: #E98B39 !important;
     color: white !important;
-    border-color: black !important;
-}
-
-.card-title {
-    color: black;
+    border-color: #E98B39 !important;
 }
 
 .pulse {
@@ -69,5 +66,38 @@
 }
 
 #basePage {
-    /* display: none; */
+    min-height:100%;
+    overflow: auto;
+    display: none;
+}
+
+
+.anchor {
+    display: block;
+    padding-top: 70px;
+}
+
+/* Scroll Bar */
+body::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar {
+	width: 8px;
+	background-color: #FFFFFF;
+}
+
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #E98B39;
+}
+/* Fin Scroll Bar */
+
+/* PROVISOIRE */
+/*TODO: Ajouter des Toast */
+.alert {
+    z-index: 1020;
 }
