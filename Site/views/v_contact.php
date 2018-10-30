@@ -6,6 +6,9 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
+<!-- parallax -->
+<div class="parallax" style="background-size: auto;" data-height="30" data-image-src="<?= PATH_CONTACT.'lyon2.jpg' ?>"></div>
+
 <!-- Partie a propos -->
 
 <div class="row container-fluid" id="contact-block-aPropos">

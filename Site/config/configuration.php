@@ -33,6 +33,7 @@ define('PATH_ACCUEIL', PATH_IMAGES.'accueil/');
 define('PATH_BELLECOUR', PATH_IMAGES.'bellecour/');
 define('PATH_PERRACHE', PATH_IMAGES.'perrache/');
 define('PATH_TERREAUX', PATH_IMAGES.'terreaux/');
+define('PATH_CONTACT', PATH_IMAGES.'contact/');
 define('PATH_CORE', PATH_IMAGES.'core/');
 
 
