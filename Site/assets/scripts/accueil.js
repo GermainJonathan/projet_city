@@ -1,4 +1,13 @@
-jQuery(document).ready(function () {
+$(function () {
+    $(".spinner").fadeOut(function() {
+        $("#basePage:hidden:first" ).fadeIn("slow", function() {
+            if(typeof mymap !== 'undefined')
+                mymap.invalidateSize();
+            if(window.scrollY == 0) {
+                $("ul.nav.navbar-nav").children(":first").children(":first").addClass("active");
+            }
+        });
+    });
 
     //INIT
     setResize($('#mapid'));
@@ -10,7 +19,7 @@ jQuery(document).ready(function () {
     });
 
     $(window).resize(function () {
-        setResize($('#mapid'));
+        updateElementSize($('#mapid'));
     })
 
     function setResize(element) {

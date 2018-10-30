@@ -6,6 +6,9 @@
     margin: 10px 0px 0px 0px;
 }
 
+.card-title {
+    color: black;
+}
 
 @media screen and (max-width: 576px) {
     .legend {
@@ -27,8 +30,9 @@
         border: 1px solid black;
     }
     
+    .carousel img,
     .card-img-top {
-        height: 11em;
+        height: 13em;
     }
 
     .card-text {
@@ -47,16 +51,17 @@
         width: 20em;
         border: 1px solid black;
     }
-    
-    .card-img-top {
-        height: 11em;
-    }
 
     .card-text {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: auto;        
         overflow-x: hidden;    
+    }
+
+    .carousel img,
+    .card-img-top {
+        height: 13em;
     }
 }
 
@@ -68,8 +73,21 @@
         width: 25em;
         border: 1px solid black;
     }
+
+    .carousel img,
+    .card-img-top {
+        height: 15em;
+    }
+
 }
 
+.view {
+    background-image: url(../images/core/expand-solid.svg);
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    background-position: center center;
+}
 
 .leaflet-left {
     left: 15% !important;
@@ -80,6 +98,23 @@
     top: 15% !important;
     transform: translate(-15%, 0%);
 }
+
+/* Animation des Cartes */
+
+.card.legend.leaflet-control {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+}
+
+.card.legend.leaflet-control:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+}
+/* Fin Animation des cartes */
 
 .AccueilIcon{
     width:80px;

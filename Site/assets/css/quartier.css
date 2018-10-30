@@ -1,0 +1,87 @@
+/** La side bar **/
+#sideBar{
+  top: 200px;
+  width: 200px;
+  border:1px solid #444;
+  position: fixed;
+  height: 350px;
+  z-index:8;
+  bottom:10px;
+}
+
+/* La barre de navigation */
+.nav {
+    position: absolute;
+    top: 0;
+    width: 150px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-top:10px;
+  }
+  
+  .nav li {
+    line-height: 40px;
+    padding-top:5px;
+    padding-bottom:5px;
+    font-size:17px;
+  }
+
+  /* Évènement sur un onglet*/
+    .nav li a:hover,
+    .nav li a.active {
+        font-size:20px;
+        text-decoration: none;
+        border-left:4px solid #444;
+        font-weight: bold;
+        color: #E98B39;
+    }
+
+/* texte du lien de navigation */
+.navLien{
+    margin:0;
+    padding:0;
+    padding-left:30px;
+}
+
+/* Un lien de navigaiton */  
+.nav-link{
+    color: #B3B3B3;
+    display: block;
+    text-decoration: none;
+    padding-left: 30px;
+}
+    .nav-link:hover{
+        color:#B3B3B3;
+    }    
+/*------------------------------------------------------------------------------------*/
+
+/***** BODY ***********/
+/** les différentes ancres */
+
+#bodyHistoire{
+    height:600px;
+}
+#bodyMonuments{
+  height:600px;
+  }
+  #bodyActivites{
+      height:600px;
+  }
+  #bodyRestaurants{
+      height:600px;
+  }
+  #bodyCommentaires{
+      height:600px;
+  }
+
+  /* le texte de la page */
+.bodyQuartier{
+    margin-left:270px;
+}
+
+.bodyQuartier h1{
+    color:#444;
+    padding-top:20px;
+    padding-bottom:20px;
+}

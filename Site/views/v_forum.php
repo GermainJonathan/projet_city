@@ -5,66 +5,41 @@ require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<table>
-    <thead>
-        <tr>
-            <th><?= TITRE_DATE ?></th>
-            <th><?= TITRE_TOPIC ?></th>
-            <?php
-            if($_SESSION['user'] != "Administrateur"){
-                ?>
-                <th><?= TITRE_ETATA_TOPIC ?></th>
-                <th><?= TITRE_ACTION_TOPIC ?></th>
-                <?php
-            }
-            ?>
-        </tr>
-    </thead>
-    <?php
-
-    foreach ($listTopic as $topic){
-        ?>
-        <tbody>
+<div class="bodyForum">
+    <table  class="table">
+        <thead>
             <tr>
-                <td><?= dateBaseToSite($topic->getDate()) ?></td>
-                <td><a href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
-                <?php
-                if($_SESSION['user'] != "Administrateur"){
-                    ?>
-                    <td><?= $topic->getEtat() ?></td>
-                    <td><button class="btn btn-primary">Ca passe</button><button class="btn btn-danger">Ca passe pas</button></td>
-                    <?php
-                }
-                ?>
+                <th><?= TITRE_DATE ?></th>
+                <th><?= TITRE_TOPIC ?></th>
             </tr>
-        </tbody>
+        </thead>
         <?php
-    }
 
-    ?>
-</table>
-<?php
-if($_SESSION['user'] != "Administrateur") {
-    ?>
+        foreach ($listTopic as $topic) {
+            ?>
+            <tbody>
+                <tr>
+                    <td><?= dateBaseToSite($topic->getDate()) ?></td>
+                    <td><a href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
+                </tr>
+            </tbody>
+            <?php
+        }
+
+        ?>
+    </table>
     <div>
         <form action="" name="formTopic" id="formTopic" method="post">
-            <label for="titreTopic"><?= TXT_TITRE_TOPIC ?></label>
-            <input type="text" name="titreTopic" id="titreTopic"
-                   value="<?= (isset($_POST['titreTopic']) && $valFormTest == false) ? $_POST['titreTopic'] : "" ?>"/><br>
-            <textarea name="descriptionTopic" id="descriptionTopic"
-                      placeholder="<?= TXT_TITRE_DESCRIPTION ?>"></textarea>
+            <div class="form-group">
+                <label for="titreTopic"><?= TXT_TITRE_TOPIC ?></label>
+                <input class="form-control" type="text" name="titreTopic" id="titreTopic" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>"/>
+            </div>
+            <div class="form-group">
+                <textarea name="descriptionTopic" id="descriptionTopic" class="form-control" placeholder="<?= TXT_TITRE_DESCRIPTION ?>"></textarea>
+            </div>
+            <button type="submit" form="formTopic" name="valFormTopic" class="btn btn-primary">Envoyer</button>
         </form>
-        <button type="submit" form="formTopic" name="valFormTopic">Envoyer</button>
     </div>
-    <?php
-}
-?>
-
+</div>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');

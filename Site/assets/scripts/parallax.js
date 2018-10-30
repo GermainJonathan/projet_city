@@ -3,7 +3,7 @@
  * To use the parallax effect, set the class of the div to parallax, the data-height attribute to the height of the parallax in percent
  * and the data-image-src attribute to the picture to use.
  */
-jQuery(document).ready(function () {
+$(function () {
 
     setParallax();
 
