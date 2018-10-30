@@ -16,11 +16,8 @@ class Api extends DAO
         foreach($arrayToConvert as $key => $elem) {
             preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
             $chaine[0] = explode(' ', $chaine[0]);
-            $elem['coordonnees'] = ['x' => intval($chaine[0][0]), 'y' => intval($chaine[0][1])];
-            $arrayToConvert[$key] = $elem;
-            error_log('$elem : '.print_r($elem, true));
+            $arrayToConvert[$key]['coordonees'] = ['x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1])];
         }
-        error_log('$arrayToConvert : '.print_r($arrayToConvert, true));
         return $arrayToConvert;
     }
 
@@ -61,7 +58,7 @@ class Api extends DAO
         if(!$restaurantResult) {
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
         } else {
-            $this->convertCoordonees($restaurantResult);
+            $restaurantResult = $this->convertCoordonees($restaurantResult);
         }
         return $restaurantResult;
     }
@@ -83,7 +80,7 @@ class Api extends DAO
         if(!$activiteResult) {
             error_log('Activité - Erreur lors de l\'execution de la requête');
         } else {
-            $this->convertCoordonees($activiteResult);
+            $activiteResult = $this->convertCoordonees($activiteResult);
         }
         return $activiteResult;
     }

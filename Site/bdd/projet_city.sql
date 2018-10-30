@@ -170,7 +170,7 @@ CREATE TABLE `monument` (
 --
 
 INSERT INTO `monument` (`codeMonument`, `codePays`, `codeQuartier`, `libelleMonument`, `imageMonument`, `coordonnees`, `dateConstruction`, `architecte`, `commentaire`) VALUES
-(1, 1, 3, 'Hôtel de ville de Lyon', 'assets\\images\\terreaux\\hotel-de-ville-lyon-1.jpg', GeomFromText('POINT(45.7677074 4.8335151)'), '1672-01-01', 'Simon Maupin', NULL),
+(1, 1, 3, 'Hôtel de ville de Lyon', 'assets\\images\\terreaux\\hotel-de-ville-lyon-1.jpg', GeomFromText('POINT(45.7677074 4.828135800000041)'), '1672-01-01', 'Simon Maupin', NULL),
 (2, 1, 1, 'Statue de la République', 'assets\\images\\perrache\\statut-de-la-republique.jpg', GeomFromText('POINT(45.7508908 4.8259418)'), '1880-01-01', 'Victor-Auguste Blavette', NULL);
 
 -- --------------------------------------------------------

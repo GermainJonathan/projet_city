@@ -10,9 +10,16 @@ L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
 }).addTo(mymap);
 
-var restaurantIcon = new LeafIcon({iconUrl: '../images/core/restaurant.svg'}),
-    activiteIcon = new LeafIcon({iconUrl: '../images/core/activity.svg'}),
-    monumentIcon = new LeafIcon({iconUrl: '../images/core/monument.svg'});
+var LeafIcon = L.Icon.extend({
+  options: {
+      iconSize:     [16, 20],
+      iconAnchor:   [8, 10]
+  }
+});
+
+var restaurantIcon = new LeafIcon({iconUrl: './assets/images/core/restaurant.svg'}),
+    activiteIcon = new LeafIcon({iconUrl: './assets/images/core/activity.svg'}),
+    monumentIcon = new LeafIcon({iconUrl: './assets/images/core/monument.svg'});
 
 legend = L.control({position: 'topleft'});
 
@@ -111,12 +118,13 @@ function resetHighlight(e) {
  * @param {event} e 
  */
 function zoomToFeature(e) {
+  // TODO: Correction sur le zoom / Alternative au fitBounds
     mymap.fitBounds(e.target.getBounds());
     $.ajax({
       method: "GET",
       url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
     }).done(function(data) {
-      addMarkerMonument(data.monuments);
+      addMarkerMonuments(data.monuments);
       addMarkerActivites(data.activites);
       addMarkerRestaurants(data.restaurants);
     });
@@ -180,8 +188,20 @@ function setupQuarterCard(quarterName) {
   legend.addTo(mymap);
 }
 
-function addMarkerMonument(monuments) {
+function addMarkerMonuments(monuments) {
   for(let monument of monuments) {
-    L.marker([monument.coordonnes.x, monument.coordonnes.y], {icon: monumentIcon}).addTo(mymap);
+    L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon}).addTo(mymap);
+  }
+}
+
+function addMarkerRestaurants(restaurants) {
+  for(let restaurant of restaurants) {
+    L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon}).addTo(mymap);
+  }
+}
+
+function addMarkerActivites(activites) {
+  for(let activite of activites) {
+    L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon}).addTo(mymap);
   }
 }
