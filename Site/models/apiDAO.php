@@ -75,6 +75,6 @@ class Api extends DAO
         $activites = $this->getDataActiviteByQuarter($quarter);
         $restaurants = $this->getDataRestaurantByQuarter($quarter);
         $monuments = $this->getDataMonumentByQuarter($quarter);
-        return array($activites, $restaurants, $monuments);
+        return array('activites' => $activites, 'restaurants' => $restaurants, 'monuments' => $monuments);
     }
 }
