@@ -90,12 +90,8 @@
 }
 
 .leaflet-left {
-    left: 15% !important;
-    transform: translate(-15%, 0%);
-}
-
-.leaflet-top {
     top: 15% !important;
+    left: 15% !important;
     transform: translate(-15%, 0%);
 }
 
