@@ -85,3 +85,20 @@
     padding-top:20px;
     padding-bottom:20px;
 }
+
+/*--------------------- RESPONSIVE ------------------------------*/
+@media screen and (max-width: 650px) {
+
+    .anchor{
+        padding-top:30px;
+    }
+
+    .bodyQuartier{
+        margin-left:40px;
+    }
+    
+    #sideBar{
+        display:none;
+    }
+
+}
