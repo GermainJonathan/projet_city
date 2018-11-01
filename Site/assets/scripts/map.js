@@ -127,6 +127,7 @@ function resetView() {
   } else {
     mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
   }
+  mymap.dragging.disable();
 }
 
 /**
@@ -245,6 +246,18 @@ function setupQuarterCard(quarterName) {
     legend.addTo(mymap);
 }
 
+/**
+ * Mise à jour de la carte descriptif pour un patrimoine
+ * @param {data} patrimoine 
+ */
+function setupMarkerCard(patrimoine) {
+    legend.remove();
+    legend = L.control({position: 'topleft'});
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.images);
+    legend.onAdd = patrimoineCard.createCard();
+    legend.addTo(mymap);
+}
+
 function addMarkerMonuments(monuments) {
     for(let monument of monuments) {
         let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
@@ -254,16 +267,17 @@ function addMarkerMonuments(monuments) {
         .on('mouseover', function() {
             var scaleUp = markerMonument.options.icon;
             scaleUp.options.iconSize = [20, 20];
+            scaleUp.options.iconAnchor = [10, 10];
             markerMonument.setIcon(scaleUp);
         })
         .on('mouseout', function() {
             var normalScale = markerMonument.options.icon;
             normalScale.options.iconSize = [16, 20];
+            normalScale.options.iconAnchor = [8, 10];
             markerMonument.setIcon(normalScale);
         });
         monumentLayer.addLayer(markerMonument);
     }
-    monumentLayer.addTo(mymap);
 }
 
 function addMarkerRestaurants(restaurants) {
@@ -275,16 +289,17 @@ function addMarkerRestaurants(restaurants) {
         .on('mouseover', function() {
             var scaleUp = markerRestaurant.options.icon;
             scaleUp.options.iconSize = [20, 20];
+            scaleUp.options.iconAnchor = [10, 10];
             markerRestaurant.setIcon(scaleUp);
         })
         .on('mouseout', function() {
             var normalScale = markerRestaurant.options.icon;
             normalScale.options.iconSize = [16, 20];
+            normalScale.options.iconAnchor = [8, 10];
             markerRestaurant.setIcon(normalScale);
         });
         restaurantLayer.addLayer(markerRestaurant);
     }
-    restaurantLayer.addTo(mymap);
 }
 
 function addMarkerActivites(activites) {
@@ -296,22 +311,15 @@ function addMarkerActivites(activites) {
         .on('mouseover', function() {
             var scaleUp = markerActivite.options.icon;
             scaleUp.options.iconSize = [20, 20];
+            scaleUp.options.iconAnchor = [10, 10];
             markerActivite.setIcon(scaleUp);
         })
         .on('mouseout', function() {
             var normalScale = markerActivite.options.icon;
             normalScale.options.iconSize = [16, 20];
+            normalScale.options.iconAnchor = [8, 10];
             markerActivite.setIcon(normalScale);
         });
         activiteLayer.addLayer(markerActivite);
     }
-    activiteLayer.addTo(mymap);
-}
-
-function setupMarkerCard(patrimoine) {
-    legend.remove();
-    legend = L.control({position: 'topleft'});
-    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.images);
-    legend.onAdd = patrimoineCard.createCard();
-    legend.addTo(mymap);
 }
