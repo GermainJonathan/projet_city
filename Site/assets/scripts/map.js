@@ -52,7 +52,7 @@ var restaurantIcon = new LeafIcon({iconUrl: './assets/images/core/restaurant.svg
 
 // Card control
 var legend = L.control();
-
+var styleForced = false;
 /**
  * Evenement general
  */
@@ -128,6 +128,9 @@ function resetView() {
     mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
   }
   mymap.dragging.disable();
+  styleForced = false;
+  quarterDelimitation.resetStyle(currentFeature);
+  currentFeature = {};
 }
 
 /**
@@ -151,7 +154,7 @@ function highlightFeature(e) {
  * @param {event} e 
  */
 function resetHighlight(e) {
-    if(mymap.getZoom() <= 14) {
+    if(mymap.getZoom() <= 14 && !styleForced) {
         quarterDelimitation.resetStyle(e.target);
     }
 }
@@ -162,31 +165,32 @@ function resetHighlight(e) {
  */
 function zoomToFeature(e) {
     // Gestion du style de la feature
-    if(currentFeature != {})
-        quarterDelimitation.resetStyle(currentFeature);
-    currentFeature = e.target;
-    currentFeature.setStyle({
-        weight: 5,
-        color: '#E98B39',
-        fillOpacity: 0
-    });
     setupQuarterCard(e.target.feature.properties.name);
-    currentFeature.bringToFront();
-    
-    mymap.setView(e.target.getCenter(), 16);
-    monumentLayer.clearLayers();
-    restaurantLayer.clearLayers();
-    activiteLayer.clearLayers();
-    mymap.dragging.enable();
-    // récupération des données markers
-    $.ajax({
-      method: "GET",
-      url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
-    }).done(function(data) {
-      addMarkerMonuments(data.monuments);
-      addMarkerActivites(data.activites);
-      addMarkerRestaurants(data.restaurants);
-    });
+    if(e.target != currentFeature) {
+        quarterDelimitation.resetStyle(currentFeature);
+        currentFeature = e.target;
+        currentFeature.setStyle({
+            weight: 5,
+            color: '#E98B39',
+            fillOpacity: 0
+        });
+        styleForced = true;
+        currentFeature.bringToFront();
+        mymap.setView(e.target.getCenter(), 16);
+        monumentLayer.clearLayers();
+        restaurantLayer.clearLayers();
+        activiteLayer.clearLayers();
+        mymap.dragging.enable();
+        // récupération des données markers
+        $.ajax({
+          method: "GET",
+          url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
+        }).done(function(data) {
+          addMarkerMonuments(data.monuments);
+          addMarkerActivites(data.activites);
+          addMarkerRestaurants(data.restaurants);
+        });
+    }
 }
 
 /**
