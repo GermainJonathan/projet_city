@@ -48,7 +48,7 @@ class Api extends DAO
      * @return array restaurant[]
      */
     public function getDataRestaurantByQuarter($quarter) {
-        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.nom as name, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
+        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.imageRestaurant as images, res.nom as name, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
                 FROM restaurant res
                 INNER JOIN quartier qua ON res.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
@@ -70,7 +70,7 @@ class Api extends DAO
      */
     public function getDataActiviteByQuarter($quarter) {
         // TODO: Terminer la requête
-        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.commentaire
+        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.imageActivite as images, act.commentaire
                 FROM activite act
                 INNER JOIN quartier qua ON act.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";

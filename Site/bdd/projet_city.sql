@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.6
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le :  ven. 26 oct. 2018 à 12:01
--- Version du serveur :  10.2.18-MariaDB
--- Version de PHP :  7.2.10
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 01 nov. 2018 à 16:09
+-- Version du serveur :  5.7.21
+-- Version de PHP :  7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,7 +28,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `activite`
 --
 
-CREATE TABLE `activite` (
+DROP TABLE IF EXISTS `activite`;
+CREATE TABLE IF NOT EXISTS `activite` (
   `codeActivite` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
@@ -36,15 +37,20 @@ CREATE TABLE `activite` (
   `nom` varchar(50) DEFAULT NULL,
   `nomLieux` varchar(50) DEFAULT NULL,
   `coordonnees` point NOT NULL,
-  `commentaire` text DEFAULT NULL
+  `imageActivite` varchar(200) NOT NULL,
+  `commentaire` text,
+  KEY `codePays` (`codePays`),
+  KEY `codeQuartier` (`codeQuartier`),
+  KEY `codeCategorie` (`codeCategorie`),
+  SPATIAL KEY `coordonnees` (`coordonnees`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `activite`
 --
 
-INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategorie`, `nom`, `nomLieux`, `coordonnees`, `commentaire`) VALUES
-(1, 1, 1, 100, 'Le Musée des Tissus et des Arts Décoratifs', NULL, GeomFromText('POINT(45.7518938 4.8256525)'), NULL);
+INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategorie`, `nom`, `nomLieux`, `coordonnees`, `imageActivite`, `commentaire`) VALUES
+(1, 1, 1, 100, 'Le Musée des Tissus et des Arts Décoratifs', NULL, GeomFromText('POINT(45.7518938 4.8256525)'), '', NULL);
 
 -- --------------------------------------------------------
 
@@ -52,9 +58,12 @@ INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategor
 -- Structure de la table `categorie`
 --
 
-CREATE TABLE `categorie` (
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
   `codeCategorie` int(5) NOT NULL,
-  `libelleCategorie` varchar(50) DEFAULT NULL
+  `libelleCategorie` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codeCategorie`),
+  KEY `codeCategorie` (`codeCategorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -70,12 +79,17 @@ INSERT INTO `categorie` (`codeCategorie`, `libelleCategorie`) VALUES
 -- Structure de la table `commentaire`
 --
 
-CREATE TABLE `commentaire` (
+DROP TABLE IF EXISTS `commentaire`;
+CREATE TABLE IF NOT EXISTS `commentaire` (
   `codeCommentaire` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
   `commentaire` text,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`codeCommentaire`),
+  KEY `codeCommentaire` (`codeCommentaire`),
+  KEY `codePays` (`codePays`),
+  KEY `codeQuartier` (`codeQuartier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -84,9 +98,12 @@ CREATE TABLE `commentaire` (
 -- Structure de la table `etatTopic`
 --
 
-CREATE TABLE `etatTopic` (
+DROP TABLE IF EXISTS `etatTopic`;
+CREATE TABLE IF NOT EXISTS `etatTopic` (
   `codeEtat` int(5) NOT NULL,
-  `libelleEtat` varchar(50) DEFAULT NULL
+  `libelleEtat` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codeEtat`),
+  KEY `codeEtat` (`codeEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -104,11 +121,16 @@ INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
 -- Structure de la table `histoire`
 --
 
-CREATE TABLE `histoire` (
+DROP TABLE IF EXISTS `histoire`;
+CREATE TABLE IF NOT EXISTS `histoire` (
   `codeHistoire` int(5) NOT NULL,
   `codePays` int(5) NOT NULL,
   `codeQuartier` int(5) NOT NULL,
-  `commentaire` text NOT NULL
+  `commentaire` text NOT NULL,
+  PRIMARY KEY (`codeHistoire`),
+  KEY `codeHistoire` (`codeHistoire`),
+  KEY `codePays` (`codePays`),
+  KEY `codeQuartier` (`codeQuartier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -117,11 +139,15 @@ CREATE TABLE `histoire` (
 -- Structure de la table `message`
 --
 
-CREATE TABLE `message` (
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
   `codeMessage` int(5) NOT NULL,
   `codeTopic` int(5) DEFAULT NULL,
   `message` text,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`codeMessage`),
+  KEY `codeMessage` (`codeMessage`),
+  KEY `codeTopic` (`codeTopic`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -134,10 +160,11 @@ INSERT INTO `message` (`codeMessage`, `codeTopic`, `message`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `messageContact`
+-- Structure de la table `messagecontact`
 --
 
-CREATE TABLE `messageContact` (
+DROP TABLE IF EXISTS `messagecontact`;
+CREATE TABLE IF NOT EXISTS `messagecontact` (
   `codeMessage` int(5) NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
@@ -153,16 +180,22 @@ CREATE TABLE `messageContact` (
 -- Structure de la table `monument`
 --
 
-CREATE TABLE `monument` (
+DROP TABLE IF EXISTS `monument`;
+CREATE TABLE IF NOT EXISTS `monument` (
   `codeMonument` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
   `libelleMonument` varchar(50) DEFAULT NULL,
-  `imageMonument` varchar(50) DEFAULT NULL,
+  `imageMonument` varchar(200) DEFAULT NULL,
   `coordonnees` point NOT NULL,
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `commentaire` text,
+  PRIMARY KEY (`codeMonument`),
+  KEY `codeMonument` (`codeMonument`),
+  KEY `codePays` (`codePays`),
+  KEY `codeQuartier` (`codeQuartier`),
+  SPATIAL KEY `coordonnees` (`coordonnees`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -179,11 +212,14 @@ INSERT INTO `monument` (`codeMonument`, `codePays`, `codeQuartier`, `libelleMonu
 -- Structure de la table `pays`
 --
 
-CREATE TABLE `pays` (
+DROP TABLE IF EXISTS `pays`;
+CREATE TABLE IF NOT EXISTS `pays` (
   `codePays` int(5) NOT NULL,
   `libellePays` varchar(50) DEFAULT NULL,
   `libellePaysCourt` varchar(3) DEFAULT NULL,
-  `fichier` varchar(50) DEFAULT NULL
+  `fichier` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codePays`),
+  KEY `codePays` (`codePays`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -199,9 +235,12 @@ INSERT INTO `pays` (`codePays`, `libellePays`, `libellePaysCourt`, `fichier`) VA
 -- Structure de la table `quartier`
 --
 
-CREATE TABLE `quartier` (
+DROP TABLE IF EXISTS `quartier`;
+CREATE TABLE IF NOT EXISTS `quartier` (
   `codeQuartier` int(5) NOT NULL,
-  `libelleQuartier` varchar(50) DEFAULT NULL
+  `libelleQuartier` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codeQuartier`),
+  KEY `codeQuartier` (`codeQuartier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -219,7 +258,8 @@ INSERT INTO `quartier` (`codeQuartier`, `libelleQuartier`) VALUES
 -- Structure de la table `restaurant`
 --
 
-CREATE TABLE `restaurant` (
+DROP TABLE IF EXISTS `restaurant`;
+CREATE TABLE IF NOT EXISTS `restaurant` (
   `codeRestaurant` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
@@ -227,15 +267,19 @@ CREATE TABLE `restaurant` (
   `adresse` varchar(50) DEFAULT NULL,
   `numeroTelephone` varchar(20) DEFAULT NULL,
   `coordonnees` point NOT NULL,
-  `commentaire` text
+  `imageRestaurant` varchar(200) NOT NULL,
+  `commentaire` text,
+  KEY `codePays` (`codePays`),
+  KEY `codeQuartier` (`codeQuartier`),
+  SPATIAL KEY `coordonnees` (`coordonnees`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `restaurant`
 --
 
-INSERT INTO `restaurant` (`codeRestaurant`, `codePays`, `codeQuartier`, `nom`, `adresse`, `numeroTelephone`, `coordonnees`, `commentaire`) VALUES
-(1, 1, 1, 'Brasserie Georges', '30 Cours de Verdun Perrache, 69002 Lyon', '04 72 56 54 54', GeomFromText('POINT(45.7482404 4.8273476)'), NULL);
+INSERT INTO `restaurant` (`codeRestaurant`, `codePays`, `codeQuartier`, `nom`, `adresse`, `numeroTelephone`, `coordonnees`, `imageRestaurant`, `commentaire`) VALUES
+(1, 1, 1, 'Brasserie Georges', '30 Cours de Verdun Perrache, 69002 Lyon', '04 72 56 54 54', '\0\0\0\0\0\0\0��gW��F@E��54O@', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -243,13 +287,18 @@ INSERT INTO `restaurant` (`codeRestaurant`, `codePays`, `codeQuartier`, `nom`, `
 -- Structure de la table `topic`
 --
 
-CREATE TABLE `topic` (
+DROP TABLE IF EXISTS `topic`;
+CREATE TABLE IF NOT EXISTS `topic` (
   `codeTopic` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `libelleTopic` varchar(50) DEFAULT NULL,
   `description` text,
   `codeEtat` int(5) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`codeTopic`),
+  KEY `codeTopic` (`codeTopic`),
+  KEY `codePays` (`codePays`),
+  KEY `codeEtat` (`codeEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -259,100 +308,6 @@ CREATE TABLE `topic` (
 INSERT INTO `topic` (`codeTopic`, `codePays`, `libelleTopic`, `description`, `codeEtat`, `date`) VALUES
 (1, 1, 'test1', 'ceci est un test', 1, '2018-09-27'),
 (2, 1, 'testSite', 'test depuis le site', 1, '2018-09-28');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `activite`
---
-ALTER TABLE `activite`
-  ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`),
-  ADD KEY `codeCategorie` (`codeCategorie`),
-  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
-
---
--- Index pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`codeCategorie`),
-  ADD KEY `codeCategorie` (`codeCategorie`);
-
---
--- Index pour la table `commentaire`
---
-ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`codeCommentaire`),
-  ADD KEY `codeCommentaire` (`codeCommentaire`),
-  ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
-
---
--- Index pour la table `etatTopic`
---
-ALTER TABLE `etatTopic`
-  ADD PRIMARY KEY (`codeEtat`),
-  ADD KEY `codeEtat` (`codeEtat`);
-
---
--- Index pour la table `histoire`
---
-ALTER TABLE `histoire`
-  ADD PRIMARY KEY (`codeHistoire`),
-  ADD KEY `codeHistoire` (`codeHistoire`),
-  ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
-
---
--- Index pour la table `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`codeMessage`),
-  ADD KEY `codeMessage` (`codeMessage`),
-  ADD KEY `codeTopic` (`codeTopic`);
-
---
--- Index pour la table `monument`
---
-ALTER TABLE `monument`
-  ADD PRIMARY KEY (`codeMonument`),
-  ADD KEY `codeMonument` (`codeMonument`),
-  ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`),
-  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
-
---
--- Index pour la table `pays`
---
-ALTER TABLE `pays`
-  ADD PRIMARY KEY (`codePays`),
-  ADD KEY `codePays` (`codePays`);
-
---
--- Index pour la table `quartier`
---
-ALTER TABLE `quartier`
-  ADD PRIMARY KEY (`codeQuartier`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
-
---
--- Index pour la table `restaurant`
---
-ALTER TABLE `restaurant`
-  ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`),
-  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
-
---
--- Index pour la table `topic`
---
-ALTER TABLE `topic`
-  ADD PRIMARY KEY (`codeTopic`),
-  ADD KEY `codeTopic` (`codeTopic`),
-  ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeEtat` (`codeEtat`);
 
 --
 -- Contraintes pour les tables déchargées
