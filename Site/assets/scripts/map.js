@@ -33,7 +33,6 @@ var mymap = L.map('mapid', {
 });
 // Action on Zoom
 mymap.on('zoomend', function() {
-    console.log(mymap.getZoom());
     if (mymap.getZoom() <= 14){
         mymap.removeLayer(monumentLayer);
         mymap.removeLayer(restaurantLayer);
@@ -75,7 +74,10 @@ layerControl.addTo(mymap);
 $(window).resize(function () {
   resetView();
 })
-
+// On document ready resize de la vue sur la carte
+$(function() {
+    resetView();
+});
 /**
  * Geolocalisation
  */
@@ -107,10 +109,13 @@ function addRecentrerButton() {
  * Action du bouton recentrer
  */
 function resetView() {
-  if($(window).width() < 1000) {
+  if($(window).width() < 1366) {
     mymap.setView(new L.LatLng(45.754411, 4.806842), 14);
+  } 
+  if($(window).width() < 576) {
+    mymap.setView(new L.LatLng(45.757311, 4.826842), 14);
   } else {
-    mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
+      mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
   }
 }
 
@@ -119,14 +124,16 @@ function resetView() {
  * @param {event} e Zone passer en hover
  */
 function highlightFeature(e) {
+    if(mymap.getZoom() <= 14) {
+        setupQuarterCard(e.target.feature.properties.name);
+    }
     var layer = e.target;
-    layer.setStyle({
-      weight: 5,
-      color: '#E98B39',
-      fillOpacity: 0
-    });
     layer.bringToFront(); // Mets le layer en première position => un genre de z-index
-    setupQuarterCard(e.target.feature.properties.name);
+    layer.setStyle({
+        weight: 5,
+        color: '#E98B39',
+        fillOpacity: 0
+    });
 }
 
 /**
@@ -143,7 +150,10 @@ function resetHighlight(e) {
  */
 function zoomToFeature(e) {
   // TODO: Correction sur le zoom / Alternative au fitBounds
-    mymap.fitBounds(e.target.getBounds());
+    mymap.setView(e.target.getCenter(), 15);
+    monumentLayer.clearLayers();
+    restaurantLayer.clearLayers();
+    activiteLayer.clearLayers();
     $.ajax({
       method: "GET",
       url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
@@ -192,21 +202,21 @@ function setupQuarterCard(quarterName) {
 
     legend = L.control({position: 'topleft'});
     switch (quarterName) {
-    case "Perrache" :
-        var perracheCard = new Card(quarterName, textDescriptionFactice,["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"], true);
-        legend.onAdd = perracheCard.createCard();
-        break;
-    case "Bellecour" :
-        var bellecourCard = new Card(quarterName, textDescriptionFactice,"assets/images/bellecour/bellecour.jpg", false);
-        legend.onAdd = bellecourCard.createCard();
-        break;
-    case "Terreaux":
-        var terreauxCard = new Card(quarterName, textDescriptionFactice,"assets/images/terreaux/terreaux.jpg", false);
-        legend.onAdd = terreauxCard.createCard();
-        break;
-    default:
-        legend.onAdd = lastCard.onAdd;
-        break;
+        case "Perrache" :
+            var perracheCard = new Card(quarterName, textDescriptionFactice,["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"]);
+            legend.onAdd = perracheCard.createCard();
+            break;
+        case "Bellecour" :
+            var bellecourCard = new Card(quarterName, textDescriptionFactice,"assets/images/bellecour/bellecour.jpg");
+            legend.onAdd = bellecourCard.createCard();
+            break;
+        case "Terreaux":
+            var terreauxCard = new Card(quarterName, textDescriptionFactice,"assets/images/terreaux/terreaux.jpg");
+            legend.onAdd = terreauxCard.createCard();
+            break;
+        default:
+            legend.onAdd = lastCard.onAdd;
+            break;
     }
     legend.addTo(mymap);
 }
@@ -214,7 +224,6 @@ function setupQuarterCard(quarterName) {
 function addMarkerMonuments(monuments) {
     for(let monument of monuments) {
         let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
-        .bindPopup(monument.libelleMonument)
         .on('click', function() {
             setupMarkerCard(monument);
         });
@@ -226,9 +235,8 @@ function addMarkerMonuments(monuments) {
 function addMarkerRestaurants(restaurants) {
     for(let restaurant of restaurants) {
         let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
-        .bindPopup(restaurant.nom)
         .on('click', function() {
-            setupMarkerCard(monument);
+            setupMarkerCard(restaurant);
         });
         restaurantLayer.addLayer(markerRestaurant);
     }
@@ -238,9 +246,8 @@ function addMarkerRestaurants(restaurants) {
 function addMarkerActivites(activites) {
     for(let activite of activites) {
         let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
-        .bindPopup(activite.titreActivite)
         .on('click', function() {
-            setupMarkerCard(monument);
+            setupMarkerCard(activite);
         });
         activiteLayer.addLayer(markerActivite);
     }
@@ -248,5 +255,9 @@ function addMarkerActivites(activites) {
 }
 
 function setupMarkerCard(patrimoine) {
-    return true;
+    legend.remove();
+    legend = L.control({position: 'topleft'});
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.images);
+    legend.onAdd = patrimoineCard.createCard();
+    legend.addTo(mymap);
 }

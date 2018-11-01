@@ -27,7 +27,7 @@ class Api extends DAO
      * @return array monument[]
      */
     public function getDataMonumentByQuarter($quarter) {
-        $sql = "SELECT mon.codeMonument as id, mon.codeQuartier as idQuartier, mon.libelleMonument, mon.imageMonument, AsText(mon.coordonnees) as coordonees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y') as dateConstruction, mon.architecte, mon.commentaire
+        $sql = "SELECT mon.codeMonument as id, mon.codeQuartier as idQuartier, mon.libelleMonument as name, mon.imageMonument as images, AsText(mon.coordonnees) as coordonees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y') as dateConstruction, mon.architecte, mon.commentaire
                 FROM monument mon
                 INNER JOIN quartier qua ON mon.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
@@ -48,7 +48,7 @@ class Api extends DAO
      * @return array restaurant[]
      */
     public function getDataRestaurantByQuarter($quarter) {
-        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.nom, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
+        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.nom as name, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
                 FROM restaurant res
                 INNER JOIN quartier qua ON res.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
@@ -70,7 +70,7 @@ class Api extends DAO
      */
     public function getDataActiviteByQuarter($quarter) {
         // TODO: Terminer la requête
-        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as titreActivite, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.commentaire
+        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.commentaire
                 FROM activite act
                 INNER JOIN quartier qua ON act.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier";
