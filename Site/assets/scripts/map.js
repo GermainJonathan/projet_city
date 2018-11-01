@@ -1,6 +1,5 @@
 /**
- * Initialisation de la carte Leaflet
- * Gestion des évenements
+ * Gestion de la carte
  */
 
 /* Création des Layers */
@@ -8,16 +7,22 @@
 var restaurantLayer = L.layerGroup();
 var monumentLayer = L.layerGroup();
 var activiteLayer = L.layerGroup();
+
 // Layer du fond de plan openstreetmap
 var fondPlan = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
 });
+
 // Données geojson
 var quarterDelimitation = L.geoJson(states, { // State est défini dans le fichier presquileGEOJSON.js inclut avant dans le template
     onEachFeature: onEachFeature,
     style: style
 });
 
+// Feature active
+var currentFeature = {};
+
+/* Définition du contrôle de layer / filtre des marlers */
 var layerControl = L.control.layers({},{
     "<img src='./assets/images/core/restaurant.svg' height='15'/> <span>Restaurant</span>": restaurantLayer,
     "<img src='./assets/images/core/monument.svg' height='15'/> <span>Monument</span>" : monumentLayer,
@@ -31,7 +36,27 @@ var mymap = L.map('mapid', {
     zoomControl: false,  // On desactive les boutons de zoom
     layers: [fondPlan, quarterDelimitation]
 });
-// Action on Zoom
+
+// Définition des icones
+var LeafIcon = L.Icon.extend({
+    options: {
+        iconSize:     [16, 20],
+        iconAnchor:   [8, 10]
+    }
+});
+
+// Définition des icones des markers
+var restaurantIcon = new LeafIcon({iconUrl: './assets/images/core/restaurant.svg'}),
+    activiteIcon = new LeafIcon({iconUrl: './assets/images/core/activity.svg'}),
+    monumentIcon = new LeafIcon({iconUrl: './assets/images/core/monument.svg'});
+
+// Card control
+var legend = L.control();
+
+/**
+ * Evenement general
+ */
+// Action on Zoom suivant le zoom on affiche les markers ou pas
 mymap.on('zoomend', function() {
     if (mymap.getZoom() <= 14){
         mymap.removeLayer(monumentLayer);
@@ -44,40 +69,25 @@ mymap.on('zoomend', function() {
     }
 });
 
-// Définition des icones
-var LeafIcon = L.Icon.extend({
-  options: {
-      iconSize:     [16, 20],
-      iconAnchor:   [8, 10]
-  }
+// Resize de la fenêtre
+$(window).resize(function () {
+    resetView();
+})
+
+// On document ready resize de la vue sur la carte
+$(function() {
+    resetView();
 });
-
-var restaurantIcon = new LeafIcon({iconUrl: './assets/images/core/restaurant.svg'}),
-    activiteIcon = new LeafIcon({iconUrl: './assets/images/core/activity.svg'}),
-    monumentIcon = new LeafIcon({iconUrl: './assets/images/core/monument.svg'});
-
-// Card control
-legend = L.control();
 
 // On desactive le zoom molette, double click et bouger la carte
 mymap.scrollWheelZoom.disable();
 mymap.doubleClickZoom.disable();
 mymap.dragging.disable();
-addRecentrerButton();
-addGeoPosition();
-setupQuarterCard("Terreaux");
-layerControl.addTo(mymap);
+addRecentrerButton();   // Outil de recentrage
+addGeoPosition();   // Demande de géolocalisation
+setupQuarterCard("Terreaux");   // Création de la carte par défaut
+layerControl.addTo(mymap);  // Ajout du filtre sur la carte
 
-/**
- * Evenement lors du resize de la page // Responsive
- */
-$(window).resize(function () {
-  resetView();
-})
-// On document ready resize de la vue sur la carte
-$(function() {
-    resetView();
-});
 /**
  * Geolocalisation
  */
@@ -115,7 +125,7 @@ function resetView() {
   if($(window).width() < 576) {
     mymap.setView(new L.LatLng(45.757311, 4.826842), 14);
   } else {
-      mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
+    mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
   }
 }
 
@@ -126,14 +136,13 @@ function resetView() {
 function highlightFeature(e) {
     if(mymap.getZoom() <= 14) {
         setupQuarterCard(e.target.feature.properties.name);
+        e.target.bringToFront(); // Mets le layer en première position => un genre de z-index
+        e.target.setStyle({
+            weight: 5,
+            color: '#E98B39',
+            fillOpacity: 0
+        });
     }
-    var layer = e.target;
-    layer.bringToFront(); // Mets le layer en première position => un genre de z-index
-    layer.setStyle({
-        weight: 5,
-        color: '#E98B39',
-        fillOpacity: 0
-    });
 }
 
 /**
@@ -141,7 +150,9 @@ function highlightFeature(e) {
  * @param {event} e 
  */
 function resetHighlight(e) {
-    quarterDelimitation.resetStyle(e.target);
+    if(mymap.getZoom() <= 14) {
+        quarterDelimitation.resetStyle(e.target);
+    }
 }
 
 /**
@@ -149,11 +160,24 @@ function resetHighlight(e) {
  * @param {event} e 
  */
 function zoomToFeature(e) {
-  // TODO: Correction sur le zoom / Alternative au fitBounds
-    mymap.setView(e.target.getCenter(), 15);
+    // Gestion du style de la feature
+    if(currentFeature != {})
+        quarterDelimitation.resetStyle(currentFeature);
+    currentFeature = e.target;
+    currentFeature.setStyle({
+        weight: 5,
+        color: '#E98B39',
+        fillOpacity: 0
+    });
+    setupQuarterCard(e.target.feature.properties.name);
+    currentFeature.bringToFront();
+    
+    mymap.setView(e.target.getCenter(), 16);
     monumentLayer.clearLayers();
     restaurantLayer.clearLayers();
     activiteLayer.clearLayers();
+    mymap.dragging.enable();
+    // récupération des données markers
     $.ajax({
       method: "GET",
       url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
@@ -226,6 +250,16 @@ function addMarkerMonuments(monuments) {
         let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
         .on('click', function() {
             setupMarkerCard(monument);
+        })
+        .on('mouseover', function() {
+            var scaleUp = markerMonument.options.icon;
+            scaleUp.options.iconSize = [20, 20];
+            markerMonument.setIcon(scaleUp);
+        })
+        .on('mouseout', function() {
+            var normalScale = markerMonument.options.icon;
+            normalScale.options.iconSize = [16, 20];
+            markerMonument.setIcon(normalScale);
         });
         monumentLayer.addLayer(markerMonument);
     }
@@ -237,6 +271,16 @@ function addMarkerRestaurants(restaurants) {
         let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
         .on('click', function() {
             setupMarkerCard(restaurant);
+        })
+        .on('mouseover', function() {
+            var scaleUp = markerRestaurant.options.icon;
+            scaleUp.options.iconSize = [20, 20];
+            markerRestaurant.setIcon(scaleUp);
+        })
+        .on('mouseout', function() {
+            var normalScale = markerRestaurant.options.icon;
+            normalScale.options.iconSize = [16, 20];
+            markerRestaurant.setIcon(normalScale);
         });
         restaurantLayer.addLayer(markerRestaurant);
     }
@@ -248,6 +292,16 @@ function addMarkerActivites(activites) {
         let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
         .on('click', function() {
             setupMarkerCard(activite);
+        })
+        .on('mouseover', function() {
+            var scaleUp = markerActivite.options.icon;
+            scaleUp.options.iconSize = [20, 20];
+            markerActivite.setIcon(scaleUp);
+        })
+        .on('mouseout', function() {
+            var normalScale = markerActivite.options.icon;
+            normalScale.options.iconSize = [16, 20];
+            markerActivite.setIcon(normalScale);
         });
         activiteLayer.addLayer(markerActivite);
     }

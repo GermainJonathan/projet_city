@@ -20,13 +20,13 @@ class Card {
      * A ajouter a l'evenement "onAdd" des contrôles Leaflet
      */
     createCard() {
-        var mapCard = L.DomUtil.create("div", "card legend");   // Création de la div de base
+        var mapCard = L.DomUtil.create("div", "card legend"); // Création de la div de base
         try {
-            mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
+            mapCard.append(this._createImgCard()); // On ajoute la ou les images de la carte
         } catch(CardException) {
             return CardException;
         }
-        mapCard.append(this._createCoreCard());                       // On termine la génération en ajoutant le titre et la description puis le lien
+        mapCard.append(this._createCoreCard()); // On termine la génération en ajoutant le titre et la description puis le lien
         return function() {
             return mapCard;
         };

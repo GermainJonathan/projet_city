@@ -97,7 +97,8 @@
 
 /* Animation des Cartes */
 
-.card.legend.leaflet-control {
+.card.legend.leaflet-control,
+.leaflet-marker-icon {
     transform: scale(1);
     -webkit-transform: scale(1);
     transition: all .2s ease-in-out;
@@ -110,6 +111,7 @@
     transition: all .2s ease-in-out;
     -webkit-transition: all 200ms ease-in-out;
 }
+
 /* Fin Animation des cartes */
 
 .AccueilIcon{
