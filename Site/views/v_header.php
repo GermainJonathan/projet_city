@@ -12,6 +12,7 @@
 		<link href="<?= PATH_CSS ?>parallax.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>communTheme.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>quartier.css" rel="stylesheet"/>
+		<link href="<?= PATH_CSS ?>forum.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>header.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>footer.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>contact.css" rel="stylesheet"/>

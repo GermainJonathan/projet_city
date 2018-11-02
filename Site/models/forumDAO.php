@@ -8,8 +8,21 @@ require_once PATH_MODELS."message.php";
 class forumDAO extends DAO
 {
 
-    // sort tous les topics
-    public function getTopic(){
+    // sort les topics validé par l'admin
+    public function getTopicValid(){
+
+        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
+
+        $listTopic = array();
+        foreach ($result as $temp)
+            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $temp[4], $temp[5]);
+
+        return $listTopic;
+
+    }
+
+    // sort tous les topics (pour l'admin)
+    public function getTopicAll(){
 
         $result = $this->queryAll("SELECT * FROM topic");
 
