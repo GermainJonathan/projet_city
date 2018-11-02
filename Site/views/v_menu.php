@@ -4,7 +4,7 @@
     <div class="nav-icon"></div>
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#"><img src="<?= PATH_CORE.'logo.svg'?>" id="logo-header"></a>
+        <a class="navbar-brand" href="index.php"><img src="<?= PATH_CORE.'logo.svg'?>" id="logo-header"></a>
         <!-- burger menu mobile and medium -->
         <div class="button-menu">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?page=contact"><?= MENU_CONTACT ?></a>
                 </li>
+                <?php
+                if(isset($_SESSION['user']) && $_SESSION['user'] == "Administrateur"){
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?page=deconnexion"><?= MENU_DECONNEXION ?></a>
+                    </li>
+                    <?php
+                }
+                ?>
             </ul>
         </div>
     </nav>
