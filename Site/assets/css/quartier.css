@@ -13,7 +13,6 @@
 .nav {
     position: absolute;
     top: 0;
-    width: 150px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -53,14 +52,74 @@
 }
     .nav-link:hover{
         color:#B3B3B3;
-    }    
+    } 
+    
+    /* ------------------------ TIMELINE HISTORY ----------------------------------------*/
+
+.btnHistory{
+    position: absolute;
+    width: 50%;
+    margin-left: 150px;
+    width: calc(100% - 220px);
+}
+
+h2{
+    font-size:20px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.lineTimeline{
+    height: 80px;
+    border-left: 2px solid #B3B3B3;
+    margin-left: 60px;
+}
+
+.marginFrise{
+    margin-left:150px;
+    margin-right:50px;
+}
+
+p{
+    font-size:13px;
+}
+        
+#timelineHistory {
+    position: relative;
+}
+
+#timelineHistory > div {
+    padding-left: 20px;
+    position:relative;
+}
+#timelineHistory > div > .bubble {
+    background-image: url(test.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #B3B3B3;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 400;
+    background-size: contain;
+}
+
+.txtBubble{
+    height:72px;
+    overflow:hidden;
+}
+
 /*------------------------------------------------------------------------------------*/
 
 /***** BODY ***********/
 /** les différentes ancres */
 
-#bodyHistoire{
-    height:600px;
+#BodyHistoire{
+    padding-left:25px;
 }
 #bodyMonuments{
   height:600px;
@@ -77,28 +136,29 @@
 
   /* le texte de la page */
 .bodyQuartier{
-    margin-left:270px;
+    /* margin-left:270px; */
 }
 
 .bodyQuartier h1{
     color:#444;
-    padding-top:20px;
-    padding-bottom:20px;
+    font-size:30px;
 }
 
 /*--------------------- RESPONSIVE ------------------------------*/
-@media screen and (max-width: 650px) {
+
+@media screen and (max-width: 992px) {
+    
+    #sideBar{
+        padding-left:0;
+    }
+}
+@media screen and (max-width: 768px) {
+    
+    #sideBar{
+        display:none!important;
+    }
 
     .anchor{
         padding-top:30px;
     }
-
-    .bodyQuartier{
-        margin-left:40px;
-    }
-    
-    #sideBar{
-        display:none;
-    }
-
 }

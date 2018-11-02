@@ -11,7 +11,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
 
 <!-- SideBar Page -->
 <div>
-    <div id="sideBar">
+    <div id="sideBar" class="col-lg-2 col-md-2 col-sm-0">
         <nav id="menuQuartier">
             <ul class="nav navbar-nav">
                 <li>
@@ -44,26 +44,61 @@ require_once(PATH_VIEWS.'spinner.php');?>
     </div>
 
     <!--  Les catégories  -->
-    <div class="bodyQuartier">
+     <div class="bodyQuartier">
         <span class="anchor" id="anchorBodyHistoire"></span>
-        <div id="bodyHistoire">
-            <h1> Histoire</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.
-            Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.</p>
+        <div class="row">
+            <div class="col-lg-4 offset-lg-2 col-md-3 offset-md-2 col-sm-12" id="BodyHistoire">
+                <h1> Histoire</h1>
+                <p id="txtHistory" class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.</p>
+            </div>
+            <div class="col-lg-6 col-md-7 col-sm-12">
+                <!--  Catégorie Histoire  -->
+                <div id="timelineHistory">
+                    <div>
+                        <div class="bubble"></div>
+                        <h2 class="marginFrise">New Web Design</h2>
+                        <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
+                        <div class="lineTimeline"></div>
+                    </div>
+                    <div>
+                        <div class="bubble"></div>
+                            <h2 class="marginFrise">New Web Design</h2>
+                            <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                            <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
+                            <div class="lineTimeline"></div>
+                        </div>
+                    <div>
+                        <div class="bubble"></div>
+                        <h2 class="marginFrise">New Web Design</h2>
+                        <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
+                        <div class="lineTimeline"></div>
+                    </div>
+                    <div>
+                        <div class="bubble"></div>
+                        <h2 class="marginFrise">New Web Design</h2>
+                        <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+                        <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
+                    </div>   
+                </div>
+            </div>
         </div>
+    </div> 
         <span class="anchor" id="anchorBodyMonuments"></span>
         <div id="bodyMonuments">
         <h1> Monuments</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip
