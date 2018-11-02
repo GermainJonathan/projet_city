@@ -27,6 +27,8 @@ var layerControl = L.control.layers({},{
     "<img src='./assets/images/core/restaurant.svg' height='15'/> <span>Restaurant</span>": restaurantLayer,
     "<img src='./assets/images/core/monument.svg' height='15'/> <span>Monument</span>" : monumentLayer,
     "<img src='./assets/images/core/activity.svg' height='15'/> <span>Activite</span>" : activiteLayer
+}, {
+    collapsed : false,
 });
 
 /* Création de la carte */

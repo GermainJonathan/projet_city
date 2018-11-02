@@ -105,6 +105,11 @@
     -webkit-transition: all 200ms ease-in-out;
 }
 
+/* Enlève la scrollbar du contrôle de couche */
+form.leaflet-control-layers-list.leaflet-control-layers-scrollbar {
+    overflow: hidden;
+}
+
 .card.legend.leaflet-control:hover {
     transform: scale(1.1);
     -webkit-transform: scale(1.1);

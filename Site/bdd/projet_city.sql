@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `activite` (
   `nom` varchar(50) DEFAULT NULL,
   `nomLieux` varchar(50) DEFAULT NULL,
   `coordonnees` point NOT NULL,
-  `imageActivite` varchar(200) NOT NULL,
+  `imageActivite` varchar(50) DEFAULT NULL,
   `commentaire` text,
   KEY `codePays` (`codePays`),
   KEY `codeQuartier` (`codeQuartier`),
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `monument` (
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
   `libelleMonument` varchar(50) DEFAULT NULL,
-  `imageMonument` varchar(200) DEFAULT NULL,
+  `imageMonument` varchar(50) DEFAULT NULL,
   `coordonnees` point NOT NULL,
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
@@ -267,19 +267,13 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
   `adresse` varchar(50) DEFAULT NULL,
   `numeroTelephone` varchar(20) DEFAULT NULL,
   `coordonnees` point NOT NULL,
-  `imageRestaurant` varchar(200) NOT NULL,
+  `imageRestaurant` varchar(50) DEFAULT NULL,
   `commentaire` text,
   KEY `codePays` (`codePays`),
   KEY `codeQuartier` (`codeQuartier`),
   SPATIAL KEY `coordonnees` (`coordonnees`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `restaurant`
---
-
-INSERT INTO `restaurant` (`codeRestaurant`, `codePays`, `codeQuartier`, `nom`, `adresse`, `numeroTelephone`, `coordonnees`, `imageRestaurant`, `commentaire`) VALUES
-(1, 1, 1, 'Brasserie Georges', '30 Cours de Verdun Perrache, 69002 Lyon', '04 72 56 54 54', '\0\0\0\0\0\0\0��gW��F@E��54O@', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -360,7 +354,7 @@ ALTER TABLE `restaurant`
 --
 ALTER TABLE `topic`
   ADD CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
-  ADD CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`codeEtat`) REFERENCES `etatTopic` (`codeEtat`);
+  ADD CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`codeEtat`) REFERENCES `etattopic` (`codeEtat`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
