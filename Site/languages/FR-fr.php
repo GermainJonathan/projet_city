@@ -10,6 +10,7 @@ define('MENU_PERRACHE', 'Perrache');
 define('MENU_BELLECOUR', 'Bellecour');
 define('MENU_CONTACT', 'Contact');
 define('MENU_FORUM', 'Forum');
+define('MENU_DECONNEXION', 'Déconnexion');
 
 define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");

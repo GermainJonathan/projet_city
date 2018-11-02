@@ -9,13 +9,16 @@ class forumDAO extends DAO
 {
 
     // sort les topics validé par l'admin
-    public function getTopicValid(){
+    public function getTopicValid()
+    {
 
         $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
 
         $listTopic = array();
-        foreach ($result as $temp)
-            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $temp[4], $temp[5]);
+        foreach ($result as $temp){
+            $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp[4]));
+            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $res[0], $temp[4], $temp[5]);
+        }
 
         return $listTopic;
 
@@ -27,8 +30,10 @@ class forumDAO extends DAO
         $result = $this->queryAll("SELECT * FROM topic");
 
         $listTopic = array();
-        foreach ($result as $temp)
-            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $temp[4], $temp[5]);
+        foreach ($result as $temp){
+            $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp[4]));
+            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $res[0], $temp[4], $temp[5]);
+        }
 
         return $listTopic;
 
