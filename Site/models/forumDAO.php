@@ -12,14 +12,13 @@ class forumDAO extends DAO
     public function getTopicValid()
     {
 
-        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
+        $result = $this->queryAll("SELECT  FROM topic WHERE codeEtat = 2");
         
         $listTopic = array();
         foreach ($result as $temp){
-            $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp[4]));
-            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $res[0], $temp[4], $temp[5]);
+            $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
+            $listTopic[] = new topic($temp['codeTopic'], $temp['codePays'], $temp['libelleTopic'], $temp['description'], $res['libelleEtat'], $temp['codeEtat'], $temp['date']);
         }
-
         return $listTopic;
 
     }
@@ -29,8 +28,8 @@ class forumDAO extends DAO
         $result = $this->queryAll("SELECT * FROM topic");
         $listTopic = array();
         foreach ($result as $temp){
-            $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp[4]));
-            $listTopic[] = new topic($temp[0], $temp[1], $temp[2], $temp[3], $res[0], $temp[4], $temp[5]);
+            $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
+            $listTopic[] = new topic($temp['codeTopic'], $temp['codePays'], $temp['libelleTopic'], $temp['description'], $res['libelleEtat'], $temp['codeEtat'], $temp['date']);
         }
         return $listTopic;
     }
@@ -39,8 +38,8 @@ class forumDAO extends DAO
     public function getTopicById($idTopic){
 
         $result = $this->queryRow("SELECT * FROM topic WHERE codeTopic  = ?", array($idTopic));
-
-        return new topic($result['codeTopic'], $result['codePays'], $result['libelleTopic'], $result['description'], $result['codeEtat'], $result['date']);
+        $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($result['codeEtat']));
+        return new topic($result['codeTopic'], $result['codePays'], $result['libelleTopic'], $result['description'], $res['libelleEtat'], $result['codeEtat'], $result['date']);
 
     }
 
