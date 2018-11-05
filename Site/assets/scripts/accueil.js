@@ -45,4 +45,19 @@ $(function () {
         }
         return vars;
     }
+
+    $("div.iconPatrimoine").hover(function() {
+        FadeInList($(this).data("index"));
+    }, function() {
+        FadeOutList($(this).data("index"));
+    });
+    
+    function FadeInList(index) {
+        $("#toSpinCard"+index).addClass("isSpin");
+    }
+
+    function FadeOutList(index) {
+        $("#toSpinCard"+index).removeClass("isSpin"); 
+    }
 });
+
