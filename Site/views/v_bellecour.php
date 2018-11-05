@@ -80,10 +80,10 @@ require_once(PATH_VIEWS.'spinner.php');?>
         <div id="bodyActivites" class="row">
         <h1 class="row col-12"> Activités</h1>
             <div class="row col-6">
-                <div class="row">fleche</div>
+                <span class="row">fleche</span>
                 <div class="row">
                     <div>
-                        <h2>x</h2>
+                        <h2>Title 1</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Ut enim ad minim veniam, quis nostrud
@@ -97,7 +97,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
                         ex ea commodo consequat.</p>
                     </div>
                     <div>
-                        <h2>x</h2>
+                        <h2>Title 2</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Ut enim ad minim veniam, quis nostrud
@@ -111,7 +111,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
                         ex ea commodo consequat.</p>
                     </div>
                 </div>
-                <div class="row">fleche</div>
+                <span class="row">fleche</span>
             </div>
         </div>
         <span class="anchor" id="anchorBodyRestaurants"></span>
