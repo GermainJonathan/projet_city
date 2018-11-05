@@ -26,9 +26,9 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="toSpinCard" id="toSpinCard0">
                 <div class="card-font card-back-face"> 
                     <div class="list-group list-group-flush">
-                        <a href="?page=terreaux#bodyMonuments" class="list-group-item">Terraux</a>
-                        <a href="?page=bellecour#bodyMonuments" class="list-group-item">Bellecour</a>
-                        <a href="?page=perrache#bodyMonuments" class="list-group-item">Perrache</a>
+                        <a href="?page=terreaux#anchorBodyMonuments" class="list-group-item">Terraux</a>
+                        <a href="?page=bellecour#anchorBodyMonuments" class="list-group-item">Bellecour</a>
+                        <a href="?page=perrache#anchorBodyMonuments" class="list-group-item">Perrache</a>
                     </div>
                 </div>
                 <div class="card-font card-font-face">
@@ -47,9 +47,9 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="toSpinCard" id="toSpinCard1">
                 <div class="card-font card-back-face"> 
                     <div class="list-group list-group-flush">
-                        <a href="?page=terreaux#bodyActivites" class="list-group-item">Terraux</a>
-                        <a href="?page=bellecour#bodyActivites" class="list-group-item">Bellecour</a>
-                        <a href="?page=perrache#bodyActivites" class="list-group-item">Perrache</a>
+                        <a href="?page=terreaux#anchorBodyActivites" class="list-group-item">Terraux</a>
+                        <a href="?page=bellecour#anchorBodyActivites" class="list-group-item">Bellecour</a>
+                        <a href="?page=perrache#anchorBodyActivites" class="list-group-item">Perrache</a>
                     </div>
                 </div>
                 <div class="card-font card-font-face">
@@ -68,9 +68,9 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="toSpinCard" id="toSpinCard2">
                 <div class="card-font card-back-face"> 
                     <div class="list-group list-group-flush">
-                        <a href="?page=terreaux#bodyHistoire" class="list-group-item">Terraux</a>
-                        <a href="?page=bellecour#bodyHistoire" class="list-group-item">Bellecour</a>
-                        <a href="?page=perrache#bodyHistoire" class="list-group-item">Perrache</a>
+                        <a href="?page=terreaux#anchorBodyHistoire" class="list-group-item">Terraux</a>
+                        <a href="?page=bellecour#anchorBodyHistoire" class="list-group-item">Bellecour</a>
+                        <a href="?page=perrache#anchorBodyHistoire" class="list-group-item">Perrache</a>
                     </div>
                 </div>
                 <div class="card-font card-font-face">
@@ -89,9 +89,9 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="toSpinCard" id="toSpinCard3">
                 <div class="card-font card-back-face"> 
                     <div class="list-group list-group-flush">
-                        <a href="?page=terreaux#bodyRestaurants" class="list-group-item">Terraux</a>
-                        <a href="?page=bellecour#bodyRestaurants" class="list-group-item">Bellecour</a>
-                        <a href="?page=perrache#bodyRestaurants" class="list-group-item">Perrache</a>
+                        <a href="?page=terreaux#anchorBodyRestaurants" class="list-group-item">Terraux</a>
+                        <a href="?page=bellecour#anchorBodyRestaurants" class="list-group-item">Bellecour</a>
+                        <a href="?page=perrache#anchorBodyRestaurants" class="list-group-item">Perrache</a>
                     </div>
                 </div>  
                 <div class="card-font card-font-face">
