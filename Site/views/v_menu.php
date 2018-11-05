@@ -33,16 +33,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?page=contact"><?= MENU_CONTACT ?></a>
                 </li>
-                <?php
+            </ul>
+            <?php
                 if(isset($_SESSION['user']) && $_SESSION['user'] == "Administrateur"){
                     ?>
-                    <li class="nav-item">
+                    <div class="nav-item">
                         <a class="nav-link" href="?page=deconnexion"><?= MENU_DECONNEXION ?></a>
-                    </li>
+                    </div>
                     <?php
                 }
                 ?>
-            </ul>
         </div>
     </nav>
 </div>
