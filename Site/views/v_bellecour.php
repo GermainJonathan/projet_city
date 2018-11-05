@@ -49,68 +49,44 @@ require_once(PATH_VIEWS.'spinner.php');?>
         <div class="row">
             <div class="col-lg-4 offset-lg-2 col-md-3 offset-md-2 col-sm-12" id="BodyHistoire">
                 <h1> Histoire</h1>
-                <p id="txtHistory" class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.</p>
+                <div id="sousTitreHistory"></div>
+                <p id="txtHistory" class="text-justify"></p>
             </div>
             <div class="col-lg-6 col-md-7 col-sm-12">
                 <!--  Catégorie Histoire  -->
                 <div id="timelineHistory">
-                    <div>
-                        <div class="bubble"></div>
-                        <h2 class="marginFrise">New Web Design</h2>
-                        <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                        <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
-                        <div class="lineTimeline"></div>
+                </div>
+            </div>
+        </div>
+        <span class="anchor" id="anchorBodyMonuments"></span>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12" id="BodyMonuments">
+                <h1> Les Monuments</h1>
+                <div class="carrousel">
+                    <div class="arrow-carrousel">
+                        <div class="arrow" id="arrowLeftMonument"></div>
+                        <div class="arrow" id="arrowRightMonument"></div>
                     </div>
-                    <div>
-                        <div class="bubble"></div>
-                            <h2 class="marginFrise">New Web Design</h2>
-                            <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                            <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
-                            <div class="lineTimeline"></div>
-                        </div>
-                    <div>
-                        <div class="bubble"></div>
-                        <h2 class="marginFrise">New Web Design</h2>
-                        <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                        <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
-                        <div class="lineTimeline"></div>
+                    <div class="carrousel-contenu" id="carrouselMonument">
                     </div>
-                    <div>
-                        <div class="bubble"></div>
-                        <h2 class="marginFrise">New Web Design</h2>
-                        <p class="marginFrise text-justify txtBubble">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                        <button class="btn btn-primary btnHistory" onclick="" title="Recentrer" style="outline: none;">En voir plus...</button>
-                    </div>   
+                </div>
+            </div>
+        </div>
+
+        <span class="anchor" id="anchorBodyRestaurants"></span>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12" id="bodyRestaurants">
+                <h1> Restaurants</h1>
+                <div class="containerCard" id="RestaurantCards">
+
+                </div>
+                <div class="arrow-restaurant"id="ArrowRes">
+                    <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
+                    <a class="arrow" id="arrowDownRestaurant"></a>
                 </div>
             </div>
         </div>
     </div> 
-        <span class="anchor" id="anchorBodyMonuments"></span>
-        <div id="bodyMonuments">
-        <h1> Monuments</h1>
-            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.
-            Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.</p>
-            
-        </div>
         <span class="anchor" id="anchorBodyActivites"></span>
         <div id="bodyActivites">
         <h1> Activités</h1>
@@ -126,22 +102,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
             exercitation ullamco laboris nisi ut aliquip
             ex ea commodo consequat.</p>
         </div>
-        <span class="anchor" id="anchorBodyRestaurants"></span>
-        <div id="bodyRestaurants">
-        <h1> Restaurants</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.
-            Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.</p>
-        
-        </div>
+    
         <span class="anchor" id="anchorBodyCommentaires"></span>
         <div id="bodyCommentaires">
         <h1> Commentaires</h1>
@@ -159,6 +120,8 @@ require_once(PATH_VIEWS.'spinner.php');?>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>cardMapFactory.js"></script>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>HistoryPointFactory.js"></script>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>quartier.js"></script>
 
 <!--  Pied de page -->

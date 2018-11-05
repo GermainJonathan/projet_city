@@ -61,6 +61,7 @@
     width: 50%;
     margin-left: 150px;
     width: calc(100% - 220px);
+    margin-top:-6px;
 }
 
 h2{
@@ -72,7 +73,7 @@ h2{
 
 .lineTimeline{
     height: 80px;
-    border-left: 2px solid #B3B3B3;
+    border-left: 2px solid #E98B39;
     margin-left: 60px;
 }
 
@@ -100,7 +101,7 @@ p{
     display: inline-block;
     position: absolute;
     border-radius: 50%;
-    border: 2px solid #B3B3B3;
+    border: 2px solid #E98B39;
     left: 20px;
     width: 120px;
     height: 120px;
@@ -113,35 +114,125 @@ p{
     overflow:hidden;
 }
 
-/*------------------------------------------------------------------------------------*/
+#sousTitreHistory{
+    font-size:17px;
+    color:#B3B3B3;
+    font-style: italic;
+}
 
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------- CAROUSEL MONUMENTS----------------------------*/
+.arrow{
+    background-image:url(../images/core/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:30px;
+    cursor:pointer;
+    height: 100%;
+}
+
+#arrowLeftMonument{
+    transform: rotate(180deg);
+    float: left;
+    position: absolute;
+    z-index:100;
+}
+
+#arrowRightMonument{
+    right:5%;
+    float: left;
+    position: absolute;
+    z-index:100;
+}
+
+.carrousel{
+    height:300px;
+    margin-left:20px;
+    margin-top:40px;
+    position:relative;
+    overflow-y:hidden;
+    max-width:1200px;
+}
+
+.carrousel-contenu{
+    overflow:hidden;
+    margin-right:40px;
+    margin-left:40px;
+}
+
+.carrousel-contenu .card {
+    float:left;
+    width:30%;
+    margin-right:20px;
+    transition: 300ms ease-in-out all;
+    display:block!important;
+    height:300px;
+}
+
+.carrousel-contenu>div>img{
+    height:50%;
+}
+
+.cache{
+    width:0!important;
+    border:none!important;
+    padding:0!important;
+    flex:0!important;
+    margin:0!important;
+    visibility: hidden!important;
+}
+/*------------------------------------------------------------------------------------*/
+/*------------------------------RESTAURANT-------------------------------------------*/
+.containerCard{
+    height:300px;
+    margin:20px;
+    overflow:hidden;
+}
+
+.cardRestaurant{
+    float:left;
+    margin-right:20px;
+    margin-bottom:20px;
+    width:30%;
+    display:block!important;
+    height:300px;
+    transition:height 1s ease;
+}
+
+.cardRestaurant>img{
+    height:50%;
+}
+/*------------------------------------------------------------------------------------*/
 /***** BODY ***********/
-/** les différentes ancres */
 
 #BodyHistoire{
     padding-left:25px;
 }
-#bodyMonuments{
-  height:600px;
-  }
-  #bodyActivites{
-      height:600px;
-  }
-  #bodyRestaurants{
-      height:600px;
-  }
-  #bodyCommentaires{
-      height:600px;
-  }
 
   /* le texte de la page */
-.bodyQuartier{
-    /* margin-left:270px; */
-}
 
 .bodyQuartier h1{
     color:#444;
-    font-size:30px;
+    font-size:40px;
+    font-weight: normal;
+    margin-left:20px;
+}
+
+.arrow-restaurant{
+    height:35px;
+}
+
+#arrowTopRestaurant{
+    transform:rotate(270deg);
+    float:left;
+    margin-left:40%;
+}
+
+#arrowDownRestaurant{
+    transform:rotate(90deg);
+    float:left;
+    margin-left:30px;
 }
 
 /*--------------------- RESPONSIVE ------------------------------*/
@@ -150,6 +241,10 @@ p{
     
     #sideBar{
         padding-left:0;
+    }
+
+    .carrousel-contenu .card, .cardRestaurant{
+        width:45%;
     }
 }
 @media screen and (max-width: 768px) {
@@ -161,4 +256,13 @@ p{
     .anchor{
         padding-top:30px;
     }
+
+}
+
+@media screen and (max-width: 510px) {
+
+    .carrousel-contenu .card, .cardRestaurant{
+        width:95%;
+    }
+
 }

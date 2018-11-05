@@ -29,6 +29,15 @@ class Card {
             return mapCard;
         };
     }
+
+    /* permet de créer une carte sans l'associé à la maps*/
+    createSimpleCard(){
+        var mapCard = document.createElement("div");   // Création de la div de base
+        mapCard.className="card legend";
+        mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
+        mapCard.append(this._createCoreCard()); 
+        return mapCard;
+    }
  
     /**
      * Permet de modifié la ou les images de la carte

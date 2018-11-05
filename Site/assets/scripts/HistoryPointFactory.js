@@ -22,75 +22,101 @@ class BubbleHistory {
      */
     createBubbleHistory() {
         var BubbleHistory = document.createElement("div");   // Création de la div de base
-        BubbleHistory.append(this._createBubble());                        // On ajoute la ou les images de la carte
-        BubbleHistory.append(this._createTitle());
-        BubbleHistory.append(this._createText());
-        BubbleHistory.append(this._createButton());  // On termine la génération en ajoutant le titre et la description puis le lien   
+        BubbleHistory.append(this._createBubble()); // On ajoute la bulle avec son image
+        BubbleHistory.append(this._createTitle()); // On met un titre
+        BubbleHistory.append(this._createDescription()); // on ajoute le texte
+        BubbleHistory.append(this._createButton());  // On crée le bouton pour la bulle   
         
+        // Création de la ligne si ce n'est pas la dernière bulle
+        if(this.line){
+            BubbleHistory.append($('<div></div>').addClass("lineTimeline")[0]);
+        }
+
         this.historisation=BubbleHistory;
 
         return BubbleHistory;
     }
  
     /**
-     * Permet de modifié la ou les images de la carte
+     * Permet de modifier la ou les images de la bulle
      * 
      * @param {string} images
      */
     changeImg(images) {
         this.images = images;
-        this._createBubble();
+        var classNameBubble= this.historisation.getElementsByClassName("bubble");
+        classNameBubble[0].css("background-image",images);
     }
 
     /**
-     * Permet de modifier le titre de la carte
+     * Permet de modifier le titre de la bulle
      * 
      * @param {string} title 
      */
     changeTitle(title) {
         this.title = title;
-        this._createTitle();
+        var classNameBubble= this.historisation.getElementsByClassName("titleBubble");
+        classNameBubble[0].text(title);
     }
 
     /**
-     * Permet de modifier la description de la carte
+     * Permet de modifier la description de la bulle
      * 
      * @param {string} description 
      */
     changeDescription(description) {
         this.description = description;
-        this._createText();
+        var classNameBubble= this.historisation.getElementsByClassName("txtBubble");
+        classNameBubble[0].text(description);
     }
 
+    /**
+     * création de la bulle
+     */
     _createBubble(){
        var bubble=$('<div></div>').addClass("bubble");
        bubble.css("background-image",this.images);
-       return bubble;
+       return bubble[0];
     }
 
+    /**
+     * création du titre de la bulle
+     */
+
     _createTitle(){
-        var title=$('<h2></h2>').addClass("marginFrise").txt(this.title);
-        return title;
+        var title=$('<h2></h2>').addClass("marginFrise titleBubble").text(this.title);
+        return title[0];
     }
+
+    /***
+     * création de la description
+     */
 
     _createDescription(){
         var desc=$('<p></p>').addClass("marginFrise text-justify txtBubble");
-        if (this.description.length<200){
+        if (this.description.length<150){
             desc.text(this.description);
         }
         else{
-            var littleTxt=this.description.substr(0,197)+"...";
+            var littleTxt=this.description.substr(0,147)+"...";
             desc.text(littleTxt);
         }
-        return desc;
+        return desc[0];
     }
+
+    /***
+     * création du bouton de la bulle
+     */
 
     _createButton(){
-       var button=$('<button></button>').addClass("btn btn-primary btnHistory") ;
-       button.click(function(){
-            $("#txtHistory").text(this.description);
-       });
-    }
+       var button=$('<button></button>').addClass("btn btn-primary btnHistory").text("En savoir plus ...") ;
 
-  
+       var that= this;
+       button.click(function(){
+           $("#txtHistory").text(that.description);
+           $("#sousTitreHistory").text(that.title);
+       });
+
+       return button[0];
+    }
 }
