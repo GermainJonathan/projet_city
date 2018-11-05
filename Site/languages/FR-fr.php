@@ -28,16 +28,15 @@ define('TITRE_ACTION_TOPIC', 'Action');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 
-define('INFO_DECONNEXION', 'Merci à bientôt');
-define('INFO_CONNEXION', 'Vous êtes maintenant connecté');
-define('INFO_UPLOAD_SUCSESS', 'Upload effectué avec succès !');
-define('INFO_UPLOAD_FAIL', 'Echec de l\'upload !');
-
 define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son histoire, sa gastronomie, ses activités    ');
 define('TXT_TITRE_TOPIC', 'Titre du topic');
 define('TXT_TITRE_DESCRIPTION', 'Description du topic');
 
 define('ERREUR_TOPC_DSC', 'Il manque la description');
 define('ERREUR_TOPC_TITRE', 'Il manque le titre');
+
+define('ERREUR_CONN_LOGIN_VOID', 'Il manque le login');
+define('ERREUR_CONN_PW_VOID', 'Il manque le mot de passe');
+define('ERREUR_CONN_REFUSEE', 'Accès refusé. Impossible de se connecter avec ces informations');
 
 define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validtion par l\'administrateur');

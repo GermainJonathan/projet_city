@@ -6,7 +6,7 @@ require_once PATH_MODELS.'administrationDAO.php';
 
 // class central
 // c'est la seul class appalé par les controleur
-// elle fait le ien entre les moedels et les controlleurs
+// elle fait le lien entre les moedels et les controlleurs
 class manager
 {
     public function getPays($id = null)
@@ -48,9 +48,9 @@ class manager
         return $forumDAO->createNewTopic($titre, $description, $_SESSION['idLang']);
     }
 
-    public function testConnexionUser(){
+    public function testConnexionUser($login, $mdp){
         $adminDAO = new administrationDAO(DEBUG);
-
+        return $adminDAO->verifConnexionUser($login, $mdp);
     }
 
 }
