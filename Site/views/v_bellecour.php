@@ -10,7 +10,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
 
 
 <!-- SideBar Page -->
-<div>
+<div class="container-fluid">
     <div id="sideBar">
         <nav id="menuQuartier">
             <ul class="nav navbar-nav">
@@ -77,19 +77,42 @@ require_once(PATH_VIEWS.'spinner.php');?>
             
         </div>
         <span class="anchor" id="anchorBodyActivites"></span>
-        <div id="bodyActivites">
-        <h1> Activités</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.
-            Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.</p>
+        <div id="bodyActivites" class="row">
+        <h1 class="row col-12"> Activités</h1>
+            <div class="row col-6">
+                <div class="row">fleche</div>
+                <div class="row">
+                    <div>
+                        <h2>x</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat.
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat.</p>
+                    </div>
+                    <div>
+                        <h2>x</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat.
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="row">fleche</div>
+            </div>
         </div>
         <span class="anchor" id="anchorBodyRestaurants"></span>
         <div id="bodyRestaurants">
