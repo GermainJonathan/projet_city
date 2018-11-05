@@ -90,22 +90,24 @@
 }
 
 .leaflet-left {
-    left: 15% !important;
-    transform: translate(-15%, 0%);
-}
-
-.leaflet-top {
     top: 15% !important;
+    left: 15% !important;
     transform: translate(-15%, 0%);
 }
 
 /* Animation des Cartes */
 
-.card.legend.leaflet-control {
+.card.legend.leaflet-control,
+.leaflet-marker-icon {
     transform: scale(1);
     -webkit-transform: scale(1);
     transition: all .2s ease-in-out;
     -webkit-transition: all 200ms ease-in-out;
+}
+
+/* Enlève la scrollbar du contrôle de couche */
+form.leaflet-control-layers-list.leaflet-control-layers-scrollbar {
+    overflow: hidden;
 }
 
 .card.legend.leaflet-control:hover {
@@ -114,6 +116,7 @@
     transition: all .2s ease-in-out;
     -webkit-transition: all 200ms ease-in-out;
 }
+
 /* Fin Animation des cartes */
 
 .AccueilIcon{

@@ -1,32 +1,94 @@
 /**
- * Initialisation de la carte Leaflet
- * Gestion des évenements
+ * Gestion de la carte
  */
-var mymap = L.map('mapid', {
-  zoomControl: false  // On desactive les boutons de zoom
-}).setView([45.754411, 4.796842
-], 14);
-L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-}).addTo(mymap);
 
-legend = L.control({position: 'topleft'});
+/* Création des Layers */
+// Layer des différents marker - Séparer pour filtrer les markers par la suite
+var restaurantLayer = L.layerGroup();
+var monumentLayer = L.layerGroup();
+var activiteLayer = L.layerGroup();
+
+// Layer du fond de plan openstreetmap
+var fondPlan = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+});
+
+// Données geojson
+var quarterDelimitation = L.geoJson(states, { // State est défini dans le fichier presquileGEOJSON.js inclut avant dans le template
+    onEachFeature: onEachFeature,
+    style: style
+});
+
+// Feature active
+var currentFeature = {};
+
+/* Définition du contrôle de layer / filtre des marlers */
+var layerControl = L.control.layers({},{
+    "<img src='./assets/images/core/restaurant.svg' height='15'/> <span>Restaurant</span>": restaurantLayer,
+    "<img src='./assets/images/core/monument.svg' height='15'/> <span>Monument</span>" : monumentLayer,
+    "<img src='./assets/images/core/activity.svg' height='15'/> <span>Activite</span>" : activiteLayer
+}, {
+    collapsed : false,
+});
+
+/* Création de la carte */
+var mymap = L.map('mapid', {
+    center: [45.754411, 4.796842],
+    zoom: 14,
+    zoomControl: false,  // On desactive les boutons de zoom
+    layers: [fondPlan, quarterDelimitation]
+});
+
+// Définition des icones
+var LeafIcon = L.Icon.extend({
+    options: {
+        iconSize:     [16, 20],
+        iconAnchor:   [8, 10]
+    }
+});
+
+// Définition des icones des markers
+var restaurantIcon = new LeafIcon({iconUrl: './assets/images/core/restaurant.svg'}),
+    activiteIcon = new LeafIcon({iconUrl: './assets/images/core/activity.svg'}),
+    monumentIcon = new LeafIcon({iconUrl: './assets/images/core/monument.svg'});
+
+// Card control
+var legend = L.control();
+var styleForced = false;
+/**
+ * Evenement general
+ */
+// Action on Zoom suivant le zoom on affiche les markers ou pas
+mymap.on('zoomend', function() {
+    if (mymap.getZoom() <= 14){
+        mymap.removeLayer(monumentLayer);
+        mymap.removeLayer(restaurantLayer);
+        mymap.removeLayer(activiteLayer);
+    } else {
+        mymap.addLayer(monumentLayer);
+        mymap.addLayer(restaurantLayer);
+        mymap.addLayer(activiteLayer);
+    }
+});
+
+// Resize de la fenêtre
+$(window).resize(function () {
+    resetView();
+})
+
+// On document ready resize de la vue sur la carte
+$(function() {
+    resetView();
+});
 
 // On desactive le zoom molette, double click et bouger la carte
 mymap.scrollWheelZoom.disable();
 mymap.doubleClickZoom.disable();
 mymap.dragging.disable();
-addRecentrerButton();
-addGeoJSONInfo();
-addGeoPosition();
-setupQuarterCard("Terreaux");
-
-/**
- * Evenement lors du resize de la page // Responsive
- */
-$(window).resize(function () {
-  resetView();
-})
+addRecentrerButton();   // Outil de recentrage
+addGeoPosition();   // Demande de géolocalisation
+setupQuarterCard("Terreaux");   // Création de la carte par défaut
+layerControl.addTo(mymap);  // Ajout du filtre sur la carte
 
 /**
  * Geolocalisation
@@ -56,24 +118,21 @@ function addRecentrerButton() {
 }
 
 /**
- * Création du layer avec les zones de quartier
- */
-function addGeoJSONInfo() {
-  geojson = L.geoJson(states, { // State est défini dans le fichier presquileGEOJSON.js inclut avant dans le template
-    onEachFeature: onEachFeature,
-    style: style
-  }).addTo(mymap);
-}
-
-/**
  * Action du bouton recentrer
  */
 function resetView() {
-  if($(window).width() < 1000) {
+  if($(window).width() < 1366) {
     mymap.setView(new L.LatLng(45.754411, 4.806842), 14);
+  } 
+  if($(window).width() < 576) {
+    mymap.setView(new L.LatLng(45.757311, 4.826842), 14);
   } else {
     mymap.setView(new L.LatLng(45.754411, 4.796842), 14);
   }
+  mymap.dragging.disable();
+  styleForced = false;
+  quarterDelimitation.resetStyle(currentFeature);
+  currentFeature = {};
 }
 
 /**
@@ -81,17 +140,15 @@ function resetView() {
  * @param {event} e Zone passer en hover
  */
 function highlightFeature(e) {
-    var layer = e.target;
-    layer.setStyle({
-      weight: 5,
-      color: '#E98B39',
-      fillOpacity: 0
-    });
-
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
+    if(mymap.getZoom() <= 14) {
+        setupQuarterCard(e.target.feature.properties.name);
+        e.target.bringToFront(); // Mets le layer en première position => un genre de z-index
+        e.target.setStyle({
+            weight: 5,
+            color: '#E98B39',
+            fillOpacity: 0
+        });
     }
-    setupQuarterCard(e.target.feature.properties.name);
 }
 
 /**
@@ -99,7 +156,9 @@ function highlightFeature(e) {
  * @param {event} e 
  */
 function resetHighlight(e) {
-  geojson.resetStyle(e.target);
+    if(mymap.getZoom() <= 14 && !styleForced) {
+        quarterDelimitation.resetStyle(e.target);
+    }
 }
 
 /**
@@ -107,7 +166,33 @@ function resetHighlight(e) {
  * @param {event} e 
  */
 function zoomToFeature(e) {
-    mymap.fitBounds(e.target.getBounds());
+    // Gestion du style de la feature
+    setupQuarterCard(e.target.feature.properties.name);
+    if(e.target != currentFeature) {
+        quarterDelimitation.resetStyle(currentFeature);
+        currentFeature = e.target;
+        currentFeature.setStyle({
+            weight: 5,
+            color: '#E98B39',
+            fillOpacity: 0
+        });
+        styleForced = true;
+        currentFeature.bringToFront();
+        mymap.setView(e.target.getCenter(), 16);
+        monumentLayer.clearLayers();
+        restaurantLayer.clearLayers();
+        activiteLayer.clearLayers();
+        mymap.dragging.enable();
+        // récupération des données markers
+        $.ajax({
+          method: "GET",
+          url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
+        }).done(function(data) {
+          addMarkerMonuments(data.monuments);
+          addMarkerActivites(data.activites);
+          addMarkerRestaurants(data.restaurants);
+        });
+    }
 }
 
 /**
@@ -127,7 +212,7 @@ function onEachFeature(feature, layer) {
  * Style appliquer aux features
  * @param {Feature} feature 
  */
-function style(feature) {
+function style() {
   return {
     fillColor: '#9e9e9e',
     weight: 2,
@@ -142,28 +227,105 @@ function style(feature) {
  * @param {string} quarterName 
  */
 function setupQuarterCard(quarterName) {
-  const textDescriptionFactice = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.';
-  let lastCard = legend;
-  legend.remove();
+    const textDescriptionFactice = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.';
+    let lastCard = legend;
+    legend.remove();
 
-  legend = L.control({position: 'topleft'});
+    legend = L.control({position: 'topleft'});
+    switch (quarterName) {
+        case "Perrache" :
+            var perracheCard = new Card(quarterName, textDescriptionFactice,["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"]);
+            legend.onAdd = perracheCard.createCard();
+            break;
+        case "Bellecour" :
+            var bellecourCard = new Card(quarterName, textDescriptionFactice,"assets/images/bellecour/bellecour.jpg");
+            legend.onAdd = bellecourCard.createCard();
+            break;
+        case "Terreaux":
+            var terreauxCard = new Card(quarterName, textDescriptionFactice,"assets/images/terreaux/terreaux.jpg");
+            legend.onAdd = terreauxCard.createCard();
+            break;
+        default:
+            legend.onAdd = lastCard.onAdd;
+            break;
+    }
+    legend.addTo(mymap);
+}
 
-  switch (quarterName) {
-    case "Perrache" :
-      var perracheCard = new Card(quarterName, textDescriptionFactice,["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"], true);
-      legend.onAdd = perracheCard.createCard();
-      break;
-    case "Bellecour" :
-      var bellecourCard = new Card(quarterName, textDescriptionFactice,"assets/images/bellecour/bellecour.jpg", false);
-      legend.onAdd = bellecourCard.createCard();
-      break;
-    case "Terreaux":
-      var terreauxCard = new Card(quarterName, textDescriptionFactice,"assets/images/terreaux/terreaux.jpg", false);
-      legend.onAdd = terreauxCard.createCard();
-      break;
-    default:
-      legend.onAdd = lastCard.onAdd;
-      break;
-  }
-  legend.addTo(mymap);
+/**
+ * Mise à jour de la carte descriptif pour un patrimoine
+ * @param {data} patrimoine 
+ */
+function setupMarkerCard(patrimoine) {
+    legend.remove();
+    legend = L.control({position: 'topleft'});
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.images);
+    legend.onAdd = patrimoineCard.createCard();
+    legend.addTo(mymap);
+}
+
+function addMarkerMonuments(monuments) {
+    for(let monument of monuments) {
+        let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
+        .on('click', function() {
+            setupMarkerCard(monument);
+        })
+        .on('mouseover', function() {
+            var scaleUp = markerMonument.options.icon;
+            scaleUp.options.iconSize = [20, 20];
+            scaleUp.options.iconAnchor = [10, 10];
+            markerMonument.setIcon(scaleUp);
+        })
+        .on('mouseout', function() {
+            var normalScale = markerMonument.options.icon;
+            normalScale.options.iconSize = [16, 20];
+            normalScale.options.iconAnchor = [8, 10];
+            markerMonument.setIcon(normalScale);
+        });
+        monumentLayer.addLayer(markerMonument);
+    }
+}
+
+function addMarkerRestaurants(restaurants) {
+    for(let restaurant of restaurants) {
+        let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
+        .on('click', function() {
+            setupMarkerCard(restaurant);
+        })
+        .on('mouseover', function() {
+            var scaleUp = markerRestaurant.options.icon;
+            scaleUp.options.iconSize = [20, 20];
+            scaleUp.options.iconAnchor = [10, 10];
+            markerRestaurant.setIcon(scaleUp);
+        })
+        .on('mouseout', function() {
+            var normalScale = markerRestaurant.options.icon;
+            normalScale.options.iconSize = [16, 20];
+            normalScale.options.iconAnchor = [8, 10];
+            markerRestaurant.setIcon(normalScale);
+        });
+        restaurantLayer.addLayer(markerRestaurant);
+    }
+}
+
+function addMarkerActivites(activites) {
+    for(let activite of activites) {
+        let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
+        .on('click', function() {
+            setupMarkerCard(activite);
+        })
+        .on('mouseover', function() {
+            var scaleUp = markerActivite.options.icon;
+            scaleUp.options.iconSize = [20, 20];
+            scaleUp.options.iconAnchor = [10, 10];
+            markerActivite.setIcon(scaleUp);
+        })
+        .on('mouseout', function() {
+            var normalScale = markerActivite.options.icon;
+            normalScale.options.iconSize = [16, 20];
+            normalScale.options.iconAnchor = [8, 10];
+            markerActivite.setIcon(normalScale);
+        });
+        activiteLayer.addLayer(markerActivite);
+    }
 }

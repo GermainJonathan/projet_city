@@ -2,6 +2,7 @@
 
 require_once PATH_MODELS.'paysDAO.php';
 require_once PATH_MODELS.'forumDAO.php';
+require_once PATH_MODELS.'administrationDAO.php';
 
 // class central
 // c'est la seul class appalé par les controleur
@@ -45,6 +46,11 @@ class manager
     public function createTopic($titre, $description){
         $forumDAO = new forumDAO(DEBUG);
         return $forumDAO->createNewTopic($titre, $description, $_SESSION['idLang']);
+    }
+
+    public function testConnexionUser(){
+        $adminDAO = new administrationDAO(DEBUG);
+
     }
 
 }

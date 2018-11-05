@@ -6,14 +6,12 @@
  * @param {string} title 
  * @param {string} description 
  * @param {string | Array[string]} images 
- * @param {boolean} slider 
  */
 class Card {
-    constructor(title, description, images = "", slider = false) {
+    constructor(title, description, images = "") {
         this.images = images;
         this.title  = title;
         this.description = description;
-        this.slider = slider;
     }
 
     /**
@@ -22,12 +20,25 @@ class Card {
      * A ajouter a l'evenement "onAdd" des contrôles Leaflet
      */
     createCard() {
-        var mapCard = L.DomUtil.create("div", "card legend");   // Création de la div de base
-        mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
-        mapCard.append(this._createCoreCard());                       // On termine la génération en ajoutant le titre et la description puis le lien
+        var mapCard = L.DomUtil.create("div", "card legend"); // Création de la div de base
+        try {
+            mapCard.append(this._createImgCard()); // On ajoute la ou les images de la carte
+        } catch(CardException) {
+            return CardException;
+        }
+        mapCard.append(this._createCoreCard()); // On termine la génération en ajoutant le titre et la description puis le lien
         return function() {
             return mapCard;
         };
+    }
+
+    /* permet de créer une carte sans l'associé à la maps*/
+    createSimpleCard(){
+        var mapCard = document.createElement("div");   // Création de la div de base
+        mapCard.className="card legend";
+        mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
+        mapCard.append(this._createCoreCard()); 
+        return mapCard;
     }
  
     /**
@@ -35,9 +46,8 @@ class Card {
      * 
      * @param {string | Array[string]} images
      */
-    changeImg(images, slider = this.slider) {
+    changeImg(images) {
         this.images = images;
-        this.slider = slider;
         this._createImgCard();
     }
 
@@ -91,12 +101,9 @@ class Card {
      * Constructeur du corp de la carte contenant le titre et la desciption
      */
     _createImgCard() {
-        if (this.slider) {
-            if (!Array.isArray(this.images)) {
-                throw new Error("Error - images must be an array");
-            }
+        if (Array.isArray(this.images)) {
             if (this.images.length < 2) {
-                throw new Error("Error - images should contain more then 1 element");
+                throw new CardException("Error - images should contain more then 1 element");
             }
             var imageCard = $("<div></div>", {
                 class: "carousel slide carousel-fade"

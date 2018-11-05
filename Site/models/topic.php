@@ -9,16 +9,18 @@ class topic
     private $_titre;
     private $_description;
     private $_etat;
+    private $_codeEtat;
     private $_date;
 
 
-    public function __construct($id, $idLang, $titre, $description, $etat, $date)
+    public function __construct($id, $idLang, $titre, $description, $etat, $codeEtat, $date)
     {
         $this->_id = $id;
         $this->_idLang = $idLang;
         $this->_titre = $titre;
         $this->_description = $description;
         $this->_etat = $etat;
+        $this-> _codeEtat = $codeEtat;
         $this->_date = $date;
     }
 
@@ -47,6 +49,16 @@ class topic
         return $this->_etat;
     }
 
+    public function getCodeEtat()
+    {
+        return $this ->_codeEtat;
+    }
+
+    public function setCodeEtat($codeEtat)
+    {
+        $this->_codeEtat = $codeEtat;
+    }
+
     public function getDate()
     {
         return $this->_date;
@@ -56,6 +68,4 @@ class topic
     {
         return $this->_id.$this->_idLang.$this->_titre.$this->_description.$this->_etat.$this->_date;
     }
-
-
 }
