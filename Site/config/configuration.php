@@ -18,6 +18,7 @@ const AUTEUR = 'AG4île';
 
 //dossiers racines du site
 define('PATH_CONTROLLERS','controllers/c_');
+define('PATH_SERVICES', 'services/');
 define('PATH_ENTITY','entity/');
 define('PATH_ASSETS','assets/');
 define('PATH_LIB','lib/');
@@ -33,6 +34,7 @@ define('PATH_ACCUEIL', PATH_IMAGES.'accueil/');
 define('PATH_BELLECOUR', PATH_IMAGES.'bellecour/');
 define('PATH_PERRACHE', PATH_IMAGES.'perrache/');
 define('PATH_TERREAUX', PATH_IMAGES.'terreaux/');
+define('PATH_CONTACT', PATH_IMAGES.'contact/');
 define('PATH_CORE', PATH_IMAGES.'core/');
 
 

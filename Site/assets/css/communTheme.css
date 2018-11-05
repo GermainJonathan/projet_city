@@ -1,6 +1,5 @@
 html,body {
     scroll-behavior: smooth;
-    height: 100%;
 }
 
 .no-margin{
@@ -74,7 +73,7 @@ html,body {
 
 .anchor {
     display: block;
-    padding-top: 70px;
+    padding-top: 80px;
 }
 
 /* Scroll Bar */

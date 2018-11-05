@@ -6,8 +6,8 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-<!--  Parallax titre haut de page  -->
-<div class="parallax" id="parallax-1" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
+<!-- parallax -->
+<div class="parallax" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
     <div class="caption">
         <span class="border"><?= TITRE ?></span>
     </div>

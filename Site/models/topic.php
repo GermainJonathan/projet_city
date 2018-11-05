@@ -54,10 +54,9 @@ class topic
         return $this ->_codeEtat;
     }
 
-    public function setCodeEtat($codeEtat){
-
+    public function setCodeEtat($codeEtat)
+    {
         $this->_codeEtat = $codeEtat;
-
     }
 
     public function getDate()

@@ -12,8 +12,9 @@ class paysDAO extends DAO
         $result = $this->queryAll("SELECT * FROM pays");
 
         $listPays = array();
-        foreach($result as $temp)
-            $listPays[] =  new pays($temp[0], $temp[1], $temp[2], $temp[3]);
+        foreach($result as $temp) {
+            $listPays[] =  new pays($temp['codePays'], $temp['libellePays'], $temp['libellePaysCourt'], $temp['fichier']);
+        }
 
         return $listPays;
     }
