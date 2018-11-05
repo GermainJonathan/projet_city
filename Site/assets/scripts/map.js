@@ -272,8 +272,8 @@ function addMarkerMonuments(monuments) {
         })
         .on('mouseover', function() {
             var scaleUp = markerMonument.options.icon;
-            scaleUp.options.iconSize = [20, 20];
-            scaleUp.options.iconAnchor = [10, 10];
+            scaleUp.options.iconSize = [36, 20];
+            scaleUp.options.iconAnchor = [18, 10];
             markerMonument.setIcon(scaleUp);
         })
         .on('mouseout', function() {
@@ -294,8 +294,8 @@ function addMarkerRestaurants(restaurants) {
         })
         .on('mouseover', function() {
             var scaleUp = markerRestaurant.options.icon;
-            scaleUp.options.iconSize = [20, 20];
-            scaleUp.options.iconAnchor = [10, 10];
+            scaleUp.options.iconSize = [36, 20];
+            scaleUp.options.iconAnchor = [18, 10];
             markerRestaurant.setIcon(scaleUp);
         })
         .on('mouseout', function() {
@@ -316,8 +316,8 @@ function addMarkerActivites(activites) {
         })
         .on('mouseover', function() {
             var scaleUp = markerActivite.options.icon;
-            scaleUp.options.iconSize = [20, 20];
-            scaleUp.options.iconAnchor = [10, 10];
+            scaleUp.options.iconSize = [36, 20];
+            scaleUp.options.iconAnchor = [18, 10];
             markerActivite.setIcon(scaleUp);
         })
         .on('mouseout', function() {
