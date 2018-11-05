@@ -3,19 +3,26 @@
 require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS.'user.php';
 
-// classe de communicaton avec la bd pour les pays et le choix de la langue
+
 class administrationDAO extends DAO
 {
 
     public function verifConnexionUser($login, $passWord){
-        $result = $this->queryRow("SELECT * FROM user WHERE login=? AND passWord=?", array($login, password_hash($passWord, PASSWORD_DEFAULT)));
-        var_dump($result);
-        var_dump($login);
-        var_dump(password_hash($passWord, PASSWORD_DEFAULT));
-        if($result === false)
-            return false;
+        $result = $this->queryRow("SELECT * FROM user WHERE login=?", array($login));
+        if(password_verify($passWord, $result['passWord'])){
+
+            $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($result['codeProfile']));
+
+            return new user($result['codeUser'], $result['nom'], $result['mail'], $result['codeProfile'], $res['libelleProfile']);
+        }
         else
-            return true;
+            return false;
+    }
+
+    public function setEtatTopic($idtopic, $codeEtatTopic){
+
+        return $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic = ?", array($codeEtatTopic, $idtopic));
+
     }
 
 }

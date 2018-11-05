@@ -4,8 +4,11 @@
 require_once './config/configuration.php';
 require_once './lib/foncBase.php';
 
+require_once PATH_MODELS.'user.php';
+
 //selection de la langue
 session_start();
+
 if(isset($_SESSION["lang"]))
     $lang = $_SESSION["lang"];
 else

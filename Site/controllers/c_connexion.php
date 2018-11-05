@@ -9,15 +9,30 @@ if(isset($_POST['valFormConnexion'])){
     $erreur = null;
 
     if(empty($_POST['passWord']))
-        $erreur = "";
+        $erreur = ERREUR_CONN_PW_VOID;
 
     if(empty($_POST['login']))
-        $erreur = "";
+        $erreur = ERREUR_CONN_LOGIN_VOID;
 
     if($erreur === null) {
-        if ($manager->testConnexionUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['passWord'])))
-            $erreur = "";
+        if ($test = $manager->testConnexionUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['passWord']))){
+
+            session_start();
+            $_SESSION['user'] = $test;
+
+            header("Location: index.php");
+
+        }
+        else
+            $erreur = ERREUR_CONN_REFUSEE;
     }
+
+    echo $_POST['passWord'] . "<br>";
+    echo password_hash($_POST['passWord'], PASSWORD_DEFAULT) . "<br>";
+    echo $_POST['login'];
+
+    if($erreur != null)
+        $alert['messageAlert'] = $erreur;
 
 }
 

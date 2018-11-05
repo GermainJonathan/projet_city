@@ -4,15 +4,17 @@ class user
 {
     private $_codeUser;
     private $_nom;
-    private $_proile;
+    private $_mail;
     private $_codeProfile;
+    private $_profile;
 
-    public function __construct($codeUser, $nom, $proile, $codeProfile)
+    public function __construct($codeUser, $nom, $mail, $codeProfile, $profile)
     {
         $this->_codeUser = $codeUser;
         $this->_nom = $nom;
-        $this->_proile = $proile;
+        $this->_mail = $mail;
         $this->_codeProfile = $codeProfile;
+        $this->_profile = $profile;
     }
 
 
@@ -21,8 +23,13 @@ class user
         return $this->_nom;
     }
 
-    public function getProile()
+    public function getMail()
     {
-        return $this->_proile;
+        return $this->_mail;
+    }
+
+    public function getProfile()
+    {
+        return $this->_profile;
     }
 }
