@@ -1,15 +1,38 @@
 <?php
 
 require_once PATH_MODELS."DAO.php";
-require_once PATH_MODELS.'pays.php';
+require_once PATH_MODELS.'user.php';
 
-// classe de communicaton avec la bd pour les pays et le choix de la langue
+
 class administrationDAO extends DAO
 {
 
     public function verifConnexionUser($login, $passWord){
-        $result = $this->queryRow("SELECT * FROM administration WHERE personne=? AND passWord=?", array($login, password_hash($passWord)));
-        var_dump($result);
+        $result = $this->queryRow("SELECT * FROM user WHERE login=?", array($login));
+        if(password_verify($passWord, $result['passWord'])){
+
+            $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($result['codeProfile']));
+
+            return new user($result['codeUser'], $result['nom'], $result['mail'], $result['codeProfile'], $res['libelleProfile']);
+        }
+        else
+            return false;
+    }
+
+    public function setEtatTopic($idtopic, $codeEtatTopic){
+
+        return $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic = ?", array($codeEtatTopic, $idtopic));
+
+    }
+
+    public function getUser(){
+        $result = $this->queryAll("SELECT * FROM user");
+
+        foreach ($result as $temp) {
+            $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($temp['codeProfile']));
+            $listUser[] = new user($temp['codeUser'], $temp['nom'], $temp['mail'], $temp['codeProfile'], $res['libelleProfile']);
+        }
+        return $listUser;
     }
 
 }

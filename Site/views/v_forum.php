@@ -12,10 +12,10 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <th><?= TITRE_DATE ?></th>
                 <th><?= TITRE_TOPIC ?></th>
                 <?php
-                if($_SESSION['user'] == "Administrateur") {
+                if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
                     ?>
                     <th><?= TITRE_ETATA_TOPIC ?></th>
-                    <th><?= TITRE_ACTION_TOPIC ?></th>
+                    <th><?= TITRE_ACTION ?></th>
                     <?php
                 }
                 ?>
@@ -30,7 +30,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                     <td><?= dateBaseToSite($topic->getDate()) ?></td>
                     <td><a href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
                     <?php
-                    if(isset($_SESSION['user']) && $_SESSION['user'] == "Administrateur") {
+                    if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
                         ?>
                         <td><?= $topic->getEtat() ?></td>
                         <td>
@@ -69,18 +69,24 @@ require_once(PATH_VIEWS.'alert.php');?>
 
         ?>
     </table>
-    <div>
-        <form action="" name="formTopic" id="formTopic" method="post">
-            <div class="form-group">
-                <label for="titreTopic"><?= TXT_TITRE_TOPIC ?></label>
-                <input class="form-control" type="text" name="titreTopic" id="titreTopic" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>"/>
+    <?php
+        if (empty($_SESSION['user'])){
+            ?>
+            <div>
+                <form action="" name="formTopic" id="formTopic" method="post">
+                    <div class="form-group">
+                        <label for="titreTopic"><?= TXT_TITRE_TOPIC ?></label>
+                        <input class="form-control" type="text" name="titreTopic" id="titreTopic" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>"/>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="descriptionTopic" id="descriptionTopic" class="form-control" placeholder="<?= TXT_TITRE_DESCRIPTION ?>"></textarea>
+                    </div>
+                    <button type="submit" form="formTopic" name="valFormTopic" class="btn btn-primary"><?= TXT_ENVOYER ?></button>
+                </form>
             </div>
-            <div class="form-group">
-                <textarea name="descriptionTopic" id="descriptionTopic" class="form-control" placeholder="<?= TXT_TITRE_DESCRIPTION ?>"></textarea>
-            </div>
-            <button type="submit" form="formTopic" name="valFormTopic" class="btn btn-primary">Envoyer</button>
-        </form>
-    </div>
+            <?php
+        }
+    ?>
 </div>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');
