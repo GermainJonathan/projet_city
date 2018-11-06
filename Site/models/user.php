@@ -18,6 +18,11 @@ class user
     }
 
 
+    public function getCodeUser()
+    {
+        return $this->_codeUser;
+    }
+
     public function getNom()
     {
         return $this->_nom;

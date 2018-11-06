@@ -53,5 +53,11 @@ class manager
         return $adminDAO->verifConnexionUser($login, $mdp);
     }
 
+
+    public function getUserAll(){
+        $adminDAO = new administrationDAO(DEBUG);
+        return $adminDAO->getUser();
+    }
+
 }
 

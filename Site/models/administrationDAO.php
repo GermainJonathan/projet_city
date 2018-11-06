@@ -25,4 +25,14 @@ class administrationDAO extends DAO
 
     }
 
+    public function getUser(){
+        $result = $this->queryAll("SELECT * FROM user");
+
+        foreach ($result as $temp) {
+            $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($temp['codeProfile']));
+            $listUser[] = new user($temp['codeUser'], $temp['nom'], $temp['mail'], $temp['codeProfile'], $res['libelleProfile']);
+        }
+        return $listUser;
+    }
+
 }

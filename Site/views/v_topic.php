@@ -20,7 +20,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                     echo $message;
                 ?>
             </td>
-        </th>
+        </tr>
     </tbody>
 </table>
 </div>
