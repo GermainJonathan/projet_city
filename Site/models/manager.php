@@ -1,8 +1,10 @@
 <?php
 
 require_once PATH_MODELS.'paysDAO.php';
+require_once PATH_MODELS.'quartierDAO.php';
 require_once PATH_MODELS.'forumDAO.php';
 require_once PATH_MODELS.'administrationDAO.php';
+require_once PATH_MODELS.'commentaireDAO.php';
 
 // class central
 // c'est la seul class appalé par les controleur
@@ -13,6 +15,11 @@ class manager
     {
         $paysDAO = new paysDAO(DEBUG);
         return $paysDAO->getPays();
+    }
+
+    public function getQuartierByLibelle($quartier){
+        $quartierDAO = new quartierDAO(DEBUG);
+        return $quartierDAO->getQuartierByLibelle($quartier);
     }
 
     public function getTopicValid(){
@@ -57,6 +64,16 @@ class manager
     public function getUserAll(){
         $adminDAO = new administrationDAO(DEBUG);
         return $adminDAO->getUser();
+    }
+
+    public function addCommentaire(){
+        $commentaireDAO = new commentaireDAO(DEBUG);
+        $commentaireDAO->addCommentaire("", "", "");
+    }
+
+    public function getCommentaire($codeQuartier){
+        $commentaireDAO = new commentaireDAO(DEBUG);
+        return $commentaireDAO->getCommentaire($_SESSION['idLang'], $codeQuartier);
     }
 
 }
