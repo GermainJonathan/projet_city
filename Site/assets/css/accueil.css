@@ -126,9 +126,14 @@ form.leaflet-control-layers-list.leaflet-control-layers-scrollbar {
     padding-top:20px;
 }
 
+#titreAccueil {
+    z-index: 1000;
+}
+
 .AccueilIcon:hover{
     cursor:pointer;
 }
+
 .sousTitreAccueil{
     padding-top:20px;
 }

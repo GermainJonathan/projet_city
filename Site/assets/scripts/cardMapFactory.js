@@ -9,9 +9,11 @@
  */
 
 const path = ['', 'assets/images/perrache/', 'assets/images/bellecour/', 'assets/images/terreaux/'];
+const quartier = ['', 'perrache', 'bellecour', 'terreaux'];
 class Card {    
-    constructor(title, description, codeQuartier, images = "") {
+    constructor(title, description, codeQuartier, images = "", link = "") {
         this.images = images;
+        this.link = link;
         this.title  = title;
         this.codeQuartier = codeQuartier;
         this.description = description;
@@ -92,7 +94,11 @@ class Card {
         text.append(this.description);
         var link = $("<a></a>", {
             class: "btn btn-primary btn-block"
-        }).attr("href", "?page=" + this.title.toLowerCase());
+        });
+        if(this.link === "")
+            link.attr("href", "?page=" + quartier[this.codeQuartier]);
+        else
+            link.attr("href", "?page=" + quartier[this.codeQuartier] + this.link);
         link.append("En savoir plus");
         coreCard.prepend(title);
         coreCard.append(text);
