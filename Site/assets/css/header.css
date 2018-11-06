@@ -66,6 +66,10 @@
 	margin-left: 30px;
 }
 
+.dropdown {
+	display: inline-block;
+}
+
 /*------------------Boutons Administration--------------------*/
 .adminTools {
 	right: 0;
@@ -93,6 +97,36 @@
 	width: 30px;
 }
 
+.worlwide {
+	background-image: url(../images/core/worlwide.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+	width: 24px;
+}
+
+button#dropdownMenuButton {
+	border : none;
+}
+
+.show>.btn-primary.dropdown-toggle span,
+.dropdown:hover span {
+	background-image: url(../images/core/worlwideHover.svg);
+}
+
+.dropdown-toggle::after {
+	margin-left: 0;
+	vertical-align: 0;
+}
+
+.adminTools .dropdown-menu {
+	min-width: 30px !important;
+}
+
+.show>.btn-primary.dropdown-toggle,
 .disconnect:hover  {
 	background-color: #E98B39;
 }
@@ -126,5 +160,18 @@
 		margin-top: 0px;
 		width:80px;
 		height:80px;
+	}
+	.admin,
+	.logout,
+	.worlwide {
+		height: 18px;
+	}
+	button#dropdownMenuButton,
+	.disconnect {
+		padding: 0px;
+	}
+
+	.adminTools .dropdown-menu {
+		min-width: 18px !important;
 	}
 }
