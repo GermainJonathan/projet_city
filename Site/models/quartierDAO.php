@@ -7,7 +7,7 @@ class quartierDAO extends DAO
 {
 
     public function getQuartierByLibelle($nomQuartier){
-        $result = $this->queryRow("SELECT * FROM quartier WHERE libllelQuartier = ?", array($nomQuartier));
+        $result = $this->queryRow("SELECT * FROM quartier WHERE libelleQuartier = ?", array($nomQuartier));
         return new quartier($result['codeQuartier'], $result['libelleQuartier']);
     }
 

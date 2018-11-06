@@ -66,9 +66,9 @@ class manager
         return $adminDAO->getUser();
     }
 
-    public function addCommentaire(){
+    public function addCommentaire($nom, $commentaire, $codeQuartier){
         $commentaireDAO = new commentaireDAO(DEBUG);
-        $commentaireDAO->addCommentaire("", "", "");
+        $commentaireDAO->addCommentaire($_SESSION['idLang'], $codeQuartier, $commentaire, $nom);
     }
 
     public function getCommentaire($codeQuartier){

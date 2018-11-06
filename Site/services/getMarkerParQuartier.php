@@ -17,7 +17,7 @@ $responses = array();
 $code = 200;
 $bo = new Api(DEBUG);
 
-if (!empty($_GET['quartier'])) {
+if (isset($_GET['quartier'])) {
     $responses = $bo->getAllDataByQuarter($_GET['quartier']);
 } else {
     $code = 404;
