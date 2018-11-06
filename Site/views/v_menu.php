@@ -15,18 +15,18 @@
         if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
             ?>
             <div class="adminTools">
+            <?php
+                if($_SESSION['user']->getProfile() == "Administrateur") {
+            ?>
+                <a class="btn disconnect"  href="?page=administration" title="<?= TITRE_ADMINISTRATION?>">
+                    <svg class="admin"></svg>
+                </a>
+                <?php
+                    }
+                ?>    
                 <a class="btn disconnect"  href="?page=deconnexion" title="<?= MENU_DECONNEXION ?>">
                     <svg class="logout"></svg>
                 </a>
-                <?php
-                    if($_SESSION['user']->getProfile() == "Administrateur") {
-                    ?>
-                        <a class="btn disconnect"  href="?page=administration" title="<?= TITRE_ADMINISTRATION?>">
-                            <svg class="logout"></svg>
-                        </a>
-                    <?php
-                }
-                ?>
             </div>
             <?php
         }

@@ -84,12 +84,25 @@
 	width: 30px;
 }
 
+.admin {
+	background-image: url(../images/core/pc-administrator.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	height: 30px;
+	width: 30px;
+}
+
 .disconnect:hover  {
 	background-color: #E98B39;
 }
 
 .disconnect:hover .logout {
 	background-image: url(../images/core/logoutHover.svg);
+}
+
+.disconnect:hover .admin {
+	background-image: url(../images/core/pc-administratorHover.svg);
 }
 
 @media screen and (max-width: 992px) {
