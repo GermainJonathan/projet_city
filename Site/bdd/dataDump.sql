@@ -27,3 +27,11 @@ INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategor
 
 INSERT INTO `categorie` (`codeCategorie`, `libelleCategorie`) VALUES
 (100, 'Musée');
+
+INSERT INTO `profile` (`codeProfile`, `libelleProfile`) VALUES
+(1, 'Administrateur'),
+(2, 'Moderateur');
+
+INSERT INTO `user` (`codeUser`, `nom`, `mail`, `login`, `passWord`, `codeProfile`) VALUES
+(1, 'Administrateur', 'paulpoupet@atilog.com', 'Admin', '$2y$10$ZeBcxc/n7pY2syL5AUGMp.foh5Cx5IN7ZpO3WX4Ol/GKyycuChrXK', 1);
+

@@ -106,6 +106,12 @@ CREATE TABLE IF NOT EXISTS `pays` (
   KEY `codePays` (`codePays`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE `profile` (
+  `codeProfile` int(5) NOT NULL,
+  `libelleProfile` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `quartier`;
 CREATE TABLE IF NOT EXISTS `quartier` (
   `codeQuartier` int(5) NOT NULL,
@@ -144,6 +150,16 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `codeEtat` (`codeEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `codeUser` int(5) NOT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `mail` varchar(50) DEFAULT NULL,
+  `login` varchar(255) DEFAULT NULL,
+  `passWord` varchar(255) DEFAULT NULL,
+  `codeProfile` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 ALTER TABLE `activite`
   ADD CONSTRAINT `activite_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
   ADD CONSTRAINT `activite_ibfk_2` FOREIGN KEY (`codeQuartier`) REFERENCES `quartier` (`codeQuartier`),
@@ -171,3 +187,9 @@ ALTER TABLE `restaurant`
 ALTER TABLE `topic`
   ADD CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
   ADD CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`codeEtat`) REFERENCES `etattopic` (`codeEtat`);
+
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`codeUser`),
+  ADD UNIQUE KEY `login` (`login`),
+  ADD KEY `codeUser` (`codeUser`),
+  ADD KEY `codeProfile` (`codeProfile`);
