@@ -6,7 +6,7 @@
 
                 <!-- Footer Description -->
                     <div class = "row d-flex justify-content-center">
-                        <div class = "col-lg-3 col-md-4 col-sm-4 no-small text-justify">
+                        <div class = "col-lg-3 col-md-4 col-sm-4 no-small">
                             <h6><?= TITRE ?></h6>
                             <div class="footerText"><p><?= TXT_FOOTER_DESCRIPTION ?></p></div>
                         </div>

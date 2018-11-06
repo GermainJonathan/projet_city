@@ -25,6 +25,11 @@ html,body {
     border-color: #E98B39 !important;
 }
 
+.btn:focus,
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem #E98B39 ;
+}
+
 .pulse {
     width: 150px;
     height: 150px;

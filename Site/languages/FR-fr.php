@@ -27,6 +27,7 @@ define('TITRE_DATE', 'Date de parution');
 define('TITRE_TOPIC', 'Titre du Topic');
 define('TITRE_ETATA_TOPIC', 'Etat du topic');
 define('TITRE_ACTION', 'Action');
+define('TITRE_ADMINISTRATION', 'Administration');
 define('TITRE_ADMIN_NOM', 'Nom');
 define('TITRE_ADMIN_MAIL', 'Mail');
 define('TITRE_ADMIN_PROFILE', 'Profile');

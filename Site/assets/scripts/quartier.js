@@ -3,6 +3,11 @@ $(window).scroll(function() {
         $("ul.nav.navbar-nav").children(":first").children(":first").addClass("active");
     }
 });
+$(function(){
+    setTimeout(function() {
+        $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
+    }, 300);
+});
 
 var tabHistory= new Array();
 
@@ -20,6 +25,10 @@ function addBubbleInTimeline(tabBubble,container){
     }
 }
 
+function smoothScrollingTo(target){
+    $('html,body').animate({scrollTop:$(target).offset().top}, 500);
+}
+
 /**** CAROUSEL MONUMENTS ******/
 
 var tabMonument=new Array();
@@ -29,7 +38,6 @@ for (var i=0; i<7; i++){
 }
 
 CreateCarousel(tabMonument);
-
 
  // Création du carrousel
  function CreateCarousel(tabMonuments){
