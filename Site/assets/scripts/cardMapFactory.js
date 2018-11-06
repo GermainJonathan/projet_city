@@ -7,10 +7,13 @@
  * @param {string} description 
  * @param {string | Array[string]} images 
  */
-class Card {
-    constructor(title, description, images = "") {
+
+const path = ['', 'assets/images/perrache/', 'assets/images/bellecour/', 'assets/images/terreaux/'];
+class Card {    
+    constructor(title, description, codeQuartier, images = "") {
         this.images = images;
         this.title  = title;
+        this.codeQuartier = codeQuartier;
         this.description = description;
     }
 
@@ -118,7 +121,7 @@ class Card {
                 });
                 let image = $("<img>", {
                     class: "d-block w-100"
-                }).attr("src", imagePath);
+                }).attr("src", path[this.codeQuartier]+imagePath);
                 div.append(image);
                 carousel.append(div);
             }
@@ -127,7 +130,7 @@ class Card {
         } else {
             var imageCard = $("<img>", {
                 class: "card-img-top d-block w-100"
-            }).attr("src", this.images);
+            }).attr("src", path[this.codeQuartier]+this.images);
         }
         return imageCard[0];
     }

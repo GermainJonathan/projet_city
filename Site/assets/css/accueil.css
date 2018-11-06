@@ -89,10 +89,10 @@
     background-position: center center;
 }
 
-.leaflet-left {
-    top: 15% !important;
+.leaflet-top.leaflet-left {
+    top: 50% !important;
     left: 15% !important;
-    transform: translate(-15%, 0%);
+    transform: translate(-15%, -50%);
 }
 
 /* Animation des Cartes */
