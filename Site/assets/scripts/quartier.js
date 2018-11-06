@@ -6,7 +6,7 @@ $(window).scroll(function() {
 $(function(){
     setTimeout(function() {
         $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
-    }, 300);
+    }, 1000);
 });
 
 var tabHistory= new Array();
