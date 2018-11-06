@@ -1,3 +1,35 @@
 .bodyForum {
     margin: 80px 270px 0px 270px;
 }
+
+.login-form {
+    padding-bottom: 25%;
+    padding-top: 25%;
+    background-image: url("../images/core/lyonWallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-form-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 35%;
+    width: 20%;
+    transform: translate(-50%,-50%);
+    background: rgba(0,0,0,.5);
+}
+
+.user {
+    background-image: url("../images/core/man-user.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+}
+
+.mdp {
+    background-image: url("../images/core/key.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+}

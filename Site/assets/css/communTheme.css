@@ -101,7 +101,6 @@ body::-webkit-scrollbar-thumb {
 /* Fin Scroll Bar */
 
 /* PROVISOIRE */
-/*TODO: Ajouter des Toast */
 .alert {
     z-index: 1020;
 }
