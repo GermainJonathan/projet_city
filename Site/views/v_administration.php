@@ -6,8 +6,8 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-<div>
-    <table>
+<div class="bodyForum">
+    <table  class="table">
         <thead>
         <tr>
             <th><?= TITRE_ADMIN_NOM ?></th>
@@ -24,7 +24,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <td><?=$user->getNom()?></td>
                 <td><?=$user->getMail()?></td>
                 <td><?=$user->getProfile()?></td>
-                <td><?= ($user->getCodeUser() != $_SESSION['user']->getCodeUser()) ? '<button class="btn btn-danger">X</button>' : '' ?></td>
+                <td><?= ($user->getCodeUser() != $_SESSION['user']->getCodeUser()) ? '<button class="btn col-2 btn-danger">X</button>' : '' ?></td>
             </tr>
             <?php
         }

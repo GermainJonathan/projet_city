@@ -6,7 +6,7 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 <div class="bodyForum">
-    <table  class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th><?= TITRE_DATE ?></th>
@@ -39,20 +39,20 @@ require_once(PATH_VIEWS.'alert.php');?>
 
                                 case 1:
                                     ?>
-                                    <button class="btn btn-success">Valider</button>
-                                    <button class="btn btn-danger">Refuser</button>
+                                    <button class="btn col-5 btn-success">Valider</button>
+                                    <button class="btn col-5 btn-danger">Refuser</button>
                                     <?php
                                     break;
                                 case 2:
                                     ?>
-                                    <button class="btn btn-success">Résolu</button>
-                                    <button class="btn btn-danger">Annuler</button>
+                                    <button class="btn col-5 btn-success">Résolu</button>
+                                    <button class="btn col-5 btn-danger">Annuler</button>
                                     <?php
                                     break;
                                 case 3:
                                     ?>
-                                    <button class="btn btn-success">Valider</button>
-                                    <button class="btn btn-danger">Supprimer</button>
+                                    <button class="btn col-5 btn-success">Valider</button>
+                                    <button class="btn col-5 btn-danger">Supprimer</button>
                                     <?php
                                     break;
 

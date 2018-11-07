@@ -56,7 +56,8 @@ div.input-group {
     border-top: 1px solid rgba(255,255,255,.9)
 }
 
-input.form-control {
+input.form-control#passWord,
+input.form-control#login {
     background: transparent;
     color: white;
     border: none;

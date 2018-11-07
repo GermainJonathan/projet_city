@@ -146,7 +146,9 @@ button.btn#valFormConnexion {
 
 @media screen and (max-width: 992px) {
 	.adminTools {
-		margin-top: 8px;
+		margin-top: 15px;
+		left: 0;
+		right: unset;
 	}
 	.navbar {
 		justify-content: center;
