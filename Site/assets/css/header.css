@@ -139,6 +139,11 @@ button#dropdownMenuButton {
 	background-image: url(../images/core/pc-administratorHover.svg);
 }
 
+button.btn#valFormConnexion {
+	width: 100% !important;
+	margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 992px) {
 	.adminTools {
 		margin-top: 8px;
