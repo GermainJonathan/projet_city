@@ -14,22 +14,48 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 35%;
+    height: auto;
     width: 20%;
     transform: translate(-50%,-50%);
     background: rgba(0,0,0,.5);
+    border-radius: 30px;
+    box-shadow: 12px 12px 0px 3px rgba(0,0,0,.4);
 }
 
 .user {
-    background-image: url("../images/core/man-user.svg");
-    background-repeat: no-repeat;
+    background: url("../images/core/man-user.svg") no-repeat;
     background-size: contain;
     width: 20px;
+    height: 20px;
 }
 
 .mdp {
-    background-image: url("../images/core/key.svg");
-    background-repeat: no-repeat;
+    background: url("../images/core/key.svg") no-repeat;
     background-size: contain;
     width: 20px;
+    height: 20px;
+}
+
+.loginTitle {
+    color: white;
+    margin: 14px 0px;
+}
+
+div.input-group {
+    padding: 10px;
+}
+
+input.form-control {
+    background: transparent;
+    color: white;
+}
+
+input#login::placeholder,
+input#passWord::placeholder {
+    color: rgba(255,255,255,.7);
+}
+
+input.form-control:focus {
+    background: transparent;
+    color: white;
 }
