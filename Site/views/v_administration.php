@@ -6,14 +6,14 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-<div class="bodyForum">
-    <table  class="table">
+<div class="bodyForum container">
+    <table  class="table table-hover table-striped">
         <thead>
         <tr>
-            <th><?= TITRE_ADMIN_NOM ?></th>
-            <th><?= TITRE_ADMIN_MAIL ?></th>
-            <th><?= TITRE_ADMIN_PROFILE ?></th>
-            <th><?= TITRE_ACTION ?></th>
+            <th scope="col"><?= TITRE_ADMIN_NOM ?></th>
+            <th scope="col"><?= TITRE_ADMIN_MAIL ?></th>
+            <th scope="col"><?= TITRE_ADMIN_PROFILE ?></th>
+            <th scope="col"><?= TITRE_ACTION ?></th>
         </tr>
         </thead>
         <tbody>

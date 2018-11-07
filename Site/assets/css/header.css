@@ -182,3 +182,15 @@ button.btn#valFormConnexion {
 		min-width: 18px !important;
 	}
 }
+
+@media screen and (max-width: 1092px) and (min-width: 992px) {
+	.navbar {
+		justify-content: center;
+	}
+	.navbar-nav li{
+		margin: 2px;
+	}
+	.adminTools {
+		padding: 2px;
+	}
+}

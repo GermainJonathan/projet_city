@@ -5,27 +5,27 @@ require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
-<div class="bodyForum">
-    <table class="table">
+<div class="bodyForum container">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th><?= TITRE_DATE ?></th>
-                <th><?= TITRE_TOPIC ?></th>
+                <th scope="col"><?= TITRE_DATE ?></th>
+                <th scope="col"><?= TITRE_TOPIC ?></th>
                 <?php
                 if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
                     ?>
-                    <th><?= TITRE_ETATA_TOPIC ?></th>
-                    <th><?= TITRE_ACTION ?></th>
+                    <th scope="col"><?= TITRE_ETATA_TOPIC ?></th>
+                    <th scope="col"><?= TITRE_ACTION ?></th>
                     <?php
                 }
                 ?>
             </tr>
         </thead>
+        <tbody>
         <?php
 
         foreach ($listTopic as $topic) {
             ?>
-            <tbody>
                 <tr>
                     <td><?= dateBaseToSite($topic->getDate()) ?></td>
                     <td><a href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
@@ -63,11 +63,11 @@ require_once(PATH_VIEWS.'alert.php');?>
                     }
                     ?>
                 </tr>
-            </tbody>
+            
             <?php
         }
-
         ?>
+        </tbody>
     </table>
     <?php
         if (empty($_SESSION['user'])){
