@@ -28,7 +28,7 @@ require_once(PATH_VIEWS.'alert.php');?>
             ?>
                 <tr>
                     <td><?= dateBaseToSite($topic->getDate()) ?></td>
-                    <td><a href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
+                    <td><a class="list-group-item list-group-item-action" href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
                     <?php
                     if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
                         ?>

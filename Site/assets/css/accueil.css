@@ -177,6 +177,6 @@ a.list-group-item {
     transition: all 0.4s;
 }
 a.list-group-item:hover {
-    background:#E98B39;
-    color: white;
+    background:#E98B39 !important;
+    color: white !important;
 }

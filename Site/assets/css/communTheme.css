@@ -53,6 +53,8 @@ html,body {
   
 .spinner {
     height: 100%;
+    text-align: center;
+    margin: 0;
 }
 
 @-webkit-keyframes sk-scaleout {

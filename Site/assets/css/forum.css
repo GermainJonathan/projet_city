@@ -80,6 +80,24 @@ span.input-group-text {
     border: none;
 }
 
+a.list-group-item.list-group-item-action {
+    background: none;
+    border: none;
+    line-height: 100%;
+}
+
+.table {
+    text-align: center;
+}
+
+.table td > a {
+    color: #E98B39;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
 @media screen and (max-width: 767px) {
     .login-form-group {
         width: 60%;
