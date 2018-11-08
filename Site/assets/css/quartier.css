@@ -182,6 +182,30 @@ p{
     margin:0!important;
     visibility: hidden!important;
 }
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------ACTIVITÉ-------------------------------------------*/
+
+
+#arrowUpActivity{
+    transform:rotate(270deg);
+    height: 50px;
+    width: 50px;
+    margin: 50px;
+}
+
+#arrowDownActivity{
+    transform:rotate(90deg);
+    height: 50px;
+    width: 50px;
+    margin: 50px;
+}
+
+#parallaxactivite{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 /*------------------------------------------------------------------------------------*/
 /*------------------------------RESTAURANT-------------------------------------------*/
 .containerCard{
