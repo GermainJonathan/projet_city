@@ -111,3 +111,21 @@ body::-webkit-scrollbar-thumb {
 .alert {
     z-index: 1020;
 }
+
+.erreur404FR-fr {
+    background: url("../images//core/404-fr.svg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 50vh;
+}
+
+.erreur404EN-en {
+    background: url("../images//core/404-en.svg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 50vh;
+}
+
+#button404 {
+    margin: 10px;
+}

@@ -34,3 +34,6 @@ INSERT INTO `categorie` (`codeCategorie`, `libelleCategorie`) VALUES
 
 INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategorie`, `nom`, `nomLieux`, `coordonnees`, `imageActivite`, `commentaire`) VALUES
 (1, 1, 1, 100, 'Le Musée des Tissus et des Arts Décoratifs', NULL, ST_GeomFromText('POINT(45.7532337 4.831183300000021)'), 'musee-tissu-lyon.jpg', NULL);
+
+INSERT INTO `restaurant` (`codeRestaurant`, `codePays`, `codeQuartier`, `nom`, `adresse`, `numeroTelephone`, `coordonnees`, `imageRestaurant`, `commentaire`) VALUES
+(1, 1, 1, '', '', '', ST_GeomFromText('POINT()'), NULL, NULL)
