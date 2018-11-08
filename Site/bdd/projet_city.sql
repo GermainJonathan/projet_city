@@ -60,6 +60,7 @@ DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `codeMessage` int(5) NOT NULL,
   `codeTopic` int(5) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
   `message` text,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`codeMessage`),
@@ -175,6 +176,8 @@ ALTER TABLE `histoire`
 
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`codeTopic`) REFERENCES `topic` (`codeTopic`);
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`codeProfile`) REFERENCES `profile` (`codeProfile`);
+  ADD KEY `codeProfile` (`codeProfile`);
 
 ALTER TABLE `monument`
   ADD CONSTRAINT `monument_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),

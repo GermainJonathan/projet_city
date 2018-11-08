@@ -52,9 +52,14 @@ class forumDAO extends DAO
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
 
         $listMessage = array();
-        foreach ($result as $temp)
-            $listMessage[] = new message($temp['codeMessage'], $temp['codeTopic'], $temp['message'], $temp['date']);
-
+        foreach ($result as $temp) {
+            if($temp['codeProfile'] == 0)
+                $listMessage[] = new message($temp['codeMessage'], $temp['codeTopic'], $temp['nom'], $temp['message'], $temp['date']);
+            else {
+                $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($temp['codeProfile']));
+                $listMessage[] = new message($temp['codeMessage'], $temp['codeTopic'], $temp['nom'], $temp['message'], $temp['date'], $temp['codeProfile'], $res['libelleProfile']);
+            }
+        }
         return $listMessage;
     }
 
