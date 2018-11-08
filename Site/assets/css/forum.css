@@ -70,7 +70,8 @@ input#passWord::placeholder {
     color: rgba(255,255,255,.7);
 }
 
-input.form-control:focus {
+input.form-control#passWord:focus, 
+input.form-control#login:focus {
     background: transparent;
     color: white;
 }
