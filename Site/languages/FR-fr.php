@@ -24,8 +24,10 @@ define('TITRE_RESTAURANT', 'Restaurants');
 define('TITRE_COMMENTAIRE', 'Commentaire');
 define('TITRE_MENU', 'Menu');
 define('TITRE_DATE', 'Date de parution');
+define('TITRE_COMM_NOM', 'Nom');
 define('TITRE_TOPIC', 'Titre du Topic');
 define('TITRE_ETATA_TOPIC', 'Etat du topic');
+define('TITRE_MESSAGE', 'Message');
 define('TITRE_ACTION', 'Action');
 define('TITRE_ADMINISTRATION', 'Administration');
 define('TITRE_ADMIN_NOM', 'Nom');
@@ -42,6 +44,12 @@ define('TXT_COMM_NOM', 'Nom');
 define('TXT_COMM_COMM', 'Commentaire');
 
 define('TXT_ENVOYER', 'Envoyer');
+
+define('TXT_VALIDER', 'Valider');
+define('TXT_RESOLUE', 'Résolue');
+define('TXT_REFUSER', 'Refuser');
+define('TXT_ANNULER', 'Annuler');
+define('TXT_SUPPRIMER', 'Supprimer');
 
 define('ERREUR_TOPC_DSC', 'Il manque la description');
 define('ERREUR_TOPC_TITRE', 'Il manque le titre');
