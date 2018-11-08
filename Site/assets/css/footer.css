@@ -1,96 +1,99 @@
 /** FOOTER **/
 
 /* Icon */
-#iconFb{
-    background-image:url(../images/core/facebook.svg);
-}
-    #iconFb:hover{
-        background-image:url(../images/core/facebookHover.svg);
-        cursor:pointer;
-    }
-
-#iconInsta{
-    background-image:url(../images/core/instagram.svg);
-}
-    #iconInsta:hover{
-        background-image:url(../images/core/instagramHover.svg);
-        cursor:pointer;
-    }
-
-#iconTwitter{
-    background-image:url(../images/core/twitter.svg);
+#iconFb {
+    background-image: url(../images/core/facebook.svg);
 }
 
-    #iconTwitter:hover{
-        background-image:url(../images/core/twitterHover.svg);
-        cursor:pointer;
-    }
+#iconFb:hover {
+    background-image: url(../images/core/facebookHover.svg);
+    cursor: pointer;
+}
+
+#iconInsta {
+    background-image: url(../images/core/instagram.svg);
+}
+
+#iconInsta:hover {
+    background-image: url(../images/core/instagramHover.svg);
+    cursor: pointer;
+}
+
+#iconTwitter {
+    background-image: url(../images/core/twitter.svg);
+}
+
+#iconTwitter:hover {
+    background-image: url(../images/core/twitterHover.svg);
+    cursor: pointer;
+}
 
 /* Classe générale du footer */
-.footer{
-	background-color: #444;
-	color: #fff;
-	width: 100%;
-	height:auto;
-    bottom:0;
+.footer {
+    background-color: #444;
+    color: #fff;
+    width: 100%;
+    height: auto;
+    bottom: 0;
     position: relative;
-    padding-top:40px;
-    padding-bottom:40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     cursor: default;
-    z-index:10;
+    z-index: 10;
 }
 
-.footerText{
-    font-size:11px;
+.footerText {
+    font-size: 11px;
 }
 
-.footer a{
-    color:white;
-    font-size:11px;
+.footer a {
+    color: white;
+    font-size: 11px;
 }
-.footer a:hover{
-    color:#E98B39;
-    cursor:pointer;
+
+.footer a:hover {
+    color: #E98B39;
+    cursor: pointer;
     text-decoration: none;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 
-.icon{
+.icon {
     background-position: center;
-    width:20px;
+    width: 20px;
     background-repeat: no-repeat;
-    height:20px;
+    height: 20px;
     background-size: contain;
-    float:left;
-    margin-right:15px;
+    float: left;
+    margin-right: 15px;
 }
 
-.imgA{
-    width:100%;
-    height:100%;
+.imgA {
+    width: 100%;
+    height: 100%;
 }
 
 
 
-@media  screen and (max-width: 576px){
+@media screen and (max-width: 576px) {
 
-    .footer{
-        padding-top:20px;
-        padding-bottom:20px;
+    .footer {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
-    .footerText.center{
-        text-align:center;
+    .footerText.center {
+        text-align: center;
     }
 
-    .no-small{
-        display:none;
+    .no-small {
+        display: none;
     }
 
-    .smallFooter{
+    .smallFooter {
         justify-content: center;
     }
 
-    
+
 }

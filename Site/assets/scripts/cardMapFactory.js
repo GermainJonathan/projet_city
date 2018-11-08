@@ -7,10 +7,15 @@
  * @param {string} description 
  * @param {string | Array[string]} images 
  */
-class Card {
-    constructor(title, description, images = "") {
+
+const path = ['', 'assets/images/perrache/', 'assets/images/bellecour/', 'assets/images/terreaux/'];
+const quartier = ['', 'perrache', 'bellecour', 'terreaux'];
+class Card {    
+    constructor(title, description, codeQuartier, images = "", link = "") {
         this.images = images;
+        this.link = link;
         this.title  = title;
+        this.codeQuartier = codeQuartier;
         this.description = description;
     }
 
@@ -89,7 +94,11 @@ class Card {
         text.append(this.description);
         var link = $("<a></a>", {
             class: "btn btn-primary btn-block"
-        }).attr("href", "?page=" + this.title.toLowerCase());
+        });
+        if(this.link === "")
+            link.attr("href", "?page=" + quartier[this.codeQuartier]);
+        else
+            link.attr("href", "?page=" + quartier[this.codeQuartier] + this.link);
         link.append("En savoir plus");
         coreCard.prepend(title);
         coreCard.append(text);
@@ -118,7 +127,7 @@ class Card {
                 });
                 let image = $("<img>", {
                     class: "d-block w-100"
-                }).attr("src", imagePath);
+                }).attr("src", path[this.codeQuartier]+imagePath);
                 div.append(image);
                 carousel.append(div);
             }
@@ -127,7 +136,7 @@ class Card {
         } else {
             var imageCard = $("<img>", {
                 class: "card-img-top d-block w-100"
-            }).attr("src", this.images);
+            }).attr("src", path[this.codeQuartier]+this.images);
         }
         return imageCard[0];
     }

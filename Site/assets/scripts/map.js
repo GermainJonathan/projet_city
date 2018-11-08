@@ -234,15 +234,15 @@ function setupQuarterCard(quarterName) {
     legend = L.control({position: 'topleft'});
     switch (quarterName) {
         case "Perrache" :
-            var perracheCard = new Card(quarterName, textDescriptionFactice,["assets/images/perrache/perrache.jpg", "assets/images/bellecour/bellecour.jpg", "assets/images/terreaux/terreaux.jpg"]);
+            var perracheCard = new Card(quarterName, textDescriptionFactice, 1, ["perrache.jpg", "bellecour.jpg", "terreaux.jpg"]);
             legend.onAdd = perracheCard.createCard();
             break;
         case "Bellecour" :
-            var bellecourCard = new Card(quarterName, textDescriptionFactice,"assets/images/bellecour/bellecour.jpg");
+            var bellecourCard = new Card(quarterName, textDescriptionFactice, 2, "bellecour.jpg");
             legend.onAdd = bellecourCard.createCard();
             break;
         case "Terreaux":
-            var terreauxCard = new Card(quarterName, textDescriptionFactice,"assets/images/terreaux/terreaux.jpg");
+            var terreauxCard = new Card(quarterName, textDescriptionFactice, 3,  "terreaux.jpg");
             legend.onAdd = terreauxCard.createCard();
             break;
         default:
@@ -259,7 +259,7 @@ function setupQuarterCard(quarterName) {
 function setupMarkerCard(patrimoine) {
     legend.remove();
     legend = L.control({position: 'topleft'});
-    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.images);
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.idQuartier, patrimoine.images);
     legend.onAdd = patrimoineCard.createCard();
     legend.addTo(mymap);
 }

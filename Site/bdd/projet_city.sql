@@ -15,9 +15,6 @@ CREATE TABLE IF NOT EXISTS `activite` (
   SPATIAL KEY `coordonnees` (`coordonnees`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `activite` (`codeActivite`, `codePays`, `codeQuartier`, `codeCategorie`, `nom`, `nomLieux`, `coordonnees`, `imageActivite`, `commentaire`) VALUES
-(1, 1, 1, 100, 'Le Musée des Tissus et des Arts Décoratifs', NULL, GeomFromText('POINT(45.7518938 4.8256525)'), '', NULL);
-
 DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
   `codeCategorie` int(5) NOT NULL,
@@ -25,9 +22,6 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`codeCategorie`),
   KEY `codeCategorie` (`codeCategorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `categorie` (`codeCategorie`, `libelleCategorie`) VALUES
-(100, 'Musée');
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
@@ -49,11 +43,6 @@ CREATE TABLE IF NOT EXISTS `etatTopic` (
   PRIMARY KEY (`codeEtat`),
   KEY `codeEtat` (`codeEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
-(1, 'En attente'),
-(2, 'Valider'),
-(3, 'Annuler');
 
 DROP TABLE IF EXISTS `histoire`;
 CREATE TABLE IF NOT EXISTS `histoire` (
@@ -77,9 +66,6 @@ CREATE TABLE IF NOT EXISTS `message` (
   KEY `codeMessage` (`codeMessage`),
   KEY `codeTopic` (`codeTopic`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `message` (`codeMessage`, `codeTopic`, `message`, `date`) VALUES
-(1, 1, 'test message 1', '2018-09-28');
 
 DROP TABLE IF EXISTS `messagecontact`;
 CREATE TABLE IF NOT EXISTS `messagecontact` (
@@ -110,11 +96,6 @@ CREATE TABLE IF NOT EXISTS `monument` (
   SPATIAL KEY `coordonnees` (`coordonnees`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
-INSERT INTO `monument` (`codeMonument`, `codePays`, `codeQuartier`, `libelleMonument`, `imageMonument`, `coordonnees`, `dateConstruction`, `architecte`, `commentaire`) VALUES
-(1, 1, 3, 'Hôtel de ville de Lyon', 'assets\\images\\terreaux\\hotel-de-ville-lyon-1.jpg', GeomFromText('POINT(45.7677074 4.828135800000041)'), '1672-01-01', 'Simon Maupin', NULL),
-(2, 1, 1, 'Statue de la République', 'assets\\images\\perrache\\statut-de-la-republique.jpg', GeomFromText('POINT(45.7508908 4.8259418)'), '1880-01-01', 'Victor-Auguste Blavette', NULL);
-
 DROP TABLE IF EXISTS `pays`;
 CREATE TABLE IF NOT EXISTS `pays` (
   `codePays` int(5) NOT NULL,
@@ -125,8 +106,11 @@ CREATE TABLE IF NOT EXISTS `pays` (
   KEY `codePays` (`codePays`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `pays` (`codePays`, `libellePays`, `libellePaysCourt`, `fichier`) VALUES
-(1, 'France', 'FR', '');
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE `profile` (
+  `codeProfile` int(5) NOT NULL,
+  `libelleProfile` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `quartier`;
 CREATE TABLE IF NOT EXISTS `quartier` (
@@ -135,11 +119,6 @@ CREATE TABLE IF NOT EXISTS `quartier` (
   PRIMARY KEY (`codeQuartier`),
   KEY `codeQuartier` (`codeQuartier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `quartier` (`codeQuartier`, `libelleQuartier`) VALUES
-(1, 'Perrache'),
-(2, 'Bellecour'),
-(3, 'Terreaux');
 
 DROP TABLE IF EXISTS `restaurant`;
 CREATE TABLE IF NOT EXISTS `restaurant` (
@@ -171,10 +150,15 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `codeEtat` (`codeEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-INSERT INTO `topic` (`codeTopic`, `codePays`, `libelleTopic`, `description`, `codeEtat`, `date`) VALUES
-(1, 1, 'test1', 'ceci est un test', 1, '2018-09-27'),
-(2, 1, 'testSite', 'test depuis le site', 1, '2018-09-28');
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `codeUser` int(5) NOT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `mail` varchar(50) DEFAULT NULL,
+  `login` varchar(255) DEFAULT NULL,
+  `passWord` varchar(255) DEFAULT NULL,
+  `codeProfile` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `activite`
   ADD CONSTRAINT `activite_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
@@ -203,3 +187,9 @@ ALTER TABLE `restaurant`
 ALTER TABLE `topic`
   ADD CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
   ADD CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`codeEtat`) REFERENCES `etattopic` (`codeEtat`);
+
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`codeUser`),
+  ADD UNIQUE KEY `login` (`login`),
+  ADD KEY `codeUser` (`codeUser`),
+  ADD KEY `codeProfile` (`codeProfile`);

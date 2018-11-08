@@ -6,14 +6,14 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 
-<div>
-    <table>
+<div class="bodyForum container">
+    <table  class="table table-hover table-striped">
         <thead>
         <tr>
-            <th><?= TITRE_ADMIN_NOM ?></th>
-            <th><?= TITRE_ADMIN_MAIL ?></th>
-            <th><?= TITRE_ADMIN_PROFILE ?></th>
-            <th><?= TITRE_ACTION ?></th>
+            <th scope="col"><?= TITRE_ADMIN_NOM ?></th>
+            <th scope="col"><?= TITRE_ADMIN_MAIL ?></th>
+            <th scope="col"><?= TITRE_ADMIN_PROFILE ?></th>
+            <th scope="col"><?= TITRE_ACTION ?></th>
         </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <td><?=$user->getNom()?></td>
                 <td><?=$user->getMail()?></td>
                 <td><?=$user->getProfile()?></td>
-                <td><?= ($user->getCodeUser() != $_SESSION['user']->getCodeUser()) ? '<button class="btn btn-danger">X</button>' : '' ?></td>
+                <td><?= ($user->getCodeUser() != $_SESSION['user']->getCodeUser()) ? '<button class="btn col-2 btn-danger">X</button>' : '' ?></td>
             </tr>
             <?php
         }

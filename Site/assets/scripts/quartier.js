@@ -6,7 +6,7 @@ $(window).scroll(function() {
 $(function(){
     setTimeout(function() {
         $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
-    }, 300);
+    }, 1000);
 });
 
 var tabHistory= new Array();
@@ -34,7 +34,7 @@ function smoothScrollingTo(target){
 var tabMonument=new Array();
 
 for (var i=0; i<7; i++){
-    tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.","assets/images/terreaux/terreaux.jpg"));    
+    tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.", 3, "terreaux.jpg"));    
 }
 
 CreateCarousel(tabMonument);
@@ -106,7 +106,7 @@ CreateCarousel(tabMonument);
  var tabRestaurants=new Array();
 
 for (var i=0; i<7; i++){
-    tabRestaurants.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.","assets/images/terreaux/terreaux.jpg"));    
+    tabRestaurants.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.", 3, "terreaux.jpg"));    
 }
 
 CreateContainerRestaurants(tabRestaurants);
