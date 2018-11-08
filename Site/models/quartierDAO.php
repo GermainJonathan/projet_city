@@ -3,6 +3,8 @@
 require_once PATH_MODELS.'DAO.php';
 require_once PATH_MODELS.'quartier.php';
 
+//require_once PATH_MODELS.'activite.php';
+
 class quartierDAO extends DAO
 {
 
@@ -14,6 +16,10 @@ class quartierDAO extends DAO
     public function getQuartierByCode($codeQuartier){
         $result = $this->queryRow("SELECT * FROM quartier WHERE codeQuartier = ?", array($codeQuartier));
         return new quartier($result['codeQuartier'], $result['libelleQuartier']);
+    }
+
+    public function getActiviteByQuartier($idQuartier){
+        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = 1");
     }
 
 }

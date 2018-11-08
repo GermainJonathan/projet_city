@@ -12,6 +12,7 @@ INSERT INTO `quartier` (`codeQuartier`, `libelleQuartier`) VALUES
 (3, 'Terreaux');
 
 INSERT INTO `profile` (`codeProfile`, `libelleProfile`) VALUES
+(0, 'User'),
 (1, 'Administrateur'),
 (2, 'Moderateur');
 
