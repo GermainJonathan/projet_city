@@ -77,8 +77,7 @@ abstract class DAO
     }
 
     // retourne true ou false
-    // pour update et delete
-    // et insert
+    // pour update, delete et insert
     protected function queryBdd($sql, $args = null)
     {
         $res = true;

@@ -266,43 +266,96 @@ require_once(PATH_VIEWS.'spinner.php');?>
                     </div>
                 </div>
             </div>
-            <span class="anchor" id="anchorBodyCommentaires"></span>
-            <div id="bodyCommentaires">
-                <h1> Commentaires</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat.
-                    Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat.</p>
-                <?php
-            if (empty($_SESSION['user'])){
-                ?>
-                <div>
-                    <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
-                        <div class="form-group">
-                            <label for="nomCommentaire">
-                                <?= TXT_COMM_NOM ?></label>
-                            <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
-                        </div>
-                        <div class="form-group">
-                            <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
-                        </div>
-                        <button type="submit" form="formCommentaireBellecour" name="valFormCommentaireBellecour" class="btn btn-primary">
-                            <?= TXT_ENVOYER ?></button>
-                    </form>
-                </div>
-                <?php
-            }
-            ?>
-            </div>
         </div>
     </div>
+
+    <span class="anchor" id="anchorBodyCommentaires"></span>
+    <div id="bodyCommentaires">
+        <h1>
+            <?= TITRE_COMMENTAIRE ?>
+        </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat.</p>
+        <?php
+            if (empty($_SESSION['user'])){
+                ?>
+        <div>
+            <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
+                <div class="form-group">
+                    <label for="nomCommentaire">
+                        <?= TXT_COMM_NOM ?></label>
+                    <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
+                </div>
+                <div class="form-group">
+                    <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
+                </div>
+                <button type="submit" form="formCommentaireBellecour" name="valFormCommentaireBellecour" class="btn btn-primary">
+                    <?= TXT_ENVOYER ?></button>
+            </form>
+        </div>
+        <?php
+            }
+            ?>
+        <div>
+            <!-- le tbleau est à virer !! (c'est moche) -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <?= TITRE_DATE ?>
+                        </th>
+                        <th>
+                            <?= TITRE_COMM_NOM ?>
+                        </th>
+                        <th>
+                            <?= TITRE_COMMENTAIRE ?>
+                        </th>
+                        <?php
+                        if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
+                            ?>
+                        <th>
+                            <?= TITRE_ACTION ?>
+                        </th>
+                        <?php
+                        }
+                        ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($listCommentaire as $commentaire){
+                            ?>
+                    <td>
+                        <?= $commentaire->getDate() ?>
+                    </td>
+                    <td>
+                        <?= $commentaire->getNom() ?>
+                    </td>
+                    <td>
+                        <?= $commentaire->getCommentaire() ?>
+                    </td>
+                    <?php
+                            if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
+                            ?>
+                    <td><button class="btn btn-danger">X</button></td>
+                    <?php
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>cardMapFactory.js"></script>
@@ -310,4 +363,4 @@ require_once(PATH_VIEWS.'spinner.php');?>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>quartier.js"></script>
 
 <!--  Pied de page -->
-<?php require_once(PATH_VIEWS.'footer.php');
+<?php require_once PATH_VIEWS.'footer.php';

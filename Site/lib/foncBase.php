@@ -84,3 +84,31 @@ function getLangage(){
     $_SESSION["idLang"] = 1;
     return "FR-fr";
 }
+
+function getActionValidByEtat($etat){
+    switch ($etat) {
+
+        case 1:
+            Return array("action" => TXT_VALIDER, "codeAction" => 2);
+        case 2:
+            return array("action" => TXT_RESOLUE, "codeAction" => 1);
+        case 3:
+            return array("action" => TXT_VALIDER, "codeAction" => 3);
+        default:
+            return false;
+    }
+}
+
+function getActionRefuseByEtat($etat){
+    switch ($etat) {
+
+        case 1:
+            Return array("action" => TXT_REFUSER, "codeAction" => 1);
+        case 2:
+            return array("action" => TXT_ANNULER, "codeAction" => 2);
+        case 3:
+            return array("action" => TXT_SUPPRIMER, "codeAction" => 3);
+        default:
+            return false;
+    }
+}

@@ -9,7 +9,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 <table class="table table-hover table-striped">
     <thead>
         <tr>
-            <th scope="col">Messages</th>
+            <th scope="col"><?= TITRE_MESSAGE ?></th>
         </tr>
     </thead>
     <tbody>
