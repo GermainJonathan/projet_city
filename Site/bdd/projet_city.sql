@@ -60,12 +60,10 @@ DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `codeMessage` int(5) NOT NULL,
   `codeTopic` int(5) DEFAULT NULL,
-  `nom` varchar(50) DEFAULT NULL,
+  `nom` varchar(50) NOT NULL,
   `message` text,
   `date` date DEFAULT NULL,
-  PRIMARY KEY (`codeMessage`),
-  KEY `codeMessage` (`codeMessage`),
-  KEY `codeTopic` (`codeTopic`)
+  `codeProfile` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `messagecontact`;
@@ -173,6 +171,14 @@ ALTER TABLE `commentaire`
 ALTER TABLE `histoire`
   ADD CONSTRAINT `histoire_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
   ADD CONSTRAINT `histoire_ibfk_2` FOREIGN KEY (`codeQuartier`) REFERENCES `quartier` (`codeQuartier`);
+
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`codeTopic`) REFERENCES `topic` (`codeTopic`),
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`codeProfile`) REFERENCES `profile` (`codeProfile`);
+  ADD PRIMARY KEY (`codeMessage`),
+  ADD KEY `codeMessage` (`codeMessage`),
+  ADD KEY `codeTopic` (`codeTopic`),
+  ADD KEY `codeProfile` (`codeProfile`);
 
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`codeTopic`) REFERENCES `topic` (`codeTopic`);
