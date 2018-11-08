@@ -15,9 +15,10 @@ class topic
     private $_codeActionValid;
     private $_actionRefuse;
     private $_codeActionRefuse;
+    private $_nbMessage;
 
 
-    public function __construct($id, $idLang, $titre, $description, $etat, $codeEtat, $date)
+    public function __construct($id, $idLang, $titre, $description, $etat, $codeEtat, $date, $nbMessage)
     {
         $this->_id = $id;
         $this->_idLang = $idLang;
@@ -32,6 +33,7 @@ class topic
         $refuse = getActionRefuseByEtat($codeEtat);
         $this->_actionRefuse = $refuse['action'];
         $this->_codeActionRefuse = $refuse['codeAction'];
+        $this->_nbMessage = $nbMessage;
     }
 
     public function getId()
@@ -99,6 +101,23 @@ class topic
     public function getCodeActionRefuse()
     {
         return $this->_codeActionRefuse;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getNbMessage()
+    {
+        return $this->_nbMessage;
+    }
+
+    /**
+     * @param mixed $nbMessage
+     */
+    public function setNbMessage($nbMessage): void
+    {
+        $this->_nbMessage = $nbMessage;
     }
 
     public function __toString()
