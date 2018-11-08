@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `codeQuartier` int(5) DEFAULT NULL,
   `commentaire` text,
   `date` date DEFAULT NULL,
+  `actif` int(5) NOT NULL,
   PRIMARY KEY (`codeCommentaire`),
   KEY `codeCommentaire` (`codeCommentaire`),
   KEY `codePays` (`codePays`),
