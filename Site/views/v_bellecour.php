@@ -10,7 +10,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
 
 
 <!-- SideBar Page -->
-<div>
+<div class="container-fluid">
     <div id="sideBar" class="col-lg-2 col-md-2 col-sm-0">
         <nav id="menuQuartier">
             <ul class="nav navbar-nav">
@@ -70,6 +70,15 @@ require_once(PATH_VIEWS.'spinner.php');?>
                     <div class="carrousel-contenu" id="carrouselMonument">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="EnsavoirPlus col-lg-10" id="SavoirPlusMonuments">
+                        <div class="imgSavoirPlus"></div>    
+                        <div class="txtSavoirPlus">
+                            <div class="titreSavoirPlus"></div>
+                            <div class="descSavoirPlus"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -77,12 +86,23 @@ require_once(PATH_VIEWS.'spinner.php');?>
         <div class="row">
             <div class="col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12" id="bodyRestaurants">
                 <h1><?= TITRE_RESTAURANT ?></h1>
-                <div class="containerCard" id="RestaurantCards">
+                <div id="ctnRestaurants">
+                    <div class="containerCard" id="RestaurantCards">
 
+                    </div>
+                    <div class="arrow-restaurant"id="ArrowRes">
+                        <div class="arrow" id="arrowTopRestaurant"></div>
+                        <div class="arrow" id="arrowDownRestaurant"></div>
+                    </div>
                 </div>
-                <div class="arrow-restaurant"id="ArrowRes">
-                    <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
-                    <a class="arrow" id="arrowDownRestaurant"></a>
+                <div class="row" id="rowSavoirPlus">
+                    <div class="EnsavoirPlus col-lg-10" id="SavoirPlusRestaurants">
+                        <div class="imgSavoirPlus"></div>
+                        <div class="txtSavoirPlus">
+                            <div class="titreSavoirPlus"></div>
+                            <div class="descSavoirPlus"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
