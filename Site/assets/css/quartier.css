@@ -208,7 +208,7 @@ p{
 
 #activiteconteneur{
     height: 300px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 /*------------------------------------------------------------------------------------*/
