@@ -86,22 +86,6 @@ require_once(PATH_VIEWS.'spinner.php');?>
                     </div>
                 </div>
             </div>
-
-            <span class="anchor" id="anchorBodyRestaurants"></span>
-            <div class="row">
-                <div id="bodyRestaurants">
-                    <h1>
-                        <?= TITRE_RESTAURANT ?>
-                    </h1>
-                    <div class="containerCard" id="RestaurantCards">
-
-                    </div>
-                    <div class="arrow-restaurant" id="ArrowRes">
-                        <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
-                        <a class="arrow" id="arrowDownRestaurant"></a>
-                    </div>
-                </div>
-            </div>
             <span class="anchor" id="anchorBodyActivites"></span>
             <div id="bodyActivites" class="container-fluid">
                 <div class="row">
@@ -266,8 +250,21 @@ require_once(PATH_VIEWS.'spinner.php');?>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <span class="anchor" id="anchorBodyRestaurants"></span>
+            <div class="row">
+                <div id="bodyRestaurants">
+                    <h1>
+                        <?= TITRE_RESTAURANT ?>
+                    </h1>
+                    <div class="containerCard" id="RestaurantCards">
+
+                    </div>
+                    <div class="arrow-restaurant" id="ArrowRes">
+                        <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
+                        <a class="arrow" id="arrowDownRestaurant"></a>
+                    </div>
+                </div>
+            </div>
 
     <span class="anchor" id="anchorBodyCommentaires"></span>
     <div id="bodyCommentaires">
@@ -353,6 +350,8 @@ require_once(PATH_VIEWS.'spinner.php');?>
                     ?>
                 </tbody>
             </table>
+        </div>
+    </div>
         </div>
     </div>
 </div>
