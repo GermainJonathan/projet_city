@@ -5,8 +5,8 @@ require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
-<div class="bodyForum">
-<table class="table">
+<div class="bodyForum container">
+<table class="table table-hover table-striped">
     <thead>
         <tr>
             <th scope="col">Messages</th>
@@ -20,7 +20,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                     echo $message;
                 ?>
             </td>
-        </th>
+        </tr>
     </tbody>
 </table>
 </div>

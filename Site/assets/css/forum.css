@@ -1,3 +1,114 @@
 .bodyForum {
-    margin: 80px 270px 0px 270px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.containerLogin {
+    overflow: hidden;
+}
+
+.login-form {
+    background: url("../images/core/lyonWallpaper.jpg") no-repeat;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin-top: -5.3rem;
+    transform : scale(1.2);
+}
+
+.login-form-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    transform: translate(-50%,-50%);
+    background: rgba(0,0,0,.5);
+    border-radius: 30px;
+    box-shadow: 12px 12px 0px 3px rgba(0,0,0,.4);
+}
+
+.user {
+    background: url("../images/core/man-user.svg") no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
+
+.mdp {
+    background: url("../images/core/key.svg") no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
+
+.loginTitle {
+    color: white;
+    margin: 14px 0px;
+    letter-spacing: 2px;
+}
+
+div.input-group {
+    padding: 10px;
+}
+
+#loginHr {
+    border-top: 1px solid rgba(255,255,255,.9)
+}
+
+input.form-control#passWord,
+input.form-control#login {
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0px
+}
+
+input#login::placeholder,
+input#passWord::placeholder {
+    color: rgba(255,255,255,.7);
+}
+
+input.form-control:focus {
+    background: transparent;
+    color: white;
+}
+
+span.input-group-text {
+    background: transparent;
+    border: none;
+}
+
+a.list-group-item.list-group-item-action {
+    background: none;
+    border: none;
+    line-height: 100%;
+}
+
+.table {
+    text-align: center;
+}
+
+.table td > a {
+    color: #E98B39;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 767px) {
+    .login-form-group {
+        width: 60%;
+    }
+    .table {
+        font-size: small;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .btn {
+        line-height: 100%;
+        font-size: x-small;
+    }
 }

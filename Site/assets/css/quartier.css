@@ -95,7 +95,7 @@ p{
     position:relative;
 }
 #timelineHistory > div > .bubble {
-    background-image: url(test.jpg);
+    background-image: url(../images/bellecour/bellecour.jpg);
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
@@ -106,7 +106,7 @@ p{
     width: 120px;
     height: 120px;
     z-index: 400;
-    background-size: contain;
+    background-size: cover;
 }
 
 .txtBubble{

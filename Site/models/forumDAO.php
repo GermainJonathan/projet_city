@@ -12,7 +12,7 @@ class forumDAO extends DAO
     public function getTopicValid()
     {
 
-        $result = $this->queryAll("SELECT  FROM topic WHERE codeEtat = 2");
+        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
         
         $listTopic = array();
         foreach ($result as $temp){

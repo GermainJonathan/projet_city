@@ -2,10 +2,6 @@
 
 require_once PATH_MODELS."manager.php";
 
-// DEBUG
-$_SESSION['user'] = "Administrateur";
-// END
-
 $manager = new manager();
 $valFormTest = false;
 
@@ -29,9 +25,9 @@ if(isset($_POST["valFormTopic"])){
     }
 }
 
-if(isset($_SESSION['user']) && $_SESSION['user'] != "Administrateur")
-    $listTopic = $manager->getTopicValid();
-else
+if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur"))
     $listTopic = $manager->getTopicAll();
+else
+    $listTopic = $manager->getTopicValid();
 
 require_once PATH_VIEWS.'forum.php';

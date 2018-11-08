@@ -11,6 +11,35 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+        <?php
+        if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
+            ?>
+            <div class="adminTools">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle  " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="worlwide"></span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i></i> Fr</a>
+                    <a class="dropdown-item" href="#"><i></i> En</a>
+                </div>
+            </div>
+            <?php
+                if($_SESSION['user']->getProfile() == "Administrateur") {
+            ?>
+                <a class="btn disconnect"  href="?page=administration" title="<?= TITRE_ADMINISTRATION?>">
+                    <svg class="admin"></svg>
+                </a>
+                <?php
+                    }
+                ?>    
+                <a class="btn disconnect"  href="?page=deconnexion" title="<?= MENU_DECONNEXION ?>">
+                    <svg class="logout"></svg>
+                </a>
+            </div>
+            <?php
+        }
+        ?>
         <!-- Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav row">
@@ -33,15 +62,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?page=contact"><?= MENU_CONTACT ?></a>
                 </li>
-                <?php
-                if(isset($_SESSION['user']) && $_SESSION['user'] == "Administrateur"){
-                    ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?page=deconnexion"><?= MENU_DECONNEXION ?></a>
-                    </li>
-                    <?php
-                }
-                ?>
             </ul>
         </div>
     </nav>

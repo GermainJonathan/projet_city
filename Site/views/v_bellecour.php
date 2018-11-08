@@ -16,27 +16,27 @@ require_once(PATH_VIEWS.'spinner.php');?>
             <ul class="nav navbar-nav">
                 <li>
                     <a class="nav-link" href="#anchorBodyHistoire">
-                        <p class="navLien">Histoire</p>
+                        <p class="navLien"><?= TITRE_HISTOIRE ?></p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="#anchorBodyMonuments">
-                    <p class="navLien">Monuments</p>
+                    <p class="navLien"><?= TITRE_MONUMENT ?></p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="#anchorBodyActivites">
-                    <p class="navLien">Activités</p>
+                    <p class="navLien"><?= TITRE_ACTIVITE ?></p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="#anchorBodyRestaurants">
-                    <p class="navLien">Restaurants</p>
+                    <p class="navLien"><?= TITRE_RESTAURANT ?></p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" href="#anchorBodyCommentaires">
-                    <p class="navLien">Commentaires</p>
+                    <p class="navLien"><?= TITRE_COMMENTAIRE ?></p>
                     </a>
                 </li>
             </ul>
@@ -48,7 +48,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
         <span class="anchor" id="anchorBodyHistoire"></span>
         <div class="row">
             <div class="col-lg-4 offset-lg-2 col-md-3 offset-md-2 col-sm-12" id="BodyHistoire">
-                <h1> Histoire</h1>
+                <h1><?= TITRE_HISTOIRE ?></h1>
                 <div id="sousTitreHistory"></div>
                 <p id="txtHistory" class="text-justify"></p>
             </div>
@@ -61,7 +61,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
         <span class="anchor" id="anchorBodyMonuments"></span>
         <div class="row">
             <div class="col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12" id="BodyMonuments">
-                <h1> Les Monuments</h1>
+                <h1><?= TITRE_MONUMENT ?></h1>
                 <div class="carrousel">
                     <div class="arrow-carrousel">
                         <div class="arrow" id="arrowLeftMonument"></div>
@@ -76,7 +76,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
         <span class="anchor" id="anchorBodyRestaurants"></span>
         <div class="row">
             <div class="col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12" id="bodyRestaurants">
-                <h1> Restaurants</h1>
+                <h1><?= TITRE_RESTAURANT ?></h1>
                 <div class="containerCard" id="RestaurantCards">
 
                 </div>
@@ -140,6 +140,24 @@ require_once(PATH_VIEWS.'spinner.php');?>
             Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip
             ex ea commodo consequat.</p>
+            <?php
+            if (empty($_SESSION['user'])){
+                ?>
+                <div>
+                    <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
+                        <div class="form-group">
+                            <label for="nomCommentaire"><?= TXT_COMM_NOM ?></label>
+                            <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>"/>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
+                        </div>
+                        <button type="submit" form="formCommentaireBellecour" name="valFormCommentaireBellecour" class="btn btn-primary"><?= TXT_ENVOYER ?></button>
+                    </form>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </div>

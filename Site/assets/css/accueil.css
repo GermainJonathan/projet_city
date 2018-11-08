@@ -89,10 +89,10 @@
     background-position: center center;
 }
 
-.leaflet-left {
-    top: 15% !important;
+.leaflet-top.leaflet-left {
+    top: 50% !important;
     left: 15% !important;
-    transform: translate(-15%, 0%);
+    transform: translate(-15%, -50%);
 }
 
 /* Animation des Cartes */
@@ -126,9 +126,14 @@ form.leaflet-control-layers-list.leaflet-control-layers-scrollbar {
     padding-top:20px;
 }
 
+#titreAccueil {
+    z-index: 1000;
+}
+
 .AccueilIcon:hover{
     cursor:pointer;
 }
+
 .sousTitreAccueil{
     padding-top:20px;
 }
@@ -172,6 +177,6 @@ a.list-group-item {
     transition: all 0.4s;
 }
 a.list-group-item:hover {
-    background:#E98B39;
-    color: white;
+    background:#E98B39 !important;
+    color: white !important;
 }

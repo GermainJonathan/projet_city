@@ -3,6 +3,11 @@ $(window).scroll(function() {
         $("ul.nav.navbar-nav").children(":first").children(":first").addClass("active");
     }
 });
+$(function(){
+    setTimeout(function() {
+        $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
+    }, 1000);
+});
 
 var tabHistory= new Array();
 
@@ -20,16 +25,19 @@ function addBubbleInTimeline(tabBubble,container){
     }
 }
 
+function smoothScrollingTo(target){
+    $('html,body').animate({scrollTop:$(target).offset().top}, 500);
+}
+
 /**** CAROUSEL MONUMENTS ******/
 
 var tabMonument=new Array();
 
 for (var i=0; i<7; i++){
-    tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.","assets/images/terreaux/terreaux.jpg"));    
+    tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.", 3, "terreaux.jpg"));    
 }
 
 CreateCarousel(tabMonument);
-
 
  // Création du carrousel
  function CreateCarousel(tabMonuments){
@@ -98,7 +106,7 @@ CreateCarousel(tabMonument);
  var tabRestaurants=new Array();
 
 for (var i=0; i<7; i++){
-    tabRestaurants.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.","assets/images/terreaux/terreaux.jpg"));    
+    tabRestaurants.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.", 3, "terreaux.jpg"));    
 }
 
 CreateContainerRestaurants(tabRestaurants);
