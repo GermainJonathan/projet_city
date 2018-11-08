@@ -6,7 +6,7 @@
  * @param quartier string
  */
 require_once "../config/configuration.php";
-require_once "../".PATH_MODELS."apiDAO.php";
+require_once "../".PATH_MODELS."forumDAO.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -15,10 +15,12 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $responses = array();
 $code = 200;
-$bo = new Api(DEBUG);
+$forumDAO = new forumDAO(DEBUG);
 
-if (!empty($_GET['quartier'])) {
-    $responses = $bo->getAllDataByQuarter($_GET['quartier']);
+if (isset($_GET['topic']) && isset($_GET['etat'])) {
+    $responses = $forumDAO->setEtatTopicByCode($_GET['topic'], $_GET['etat']);
+    if ($responses != false)
+        $responses = serialize($responses);
 } else {
     $code = 404;
     $responses = array(
