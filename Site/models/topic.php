@@ -11,6 +11,10 @@ class topic
     private $_etat;
     private $_codeEtat;
     private $_date;
+    private $_actionValid;
+    private $_codeActionValid;
+    private $_actionRefuse;
+    private $_codeActionRefuse;
 
 
     public function __construct($id, $idLang, $titre, $description, $etat, $codeEtat, $date)
@@ -20,8 +24,14 @@ class topic
         $this->_titre = $titre;
         $this->_description = $description;
         $this->_etat = $etat;
-        $this-> _codeEtat = $codeEtat;
+        $this->_codeEtat = $codeEtat;
         $this->_date = $date;
+        $valid = getActionValidByEtat($codeEtat);
+        $this->_actionValid = $valid['action'];
+        $this->_codeActionValid = $valid['codeAction'];
+        $refuse = getActionRefuseByEtat($codeEtat);
+        $this->_actionRefuse = $refuse['action'];
+        $this->_codeActionRefuse = $refuse['codeAction'];
     }
 
     public function getId()
@@ -54,14 +64,41 @@ class topic
         return $this ->_codeEtat;
     }
 
-    public function setCodeEtat($codeEtat)
-    {
-        $this->_codeEtat = $codeEtat;
-    }
-
     public function getDate()
     {
         return $this->_date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActionValid()
+    {
+        return $this->_actionValid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActionRefuse()
+    {
+        return $this->_actionRefuse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodeActionValid()
+    {
+        return $this->_codeActionValid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodeActionRefuse()
+    {
+        return $this->_codeActionRefuse;
     }
 
     public function __toString()

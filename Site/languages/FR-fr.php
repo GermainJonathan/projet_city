@@ -45,6 +45,12 @@ define('TXT_COMM_COMM', 'Commentaire');
 
 define('TXT_ENVOYER', 'Envoyer');
 
+define('TXT_VALIDER', 'Valider');
+define('TXT_RESOLUE', 'Résolue');
+define('TXT_REFUSER', 'Refuser');
+define('TXT_ANNULER', 'Annuler');
+define('TXT_SUPPRIMER', 'Supprimer');
+
 define('ERREUR_TOPC_DSC', 'Il manque la description');
 define('ERREUR_TOPC_TITRE', 'Il manque le titre');
 

@@ -34,30 +34,8 @@ require_once(PATH_VIEWS.'alert.php');?>
                         ?>
                         <td><?= $topic->getEtat() ?></td>
                         <td>
-                            <?php
-                            switch ($topic->getCodeEtat()) {
-
-                                case 1:
-                                    ?>
-                                    <button class="btn col-5 btn-success">Valider</button>
-                                    <button class="btn col-5 btn-danger">Refuser</button>
-                                    <?php
-                                    break;
-                                case 2:
-                                    ?>
-                                    <button class="btn col-5 btn-success">Résolu</button>
-                                    <button class="btn col-5 btn-danger">Annuler</button>
-                                    <?php
-                                    break;
-                                case 3:
-                                    ?>
-                                    <button class="btn col-5 btn-success">Valider</button>
-                                    <button class="btn col-5 btn-danger">Supprimer</button>
-                                    <?php
-                                    break;
-
-                            }
-                            ?>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-success" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-danger" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
                         </td>
                         <?php
                     }
