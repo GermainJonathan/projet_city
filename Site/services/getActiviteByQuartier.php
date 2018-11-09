@@ -21,7 +21,7 @@ if (isset($_GET['quartier'])) {
     }
 } else {
     $code = 404;
-    $responses = array(
+    $array = array(
         'error' => 'No parameter',
         'message' => 'This service need quarter parameter'
     );
