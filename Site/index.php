@@ -5,6 +5,7 @@ require_once './config/configuration.php';
 require_once PATH_LIB.'foncBase.php';
 
 require_once PATH_MODELS.'user.php';
+require_once PATH_MODELS.'paysDAO.php';
 
 //selection de la langue
 session_start();
@@ -28,6 +29,11 @@ else {
 	header('Location: ?page=accueil');
 	$page='accueil'; //page d'accueil du site - http://.../index.php
 }
+
+$paysDAO = new paysDAO(DEBUG);
+
+$listPays = $paysDAO->getPays();
+
 
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');

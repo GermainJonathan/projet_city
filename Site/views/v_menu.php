@@ -17,8 +17,13 @@
                     <span class="worlwide"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#"><i></i> Fr</a>
-                    <a class="dropdown-item" href="#"><i></i> En</a>
+                    <?php
+                    foreach ($listPays as $pays){
+                        ?>
+                        <a class="dropdown-item" href="#"><i></i><?= $pays->getLibelleCourt()?><?= ($_SESSION['idLang'] == $pays->getId())? " ✓" : "" ?></a>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         <?php

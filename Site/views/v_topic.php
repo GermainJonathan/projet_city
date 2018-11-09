@@ -6,6 +6,7 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 <div class="bodyForum container">
+<h3 class="contact-title" id="titreTopic">Topic test</h3>
 <table class="table table-hover table-striped">
     <thead>
         <tr>
@@ -27,7 +28,7 @@ require_once(PATH_VIEWS.'alert.php');?>
             foreach ($listMessage as $message) {
                 ?>
                 <td><?= $message->getDate() ?></td>
-                <td><?= $message->getNom() ?></td>
+                <td><?= $message->getNom().($message->getProfile() != 'User')? "" : " ★" ?></td>
                 <td><?= $message->getMessage() ?></td>
                 <?php
                 if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
