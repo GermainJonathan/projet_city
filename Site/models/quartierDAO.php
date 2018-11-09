@@ -6,6 +6,7 @@ require_once PATH_MODELS.'quartier.php';
 require_once PATH_MODELS.'activite.php';
 require_once PATH_MODELS.'restaurant.php';
 require_once PATH_MODELS.'monument.php';
+require_once PATH_MODELS.'histoire.php';
 
 class quartierDAO extends DAO
 {
@@ -43,12 +44,22 @@ class quartierDAO extends DAO
 
     public function getMonumentByQuartier($idQuartier){
         $result = $this->queryAll("SELECT * FROM monument WHERE codeQuartier = ?", array($idQuartier));
-        $listRestaurant = array();
+        $listMonument = array();
         foreach ($result as $temp){
             $quartier = $this->getQuartierByCode($idQuartier);
-            $listRestaurant[] = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
+            $listMonument[] = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
         }
-        return $listRestaurant;
+        return $listMonument;
+    }
+
+    public function getHistoireByQuartier($idQuartier){
+        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ?", array($idQuartier));
+        $listHistoire = array();
+        foreach ($result as $temp){
+            $quartier = $this->getQuartierByCode($idQuartier);
+            $listHostoire[] = new histoire($temp['codeHistoire'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['titre'], $temp['imageHistoire'], $temp['commentaire']);
+        }
+        return $listHistoire;
     }
 
 }

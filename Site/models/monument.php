@@ -106,6 +106,7 @@ class monument
         return array('codeMonument' => $this->_codeMonument,
             'codePays' => $this->_codePays,
             'codeQuartier' => $this->_codeQuartier,
+            'quartier' => $this->_quartier,
             'libelleMonument' => $this->_libelleMonument,
             'dateConstruction' => $this->_dateConstruction,
             'architecte' => $this->_architecte,
