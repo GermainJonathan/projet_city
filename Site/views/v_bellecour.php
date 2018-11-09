@@ -54,13 +54,16 @@ require_once(PATH_VIEWS.'spinner.php');?>
     <!--  Les catégories  -->
     <div class="bodyQuartier col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12">
         <span class="anchor" id="anchorBodyHistoire"></span>
-        <div id="bodyHistoire" class="row">
-            <h1>
+        <div id="bodyHistoire" class="row no-margin">
+            <h1 class="col-12">
                 <?= TITRE_HISTOIRE ?>
             </h1>
-            <div id="sousTitreHistory"></div>
-            <p id="txtHistory" class="text-justify"></p>
-            <div>
+            <div class="col-3 col-xs-12">
+                <div id="sousTitreHistory">
+                </div>
+                <p id="txtHistory" class="text-justify"></p>
+            </div>
+            <div class="col-9 col-xs-12">
                 <!--  Catégorie Histoire  -->
                 <div id="timelineHistory">
                 </div>
@@ -249,7 +252,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
             </h1>
             <div class="containerCard" id="RestaurantCards">
             </div>
-            <div class="arrow-restaurant row" id="ArrowRes">
+            <div class="arrow-restaurant mx-auto row" id="ArrowRes">
                 <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
                 <a class="arrow" id="arrowDownRestaurant"></a>
             </div>
