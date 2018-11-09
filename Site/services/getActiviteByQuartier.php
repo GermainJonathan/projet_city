@@ -17,7 +17,7 @@ if (isset($_GET['quartier'])) {
     $array = array();
     if ($responses != false) {
         foreach ($responses as $temp)
-            $array = $temp->toArray();
+            $array[] = $temp->toArray();
     }
 } else {
     $code = 404;
