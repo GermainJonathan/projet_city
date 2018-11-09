@@ -23,7 +23,7 @@ class activite
         $this->_codeCategorie = $codeCategorie;
         $this->_titre = $titre;
         $this->_nomLieux = $nomLieux;
-        $this->_image = PATH_IMAGES.$image;
+        $this->_image = $image;
         $this->_commentaire = $commentaire;
     }
 
