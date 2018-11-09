@@ -6,7 +6,9 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 <div class="bodyForum container">
-<h3 class="contact-title" id="titreTopic">Topic test</h3>
+<h3 class="contact-title" id="titreTopic"><?= $topic->getTitre() ?></h3>
+    <p><?= $topic->getDescription() ?></p>
+    <p><?= $topic->getDate() ?></p>
 <table class="table table-hover table-striped">
     <thead>
         <tr>
