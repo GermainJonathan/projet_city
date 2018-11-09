@@ -249,19 +249,38 @@ require_once(PATH_VIEWS.'spinner.php');?>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="EnsavoirPlus col-lg-10" id="SavoirPlusMonuments">
+                        <div class="imgSavoirPlus"></div>    
+                        <div class="txtSavoirPlus">
+                            <div class="titreSavoirPlus"></div>
+                            <div class="descSavoirPlus"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="anchor" id="anchorBodyRestaurants"></span>
-            <div class="row">
-                <div id="bodyRestaurants">
-                    <h1>
-                        <?= TITRE_RESTAURANT ?>
-                    </h1>
+        </div>
+
+        <span class="anchor" id="anchorBodyRestaurants"></span>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12" id="bodyRestaurants">
+                <h1><?= TITRE_RESTAURANT ?></h1>
+                <div id="ctnRestaurants">
                     <div class="containerCard" id="RestaurantCards">
 
                     </div>
-                    <div class="arrow-restaurant" id="ArrowRes">
-                        <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
-                        <a class="arrow" id="arrowDownRestaurant"></a>
+                    <div class="arrow-restaurant"id="ArrowRes">
+                        <div class="arrow" id="arrowTopRestaurant"></div>
+                        <div class="arrow" id="arrowDownRestaurant"></div>
+                    </div>
+                </div>
+                <div class="row" id="rowSavoirPlus">
+                    <div class="EnsavoirPlus col-lg-10" id="SavoirPlusRestaurants">
+                        <div class="imgSavoirPlus"></div>
+                        <div class="txtSavoirPlus">
+                            <div class="titreSavoirPlus"></div>
+                            <div class="descSavoirPlus"></div>
+                        </div>
                     </div>
                 </div>
             </div>

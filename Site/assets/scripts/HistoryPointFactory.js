@@ -21,7 +21,7 @@ class BubbleHistory {
      * renvoie l'objet du DOM concernant une bulle
      */
     createBubbleHistory() {
-        var BubbleHistory = document.createElement("div");   // Création de la div de base
+        var BubbleHistory = $("<div></div>");   // Création de la div de base
         BubbleHistory.append(this._createBubble()); // On ajoute la bulle avec son image
         BubbleHistory.append(this._createTitle()); // On met un titre
         BubbleHistory.append(this._createDescription()); // on ajoute le texte
