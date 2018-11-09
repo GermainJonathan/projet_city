@@ -16,7 +16,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 <!--  Bandeau texte de la page d'accuel   -->
 
 <div id="textAccueil">
-    <div class = "col-lg-12">
+    <div class="col-lg-12" id="titreAccueil">
         <h3><?= TITRE_PAGE_ACCUEIL ?></h3>
     </div>
 

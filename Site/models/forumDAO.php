@@ -17,7 +17,8 @@ class forumDAO extends DAO
         $listTopic = array();
         foreach ($result as $temp){
             $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
-            $listTopic[] = new topic($temp['codeTopic'], $temp['codePays'], $temp['libelleTopic'], $temp['description'], $res['libelleEtat'], $temp['codeEtat'], $temp['date']);
+            $message = $this->queryRow("SELECT count(*) as message FROM message WHERE codeTopic = ?", array($temp['codeTopic']));
+            $listTopic[] = new topic($temp['codeTopic'], $temp['codePays'], $temp['libelleTopic'], $temp['description'], $res['libelleEtat'], $temp['codeEtat'], $temp['date'], $message['message']);
         }
         return $listTopic;
 
@@ -29,7 +30,8 @@ class forumDAO extends DAO
         $listTopic = array();
         foreach ($result as $temp){
             $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
-            $listTopic[] = new topic($temp['codeTopic'], $temp['codePays'], $temp['libelleTopic'], $temp['description'], $res['libelleEtat'], $temp['codeEtat'], $temp['date']);
+            $message = $this->queryRow("SELECT count(*) as message FROM message WHERE codeTopic = ?", array($temp['codeTopic']));
+            $listTopic[] = new topic($temp['codeTopic'], $temp['codePays'], $temp['libelleTopic'], $temp['description'], $res['libelleEtat'], $temp['codeEtat'], $temp['date'], $message['message']);
         }
         return $listTopic;
     }
@@ -39,7 +41,8 @@ class forumDAO extends DAO
 
         $result = $this->queryRow("SELECT * FROM topic WHERE codeTopic  = ?", array($idTopic));
         $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($result['codeEtat']));
-        return new topic($result['codeTopic'], $result['codePays'], $result['libelleTopic'], $result['description'], $res['libelleEtat'], $result['codeEtat'], $result['date']);
+        $message = $this->queryRow("SELECT count(*) as message FROM message WHERE codeTopic = ?", array($result['codeTopic']));
+        return new topic($result['codeTopic'], $result['codePays'], $result['libelleTopic'], $result['description'], $res['libelleEtat'], $result['codeEtat'], $result['date'], $message['message']);
 
     }
 
@@ -49,9 +52,14 @@ class forumDAO extends DAO
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
 
         $listMessage = array();
-        foreach ($result as $temp)
-            $listMessage[] = new message($temp['codeMessage'], $temp['codeTopic'], $temp['message'], $temp['date']);
-
+        foreach ($result as $temp) {
+            if($temp['codeProfile'] == 0)
+                $listMessage[] = new message($temp['codeMessage'], $temp['codeTopic'], $temp['nom'], $temp['message'], $temp['date']);
+            else {
+                $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($temp['codeProfile']));
+                $listMessage[] = new message($temp['codeMessage'], $temp['codeTopic'], $temp['nom'], $temp['message'], $temp['date'], $temp['codeProfile'], $res['libelleProfile']);
+            }
+        }
         return $listMessage;
     }
 
@@ -73,6 +81,13 @@ class forumDAO extends DAO
 
         return $result;
 
+    }
+
+    public function setEtatTopicByCode($idTopic, $etat){
+        $result = $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic  = ?", array($etat, $idTopic));
+        if($result)
+            return $this->getTopicById($idTopic);
+        return false;
     }
 
 }

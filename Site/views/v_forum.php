@@ -5,69 +5,47 @@ require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
-<div class="bodyForum">
-    <table  class="table">
+<div class="bodyForum container">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th><?= TITRE_DATE ?></th>
-                <th><?= TITRE_TOPIC ?></th>
+                <th scope="col"><?= TITRE_DATE ?></th>
+                <th scope="col"><?= TITRE_TOPIC ?></th>
                 <?php
                 if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
                     ?>
-                    <th><?= TITRE_ETATA_TOPIC ?></th>
-                    <th><?= TITRE_ACTION ?></th>
+                    <th scope="col"><?= TITRE_ETATA_TOPIC ?></th>
+                    <th scope="col"><?= TITRE_ACTION ?></th>
                     <?php
                 }
                 ?>
             </tr>
         </thead>
+        <tbody>
         <?php
 
         foreach ($listTopic as $topic) {
             ?>
-            <tbody>
                 <tr>
                     <td><?= dateBaseToSite($topic->getDate()) ?></td>
-                    <td><a href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
+                    <td><a class="list-group-item list-group-item-action" href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
                     <?php
                     if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
                         ?>
                         <td><?= $topic->getEtat() ?></td>
                         <td>
-                            <?php
-                            switch ($topic->getCodeEtat()) {
-
-                                case 1:
-                                    ?>
-                                    <button class="btn btn-success">Valider</button>
-                                    <button class="btn btn-danger">Refuser</button>
-                                    <?php
-                                    break;
-                                case 2:
-                                    ?>
-                                    <button class="btn btn-success">Résolu</button>
-                                    <button class="btn btn-danger">Annuler</button>
-                                    <?php
-                                    break;
-                                case 3:
-                                    ?>
-                                    <button class="btn btn-success">Valider</button>
-                                    <button class="btn btn-danger">Supprimer</button>
-                                    <?php
-                                    break;
-
-                            }
-                            ?>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-success" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-danger" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
                         </td>
                         <?php
                     }
                     ?>
                 </tr>
-            </tbody>
+            
             <?php
         }
-
         ?>
+        </tbody>
     </table>
     <?php
         if (empty($_SESSION['user'])){

@@ -25,6 +25,11 @@ html,body {
     border-color: #E98B39 !important;
 }
 
+.form-control:focus {
+    border-color: #E98B39;
+    box-shadow: 0 0 0 2px #E98B39A0
+}
+
 .btn:focus,
 .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem #E98B39 ;
@@ -48,6 +53,8 @@ html,body {
   
 .spinner {
     height: 100%;
+    text-align: center;
+    margin: 0;
 }
 
 @-webkit-keyframes sk-scaleout {
@@ -101,7 +108,24 @@ body::-webkit-scrollbar-thumb {
 /* Fin Scroll Bar */
 
 /* PROVISOIRE */
-/*TODO: Ajouter des Toast */
 .alert {
     z-index: 1020;
+}
+
+.erreur404FR-fr {
+    background: url("../images//core/404-fr.svg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 50vh;
+}
+
+.erreur404EN-en {
+    background: url("../images//core/404-en.svg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 50vh;
+}
+
+#button404 {
+    margin: 10px;
 }

@@ -27,10 +27,6 @@ if(isset($_POST['valFormConnexion'])){
             $erreur = ERREUR_CONN_REFUSEE;
     }
 
-    echo $_POST['passWord'] . "<br>";
-    echo password_hash($_POST['passWord'], PASSWORD_DEFAULT) . "<br>";
-    echo $_POST['login'];
-
     if($erreur != null)
         $alert['messageAlert'] = $erreur;
 

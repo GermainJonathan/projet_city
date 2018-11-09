@@ -11,11 +11,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+        <div class="adminTools">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle  " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="worlwide"></span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i></i> Fr</a>
+                    <a class="dropdown-item" href="#"><i></i> En</a>
+                </div>
+            </div>
         <?php
-        if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
-            ?>
-            <div class="adminTools">
-            <?php
+            if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
                 if($_SESSION['user']->getProfile() == "Administrateur") {
             ?>
                 <a class="btn disconnect"  href="?page=administration" title="<?= TITRE_ADMINISTRATION?>">
@@ -27,10 +34,10 @@
                 <a class="btn disconnect"  href="?page=deconnexion" title="<?= MENU_DECONNEXION ?>">
                     <svg class="logout"></svg>
                 </a>
-            </div>
-            <?php
+                <?php
         }
         ?>
+        </div>
         <!-- Navbar -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav row">
