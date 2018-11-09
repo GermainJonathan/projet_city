@@ -2,6 +2,7 @@
 
 require_once "configurationAPI.php";
 require_once PATH_MODELS."quartierDAO.php";
+require_once PATH_MODELS."monument.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -13,7 +14,7 @@ $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
 if (isset($_GET['quartier'])) {
-    $responses = $quartierDAO->getRestaurantByQuartier($_GET['quartier']);
+    $responses = $quartierDAO->getMonumentByQuartier($_GET['quartier']);
     $array = array();
     if ($responses != false) {
         foreach ($responses as $temp)
@@ -21,7 +22,7 @@ if (isset($_GET['quartier'])) {
     }
 } else {
     $code = 404;
-    $array = array(
+    $responses = array(
         'error' => 'No parameter',
         'message' => 'This service need quarter parameter'
     );
