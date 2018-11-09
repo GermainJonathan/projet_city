@@ -30,4 +30,14 @@ class quartierDAO extends DAO
         return $listActivite;
     }
 
+    public function getRestaurantByQuartier($idQuartier){
+        $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ?", array($idQuartier));
+        $listRestaurant = array();
+        foreach ($result as $temp){
+            $quartier = $this->getQuartierByCode($idQuartier);
+            $listRestaurant[] = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['numero'], $temp['imageRestaurant'], $temp['commentaire']);
+        }
+        return $listRestaurant;
+    }
+
 }
