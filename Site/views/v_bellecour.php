@@ -82,6 +82,15 @@ require_once(PATH_VIEWS.'spinner.php');?>
                 <div class="carrousel-contenu" id="carrouselMonument">
                 </div>
             </div>
+            <div class="col-12" id="rowSavoirPlus">
+                <div class="EnsavoirPlus col-lg-10" id="SavoirPlusMonuments">
+                    <div class="imgSavoirPlus"></div>
+                    <div class="txtSavoirPlus">
+                        <div class="titreSavoirPlus"></div>
+                        <div class="descSavoirPlus"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <span class="anchor" id="anchorBodyActivites"></span>
         <div id="bodyActivites" class="row">
@@ -243,6 +252,15 @@ require_once(PATH_VIEWS.'spinner.php');?>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="EnsavoirPlus col-lg-10" id="SavoirPlusMonuments">
+                        <div class="imgSavoirPlus"></div>    
+                        <div class="txtSavoirPlus">
+                            <div class="titreSavoirPlus"></div>
+                            <div class="descSavoirPlus"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <span class="anchor" id="anchorBodyRestaurants"></span>
@@ -256,27 +274,25 @@ require_once(PATH_VIEWS.'spinner.php');?>
                 <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
                 <a class="arrow" id="arrowDownRestaurant"></a>
             </div>
+            <div class="col-12" id="rowSavoirPlus">
+                <div class="EnsavoirPlus col-lg-10" id="SavoirPlusRestaurants">
+                    <div class="imgSavoirPlus"></div>
+                    <div class="txtSavoirPlus">
+                        <div class="titreSavoirPlus"></div>
+                        <div class="descSavoirPlus"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <span class="anchor" id="anchorBodyCommentaires"></span>
         <div id="bodyCommentaires" class="row">
             <h1>
                 <?= TITRE_COMMENTAIRE ?>
             </h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.</p>
             <?php
                 if (empty($_SESSION['user'])){
                     ?>
-            <div>
+            <div class="col-12">
                 <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
                     <div class="form-group">
                         <label for="nomCommentaire">
@@ -293,26 +309,18 @@ require_once(PATH_VIEWS.'spinner.php');?>
             <?php
                 }
                 ?>
-            <div>
+            <div class="col-12 mx-auto" id="tableCommentaire">
                 <!-- le tbleau est à virer !! (c'est moche) -->
-                <table>
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                <?= TITRE_DATE ?>
-                            </th>
-                            <th>
-                                <?= TITRE_COMM_NOM ?>
-                            </th>
-                            <th>
-                                <?= TITRE_COMMENTAIRE ?>
-                            </th>
+                            <th scope="col"><?= TITRE_DATE ?></th>
+                            <th scope="col"><?= TITRE_COMM_NOM ?></th>
+                            <th scope="col"><?= TITRE_COMMENTAIRE ?></th>
                             <?php
                             if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                                 ?>
-                            <th>
-                                <?= TITRE_ACTION ?>
-                            </th>
+                            <th scope="col"><?= TITRE_ACTION ?></th>
                             <?php
                             }
                             ?>

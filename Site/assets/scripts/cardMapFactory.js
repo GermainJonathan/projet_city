@@ -17,6 +17,7 @@ class Card {
         this.title  = title;
         this.codeQuartier = codeQuartier;
         this.description = description;
+        this.button=null;
     }
 
     /**
@@ -37,10 +38,10 @@ class Card {
         };
     }
 
-    /* permet de créer une carte sans l'associé à la maps*/
+    /* permet de créer une carte sans l'associer à la maps*/
     createSimpleCard(){
-        var mapCard = document.createElement("div");   // Création de la div de base
-        mapCard.className="card legend";
+        var mapCard =$("<div></div>");   // Création de la div de base
+        mapCard.addClass("card legend");
         mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
         mapCard.append(this._createCoreCard()); 
         return mapCard;
@@ -100,6 +101,7 @@ class Card {
         else
             link.attr("href", "?page=" + quartier[this.codeQuartier] + this.link);
         link.append("En savoir plus");
+        this.button=link;
         coreCard.prepend(title);
         coreCard.append(text);
         coreCard.append(link);
@@ -139,5 +141,19 @@ class Card {
             }).attr("src", path[this.codeQuartier]+this.images);
         }
         return imageCard[0];
+    }
+
+    /** 
+     * Création d'un evt sur le bouton
+     */
+    createButtonEvt(idEvt){
+        this.button.attr("href","#"+idEvt);
+        var that=this;
+        this.button.click(function(){
+            $("#"+idEvt).css("display","inline-block");
+            $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[that.codeQuartier]+that.images+")");
+            $("#"+idEvt+" .txtSavoirPlus .titreSavoirPlus").text(that.title);
+            $("#"+idEvt+" .txtSavoirPlus .descSavoirPlus").text(that.description);
+        });
     }
 }

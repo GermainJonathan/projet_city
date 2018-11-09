@@ -265,7 +265,7 @@ function setupMarkerCard(patrimoine) {
 }
 
 function addMarkerMonuments(monuments) {
-    for(let monument of monuments) {
+    monuments.forEach(function(monument) {
         let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
         .on('click', function() {
             setupMarkerCard(monument);
@@ -283,11 +283,11 @@ function addMarkerMonuments(monuments) {
             markerMonument.setIcon(normalScale);
         });
         monumentLayer.addLayer(markerMonument);
-    }
+    });
 }
 
 function addMarkerRestaurants(restaurants) {
-    for(let restaurant of restaurants) {
+    restaurants.forEach(function(restaurant) {
         let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
         .on('click', function() {
             setupMarkerCard(restaurant);
@@ -305,11 +305,11 @@ function addMarkerRestaurants(restaurants) {
             markerRestaurant.setIcon(normalScale);
         });
         restaurantLayer.addLayer(markerRestaurant);
-    }
+    });
 }
 
 function addMarkerActivites(activites) {
-    for(let activite of activites) {
+        activites.forEach(function(activite) {
         let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
         .on('click', function() {
             setupMarkerCard(activite);
@@ -327,5 +327,5 @@ function addMarkerActivites(activites) {
             markerActivite.setIcon(normalScale);
         });
         activiteLayer.addLayer(markerActivite);
-    }
+    });
 }
