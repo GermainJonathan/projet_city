@@ -84,7 +84,7 @@ class forumDAO extends DAO
     }
 
     public function setEtatTopicByCode($idTopic, $etat){
-        $result = $this->queryBdd("UPDATE topic SET etatTopic = ? WHERE codeTopic  = ?", array($etat, $idTopic));
+        $result = $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic  = ?", array($etat, $idTopic));
         if($result)
             return $this->getTopicById($idTopic);
         return false;

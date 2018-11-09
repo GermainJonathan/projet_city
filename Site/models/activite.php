@@ -6,31 +6,41 @@ class activite
 
     private $_codeActivite;
     private $_codePays;
+    private $_codeQuartier;
+    private $_quartier;
     private $_codeCategorie;
     private $_titre;
     private $_nomLieux;
     private $_image;
     private $_commentaire;
 
-    /**
-     * activite constructor.
-     * @param $_codeActivite
-     * @param $_codePays
-     * @param $_codeCategorie
-     * @param $_titre
-     * @param $_nomLieux
-     * @param $_image
-     * @param $_commentaire
-     */
-    public function __construct($codeActivite, $codePays, $codeCategorie, $titre, $nomLieux, $image, $commentaire)
+    public function __construct($codeActivite, $codePays, $codeQuartier, $quartier, $codeCategorie, $titre, $nomLieux, $image, $commentaire)
     {
         $this->_codeActivite = $codeActivite;
         $this->_codePays = $codePays;
+        $this->_codeQuartier = $codeQuartier;
+        $this->_quartier = $quartier;
         $this->_codeCategorie = $codeCategorie;
         $this->_titre = $titre;
         $this->_nomLieux = $nomLieux;
         $this->_image = PATH_IMAGES.$image;
         $this->_commentaire = $commentaire;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodeQuartier()
+    {
+        return $this->_codeQuartier;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuartier()
+    {
+        return $this->_quartier;
     }
 
     /**
@@ -87,6 +97,20 @@ class activite
     public function getCommentaire()
     {
         return $this->_commentaire;
+    }
+
+    public function toArray(){
+        return array(
+        'codeActivite' => $this->_codeActivite,
+        'codePays' => $this->_codePays,
+        'codeQuartier' => $this->_codeQuartier,
+        'quartier' => $this->_quartier,
+        'codeCategorie' => $this->_codeCategorie,
+        'titre' => $this->_titre,
+        'nomLieux' => $this->_nomLieux,
+        'image' => $this->_image,
+        'commentaire' => $this->_commentaire
+        );
     }
 
 }

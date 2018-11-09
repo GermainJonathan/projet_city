@@ -21,11 +21,13 @@ class quartierDAO extends DAO
     }
 
     public function getActiviteByQuartier($idQuartier){
-        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = 1");
+        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = ?", array($idQuartier));
         $listActivite = array();
         foreach ($result as $temp){
-            $listActivite[] = new activite();
+            $quartier = $this->getQuartierByCode($idQuartier);
+            $listActivite[] = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
         }
+        return $listActivite;
     }
 
 }
