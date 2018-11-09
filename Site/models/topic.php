@@ -124,4 +124,20 @@ class topic
     {
         return $this->_id.$this->_idLang.$this->_titre.$this->_description.$this->_etat.$this->_date;
     }
+
+    public function toArray(){
+        return array ('codeTopic' => $this->_id,
+        'codeLang' => $this->_idLang,
+        'titre' => $this->_titre,
+        'description' => $this->_description,
+        'etat' => $this->_etat,
+        'codeEtat' => $this->_codeEtat,
+        'date' => $this->_date,
+        'actionValid' => $this->_actionValid,
+        'codeActionValid' => $this->_codeActionValid,
+        'actionRefuse' => $this->_actionRefuse,
+        'codeActionRefuse' => $this->_codeActionRefuse,
+        'nbMessage' => $this->_nbMessage,
+        );
+    }
 }
