@@ -9,17 +9,34 @@ require_once(PATH_VIEWS.'alert.php');?>
 <table class="table table-hover table-striped">
     <thead>
         <tr>
+            <th><?= TITRE_DATE ?></th>
+            <th><?= TITRE_COMM_NOM ?></th>
             <th scope="col"><?= TITRE_MESSAGE ?></th>
+            <?php
+                if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
+                    ?>
+                    <th><?= TITRE_ACTION ?></th>
+                    <?php
+                }
+                ?>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>
-                <?php
-                foreach ($listMessage as $message)
-                    echo $message;
+            <?php
+            foreach ($listMessage as $message) {
                 ?>
-            </td>
+                <td><?= $message->getDate() ?></td>
+                <td><?= $message->getNom() ?></td>
+                <td><?= $message->getMessage() ?></td>
+                <?php
+                if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
+                    ?>
+                    <td><button class="btn btn-danger">X</button></td>
+                    <?php
+                }
+            }
+            ?>
         </tr>
     </tbody>
 </table>

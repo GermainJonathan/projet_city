@@ -70,7 +70,7 @@ class message
 
     public function __toString()
     {
-        return $this->_idMessage.$this->_message.$this->_date;
+        return $this->_idMessage.$this->_nom.$this->_message.$this->_date;
     }
 
 
