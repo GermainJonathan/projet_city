@@ -186,7 +186,7 @@ function zoomToFeature(e) {
         // récupération des données markers
         $.ajax({
           method: "GET",
-          url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
+          url: environnement.host + environnement.port + environnement.servicePath + "getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
         }).done(function(data) {
           addMarkerMonuments(data.monuments);
           addMarkerActivites(data.activites);

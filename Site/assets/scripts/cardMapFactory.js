@@ -7,9 +7,6 @@
  * @param {string} description 
  * @param {string | Array[string]} images 
  */
-
-const path = ['', 'assets/images/perrache/', 'assets/images/bellecour/', 'assets/images/terreaux/'];
-const quartier = ['', 'perrache', 'bellecour', 'terreaux'];
 class Card {    
     constructor(title, description, codeQuartier, images = "", link = "") {
         this.images = images;
