@@ -5,6 +5,7 @@ $(window).scroll(function() {
 });
 $(function(){
     setTimeout(function() {
-        $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
+        if($(location.hash).offset())
+            $('html,body').animate({scrollTop:$(location.hash).offset().top}, 500);
     }, 1000);
 });
