@@ -2,7 +2,7 @@
  * Définit l'environnemnt serveur afin de communiquer avec l'API
  */
 const environnement =  {
-    port : 80,
+    port : 82,
     servicePath : "/services/",
     host : "http://localhost:"
 };
