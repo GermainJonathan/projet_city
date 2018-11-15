@@ -23,3 +23,8 @@ const path = ['', 'assets/images/perrache/', 'assets/images/bellecour/', 'assets
  * codeQuartier => Libellé quartier
  */
 const quartier = ['', 'perrache', 'bellecour', 'terreaux'];
+
+/*
+ * Detecte si le l'utilisateur est sur mobile
+ */
+const isMobileDevice = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));

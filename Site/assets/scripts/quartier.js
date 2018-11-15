@@ -3,6 +3,10 @@ $(window).scroll(function() {
         $("ul.nav.navbar-nav").children(":first").children(":first").addClass("active");
     }
 });
+
+/*
+ * Pas super propre
+ */
 $(function(){
     setTimeout(function() {
         if($(location.hash).offset())
