@@ -1,0 +1,17 @@
+#pageSelector {
+    position: unset;
+}
+
+.nav-item.nav-link:hover {
+    font-weight: bold;
+    background: #E98B39;
+    color: white;
+    transition: .2s all;
+}
+
+.nav-item.nav-link.active {
+    font-weight: bold;
+    color: #E98B39;
+    background: white;
+    border: 1px solid #E98B39
+}

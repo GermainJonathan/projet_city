@@ -32,6 +32,14 @@ require_once(PATH_VIEWS.'alert.php');?>
         </tbody>
     </table>
 </div>
-
+<div class="container-fluid">
+    <nav id="pageSelector" class="nav nav-pills nav-justified">
+        <a class="nav-item nav-link active" href="#"><?= MENU_ACCUEIL ?></a>
+        <a class="nav-item nav-link" href="#"><?= MENU_PERRACHE ?></a>
+        <a class="nav-item nav-link" href="#"><?= MENU_BELLECOUR ?></a>
+        <a class="nav-item nav-link" href="#"><?= MENU_TERREAUX ?></a>
+    </nav>
+</div>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>admin.js"></script>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');
