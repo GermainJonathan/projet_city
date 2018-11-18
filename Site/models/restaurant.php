@@ -8,31 +8,42 @@ class restaurant
     private $_codeQuartier;
     private $_quartier;
     private $_nom;
+    private $_adresse;
     private $_numero;
     private $_image;
     private $_commentaire;
 
     /**
      * restaurant constructor.
-     * @param $_codeRestaurant
-     * @param $_codePays
-     * @param $_codeQuartier
-     * @param $_quartier
-     * @param $_nom
-     * @param $_numero
-     * @param $_image
-     * @param $_commentaire
+     * @param $codeRestaurant
+     * @param $codePays
+     * @param $codeQuartier
+     * @param $quartier
+     * @param $nom
+     * @param $adresse
+     * @param $numero
+     * @param $image
+     * @param $commentaire
      */
-    public function __construct($_codeRestaurant, $_codePays, $_codeQuartier, $_quartier, $_nom, $_numero, $_image, $_commentaire)
+    public function __construct($codeRestaurant, $codePays, $codeQuartier, $quartier, $nom, $adresse, $numero, $image, $commentaire)
     {
-        $this->_codeRestaurant = $_codeRestaurant;
-        $this->_codePays = $_codePays;
-        $this->_codeQuartier = $_codeQuartier;
-        $this->_quartier = $_quartier;
-        $this->_nom = $_nom;
-        $this->_numero = $_numero;
-        $this->_image = $_image;
-        $this->_commentaire = $_commentaire;
+        $this->_codeRestaurant = $codeRestaurant;
+        $this->_codePays = $codePays;
+        $this->_codeQuartier = $codeQuartier;
+        $this->_quartier = $quartier;
+        $this->_nom = $nom;
+        $this->_adresse = $adresse;
+        $this->_numero = $numero;
+        $this->_image = $image;
+        $this->_commentaire = $commentaire;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdresse()
+    {
+        return $this->_adresse;
     }
 
     /**

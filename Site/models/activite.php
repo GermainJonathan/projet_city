@@ -9,23 +9,47 @@ class activite
     private $_codeQuartier;
     private $_quartier;
     private $_codeCategorie;
+    private $_categorie;
     private $_titre;
     private $_nomLieux;
     private $_image;
     private $_commentaire;
 
-    public function __construct($codeActivite, $codePays, $codeQuartier, $quartier, $codeCategorie, $titre, $nomLieux, $image, $commentaire)
+    /**
+     * activite constructor.
+     * @param $codeActivite
+     * @param $codePays
+     * @param $codeQuartier
+     * @param $quartier
+     * @param $codeCategorie
+     * @param $categorie
+     * @param $titre
+     * @param $nomLieux
+     * @param $image
+     * @param $commentaire
+     */
+    public function __construct($codeActivite, $codePays, $codeQuartier, $quartier, $codeCategorie, $categorie, $titre, $nomLieux, $image, $commentaire)
     {
         $this->_codeActivite = $codeActivite;
         $this->_codePays = $codePays;
         $this->_codeQuartier = $codeQuartier;
         $this->_quartier = $quartier;
         $this->_codeCategorie = $codeCategorie;
+        $this->_categorie = $categorie;
         $this->_titre = $titre;
         $this->_nomLieux = $nomLieux;
         $this->_image = $image;
         $this->_commentaire = $commentaire;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
+    {
+        return $this->_categorie;
+    }
+
 
     /**
      * @return mixed
