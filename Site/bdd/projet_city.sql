@@ -38,7 +38,7 @@ CREATE TABLE `activite` (
   `coordonnees` point NOT NULL,
   `imageActivite` varchar(50) DEFAULT NULL,
   `commentaire` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `activite`
@@ -159,7 +159,7 @@ CREATE TABLE `monument` (
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
   `commentaire` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `monument`
@@ -232,7 +232,7 @@ CREATE TABLE `restaurant` (
   `coordonnees` point NOT NULL,
   `imageRestaurant` varchar(50) DEFAULT NULL,
   `commentaire` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
