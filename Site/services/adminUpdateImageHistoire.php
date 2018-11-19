@@ -13,8 +13,8 @@ $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 
-if (isset($_POST['idHistoire']) && isset($_POST['description'])) {
-    $responses = $quartierDAO->setDescriptionHistoire($_POST['idHistoire'], $_POST['description']);
+if (isset($_POST['idHistoire']) && isset($_POST['image'])) {
+    $responses = $quartierDAO->setImageHistoire($_POST['idHistoire'], $_POST['image']);
     if($responses)
         $array = $responses->toArray();
 } else {

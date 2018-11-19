@@ -131,4 +131,32 @@ class quartierDAO extends DAO
         return false;
     }
 
+    public function setImageHistoire($idHistoire, $image){
+        $result = $this->queryBdd("UPDATE histoire SET imageHistoire = ? WHERE codeHistoire = ?", array($image, $idHistoire));
+        if($result)
+            return $this->getHistoireById($idHistoire);
+        return false;
+    }
+
+    public function setImageMonument($idMonument, $image){
+        $result = $this->queryBdd("UPDATE monument SET imageMonument = ? WHERE codeMonument = ?", array($image, $idMonument));
+        if($result)
+            return $this->getMonumentById($idMonument);
+        return false;
+    }
+
+    public function setImageActivite($idActivite, $image){
+        $result = $this->queryBdd("UPDATE activite SET imageActivite = ? WHERE codeActivite = ?", array($image, $idActivite));
+        if($result)
+            return $this->getActiviteById($idActivite);
+        return false;
+    }
+
+    public function setImageRestaurant($idRestaurant, $image){
+        $result = $this->queryBdd("UPDATE restaurant SET imageRestaurant = ? WHERE codeRestaurant = ?", array($image, $idRestaurant));
+        if($result)
+            return $this->getRestaurantById($idRestaurant);
+        return false;
+    }
+
 }

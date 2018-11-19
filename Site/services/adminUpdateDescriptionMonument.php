@@ -11,6 +11,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $responses = array();
 $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
+$array = null;
 
 if (isset($_POST['idMonument']) && isset($_POST['description'])) {
     $responses = $quartierDAO->setDescriptionMonument($_POST['idMonument'], $_POST['description']);
