@@ -9,6 +9,10 @@
     transition: .2s all;
 }
 
+.nav-item.nav-link {
+    border: 1px solid white
+}
+
 .nav-item.nav-link.active {
     font-weight: bold;
     color: #E98B39;

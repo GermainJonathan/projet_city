@@ -34,8 +34,8 @@ require_once(PATH_VIEWS.'alert.php');?>
                         ?>
                         <td data-label=<?= '"'.TITRE_ETATA_TOPIC.'"' ?>><?= $topic->getEtat() ?></td>
                         <td data-label=<?= '"'.TITRE_ACTION.'"' ?>>
-                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-success btnForumAdmin" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
-                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-danger btnForumAdmin" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-success btnForumAdmin" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-danger btnForumAdmin" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
                         </td>
                         <?php
                     }
