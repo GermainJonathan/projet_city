@@ -38,7 +38,22 @@ require_once(PATH_VIEWS.'alert.php');?>
         <a class="nav-item nav-link" href="#"><?= MENU_PERRACHE ?></a>
         <a class="nav-item nav-link" href="#"><?= MENU_BELLECOUR ?></a>
         <a class="nav-item nav-link" href="#"><?= MENU_TERREAUX ?></a>
+        <a class="nav-item nav-link" href="#"><?= MENU_CONTACT ?></a>
     </nav>
+    <hr>
+    <div class="adminContainer row">
+        <div class="align-self-center col-3">
+            <div class="sidebarAdmin nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+            </div>
+        </div>
+        <div class="contentAdmin col-9">
+        </div>
+    </div>
+    <hr>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>admin.js"></script>
 <!--  Pied de page -->
