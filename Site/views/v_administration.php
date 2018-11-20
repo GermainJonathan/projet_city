@@ -46,10 +46,6 @@ require_once(PATH_VIEWS.'alert.php');?>
         <div id="content" class="row">
             <div class="align-self-center col-3">
                 <div class="sidebarAdmin nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#" role="tab" aria-selected="true"><?= TITRE_HISTOIRE ?></a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#" role="tab" aria-selected="false"><?= TITRE_MONUMENT ?></a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#" role="tab" aria-selected="false"><?= TITRE_ACTIVITE ?></a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#" role="tab" aria-selected="false"><?= TITRE_RESTAURANT ?></a>
                 </div>
             </div>
             <div class="contentAdmin col-9">
