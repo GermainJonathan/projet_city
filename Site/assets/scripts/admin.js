@@ -1,6 +1,13 @@
 var selectPage = 0;
-var listMenu = [["Parralax", "Bandeau"], ["Histoire", "Monuments", "Activités", "Restaurants"], ["Text contact"]];
+
+var listMenu = [["Parralax", "Bandeau"], ["Histoire", "Monuments", "Activités", "Restaurants"], ["Parralax", "Text contact"]];
+
 generateList(listMenu[0]);
+
+$("#upfile1").click(function() {
+    $("#file1").trigger('click');
+});
+
 // Au click sur les boutons de sélection de page
 $("a.nav-item.nav-link").click(function() {
     // Si on click sur la page déjà chargé on ne la recharge pas

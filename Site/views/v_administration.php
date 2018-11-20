@@ -50,6 +50,28 @@ require_once(PATH_VIEWS.'alert.php');?>
             </div>
             <div class="contentAdmin col-9">
                 <?php include(PATH_VIEWS.'spinner.php'); ?>
+                <div class="patrimoineComponent form-group">
+                    <div class="media">
+                        <div class="relative">
+                            <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
+                            <input type="file" id="file1" class="custom-file custom-file-input" capture style="display: none;">
+                            <button type="file" id="upfile1" class="btn btn-light plus-sign"><img class="plus"></button>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <div class="form-inline">
+                                <label class="col-2 align-self-left" for="title"><h4 class="text-truncate">Titre</h4></label>
+                                <input type="text" class="form-control col-8" id="title">
+                            </div>
+                            <div class="form-inline">
+                                <label class="col-2 align-self-left" for="description"><h4 class="text-truncate">Description</h4></label>
+                                <textarea class="form-control  col-8" id="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

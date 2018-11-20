@@ -32,3 +32,40 @@ div.sidebarAdmin > a.nav-link.active {
 .contentAdmin {
     border-left: 1px solid rgba(0,0,0,.1)
 }
+
+.imgAdmin {
+    height: 150px;
+    margin: 20px;
+}
+
+.form-inline {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-inline label {
+    justify-content: left;
+}
+
+.labelAdmin {
+    margin-right: 15px;
+}
+
+.plus-sign {
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    padding: 0;
+    border-radius: 100%;
+}
+
+.plus {
+    background: url(../images/core/plus-sign-in-a-black-circle.svg) no-repeat;
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+}
+
+.relative {
+    position: relative;
+}
