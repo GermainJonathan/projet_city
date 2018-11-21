@@ -7,7 +7,9 @@ require_once(PATH_VIEWS.'header.php');
 require_once(PATH_VIEWS.'alert.php');?>
 
 <!-- parallax -->
-<div class="parallax" style="background-size: auto;" data-height="30" data-image-src="<?= PATH_CONTACT.'lyon2.jpg' ?>"></div>
+<div class="parallax" style="background-size: auto;" data-height="30" data-image-src="<?= PATH_CONTACT.'lyon2.jpg' ?>">
+    <h1 class="textParralax"></h1>
+</div>
 
 <!-- Partie a propos -->
 

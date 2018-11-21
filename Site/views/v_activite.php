@@ -154,8 +154,7 @@
         </div>
         <div id="parallaxactivite" class="col-3">
             <div class="parallax" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
-                <div class="caption">
-                </div>
+                <h1 class="textParralax"></h1>
             </div>
         </div>
         <div class="row">

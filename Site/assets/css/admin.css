@@ -17,7 +17,8 @@
     font-weight: bold;
     color: #E98B39;
     background: white;
-    border: 1px solid #E98B39
+    border: 1px solid #E98B39;
+    letter-spacing: 5px
 }
 
 div.sidebarAdmin > a.nav-link.active {
