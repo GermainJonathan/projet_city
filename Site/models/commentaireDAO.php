@@ -5,8 +5,8 @@ require_once PATH_MODELS.'DAO.php';
 class commentaireDAO extends DAO
 {
 
-    public function addCommentaire($codePays, $codeQuartier, $commentaire, $nom){
-        $date = date('dd-MM-YYYY');
+    public function sendCommentaire($codePays, $codeQuartier, $commentaire, $nom){
+        $date = date('Y-M-d');
         $result = $this->queryRow("SELECT MAX(codeCommentaire) as max FROM commentaire");
         $max = ($result['max'] == null)? 0 : $result['max'] + 1;
 
@@ -18,8 +18,7 @@ class commentaireDAO extends DAO
             $quartier = $this->queryRow("SELECT * FROM quartier WHERE codeQuartier  = ?", array($codeQuartier));
             return new commentaire($max, $codePays, $pays['libellePays'], $codeQuartier, $quartier['libelleQuartier'], $nom, $commentaire, $date);
         }
-        else
-            return false;
+        return false;
     }
 
     public function getCommentaire($codePays, $codeQuartier){

@@ -197,4 +197,19 @@ class quartierDAO extends DAO
         return false;
     }
 
+    public function deleteHistoire($idHistoire){
+        return $this->queryBdd("DELETE FROM histoire WHERE codeHistoire = ?", array($idHistoire));
+    }
+
+    public function deleteMonument($idMonument){
+        return $this->queryBdd("DELETE FROM monument WHERE codeMonument = ?", array($idMonument));
+    }
+
+    public function deleteActivite($idActivite){
+        return $this->queryBdd("DELETE FROM Activite WHERE codeActivite = ?", array($idActivite));
+    }
+
+    public function deleteRestaurant($idRestaurant){
+        return $this->queryBdd("DELETE FROM restaurant WHERE codeRestaurant = ?", array($idRestaurant));
+    }
 }

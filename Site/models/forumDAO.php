@@ -9,11 +9,8 @@ class forumDAO extends DAO
 {
 
     // sort les topics validé par l'admin
-    public function getTopicValid()
-    {
-
+    public function getTopicValid(){
         $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
-        
         $listTopic = array();
         foreach ($result as $temp){
             $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
@@ -48,7 +45,6 @@ class forumDAO extends DAO
 
     // sort les messages d'un topic
     public function getMessageByTopic($idTopic){
-
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
 
         $listMessage = array();
@@ -77,8 +73,6 @@ class forumDAO extends DAO
 
         $result = $this->queryBdd("INSERT INTO topic (codeTopic, codePays, libelleTopic, description, codeEtat, date) VALUES (?, ?, ?, ?, ?, CURRENT_DATE)", array($maxId, $idLang, $titre, $description, 1));
 
-        //var_dump($result);
-
         return $result;
 
     }
@@ -87,6 +81,20 @@ class forumDAO extends DAO
         $result = $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic  = ?", array($etat, $idTopic));
         if($result)
             return $this->getTopicById($idTopic);
+        return false;
+    }
+
+    public function sendMessage($idTopic, $nom, $message, $profile = 0){
+        $date = date('Y-M-d');
+        $result = $this->queryRow("SELECT MAX(codeMessage) as max FROM message");
+        $max = ($result['max'] == null)? 0 : $result['max'] + 1;
+
+        $res = $this->queryBdd("INSERT INTO commentaire VALUES (?, ?, ?, ?, ?, ?, ?)",
+            array($max, $idTopic, htmlspecialchars(trim($nom)), htmlspecialchars(trim($message)), $date, 1));
+
+        if($res){
+            // créer le message de retour
+        }
         return false;
     }
 
