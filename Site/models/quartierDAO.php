@@ -159,4 +159,42 @@ class quartierDAO extends DAO
         return false;
     }
 
+    public function createHistoire($idLangue, $idQuartier, $titre, $image, $description){
+        $max = $this->queryRow("SELECT MAX(codeHistoire) as max FROM histoire");
+        $result = $this->queryBdd("INSERT INTO histoire VALUES(?, ?, ?, ?, ?, ?)", array($max['max'] +1, $idLangue, $idQuartier, $titre, $image, $description));
+        if($result)
+            return $this->getHistoireById($max['max'] +1);
+        return false;
+    }
+
+    // à finir
+
+    public function createMonument($idLangue, $idQuartier){
+        $max = $this->queryRow("SELECT MAX(codeMonument) as max FROM monument");
+        $result = $this->queryBdd("INSERT INTO monument VALUES(?, ?, ?, ?, ?, ?)", array($max['max'] +1, $idLangue, $idQuartier));
+        if($result)
+            return $this->getMonumentById($max['max'] +1);
+        return false;
+    }
+
+    // à finir
+
+    public function createActivite($idLangue, $idQuartier){
+        $max = $this->queryRow("SELECT MAX(codeActivite) as max FROM activite");
+        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?)", array($max['max'] +1, $idLangue, $idQuartier));
+        if($result)
+            return $this->getActiviteById($max['max'] +1);
+        return false;
+    }
+
+    // à finir
+
+    public function createRestaurant($idLangue, $idQuartier){
+        $max = $this->queryRow("SELECT MAX(codeRestaurant) as max FROM restaurant");
+        $result = $this->queryBdd("INSERT INTO restaurant VALUES(?, ?, ?, ?, ?, ?)", array($max['max'] +1, $idLangue, $idQuartier));
+        if($result)
+            return $this->getRestaurantById($max['max'] +1);
+        return false;
+    }
+
 }
