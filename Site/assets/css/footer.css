@@ -29,15 +29,24 @@
 }
 
 /* Classe générale du footer */
+.anchorFooter{
+    padding-bottom:158px;
+}
+
+.copyright{
+    padding-top:10px;
+    margin-bottom:0;
+}
 .footer {
     background-color: #444;
     color: #fff;
     width: 100%;
     height: auto;
     bottom: 0;
-    position: relative;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    /* position: relative; */
+    position: absolute;
+    padding-top: 20px;
+    padding-bottom: 20px;
     cursor: default;
     z-index: 10;
 }
@@ -74,7 +83,13 @@
     height: 100%;
 }
 
-
+@media screen and (max-width: 990px){
+    
+    .anchorFooter{
+        padding-bottom:178px;
+    }
+    
+}
 
 @media screen and (max-width: 576px) {
 
@@ -83,7 +98,7 @@
         padding-bottom: 20px;
     }
 
-    .footerText.center {
+    .footerText.center, h6.center {
         text-align: center;
     }
 
@@ -95,5 +110,11 @@
         justify-content: center;
     }
 
+    .anchorFooter{
+        padding-bottom:172px;
+    }
 
+    .img{
+        margin-top:10px;
+    }
 }
