@@ -1,34 +1,3 @@
-<span class="anchor" id="anchorBodyHistoire"></span>
-<div class="row">
-    <h1>
-        <?= TITRE_HISTOIRE ?>
-    </h1>
-    <div id="BodyHistoire">
-        <div id="sousTitreHistory"></div>
-        <p id="txtHistory" class="text-justify"></p>
-    </div>
-    <div>
-        <!--  Catégorie Histoire  -->
-        <div id="timelineHistory">
-        </div>
-    </div>
-</div>
-<span class="anchor" id="anchorBodyMonuments"></span>
-<div class="row">
-    <div id="BodyMonuments">
-        <h1>
-            <?= TITRE_MONUMENT ?>
-        </h1>
-        <div class="carrousel">
-            <div class="arrow-carrousel">
-                <div class="arrow" id="arrowLeftMonument"></div>
-                <div class="arrow" id="arrowRightMonument"></div>
-            </div>
-            <div class="carrousel-contenu" id="carrouselMonument">
-            </div>
-        </div>
-    </div>
-</div>
 <span class="anchor" id="anchorBodyActivites"></span>
 <div id="bodyActivites" class="container-fluid">
     <div class="row">
