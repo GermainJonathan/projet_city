@@ -1,10 +1,10 @@
 /** La side bar **/
 #sideBar{
   top: 200px;
-  width: 200px;
+  width: 160px;
   border:1px solid #444;
   position: fixed;
-  height: 350px;
+  height: 360px;
   z-index:8;
   bottom:10px;
 }

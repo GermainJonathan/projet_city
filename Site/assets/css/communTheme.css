@@ -2,6 +2,20 @@ html,body {
     scroll-behavior: smooth;
 }
 
+/*** POUR POSITIONNER LE FOOTER EN BAS DE PAGE AUTOMATIQUEMENT **/
+html{
+    height:100%;
+}
+
+body{
+    min-height:100%;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    position:relative;
+}
+/***************************************************************/
+
 .no-margin{
     margin-left: 0;
     margin-right: 0;

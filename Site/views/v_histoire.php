@@ -3,12 +3,12 @@
     <h1 class="col-12">
         <?= TITRE_HISTOIRE ?>
     </h1>
-    <div class="col-3 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-12">
         <div id="sousTitreHistory">
         </div>
         <p id="txtHistory" class="text-justify"></p>
     </div>
-    <div class="col-9 col-xs-12">
+    <div class="col-lg-8 col-md-8 col-sm-12">
         <!--  Catégorie Histoire  -->
         <div id="timelineHistory">
         </div>
