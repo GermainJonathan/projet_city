@@ -2,6 +2,20 @@ html,body {
     scroll-behavior: smooth;
 }
 
+/*** POUR POSITIONNER LE FOOTER EN BAS DE PAGE AUTOMATIQUEMENT **/
+html{
+    height:100%;
+}
+
+body{
+    min-height:100%;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    position:relative;
+}
+/***************************************************************/
+
 .no-margin{
     margin-left: 0;
     margin-right: 0;
@@ -128,4 +142,72 @@ body::-webkit-scrollbar-thumb {
 
 #button404 {
     margin: 10px;
+}
+
+@media screen and (max-width: 510px) {
+    /** RESPONSIVE POUR LES TABLEAUX **/
+    table, thead, tbody, tr, th, td{
+        display:block;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tr{
+        margin-bottom:1rem;
+        border: 2px solid #dee2e6;
+        box-shadow: 4px 5px 6px #BEBEBE;
+    }
+    td{
+        padding-left:150px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        position:relative;
+        margin-top:-1px;
+        background:white;
+        text-align:right;
+    }
+
+    td:before{
+        padding:10px;
+        content:attr(data-label);
+        position: absolute;
+        top:0;
+        left:0;
+        width:130px;
+        bottom:0;
+        background-color:#444;
+        color:white;
+        display:flex;
+        align-items: center;
+    }
+
+    td:hover{
+        background-color: rgba(0,0,0,.08);
+    }
+
+    .table-striped tbody tr td:nth-child(odd){
+        background-color: rgba(0,0,0,.05);
+    }
+
+    td .btn{
+        width:80px;
+        float:right;
+    }
+
+    td .btn:last-child{
+        margin-right:10px;
+    }
+
+    td .list-group-item {
+        width:80px;
+        float:right;
+        padding-right:0px;
+    }
+
+    td .list-group-item:hover{
+        padding-right:20px;
+    }
+    
 }

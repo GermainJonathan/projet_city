@@ -21,10 +21,10 @@ require_once(PATH_VIEWS.'alert.php');?>
         foreach ($listUser as $user){
             ?>
             <tr>
-                <td><?=$user->getNom()?></td>
-                <td><?=$user->getMail()?></td>
-                <td><?=$user->getProfile()?></td>
-                <td><?= ($user->getCodeUser() != $_SESSION['user']->getCodeUser()) ? '<button class="btn col-2 btn-danger">X</button>' : '' ?></td>
+                <td data-label=<?= '"'.TITRE_ADMIN_NOM.'"' ?>><?=$user->getNom()?></td>
+                <td data-label=<?= '"'.TITRE_ADMIN_MAIL.'"' ?>><?=$user->getMail()?></td>
+                <td data-label=<?= '"'.TITRE_ADMIN_PROFILE.'"' ?>><?=$user->getProfile()?></td>
+                <td data-label=<?= '"'.TITRE_ACTION.'"' ?>><?= ($user->getCodeUser() != $_SESSION['user']->getCodeUser()) ? '<button class="btn col-2 btn-danger">X</button>' : '' ?></td>
             </tr>
             <?php
         }

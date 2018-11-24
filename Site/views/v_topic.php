@@ -6,20 +6,40 @@ require_once(PATH_VIEWS.'header.php');
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
 <div class="bodyForum container">
+<h3 class="contact-title" id="titreTopic"><?= $topic->getTitre() ?></h3>
+    <p><?= $topic->getDescription() ?></p>
+    <p><?= $topic->getDate() ?></p>
 <table class="table table-hover table-striped">
     <thead>
         <tr>
+            <th><?= TITRE_DATE ?></th>
+            <th><?= TITRE_COMM_NOM ?></th>
             <th scope="col"><?= TITRE_MESSAGE ?></th>
+            <?php
+                if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
+                    ?>
+                    <th><?= TITRE_ACTION ?></th>
+                    <?php
+                }
+                ?>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>
-                <?php
-                foreach ($listMessage as $message)
-                    echo $message;
+            <?php
+            foreach ($listMessage as $message) {
                 ?>
-            </td>
+                <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= $message->getDate() ?></td>
+                <td data-label=<?= '"'.TITRE_COMM_NOM.'"' ?>><?= $message->getNom().($message->getProfile() != 'User')? "" : " ★" ?></td>
+                <td data-label=<?= '"'.TITRE_MESSAGE.'"' ?>><?= $message->getMessage() ?></td>
+                <?php
+                if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
+                    ?>
+                    <td data-label=<?= '"'.TITRE_ACTION.'"' ?>><button class="btn btn-danger">X</button></td>
+                    <?php
+                }
+            }
+            ?>
         </tr>
     </tbody>
 </table>

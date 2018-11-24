@@ -8,10 +8,11 @@
  */
 class BubbleHistory {
 
-    constructor(title, description, images = "",line=true) {
+    constructor(title, description, codeQuartier, images = "",line=true) {
         this.images = images;
         this.title  = title;
         this.description = description;
+        this.codeQuartier = codeQuartier;
         this.line=line;
         this.historisation=null;
     }
@@ -21,7 +22,7 @@ class BubbleHistory {
      * renvoie l'objet du DOM concernant une bulle
      */
     createBubbleHistory() {
-        var BubbleHistory = document.createElement("div");   // Création de la div de base
+        var BubbleHistory = $("<div></div>");   // Création de la div de base
         BubbleHistory.append(this._createBubble()); // On ajoute la bulle avec son image
         BubbleHistory.append(this._createTitle()); // On met un titre
         BubbleHistory.append(this._createDescription()); // on ajoute le texte
@@ -45,7 +46,7 @@ class BubbleHistory {
     changeImg(images) {
         this.images = images;
         var classNameBubble= this.historisation.getElementsByClassName("bubble");
-        classNameBubble[0].css("background-image",images);
+        classNameBubble[0].css("background-image",path[this.codeQuartier]+images);
     }
 
     /**
@@ -75,7 +76,7 @@ class BubbleHistory {
      */
     _createBubble(){
        var bubble=$('<div></div>').addClass("bubble");
-       bubble.css("background-image",this.images);
+       bubble.css("background-image",path[this.codeQuartier]+this.images);
        return bubble[0];
     }
 

@@ -1,0 +1,147 @@
+/**** CAROUSEL MONUMENTS ******/
+var tabMonument=new Array();
+
+for (var i=0; i<7; i++){
+    tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.",environnement.codePage,"bellecour.jpg"));    
+}
+CreateCarousel(tabMonument);
+
+ // Création du carrousel
+ function CreateCarousel(tabMonuments){
+
+    var lengthCaroussel=GetLengthCaroussel();
+
+    for (var i=0; i<tabMonuments.length;i++){
+        var card=tabMonuments[i].createSimpleCard();
+        tabMonuments[i].createButtonEvt("SavoirPlusMonuments");
+        card.addClass("cardMonument");
+        if(i==0){
+            card.addClass("active-left");
+        }
+        if(i==lengthCaroussel-1){
+            card.addClass("active-right");
+        }
+        if(i>=lengthCaroussel){
+            card.addClass("cache");
+        }
+        $("#carrouselMonument").append(card);
+    }
+
+    if(tabMonuments.length<=lengthCaroussel){
+        $("#arrowLeftMonument").css("display","none");
+        $("#arrowRightMonument").css("display","none");
+
+    }
+
+    putEventsCaroussel();
+ }
+
+ // Retourne la taille du caroussel suivant la taille de la fenêtre
+ function GetLengthCaroussel(){
+    if(window.innerWidth>1920)
+        return 5;
+    else if(window.innerWidth>1600)
+        return 4;
+     else if(window.innerWidth>992)
+        return 3;
+    else if(window.innerWidth>510)
+        return 2;
+    else 
+        return 1;
+ }
+ 
+// Ajout d'évènements au caroussel
+function putEventsCaroussel(){
+    var _lengthCarousel=GetLengthCaroussel();
+
+    window.onresize=function(){
+        setTimeout(function(){
+            _lengthCarousel=GetLengthCaroussel();
+            MakeCarroussel(_lengthCarousel); 
+        }, 1000);
+       
+    }
+    
+    // clic sur la fèche de gauche 
+    $("#arrowLeftMonument").click(function(){
+        var cards=$(".cardMonument");
+        var activeLeft =$(".cardMonument.active-left");
+        var activeRight=$(".cardMonument.active-right");
+        if(cards[0]!==activeLeft[0]){
+            activeRight.removeClass("active-right");
+            activeRight.addClass("cache");
+            activeRight.prev().addClass("active-right");
+            activeLeft.removeClass("active-left");
+            activeLeft.prev().removeClass("cache");
+            activeLeft.prev().addClass("active-left");
+        }
+    });
+
+    // clic sur la flèche de droite
+    $("#arrowRightMonument").click(function(){
+        var cards=$(".cardMonument");
+        var length=cards.length;
+        var activeLeft =$(".cardMonument.active-left");
+        var activeRight=$(".cardMonument.active-right");
+        if(cards[length-_lengthCarousel]!==activeLeft[0]){
+            activeLeft.removeClass("active-left");
+            activeLeft.addClass("cache");
+            activeLeft.next().addClass("active-left");
+            activeRight.next().removeClass("cache");
+            activeRight.removeClass("active-right");
+            activeRight.next().addClass("active-right");
+        }
+    });
+
+    //  appuie sur les touches du clavier
+    $(document).keydown(function(e) {
+        if (e.keyCode==39)
+            $("#arrowRightMonument").click();
+        if(e.keyCode==37)
+            $("#arrowLeftMonument").click();
+    });
+}
+
+/* création du carroussel lors d'un resize */
+function MakeCarroussel(lengthCaroussel){
+
+    var cards=$(".cardMonument");
+    cards.addClass("cache");
+    var activeLeft =$(".cardMonument.active-left");
+    var activeRight=$(".cardMonument.active-right");
+    activeLeft.removeClass("cache");
+    activeRight.removeClass("active-right");
+    var i=0;
+    var next=activeLeft;
+    var noFind=false;
+    while(i<(lengthCaroussel-1) && noFind==false){
+        var temp=next.next();
+        if(temp.length!=0){
+            temp.removeClass("cache");
+            next=temp;
+            i++;
+        }
+        else{
+            next.addClass("active-right");
+            noFind=true;
+        }
+    }
+
+    next.addClass("active-right");
+
+    if (noFind){
+        var temp2=activeLeft.prev();
+        temp2.removeClass("cache");
+        temp2.addClass("active-left");
+        activeLeft.removeClass("active-left");
+        j=i+1;
+        var prev=temp2;
+        while(j<(lengthCaroussel-1)){
+            var temp3=prev.prev();
+            prev.removeClass("active-left");
+            temp3.removeClass("cache");
+            temp3.addClass("active-left");
+            j++;
+        }
+    }
+}

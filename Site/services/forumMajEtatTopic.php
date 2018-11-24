@@ -1,12 +1,16 @@
 <?php
-/**
- * Service de récupération des données pour la création des markers sur la carte
- * 
- * @api services/getMarkerParQuartier [GET]
- * @param quartier string
- */
-require_once "../config/configuration.php";
-require_once "../".PATH_MODELS."forumDAO.php";
+
+require_once "configurationAPI.php";
+require_once PATH_MODELS."forumDAO.php";
+require_once PATH_LIB.'foncBase.php';
+
+session_start();
+
+if(isset($_SESSION["lang"]))
+    $lang = $_SESSION["lang"];
+else
+    $lang = getLangage();
+require_once(PATH_TEXTES.$lang.'.php');
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -20,7 +24,7 @@ $forumDAO = new forumDAO(DEBUG);
 if (isset($_GET['topic']) && isset($_GET['etat'])) {
     $responses = $forumDAO->setEtatTopicByCode($_GET['topic'], $_GET['etat']);
     if ($responses != false)
-        $responses = serialize($responses);
+        $responses = $responses->toArray();
 } else {
     $code = 404;
     $responses = array(

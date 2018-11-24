@@ -16,7 +16,7 @@ class Api extends DAO
         foreach($arrayToConvert as $key => $elem) {
             preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
             $chaine[0] = explode(' ', $chaine[0]);
-            $arrayToConvert[$key]['coordonees'] = ['x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1])];
+            $arrayToConvert[$key]['coordonees'] = array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
         }
         return $arrayToConvert;
     }

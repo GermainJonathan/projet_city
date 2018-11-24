@@ -34,15 +34,9 @@ require_once(PATH_VIEWS.'alert.php');?>
         <h1>Contact</h1>
         <form>
             <label for="validationServer01">Nom</label>
-            <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Louis" value="Mark" required>
-            <div class="valid-feedback">
-                Cool!
-            </div>
+            <input type="text" class="form-control" id="validationServer01" required>
             <label for="validationServer02">Prenom</label>
-            <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Lumière" value="Otto" required>
-            <div class="valid-feedback">
-                Super!
-            </div>
+            <input type="text" class="form-control" id="validationServer02" required>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Email</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nom@example.com">

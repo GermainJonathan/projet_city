@@ -126,6 +126,11 @@ button#dropdownMenuButton {
 	min-width: 30px !important;
 }
 
+
+.dropdown-item {
+	padding: .25rem .9rem !important;
+}
+
 .show>.btn-primary.dropdown-toggle,
 .disconnect:hover  {
 	background-color: #E98B39;

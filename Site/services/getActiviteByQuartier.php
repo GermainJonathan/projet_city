@@ -1,12 +1,7 @@
 <?php
-/**
- * Service de récupération des données pour la création des markers sur la carte
- * 
- * @api services/getMarkerParQuartier [GET]
- * @param quartier string
- */
+
 require_once "configurationAPI.php";
-require_once PATH_MODELS."apiDAO.php";
+require_once PATH_MODELS."quartierDAO.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -15,17 +10,22 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $responses = array();
 $code = 200;
-$bo = new Api(DEBUG);
+$quartierDAO = new quartierDAO(DEBUG);
 
 if (isset($_GET['quartier'])) {
-    $responses = $bo->getAllDataByQuarter($_GET['quartier']);
+    $responses = $quartierDAO->getActiviteByQuartier($_GET['quartier']);
+    $array = array();
+    if ($responses != false) {
+        foreach ($responses as $temp)
+            $array[] = $temp->toArray();
+    }
 } else {
     $code = 404;
-    $responses = array(
+    $array = array(
         'error' => 'No parameter',
-        'message' => 'This service need quartier parameter'
+        'message' => 'This service need quarter parameter'
     );
 }
 // Envoie de la réponse
 http_response_code($code);
-echo json_encode($responses);
+echo json_encode($array);
