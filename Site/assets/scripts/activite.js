@@ -15,14 +15,43 @@ var options = {
 };
 
 $("#arrowUpActivity").click(function(){
-
+    fluidSnap("top");
 });
 
 $("#arrowDownActivity").click(function(){
-    // panelSnapInstance.snapToPanel($("section[data-panel='2']"));
-    // panelSnapInstance.snapToPanel(getActivateNumber() + 1);
+    fluidSnap("bottom");
 });
 
+function fluidSnap(direction)
+{
+    var panelToSnap;
+    if (direction == "top") 
+    {
+        if (parseInt(getActivateNumber()) == 1) {
+            panelToSnap = $("section[data-panel='" + (parseInt(getSectionCount()) - 1) + "']")[0];
+        }
+        else
+        {
+            panelToSnap = $("section[data-panel='" + (parseInt(getActivateNumber()) - 1) + "']")[0];
+        }
+    }
+    else if(direction == "bottom")
+    {
+        if (parseInt(getActivateNumber()) + 1 >= getSectionCount()) {
+            panelToSnap = $("section[data-panel='" + 1 + "']")[0];
+        }
+        else
+        {
+            panelToSnap = $("section[data-panel='" + (parseInt(getActivateNumber()) + 1) + "']")[0];
+        }
+    }
+    panelSnapInstance.snapToPanel(panelToSnap);
+}
+
+function getSectionCount()
+{
+    return $("#activiteconteneur > section").length;
+}
 
 function getActivateNumber()
 {
