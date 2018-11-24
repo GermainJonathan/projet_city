@@ -136,18 +136,32 @@ updateActivite();
 
 function updateActivite() {
 
-    // var title = "Title X";
-    // var message = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    // sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    // Ut enim ad minim veniam, quis nostrud
-    // exercitation ullamco laboris nisi ut aliquip
-    // ex ea commodo consequat.
-    // Lorem ipsum dolor sit amet, consectetur
-    // adipiscing elit, sed do eiusmod tempor
-    // incididunt ut labore et dolore magna aliqua.
-    // Ut enim ad minim veniam, quis nostrud
-    // exercitation ullamco laboris nisi ut aliquip
-    // ex ea commodo consequat.`;
-
-    // $("#activiteconteneur").append("<div></div>").attr("id","newId");
 }
+
+var panelSnapInstance;
+var container = $("#activiteconteneur")[0];
+
+var options = {
+    container : container,
+    slideSpeed: 200,
+};
+
+$("#arrowUpActivity").click(function(){
+
+});
+
+$("#arrowDownActivity").click(function(){
+    // panelSnapInstance.snapToPanel($("section[data-panel='2']"));
+    // panelSnapInstance.snapToPanel(getActivateNumber() + 1);
+});
+
+
+function getActivateNumber()
+{
+    return panelSnapInstance.activePanel.getAttribute("data-panel");
+}
+
+
+  setTimeout(function() {
+        panelSnapInstance = new PanelSnap(options);
+}, 1000);

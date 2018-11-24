@@ -98,7 +98,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
                         <div class="col-9">
                             <div class="arrow" id="arrowUpActivity"></div>
                             <div id="activiteconteneur" class="row">
-                                <div>
+                                <section data-panel="1">
                                     <h2>Title 1</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -111,8 +111,8 @@ require_once(PATH_VIEWS.'spinner.php');?>
                                         Ut enim ad minim veniam, quis nostrud
                                         exercitation ullamco laboris nisi ut aliquip
                                         ex ea commodo consequat.</p>
-                                </div>
-                                <div>
+                                </section>
+                                <section data-panel="2">
                                     <h2>Title 2</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -125,8 +125,8 @@ require_once(PATH_VIEWS.'spinner.php');?>
                                         Ut enim ad minim veniam, quis nostrud
                                         exercitation ullamco laboris nisi ut aliquip
                                         ex ea commodo consequat.</p>
-                                </div>
-                                <div>
+                                </section>
+                                <section data-panel="3">
                                     <h2>Title 3</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -139,8 +139,8 @@ require_once(PATH_VIEWS.'spinner.php');?>
                                         Ut enim ad minim veniam, quis nostrud
                                         exercitation ullamco laboris nisi ut aliquip
                                         ex ea commodo consequat.</p>
-                                </div>
-                                <div>
+                                </section>
+                                <section data-panel="4">
                                     <h2>Title 4</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -153,91 +153,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
                                         Ut enim ad minim veniam, quis nostrud
                                         exercitation ullamco laboris nisi ut aliquip
                                         ex ea commodo consequat.</p>
-                                </div>
-                                <div>
-                                    <h2>Title 5</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.</p>
-                                </div>
-                                <div>
-                                    <h2>Title 6</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.</p>
-                                </div>
-                                <div>
-                                    <h2>Title 7</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.</p>
-                                </div>
-                                <div>
-                                    <h2>Title 8</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.</p>
-                                </div>
-                                <div>
-                                    <h2>Title 9</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.</p>
-                                </div>
-                                <div>
-                                    <h2>Title 10</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat.</p>
-                                </div>
+                                </section>
                             </div>
                             <div class="arrow" id="arrowDownActivity"></div>
                         </div>
@@ -266,92 +182,92 @@ require_once(PATH_VIEWS.'spinner.php');?>
                 </div>
             </div>
 
-    <span class="anchor" id="anchorBodyCommentaires"></span>
-    <div id="bodyCommentaires">
-        <h1>
-            <?= TITRE_COMMENTAIRE ?>
-        </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.
-            Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat.</p>
-        <?php
+            <span class="anchor" id="anchorBodyCommentaires"></span>
+            <div id="bodyCommentaires">
+                <h1>
+                    <?= TITRE_COMMENTAIRE ?>
+                </h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</p>
+                <?php
             if (empty($_SESSION['user'])){
                 ?>
-        <div>
-            <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
-                <div class="form-group">
-                    <label for="nomCommentaire">
-                        <?= TXT_COMM_NOM ?></label>
-                    <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
+                <div>
+                    <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
+                        <div class="form-group">
+                            <label for="nomCommentaire">
+                                <?= TXT_COMM_NOM ?></label>
+                            <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
+                        </div>
+                        <div class="form-group">
+                            <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
+                        </div>
+                        <button type="submit" form="formCommentaireBellecour" name="valFormCommentaireBellecour" class="btn btn-primary">
+                            <?= TXT_ENVOYER ?></button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
-                </div>
-                <button type="submit" form="formCommentaireBellecour" name="valFormCommentaireBellecour" class="btn btn-primary">
-                    <?= TXT_ENVOYER ?></button>
-            </form>
-        </div>
-        <?php
+                <?php
             }
             ?>
-        <div>
-            <!-- le tbleau est à virer !! (c'est moche) -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            <?= TITRE_DATE ?>
-                        </th>
-                        <th>
-                            <?= TITRE_COMM_NOM ?>
-                        </th>
-                        <th>
-                            <?= TITRE_COMMENTAIRE ?>
-                        </th>
-                        <?php
+                <div>
+                    <!-- le tbleau est à virer !! (c'est moche) -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <?= TITRE_DATE ?>
+                                </th>
+                                <th>
+                                    <?= TITRE_COMM_NOM ?>
+                                </th>
+                                <th>
+                                    <?= TITRE_COMMENTAIRE ?>
+                                </th>
+                                <?php
                         if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                             ?>
-                        <th>
-                            <?= TITRE_ACTION ?>
-                        </th>
-                        <?php
+                                <th>
+                                    <?= TITRE_ACTION ?>
+                                </th>
+                                <?php
                         }
                         ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                         foreach ($listCommentaire as $commentaire){
                             ?>
-                    <td>
-                        <?= $commentaire->getDate() ?>
-                    </td>
-                    <td>
-                        <?= $commentaire->getNom() ?>
-                    </td>
-                    <td>
-                        <?= $commentaire->getCommentaire() ?>
-                    </td>
-                    <?php
+                            <td>
+                                <?= $commentaire->getDate() ?>
+                            </td>
+                            <td>
+                                <?= $commentaire->getNom() ?>
+                            </td>
+                            <td>
+                                <?= $commentaire->getCommentaire() ?>
+                            </td>
+                            <?php
                             if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                             ?>
-                    <td><button class="btn btn-danger">X</button></td>
-                    <?php
+                            <td><button class="btn btn-danger">X</button></td>
+                            <?php
                             }
                         }
                     ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

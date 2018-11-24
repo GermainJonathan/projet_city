@@ -208,7 +208,11 @@ p{
 
 #activiteconteneur{
     height: 300px;
-    overflow: hidden;
+    overflow: scroll;
+}
+
+#activiteconteneur > section{
+    height: 50%;
 }
 
 /*------------------------------------------------------------------------------------*/
