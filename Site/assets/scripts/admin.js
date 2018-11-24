@@ -2,15 +2,17 @@ var selectPage = 0;
 
 var oldComponent;
 
+var pageOrder = ["", "terreaux", "bellecour", "perrache"];
+
 // Schéma Menu
-var listMenu = [["Parallaxe", "Bandeau"], ["Histoire", "Monuments", "Activités", "Restaurants", "Parallaxe"], ["Parallaxe", "Text contact"]];
+var listMenu = [["Parallaxe", "Bandeau"], ["Histoire", "Monument", "Activité", "Restaurant", "Parallaxe"], ["Parallaxe", "Text contact"]];
 
 // Liste des composants
-var components = {
+var componentsConfig = {
     "Histoire": "patrimoineConfig",
-    "Monuments": "patrimoineConfig",
-    "Activités": "patrimoineConfig",
-    "Restaurants": "patrimoineConfig",
+    "Monument": "patrimoineConfig",
+    "Activité": "patrimoineConfig",
+    "Restaurant": "patrimoineConfig",
     "Parallaxe": "parallaxConfig",
     "Bandeau": "bandeauConfig",
     "Text contact": "contactConfig"
@@ -58,26 +60,25 @@ $("a.nav-item.nav-link").click(function() {
 function generateList(list) {
     $("div.sidebarAdmin").empty();
     for(let elem in list) {
-        let item = $("<a class='nav-link' id='v-pills-settings-tab' data-toggle='pill' data-toload='" + components[list[elem]] + "' href='#' role='tab' aria-selected='false'>" + list[elem] + "</a>");
+        let item = $("<a class='nav-link' id='v-pills-settings-tab' data-toggle='pill'" + "data-index=" + elem + " data-toload='" + componentsConfig[list[elem]] + "' href='#' role='tab' aria-selected='false'>" + list[elem] + "</a>");
         $("div.sidebarAdmin").append(item);
     }
     $("div.sidebarAdmin").children(":first").addClass("active show");
     $("a.nav-link#v-pills-settings-tab").click(function() {
         let componentToLoad = $(this).data("toload");
+        if(componentToLoad == "patrimoineConfig") {
+            $.ajax({
+                method: "GET",
+                url: getService(list[$(this).data("index")])
+                }).done(function(data) {
+                });
+        }
         loadComponents(componentToLoad);
     });
     $("a.nav-link.active.show#v-pills-settings-tab").trigger('click');
 }
 
 function loadComponents(componentToLoad) {
-    // FIXME: Binder les services
-    // Requete de récupération des données (patrimoine au moins)
-    // $.ajax({
-    //     method: "GET",
-    //     url: environnement.serviceUrl + "get" + ???? + "ByQuartier.php?quartier="+e.target.feature.properties.name
-    //   }).done(function(data) {
-    //       // Add Some code
-    //   });
     if(oldComponent)
         oldComponent.hide();
     let component = $("#"+componentToLoad);
@@ -89,4 +90,8 @@ function loadComponents(componentToLoad) {
 function addComponents() {
     let content = $(oldComponent).find(".media").first();
     content.clone().appendTo($("#patrimoineContent"));
+}
+
+function getService(patrimoineToLoad) {
+    return environnement.serviceUrl + "get" + patrimoineToLoad + "ByQuartier.php?quartier=" + pageOrder[selectPage];
 }

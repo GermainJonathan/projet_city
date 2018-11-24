@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Service de récupération des Monuments d'un quartier
+ * 
+ * @api services/getMonumentByQuartier [GET]
+ * @param quartier string libelleQuartier
+ */
 require_once "configurationAPI.php";
 require_once PATH_MODELS."quartierDAO.php";
 require_once PATH_MODELS."monument.php";
@@ -8,8 +13,6 @@ require_once PATH_MODELS."monument.php";
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
-$responses = array();
 $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
@@ -22,7 +25,7 @@ if (isset($_GET['quartier'])) {
     }
 } else {
     $code = 404;
-    $responses = array(
+    $array = array(
         'error' => 'No parameter',
         'message' => 'This service need quarter parameter'
     );

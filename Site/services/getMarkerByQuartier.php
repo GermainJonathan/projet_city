@@ -3,7 +3,7 @@
  * Service de récupération des données pour la création des markers sur la carte
  * 
  * @api services/getMarkerParQuartier [GET]
- * @param quartier string
+ * @param quartier string libelleQuartier
  */
 require_once "configurationAPI.php";
 require_once PATH_MODELS."apiDAO.php";
