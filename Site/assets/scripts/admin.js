@@ -1,8 +1,6 @@
 var selectPage = 0;
 
-var oldComponent;
-
-var pageOrder = ["", "terreaux", "bellecour", "perrache"];
+var adminPageOrder = ["", "terreaux", "bellecour", "perrache"];
 
 // Schéma Menu
 var listMenu = [["Parallaxe", "Bandeau"], ["Histoire", "Monument", "Activité", "Restaurant", "Parallaxe"], ["Parallaxe", "Text contact"]];
@@ -65,33 +63,54 @@ function generateList(list) {
     }
     $("div.sidebarAdmin").children(":first").addClass("active show");
     $("a.nav-link#v-pills-settings-tab").click(function() {
+        $("#patrimoineConfig").hide();
+        $(".contentAdmin > .spinner").show();
         let componentToLoad = $(this).data("toload");
         if(componentToLoad == "patrimoineConfig") {
+            // 1 - On supprime les composants des autres onglets
+            let toSave = $("#patrimoineContent").find(".media").first();
+            $("#patrimoineContent").empty();
+            toSave.appendTo($("#patrimoineContent"));
             $.ajax({
                 method: "GET",
-                url: getService(list[$(this).data("index")])
+                url: environnement.serviceUrl + "get" + list[$(this).data("index")].replace(/é/gi, "e") + "ByQuartier.php?quartier=" + adminPageOrder[selectPage]
                 }).done(function(data) {
+                    for(let patrimoine of data) {
+                        let newComponent = addPatrimoineComponents();
+                        if(patrimoine.image != null)
+                            newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image)
+                    }
+                    $(".contentAdmin > .spinner").hide();
+                    $("#patrimoineConfig").show();
                 });
+        } else {
+            loadComponents(componentToLoad);
+            $(".contentAdmin > .spinner").hide();
         }
-        loadComponents(componentToLoad);
     });
     $("a.nav-link.active.show#v-pills-settings-tab").trigger('click');
 }
 
 function loadComponents(componentToLoad) {
-    if(oldComponent)
-        oldComponent.hide();
     let component = $("#"+componentToLoad);
     component.show();
-    oldComponent = component;
+}
+
+// Ajout un composant parralax
+function addParallaxComponents() {
+    let content = $("#parallaxConfig").find(".media").first();
+    content.clone().appendTo($("#patrimoineContent"));
+    $("#patrimoineContent").find(".media").last().attr('id', lastIndex +1);
+    $("#patrimoineContent").find(".media").last().show();
+    return $("#patrimoineContent").find(".media").last();
 }
 
 // Ajout un composant patrimoine
-function addComponents() {
-    let content = $(oldComponent).find(".media").first();
+function addPatrimoineComponents() {
+    lastIndex = parseInt($("#patrimoineContent").find(".media").last().attr('id'));
+    let content = $("#patrimoineContent").find(".media").first();
     content.clone().appendTo($("#patrimoineContent"));
-}
-
-function getService(patrimoineToLoad) {
-    return environnement.serviceUrl + "get" + patrimoineToLoad + "ByQuartier.php?quartier=" + pageOrder[selectPage];
+    $("#patrimoineContent").find(".media").last().attr('id', lastIndex +1);
+    $("#patrimoineContent").find(".media").last().show();
+    return $("#patrimoineContent").find(".media").last();
 }

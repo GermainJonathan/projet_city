@@ -37,7 +37,7 @@ class quartierDAO extends DAO
         $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ?", array($codeQuartier));
         $listRestaurant = array();
         foreach ($result as $temp){
-            $listRestaurant[] = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['numero'], $temp['imageRestaurant'], $temp['commentaire']);
+            $listRestaurant[] = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['numeroTelephone'], $temp['imageRestaurant'], $temp['commentaire']);
         }
         return $listRestaurant;
     }

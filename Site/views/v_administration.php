@@ -50,9 +50,9 @@ require_once(PATH_VIEWS.'alert.php');?>
             </div>
             <div class="contentAdmin col-9">
                 <?php include(PATH_VIEWS.'spinner.php'); ?>
-                <div id="patrimoineConfig" style="display: none;">
+                <div id="patrimoineConfig">
                     <div id="patrimoineContent">
-                        <div class="media">
+                        <div class="media" id="0" style="display: none;">
                             <div class="relative">
                                 <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
                                 <input type="file" id="file1" class="custom-file custom-file-input" capture style="display: none;">
@@ -71,7 +71,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                         </div>   
                     </div>                 
                     <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addComponents();">Ajouter</button>
+                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents();">Ajouter</button>
                         <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
                         <a class="btn btn-primary" href="?page=administration">Annuler</a>
                     </div>
