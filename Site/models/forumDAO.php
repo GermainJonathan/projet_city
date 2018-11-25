@@ -63,6 +63,16 @@ class forumDAO extends DAO
         return $listMessage;
     }
 
+    public function getMessageById($id){
+        $result = $this->queryRow("SELECT * FROM message WHERE codeMessage = ?", array($id));
+        if($result['codeProfile'] == 0)
+            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date']);
+        else {
+            $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($result['codeProfile']));
+            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date'], $result['codeProfile'], $res['libelleProfile']);
+        }
+    }
+
     // vérifi si un topic exciste et est actif
     public function verifyTopic($idTopic){
 
@@ -88,6 +98,12 @@ class forumDAO extends DAO
         if($result)
             return $this->getTopicById($idTopic);
         return false;
+    }
+
+    public function createMessageTopic($idTopic, $message, $nom, $profile = 0){
+        $max = $this->queryRow("SELECT MAX(codeMessage) as max FROM message");
+        $this->queryBdd("INSERT INTO message VALUES (?, ?, ?, ?, ?, ?)", array($max['max']+1, $idTopic, $nom, $message, date('Y-M-d'), $profile));
+
     }
 
 }
