@@ -2,6 +2,8 @@ var selectPage = 0;
 
 var adminPageOrder = ["", "terreaux", "bellecour", "perrache"];
 
+var oldConfig;
+
 // Schéma Menu
 var listMenu = [["Parallaxe", "Bandeau"], ["Histoire", "Monument", "Activité", "Restaurant", "Parallaxe"], ["Parallaxe", "Text contact"]];
 
@@ -18,14 +20,6 @@ var componentsConfig = {
 
 generateList(listMenu[0]);
 
-$("#upfile1").click(function() {
-    $("#file1").trigger('click');
-});
-
-$("#upfile2").click(function() {
-    $("#file2").trigger('click');
-});
-
 // Au click sur les boutons de sélection de page
 $("a.nav-item.nav-link").click(function() {
     // Si on click sur la page déjà chargé on ne la recharge pas
@@ -37,8 +31,6 @@ $("a.nav-item.nav-link").click(function() {
     });
     selectPage = $(this).data("index");
     $(this).addClass("active");
-    $("#content").hide();
-    $(".adminContainer>.spinner").show();
     if(selectPage == 0) {
         generateList(listMenu[0]);
     }
@@ -48,11 +40,6 @@ $("a.nav-item.nav-link").click(function() {
     else {
         generateList(listMenu[1]);
     }
-    setTimeout(function() {
-        $("#content").show();
-        $(".adminContainer>.spinner").hide();
-        // $(".contentAdmin >.spinner").show();
-    }, 1000);
 });
 
 function generateList(list) {
@@ -68,17 +55,22 @@ function generateList(list) {
         let componentToLoad = $(this).data("toload");
         if(componentToLoad == "patrimoineConfig") {
             // 1 - On supprime les composants des autres onglets
+            if(oldConfig)
+                $("#"+oldConfig).hide();
             let toSave = $("#patrimoineContent").find(".media").first();
             $("#patrimoineContent").empty();
             toSave.appendTo($("#patrimoineContent"));
+
+            let typeComponent =  list[$(this).data("index")];
             $.ajax({
                 method: "GET",
-                url: environnement.serviceUrl + "get" + list[$(this).data("index")].replace(/é/gi, "e") + "ByQuartier.php?quartier=" + adminPageOrder[selectPage]
+                url: environnement.serviceUrl + "get" + typeComponent.replace(/é/gi, "e") + "ByQuartier.php?quartier=" + adminPageOrder[selectPage]
                 }).done(function(data) {
                     for(let patrimoine of data) {
                         let newComponent = addPatrimoineComponents();
                         if(patrimoine.image != null)
                             newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image)
+                        updateComponent(typeComponent, newComponent, patrimoine);
                     }
                     $(".contentAdmin > .spinner").hide();
                     $("#patrimoineConfig").show();
@@ -92,17 +84,11 @@ function generateList(list) {
 }
 
 function loadComponents(componentToLoad) {
+    if(oldConfig)
+        $("#"+oldConfig).hide();
     let component = $("#"+componentToLoad);
     component.show();
-}
-
-// Ajout un composant parralax
-function addParallaxComponents() {
-    let content = $("#parallaxConfig").find(".media").first();
-    content.clone().appendTo($("#patrimoineContent"));
-    $("#patrimoineContent").find(".media").last().attr('id', lastIndex +1);
-    $("#patrimoineContent").find(".media").last().show();
-    return $("#patrimoineContent").find(".media").last();
+    oldConfig = componentToLoad;
 }
 
 // Ajout un composant patrimoine
@@ -113,4 +99,33 @@ function addPatrimoineComponents() {
     $("#patrimoineContent").find(".media").last().attr('id', lastIndex +1);
     $("#patrimoineContent").find(".media").last().show();
     return $("#patrimoineContent").find(".media").last();
+}
+
+function updateComponent(typeComponent, component, dataComponent) {
+    switch(typeComponent) {
+        case "Histoire":
+            component.find("#title").val(dataComponent.libelleMonument);
+            component.find("#description").val(dataComponent.commentaire);
+            break;
+        case "Monument":
+            component.find("#title").val(dataComponent.libelleMonument);
+            component.find("#description").val(dataComponent.commentaire);
+            let architecte = $("<div class='form-inline'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input type='text' class='form-control col-8' id='archi'></div>");
+            architecte.find("#archi").val(dataComponent.architecte);
+            architecte.appendTo(component.find(".media-body"));
+            break;
+        case "Activité":
+            component.find("#title").val(dataComponent.titre);
+            component.find("#description").val(dataComponent.commentaire);
+            break;
+        case "Restaurant":
+            component.find("#title").val(dataComponent.nom);
+            component.find("#description").val(dataComponent.commentaire);
+            let telephone = $("<div class='form-inline'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input type='text' class='form-control col-8' id='tel'></div>");
+            telephone.find("#tel").val(dataComponent.numero);
+            telephone.appendTo(component.find(".media-body"));
+            break;
+        default:
+            break;
+    }
 }
