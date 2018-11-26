@@ -112,3 +112,7 @@ function getActionRefuseByEtat($etat){
             return false;
     }
 }
+
+function makeMessage($message, $nom, $prenom, $mail){
+    return 'salut !!';
+}

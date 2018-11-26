@@ -100,10 +100,10 @@ class forumDAO extends DAO
         $max = ($result['max'] == null)? 0 : $result['max'] + 1;
 
         $res = $this->queryBdd("INSERT INTO commentaire VALUES (?, ?, ?, ?, ?, ?, ?)",
-            array($max, $idTopic, htmlspecialchars(trim($nom)), htmlspecialchars(trim($message)), $date, 1));
+            array($max, $idTopic, htmlspecialchars(trim($nom)), htmlspecialchars(trim($message)), $date, $profile));
 
         if($res){
-            // créer le message de retour
+            return $this->getMessageById($max);
         }
         return false;
     }

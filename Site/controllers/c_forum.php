@@ -21,6 +21,7 @@ if(isset($_POST["valFormTopic"])){
         $manager->createTopic($_POST["titreTopic"], $_POST["descriptionTopic"]);
         $alert['messageAlert'] = SUCCESS_CREATE_TOPIC;
         $alert['classAlert'] = 'success';
+        mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
         $valFormTest = true;
     }
 }

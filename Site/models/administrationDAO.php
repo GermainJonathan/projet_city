@@ -28,6 +28,7 @@ class administrationDAO extends DAO
     public function getUser(){
         $result = $this->queryAll("SELECT * FROM user");
 
+        $listUser = array();
         foreach ($result as $temp) {
             $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($temp['codeProfile']));
             $listUser[] = new user($temp['codeUser'], $temp['nom'], $temp['mail'], $temp['codeProfile'], $res['libelleProfile']);
@@ -35,4 +36,7 @@ class administrationDAO extends DAO
         return $listUser;
     }
 
+    public function createMessageContact(){
+
+    }
 }

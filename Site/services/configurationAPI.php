@@ -14,6 +14,7 @@ const LANG ='FR-fr';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'AG4île';
+const mAIL_ADMIN = 'paulpoupet@atilog.com';
 
 
 //dossiers racines du site
