@@ -8,7 +8,9 @@ require_once(PATH_VIEWS.'alert.php');?>
 
 <!-- parallax -->
 <div class="parallax" data-height="60" data-image-src="<?= PATH_ACCUEIL.'lyon.jpg' ?>">
-    <h1 class="textParralax"><?= TITRE ?></h1>
+    <div class="caption">
+        <span class="border"><?= TITRE ?></span>
+    </div>
 </div>
 
 <!--  Bandeau texte de la page d'accuel   -->

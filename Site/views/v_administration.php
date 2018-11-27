@@ -55,15 +55,15 @@ require_once(PATH_VIEWS.'alert.php');?>
                         <div class="media" id="0" style="display: none;">
                             <div class="relative">
                                 <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
-                                <input type="file" id="file1" class="custom-file custom-file-input" capture style="display: none;">
-                                <button type="file" id="upfile1" class="btn btn-light plus-sign"><img class="plus"></button>
+                                <input type="file" id="file" class="custom-file custom-file-input" capture style="display: none;">
+                                <button type="file" id="upfile" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
                             </div>
                             <div class="media-body align-self-center">
-                                <div class="form-inline">
+                                <div class="form-inline" data-id='0'>
                                     <label class="col-2 align-self-left" for="title"><h4 class="text-truncate">Titre</h4></label>
                                     <input type="text" class="form-control col-8" id="title">
                                 </div>
-                                <div class="form-inline">
+                                <div class="form-inline" data-id='10'>
                                     <label class="col-2 align-self-left" for="description"><h4 class="text-truncate">Description</h4></label>
                                     <textarea class="form-control  col-8" id="description"></textarea>
                                 </div>
@@ -81,10 +81,10 @@ require_once(PATH_VIEWS.'alert.php');?>
                         <div class="relative">
                             <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
                             <input type="file" id="file2" class="custom-file custom-file-input" capture style="display: none;">
-                            <button type="file" id="upfile2" class="btn btn-light plus-sign"><img class="plus"></button>
+                            <button type="file" id="upfile2" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
                         </div>
                         <div class="media-body align-self-center">
-                            <div class="form-inline">
+                            <div class="form-inline" data-id='0'>
                                 <label class="col-2 align-self-left" for="text"><h4 class="text-truncate">Text</h4></label>
                                 <input type="text" class="form-control col-8" id="text">
                             </div>

@@ -83,6 +83,7 @@ function generateList(list) {
     $("a.nav-link.active.show#v-pills-settings-tab").trigger('click');
 }
 
+// Charge le composant donnée en paramètre
 function loadComponents(componentToLoad) {
     if(oldConfig)
         $("#"+oldConfig).hide();
@@ -91,9 +92,14 @@ function loadComponents(componentToLoad) {
     oldConfig = componentToLoad;
 }
 
+// Fonction permettant de binder les inputs files (hidden) au bouton de selection d'image
+function fileBrowser(inputFile) {
+    inputFile.trigger('click');  
+}
+
 // Ajout un composant patrimoine
 function addPatrimoineComponents() {
-    lastIndex = parseInt($("#patrimoineContent").find(".media").last().attr('id'));
+    let lastIndex = parseInt($("#patrimoineContent").find(".media").last().attr('id'));
     let content = $("#patrimoineContent").find(".media").first();
     content.clone().appendTo($("#patrimoineContent"));
     $("#patrimoineContent").find(".media").last().attr('id', lastIndex +1);
@@ -110,7 +116,7 @@ function updateComponent(typeComponent, component, dataComponent) {
         case "Monument":
             component.find("#title").val(dataComponent.libelleMonument);
             component.find("#description").val(dataComponent.commentaire);
-            let architecte = $("<div class='form-inline'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input type='text' class='form-control col-8' id='archi'></div>");
+            let architecte = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input type='text' class='form-control col-8' id='archi'></div>");
             architecte.find("#archi").val(dataComponent.architecte);
             architecte.appendTo(component.find(".media-body"));
             break;
@@ -121,11 +127,18 @@ function updateComponent(typeComponent, component, dataComponent) {
         case "Restaurant":
             component.find("#title").val(dataComponent.nom);
             component.find("#description").val(dataComponent.commentaire);
-            let telephone = $("<div class='form-inline'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input type='text' class='form-control col-8' id='tel'></div>");
+            let telephone = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input type='text' class='form-control col-8' id='tel'></div>");
             telephone.find("#tel").val(dataComponent.numero);
             telephone.appendTo(component.find(".media-body"));
+            let adresse = $("<div class='form-inline' data-id='3'><label class='col-2 align-self-left' for='adresse'><h4 class='text-truncate'>Adresse</h4></label><input type='text' class='form-control col-8' id='adresse'></div>");
+            adresse.find("#adresse").val(dataComponent.adresse);
+            adresse.appendTo(component.find(".media-body"));
             break;
         default:
             break;
     }
+    // Tri des inputs
+    component.find(".media-body div").sort(function(a,b) {
+        return ($(a).data("id") > $(b).data("id")) ? ($(a).data("id") > $(b).data("id")) ? 1 : 0 : -1;
+    }).appendTo(component.find(".media-body"));
 }

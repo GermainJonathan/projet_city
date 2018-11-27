@@ -10,6 +10,7 @@ class restaurant
     private $_nom;
     private $_numero;
     private $_image;
+    private $_adresse;
     private $_commentaire;
 
     /**
@@ -21,9 +22,10 @@ class restaurant
      * @param $_nom
      * @param $_numero
      * @param $_image
+     * @param $_adresse
      * @param $_commentaire
      */
-    public function __construct($_codeRestaurant, $_codePays, $_codeQuartier, $_quartier, $_nom, $_numero, $_image, $_commentaire)
+    public function __construct($_codeRestaurant, $_codePays, $_codeQuartier, $_quartier, $_nom, $_numero, $_image, $_adresse, $_commentaire)
     {
         $this->_codeRestaurant = $_codeRestaurant;
         $this->_codePays = $_codePays;
@@ -32,6 +34,7 @@ class restaurant
         $this->_nom = $_nom;
         $this->_numero = $_numero;
         $this->_image = $_image;
+        $this->_adresse = $_adresse;
         $this->_commentaire = $_commentaire;
     }
 
@@ -108,6 +111,7 @@ class restaurant
             'nom' => $this->_nom,
             'numero' => $this->_numero,
             'image' => $this->_image,
+            'adresse' => $this->_adresse,
             'commentaire' => $this->_commentaire
         );
     }

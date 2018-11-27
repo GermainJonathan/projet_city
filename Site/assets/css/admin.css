@@ -30,6 +30,10 @@ div.sidebarAdmin > a.nav-link.active {
     line-height: 30px;
 }
 
+#content {
+    min-height: 400px;
+}
+
 .contentAdmin {
     border-left: 1px solid rgba(0,0,0,.1)
 }
@@ -64,6 +68,7 @@ div.sidebarAdmin > a.nav-link.active {
 .plus {
     background: url(../images/core/plus-sign-in-a-black-circle.svg) no-repeat;
     background-size: contain;
+    border-radius: 100%;
     height: 30px;
     width: 30px;
 }
