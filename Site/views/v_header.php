@@ -16,11 +16,8 @@
 		<link href="<?= PATH_CSS ?>header.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>footer.css" rel="stylesheet"/>
 		<link href="<?= PATH_CSS ?>contact.css" rel="stylesheet"/>
-<<<<<<< HEAD
 		<link href="<?= PATH_CSS ?>admin.css" rel="stylesheet"/>
-=======
 		<link href="<?= PATH_CSS ?>mentions.css" rel="stylesheet"/>
->>>>>>> develop
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
 		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script> 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
