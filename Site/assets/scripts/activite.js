@@ -4,18 +4,61 @@ updateActivite();
 
 function updateActivite() {
 
-    // var title = "Title X";
-    // var message = `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    // sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    // Ut enim ad minim veniam, quis nostrud
-    // exercitation ullamco laboris nisi ut aliquip
-    // ex ea commodo consequat.
-    // Lorem ipsum dolor sit amet, consectetur
-    // adipiscing elit, sed do eiusmod tempor
-    // incididunt ut labore et dolore magna aliqua.
-    // Ut enim ad minim veniam, quis nostrud
-    // exercitation ullamco laboris nisi ut aliquip
-    // ex ea commodo consequat.`;
-
-    // $("#activiteconteneur").append("<div></div>").attr("id","newId");
 }
+
+var panelSnapInstance;
+var container = $("#activiteconteneur")[0];
+
+var options = {
+    container : container,
+    slideSpeed: 200,
+};
+
+$("#arrowUpActivity").click(function(){
+    fluidSnap("top");
+});
+
+$("#arrowDownActivity").click(function(){
+    fluidSnap("bottom");
+});
+
+function fluidSnap(direction)
+{
+    var panelToSnap;
+    if (direction == "top") 
+    {
+        if (parseInt(getActivateNumber()) == 1) {
+            panelToSnap = $("section[data-panel='" + (parseInt(getSectionCount()) - 1) + "']")[0];
+        }
+        else
+        {
+            panelToSnap = $("section[data-panel='" + (parseInt(getActivateNumber()) - 1) + "']")[0];
+        }
+    }
+    else if(direction == "bottom")
+    {
+        if (parseInt(getActivateNumber()) + 1 >= getSectionCount()) {
+            panelToSnap = $("section[data-panel='" + 1 + "']")[0];
+        }
+        else
+        {
+            panelToSnap = $("section[data-panel='" + (parseInt(getActivateNumber()) + 1) + "']")[0];
+        }
+    }
+    panelSnapInstance.snapToPanel(panelToSnap);
+}
+
+function getSectionCount()
+{
+    return $("#activiteconteneur > section").length;
+}
+
+function getActivateNumber()
+{
+    return panelSnapInstance.activePanel.getAttribute("data-panel");
+}
+
+
+  setTimeout(function() {
+        panelSnapInstance = new PanelSnap(options);
+}, 1000);
