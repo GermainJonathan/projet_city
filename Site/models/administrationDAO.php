@@ -36,7 +36,19 @@ class administrationDAO extends DAO
         return $listUser;
     }
 
-    public function createMessageContact(){
+    public function deleteUser($id){
+        return $this->queryBdd("DELETE FROM user WHERE codeUser = ?", $id);
+    }
 
+    public function getMessageContactAll(){
+        return true;
+    }
+
+    public function getMessageContactById($id){
+        return true;
+    }
+
+    public function createMessageContact(){
+        return true;
     }
 }

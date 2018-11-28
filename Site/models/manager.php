@@ -76,5 +76,10 @@ class manager
         return $commentaireDAO->getCommentaire($_SESSION['idLang'], $codeQuartier);
     }
 
+    public function getMessageContact(){
+        $administrationDAO = new administrationDAO(DEBUG);
+        return $administrationDAO->getMessageContactAll();
+    }
+
 }
 
