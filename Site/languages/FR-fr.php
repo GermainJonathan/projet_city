@@ -60,4 +60,15 @@ define('ERREUR_CONN_LOGIN_VOID', 'Il manque le login');
 define('ERREUR_CONN_PW_VOID', 'Il manque le mot de passe');
 define('ERREUR_CONN_REFUSEE', 'Accès refusé. Impossible de se connecter avec ces informations');
 
-define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validtion par l\'administrateur');
+define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validation par l\'administrateur');
+
+//  Texte pour la page de contact
+define ('TITRE_CONTACT_A_PROPOS'," À propos");
+define('TXT_CONTACT_APROPOS',"Une question, un besoin , une remarque ... ? <br/> Nous sommes à votre disposition et vous répondrons dans les meilleurs délais. N'hésitez pas à nous contacter !");
+define('TXT_CONTACT_FORMULAIRE',"Ou Compléter le formulaire");
+// Champ Formlaire
+define('CHAMP_NOM',"Votre Nom");
+define ("CHAMP_PRENOM","Votre Prénom");
+define("CHAMP_EMAIL","Votre Email");
+define("CHAMP_SUJET","Sujet");
+define("CHAMP_MESSAGE","Votre Message");
