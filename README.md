@@ -16,4 +16,8 @@ Thème : Promouvoir sa ville à travers son quartier
 
 > MVC : Modèle Vue Contrôleur
 
-> Service PHP **REST** : pourquoi REST : Simple et efficace.
+> Service PHP **REST**
+
+## Installation API
+
+> Renommer le fichier *"config.js.template"* en *"config.js"* (./Site/config/) puis renseigner la variable **environnement** suivant le besoin

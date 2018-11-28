@@ -1,12 +1,16 @@
 <?php
-
+/**
+ * Service de récupération des Activites d'un quartier
+ * 
+ * @api services/getMActiviteByQuartier [GET]
+ * @param quartier string libelleQuartier
+ */
 require_once "configurationAPI.php";
 require_once PATH_MODELS."quartierDAO.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
 
 $responses = array();
 $code = 200;

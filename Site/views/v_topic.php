@@ -29,13 +29,13 @@ require_once(PATH_VIEWS.'alert.php');?>
             <?php
             foreach ($listMessage as $message) {
                 ?>
-                <td><?= $message->getDate() ?></td>
-                <td><?= $message->getNom().($message->getProfile() != 'User')? "" : " ★" ?></td>
-                <td><?= $message->getMessage() ?></td>
+                <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= $message->getDate() ?></td>
+                <td data-label=<?= '"'.TITRE_COMM_NOM.'"' ?>><?= $message->getNom().($message->getProfile() != 'User')? "" : " ★" ?></td>
+                <td data-label=<?= '"'.TITRE_MESSAGE.'"' ?>><?= $message->getMessage() ?></td>
                 <?php
                 if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
                     ?>
-                    <td><button class="btn btn-danger">X</button></td>
+                    <td data-label=<?= '"'.TITRE_ACTION.'"' ?>><button class="btn btn-danger">X</button></td>
                     <?php
                 }
             }

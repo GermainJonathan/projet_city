@@ -40,5 +40,5 @@ define('PATH_CORE', PATH_IMAGES.'core/');
 
 
 //fichiers
-define('PATH_LOGO', PATH_IMAGES.'logo.png');
+define('PATH_LOGO', PATH_IMAGES.'core/logo.png');
 define('PATH_MENU', PATH_VIEWS.'menu.php');

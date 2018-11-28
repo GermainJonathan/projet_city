@@ -1,0 +1,78 @@
+#pageSelector {
+    position: unset;
+}
+
+.nav-item.nav-link:hover {
+    font-weight: bold;
+    background: #E98B39;
+    color: white;
+    transition: .2s all;
+}
+
+.nav-item.nav-link {
+    border: 1px solid white
+}
+
+.nav-item.nav-link.active {
+    font-weight: bold;
+    color: #E98B39;
+    background: white;
+    border: 1px solid #E98B39;
+    letter-spacing: 5px
+}
+
+div.sidebarAdmin > a.nav-link.active {
+    background-color: #E98B39;
+}
+
+.sidebarAdmin {
+    position: unset;
+    line-height: 30px;
+}
+
+#content {
+    min-height: 400px;
+}
+
+.contentAdmin {
+    border-left: 1px solid rgba(0,0,0,.1)
+}
+
+.imgAdmin {
+    height: 150px;
+    width: 150px;
+    margin: 20px;
+}
+
+.form-inline {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-inline label {
+    justify-content: left;
+}
+
+.labelAdmin {
+    margin-right: 15px;
+}
+
+.plus-sign {
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    padding: 0;
+    border-radius: 100%;
+}
+
+.plus {
+    background: url(../images/core/plus-sign-in-a-black-circle.svg) no-repeat;
+    background-size: contain;
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+}
+
+.relative {
+    position: relative;
+}

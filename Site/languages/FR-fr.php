@@ -33,6 +33,8 @@ define('TITRE_ADMINISTRATION', 'Administration');
 define('TITRE_ADMIN_NOM', 'Nom');
 define('TITRE_ADMIN_MAIL', 'Mail');
 define('TITRE_ADMIN_PROFILE', 'Profile');
+define('TITRE_MENTIONS_LEGALES', 'Mentions Légales');
+define('TITRE_LIENS_PRATIQUES', 'Liens Pratiques');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 

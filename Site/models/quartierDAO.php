@@ -10,7 +10,6 @@ require_once PATH_MODELS.'histoire.php';
 
 class quartierDAO extends DAO
 {
-
     public function getQuartierByLibelle($nomQuartier){
         $result = $this->queryRow("SELECT * FROM quartier WHERE libelleQuartier = ?", array($nomQuartier));
         return new quartier($result['codeQuartier'], $result['libelleQuartier']);
@@ -25,8 +24,10 @@ class quartierDAO extends DAO
         return $this->queryRow("SELECT * FROM categorie WHERE codeCategorie = ?", array($idCategorie));
     }
 
-    public function getActiviteByQuartier($idQuartier){
-        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = ?", array($idQuartier));
+    public function getActiviteByQuartier($libelleQuartier){
+        $quartier = $this->getQuartierByLibelle($libelleQuartier);
+        $codeQuartier = $quartier->getCodeQuartier();
+        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = ?", array($codeQuartier));
         $listActivite = array();
         foreach ($result as $temp){
             $quartier = $this->getQuartierByCode($idQuartier);
@@ -36,8 +37,10 @@ class quartierDAO extends DAO
         return $listActivite;
     }
 
-    public function getRestaurantByQuartier($idQuartier){
-        $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ?", array($idQuartier));
+    public function getRestaurantByQuartier($libelleQuartier){
+        $quartier = $this->getQuartierByLibelle($libelleQuartier);
+        $codeQuartier = $quartier->getCodeQuartier();
+        $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ?", array($codeQuartier));
         $listRestaurant = array();
         foreach ($result as $temp){
             $quartier = $this->getQuartierByCode($idQuartier);
@@ -46,21 +49,23 @@ class quartierDAO extends DAO
         return $listRestaurant;
     }
 
-    public function getMonumentByQuartier($idQuartier){
-        $result = $this->queryAll("SELECT * FROM monument WHERE codeQuartier = ?", array($idQuartier));
+    public function getMonumentByQuartier($libelleQuartier){
+        $quartier = $this->getQuartierByLibelle($libelleQuartier);
+        $codeQuartier = $quartier->getCodeQuartier();
+        $result = $this->queryAll("SELECT * FROM monument WHERE codeQuartier = ?", array($codeQuartier));
         $listMonument = array();
         foreach ($result as $temp){
-            $quartier = $this->getQuartierByCode($idQuartier);
             $listMonument[] = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
         }
         return $listMonument;
     }
 
-    public function getHistoireByQuartier($idQuartier){
-        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ?", array($idQuartier));
+    public function getHistoireByQuartier($libelleQuartier){
+        $quartier = $this->getQuartierByLibelle($libelleQuartier);
+        $codeQuartier = $quartier->getCodeQuartier();
+        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ?", array($codeQuartier));
         $listHistoire = array();
         foreach ($result as $temp){
-            $quartier = $this->getQuartierByCode($idQuartier);
             $listHostoire[] = new histoire($temp['codeHistoire'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['titre'], $temp['imageHistoire'], $temp['commentaire']);
         }
         return $listHistoire;

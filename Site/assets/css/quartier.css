@@ -1,12 +1,12 @@
 /** La side bar **/
 #sideBar{
-  top: 200px;
-  width: 200px;
-  border:1px solid #444;
-  position: fixed;
-  height: 350px;
-  z-index:8;
-  bottom:10px;
+    top: 200px;
+    width: 160px;
+    border:1px solid #444;
+    position: fixed;
+    height: 360px;
+    z-index:8;
+    bottom:10px;
 }
 
 /* La barre de navigation */
@@ -26,15 +26,20 @@
     font-size:17px;
   }
 
-  /* Évènement sur un onglet*/
-    .nav li a:hover,
-    .nav li a.active {
-        font-size:20px;
-        text-decoration: none;
-        border-left:4px solid #444;
-        font-weight: bold;
-        color: #E98B39;
-    }
+  .nav li a.active {
+    font-size:20px;
+    text-decoration: none;
+    border-left:4px solid #444;
+    font-weight: bold;
+    color: #E98B39;
+}
+
+.nav li a:hover{
+    font-size:20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #E98B39;
+}
 
 /* texte du lien de navigation */
 .navLien{
@@ -43,18 +48,19 @@
     padding-left:30px;
 }
 
-/* Un lien de navigaiton */  
+/* Un lien de navigation */  
 .nav-link{
     color: #B3B3B3;
     display: block;
     text-decoration: none;
     padding-left: 30px;
 }
-    .nav-link:hover{
-        color:#B3B3B3;
-    } 
+
+.nav-link:hover{
+    color:#B3B3B3;
+} 
     
-    /* ------------------------ TIMELINE HISTORY ----------------------------------------*/
+/* ------------------------ TIMELINE HISTORY ----------------------------------------*/
 
 .btnHistory{
     position: absolute;
@@ -274,14 +280,14 @@ p{
     transform:rotate(270deg);
     height: 40px;
     width: 40px;
-    margin: 50px;
+    margin: 30px;
 }
 
 #arrowDownActivity{
     transform:rotate(90deg);
     height: 40px;
     width: 40px;
-    margin: 50px;
+    margin: 30px;
 }
 
 #parallaxactivite{
@@ -291,7 +297,11 @@ p{
 
 #activiteconteneur{
     height: 300px;
-    overflow: hidden;
+    overflow: scroll;
+}
+
+#activiteconteneur > section{
+    height: 50%;
 }
 
 /*------------------------------------------------------------------------------------*/

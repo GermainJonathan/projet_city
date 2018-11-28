@@ -180,3 +180,32 @@ a.list-group-item:hover {
     background:#E98B39 !important;
     color: white !important;
 }
+
+/*------------------- MODAL -------------------*/
+.close {
+    opacity: 1;
+}
+
+.close > span {
+    color: white;
+}
+
+.modalCard {
+    border: none !important;
+}
+
+.modal-header {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    padding: .5rem;
+    border-bottom: none;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-content {
+    border: none;
+}
