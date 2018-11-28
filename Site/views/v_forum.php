@@ -27,15 +27,15 @@ require_once(PATH_VIEWS.'alert.php');?>
         foreach ($listTopic as $topic) {
             ?>
                 <tr>
-                    <td><?= dateBaseToSite($topic->getDate()) ?></td>
-                    <td><a class="list-group-item list-group-item-action" href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
+                    <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= dateBaseToSite($topic->getDate()) ?></td>
+                    <td data-label=<?= '"'.TITRE_TOPIC.'"' ?>><a class="list-group-item list-group-item-action" href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
                     <?php
                     if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
                         ?>
-                        <td><?= $topic->getEtat() ?></td>
-                        <td>
-                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-success" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
-                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-danger" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
+                        <td data-label=<?= '"'.TITRE_ETATA_TOPIC.'"' ?>><?= $topic->getEtat() ?></td>
+                        <td data-label=<?= '"'.TITRE_ACTION.'"' ?>>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-success btnForumAdmin" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
+                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-danger btnForumAdmin" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
                         </td>
                         <?php
                     }
@@ -66,5 +66,6 @@ require_once(PATH_VIEWS.'alert.php');?>
         }
     ?>
 </div>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>forum.js"></script>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');

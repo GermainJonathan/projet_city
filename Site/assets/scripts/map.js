@@ -28,8 +28,15 @@ var layerControl = L.control.layers({},{
     "<img src='./assets/images/core/monument.svg' height='15'/> <span>Monument</span>" : monumentLayer,
     "<img src='./assets/images/core/activity.svg' height='15'/> <span>Activite</span>" : activiteLayer
 }, {
-    collapsed : false,
+    collapsed : false
 });
+console.log(layerControl);
+if(isMobileDevice) {
+    // TODO: Colapse le filtre de couche
+    // layerControl.setOption({
+    //     collapsed: true
+    // });
+}
 
 /* Création de la carte */
 var mymap = L.map('mapid', {
@@ -186,7 +193,7 @@ function zoomToFeature(e) {
         // récupération des données markers
         $.ajax({
           method: "GET",
-          url: "/services/getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
+          url: environnement.serviceUrl + "getMarkerByQuartier.php?quartier="+e.target.feature.properties.name
         }).done(function(data) {
           addMarkerMonuments(data.monuments);
           addMarkerActivites(data.activites);
@@ -264,11 +271,34 @@ function setupMarkerCard(patrimoine) {
     legend.addTo(mymap);
 }
 
+/**
+ * Mise à jour de la carte descriptif pour un patrimoine
+ * @param {data} patrimoine 
+ */
+function setupModalMarkerCard(patrimoine) {
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.idQuartier, patrimoine.images);
+    var card = patrimoineCard.createSimpleCard()
+    card.removeClass("legend");
+    card.addClass('modalCard');
+    var modal = $('#mobileModal').find('.modal-body'); // On récupère la modal du template
+    modal.empty();  // On vide la modal
+    modal.html(card); // Mise à jour de la modal
+    $('#mobileModal').modal({show: true}); // Affichage de la modal
+}
+
+/**
+ * Création des markers pour les objets type Monument
+ * @param {*} monuments
+ */
 function addMarkerMonuments(monuments) {
     monuments.forEach(function(monument) {
         let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
         .on('click', function() {
-            setupMarkerCard(monument);
+            if(isMobileDevice) {
+                setupModalMarkerCard(monument);
+            } else {
+                setupMarkerCard(monument);
+            }
         })
         .on('mouseover', function() {
             var scaleUp = markerMonument.options.icon;
@@ -290,7 +320,11 @@ function addMarkerRestaurants(restaurants) {
     restaurants.forEach(function(restaurant) {
         let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
         .on('click', function() {
-            setupMarkerCard(restaurant);
+            if(isMobileDevice) {
+                setupModalMarkerCard(restaurant);
+            } else {
+                setupMarkerCard(restaurant);
+            }
         })
         .on('mouseover', function() {
             var scaleUp = markerRestaurant.options.icon;
@@ -312,7 +346,11 @@ function addMarkerActivites(activites) {
         activites.forEach(function(activite) {
         let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
         .on('click', function() {
-            setupMarkerCard(activite);
+            if(isMobileDevice) {
+                setupModalMarkerCard(activite);
+            } else {
+                setupMarkerCard(activite);
+            }
         })
         .on('mouseover', function() {
             var scaleUp = markerActivite.options.icon;

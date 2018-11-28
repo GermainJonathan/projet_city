@@ -119,6 +119,7 @@ class restaurant
             'nom' => $this->_nom,
             'numero' => $this->_numero,
             'image' => $this->_image,
+            'adresse' => $this->_adresse,
             'commentaire' => $this->_commentaire
         );
     }

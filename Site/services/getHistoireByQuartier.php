@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Service de récupération des Histoires d'un quartier
+ * 
+ * @api services/getHistoireByQuartier [GET]
+ * @param quartier string libelleQuartier
+ */
 require_once "configurationAPI.php";
 require_once PATH_MODELS."quartierDAO.php";
 
@@ -7,8 +12,6 @@ require_once PATH_MODELS."quartierDAO.php";
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
-$responses = array();
 $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
