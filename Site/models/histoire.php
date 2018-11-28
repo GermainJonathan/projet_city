@@ -88,6 +88,9 @@ class histoire
         return $this->_commentaire;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(){
 
         return array('codeMonument' => $this->_codeMonument,

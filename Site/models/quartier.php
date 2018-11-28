@@ -9,8 +9,8 @@ class quartier
 
     /**
      * quartier constructor.
-     * @param $_codeQuartier
-     * @param $_libelleQuartier
+     * @param $codeQuartier
+     * @param $libelleQuartier
      */
     public function __construct($codeQuartier, $libelleQuartier)
     {

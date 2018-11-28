@@ -7,6 +7,11 @@ require_once PATH_MODELS.'user.php';
 class administrationDAO extends DAO
 {
 
+    /**
+     * @param $login
+     * @param $passWord
+     * @return bool|user
+     */
     public function verifConnexionUser($login, $passWord){
         $result = $this->queryRow("SELECT * FROM user WHERE login=?", array($login));
         if(password_verify($passWord, $result['passWord'])){
@@ -19,12 +24,20 @@ class administrationDAO extends DAO
             return false;
     }
 
+    /**
+     * @param $idtopic
+     * @param $codeEtatTopic
+     * @return bool
+     */
     public function setEtatTopic($idtopic, $codeEtatTopic){
 
         return $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic = ?", array($codeEtatTopic, $idtopic));
 
     }
 
+    /**
+     * @return array
+     */
     public function getUser(){
         $result = $this->queryAll("SELECT * FROM user");
 
@@ -36,18 +49,32 @@ class administrationDAO extends DAO
         return $listUser;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function deleteUser($id){
         return $this->queryBdd("DELETE FROM user WHERE codeUser = ?", $id);
     }
 
+    /**
+     * @return bool
+     */
     public function getMessageContactAll(){
         return true;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function getMessageContactById($id){
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function createMessageContact(){
         return true;
     }

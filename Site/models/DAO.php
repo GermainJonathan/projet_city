@@ -5,22 +5,35 @@ abstract class DAO
     private $_erreur; //stocke les messages d'erreurs associées au PDOException
     private $_debug;
 
+    /**
+     * DAO constructor.
+     * @param $debug
+     */
     public function __construct($debug)
     {
         $this->_debug = $debug;
         $this->_erreur = null;
     }
 
+    /**
+     * @return null
+     */
     public function getErreur()
     {
         return $this->_erreur;
     }
 
+    /**
+     *
+     */
     protected function beginTransaction()
     {
         Connexion::getInstance()->getBdd()->beginTransaction();
     }
 
+    /**
+     *
+     */
     protected function endTransaction()
     {
         if (is_null($this->_erreur)) {
@@ -28,6 +41,11 @@ abstract class DAO
         }
     }
 
+    /**
+     * @param $sql
+     * @param null $args
+     * @return PDOStatement
+     */
     private function _requete($sql, $args = null)
     {
         if ($args == null) {
@@ -35,7 +53,7 @@ abstract class DAO
         } else {
             $pdos = Connexion::getInstance()->getBdd()->prepare($sql);// requête préparée
             if(!$pdos->execute($args)) {
-                $this->erreur = $pdos->errorInfo();
+                $this->_erreur = $pdos->errorInfo();
             }
         }
         return $pdos;
@@ -44,13 +62,16 @@ abstract class DAO
 
     // retourne l'identifiant de la ligne insérée
     // ou false
+    /**
+     * @return bool|string
+     */
     protected function insertId()
     {
         try {
             $res = Connexion::getInstance()->getBdd()->lastInsertId();
         } catch (PDOException $e) {
             if ($this->_debug) {
-                die($e->getMessage);
+                die($e->getMessage());
             }
             $this->_erreur = 'query';
             $res = false;
@@ -58,8 +79,11 @@ abstract class DAO
         return $res;
     }
 
-    // retourne un tableau 1D avec les données d'un seul enregistrement
-    // ou false
+    /**
+     * @param $sql
+     * @param null $args
+     * @return bool|mixed
+     */
     protected function queryRow($sql, $args = null)
     {
         try {
@@ -76,8 +100,11 @@ abstract class DAO
         return $res;
     }
 
-    // retourne true ou false
-    // pour update, delete et insert
+    /**
+     * @param $sql
+     * @param null $args
+     * @return bool
+     */
     protected function queryBdd($sql, $args = null)
     {
         $res = true;
@@ -94,8 +121,11 @@ abstract class DAO
         return $res;
     }
 
-    //retourne un tableau 2D avec éventuellement plusieurs enregistrements
-    //ou false
+    /**
+     * @param $sql
+     * @param null $args
+     * @return array|bool
+     */
     protected function queryAll($sql, $args = null)
     {
         try {

@@ -12,7 +12,6 @@ class Api extends DAO
      * @return array $result
      */
     private function convertCoordonees($arrayToConvert) {
-        $result = array();
         foreach($arrayToConvert as $key => $elem) {
             preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
             $chaine[0] = explode(' ', $chaine[0]);

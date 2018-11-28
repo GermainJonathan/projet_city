@@ -102,6 +102,9 @@ class monument
     }
 
 
+    /**
+     * @return array
+     */
     public function toArray(){
         return array('codeMonument' => $this->_codeMonument,
             'codePays' => $this->_codePays,

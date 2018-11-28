@@ -13,6 +13,16 @@ class message
     private $_profile;
 
 
+    /**
+     * message constructor.
+     * @param $idMessage
+     * @param $idTopic
+     * @param $nom
+     * @param $message
+     * @param $date
+     * @param null $codeProfile
+     * @param null $profile
+     */
     public function __construct($idMessage, $idTopic, $nom, $message, $date, $codeProfile = null, $profile = null)
     {
         $this->_idMessage = $idMessage;
@@ -48,26 +58,41 @@ class message
         return $this->_profile;
     }
 
+    /**
+     * @return mixed
+     */
     public function getIdMessage()
     {
         return $this->_idMessage;
     }
 
+    /**
+     * @return mixed
+     */
     public function getIdTopic()
     {
         return $this->_idTopic;
     }
 
+    /**
+     * @return mixed
+     */
     public function getMessage()
     {
         return $this->_message;
     }
 
+    /**
+     * @return mixed
+     */
     public function getDate()
     {
         return $this->_date;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->_idMessage.$this->_nom.$this->_message.$this->_date;

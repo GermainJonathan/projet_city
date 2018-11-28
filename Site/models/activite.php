@@ -123,6 +123,9 @@ class activite
         return $this->_commentaire;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(){
         return array(
         'codeActivite' => $this->_codeActivite,

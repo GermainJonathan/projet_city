@@ -13,6 +13,17 @@ class commentaire
     private $_date;
 
 
+    /**
+     * commentaire constructor.
+     * @param $codeCommentaire
+     * @param $codePays
+     * @param $pays
+     * @param $codeQuartier
+     * @param $quartier
+     * @param $nom
+     * @param $commentaire
+     * @param $date
+     */
     public function __construct($codeCommentaire, $codePays, $pays, $codeQuartier, $quartier, $nom, $commentaire, $date)
     {
         $this->_codeCommentaire = $codeCommentaire;
@@ -89,6 +100,9 @@ class commentaire
         return $this->_date;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(){
         return array(
             $this->_codeCommentaire,

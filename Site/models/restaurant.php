@@ -110,6 +110,9 @@ class restaurant
         return $this->_commentaire;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(){
         return array(
             'codeRestaurant' => $this->_codeRestaurant,
