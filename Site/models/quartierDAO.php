@@ -30,7 +30,6 @@ class quartierDAO extends DAO
         $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = ?", array($codeQuartier));
         $listActivite = array();
         foreach ($result as $temp){
-            $quartier = $this->getQuartierByCode($idQuartier);
             $categorie = $this->getCategorieById($result['codeCategorie']);
             $listActivite[] = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
         }
@@ -43,7 +42,6 @@ class quartierDAO extends DAO
         $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ?", array($codeQuartier));
         $listRestaurant = array();
         foreach ($result as $temp){
-            $quartier = $this->getQuartierByCode($idQuartier);
             $listRestaurant[] = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['adresse'], $temp['numeroTelephone'], $temp['imageRestaurant'], $temp['commentaire']);
         }
         return $listRestaurant;
