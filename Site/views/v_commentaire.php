@@ -33,8 +33,8 @@
                     <?php
                     if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                         ?>
-                    <th scope="col"><?= TITRE_ACTION ?></th>
-                    <?php
+                        <th scope="col"><?= TITRE_ACTION ?></th>
+                        <?php
                     }
                     ?>
                 </tr>
@@ -43,20 +43,20 @@
                 <?php
                     foreach ($listCommentaire as $commentaire){
                         ?>
-                <td>
-                    <?= $commentaire->getDate() ?>
-                </td>
-                <td>
-                    <?= $commentaire->getNom() ?>
-                </td>
-                <td>
-                    <?= $commentaire->getCommentaire() ?>
-                </td>
-                <?php
+                        <td>
+                            <?= $commentaire->getDate() ?>
+                        </td>
+                        <td>
+                            <?= $commentaire->getNom() ?>
+                        </td>
+                        <td>
+                            <?= $commentaire->getCommentaire() ?>
+                        </td>
+                        <?php
                         if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
-                        ?>
-                <td><button class="btn btn-danger">X</button></td>
-                <?php
+                            ?>
+                            <td><button class="btn btn-danger">X</button></td>
+                            <?php
                         }
                     }
                 ?>
