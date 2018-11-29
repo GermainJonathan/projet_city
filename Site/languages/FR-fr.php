@@ -60,4 +60,11 @@ define('ERREUR_CONN_LOGIN_VOID', 'Il manque le login');
 define('ERREUR_CONN_PW_VOID', 'Il manque le mot de passe');
 define('ERREUR_CONN_REFUSEE', 'Accès refusé. Impossible de se connecter avec ces informations');
 
+define('ERREURE_FILE_NOT_IMAGE', 'C\'est pas une image');
+define('ERREURE_IMAGE_EXISTANTE', 'L\'image existe déjà');
+define('ERREUR_IMAGE_TROP_LOURDE', 'L\'image est trop loudre max 500 Ko');
+define('ERREURE_NOT_IMAGE', 'C\'est pas une image ca. Moi je prends du .jpg, .jpeg, .gif et .png');
+define('ERREURE_TELECHARGEMENT', 'Quelle horreur ! Une erreur ! (lors tu téléchargement) c\'est la faute du serveur ou de ta co');
+define('ERREUR_BDD', 'Un truc de ouf viens de se passer avec la base de donnée.. revenir plus tard');
+
 define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validtion par l\'administrateur');
