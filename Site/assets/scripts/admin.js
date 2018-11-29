@@ -68,9 +68,16 @@ function generateList(list) {
                 }).done(function(data) {
                     for(let patrimoine of data) {
                         let newComponent = addPatrimoineComponents();
-                        if(patrimoine.image != null)
-                            newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image)
-                        updateComponent(typeComponent, newComponent, patrimoine);
+                        $.ajax({
+                            url: path[patrimoine.codeQuartier] + patrimoine.image,
+                            type: 'HEAD',
+                        }).fail(function () {
+                            newComponent.find("img.imgAdmin").attr('src', "/assets/images/core/undefined.png");
+                            updateComponent(typeComponent, newComponent, patrimoine);
+                        }).done(function() {
+                            newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image);
+                            updateComponent(typeComponent, newComponent, patrimoine);
+                        });
                     }
                     $(".contentAdmin > .spinner").hide();
                     $("#patrimoineConfig").show();
