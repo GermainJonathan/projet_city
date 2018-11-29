@@ -30,7 +30,7 @@ var layerControl = L.control.layers({},{
 }, {
     collapsed : false
 });
-console.log(layerControl);
+
 if(isMobileDevice) {
     // TODO: Colapse le filtre de couche
     // layerControl.setOption({

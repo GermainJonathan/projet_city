@@ -2,11 +2,15 @@
 
 var tabRestaurants=new Array();
 
-for (var i=0; i<7; i++){
-    tabRestaurants.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.",environnement.codePage,"bellecour.jpg"));    
-}
-
-CreateContainerRestaurants(tabRestaurants);
+$.ajax({
+    method: "GET",
+    url: environnement.serviceUrl + "getRestaurantByQuartier.php?quartier=" + quartier[idQuartier]
+    }).done(function(data) {
+        for (let restaurant of data){
+            tabRestaurants.push(new Card(restaurant.nom, restaurant.commentaire, restaurant.codeQuartier, restaurant.image));    
+        }
+        CreateContainerRestaurants(tabRestaurants);
+    });
 
 /** création dun container pour le restaurant */
 function CreateContainerRestaurants(tabRestaurants){

@@ -1,6 +1,16 @@
 /**** CAROUSEL MONUMENTS ******/
 var tabMonument=new Array();
 
+$.ajax({
+    method: "GET",
+    url: environnement.serviceUrl + "getMonumentByQuartier.php?quartier=" + quartier[idQuartier]
+}).done(function(data) {
+    console.log(data);
+    for (let monument of data){
+        //FIXME: J'ai pas encore de données
+    }
+});
+
 for (var i=0; i<7; i++){
     tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.",environnement.codePage,"bellecour.jpg"));    
 }

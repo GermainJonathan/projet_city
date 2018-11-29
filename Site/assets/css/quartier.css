@@ -301,7 +301,7 @@ p{
 
 #activiteconteneur{
     height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 #activiteconteneur > section{
