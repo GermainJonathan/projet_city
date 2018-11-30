@@ -127,6 +127,32 @@ p{
     font-style: italic;
 }
 
+@media screen and (max-width: 510px){
+    .lineTimeline{
+        display:none;
+    }
+
+    #timelineHistory > div{
+        padding-left:0;
+        padding-bottom:50px;
+    }
+
+    #timelineHistory > div > .bubble{
+        left:0;
+        width:100px;
+        height:100px;
+    }
+
+    .btnHistory{
+        width: calc(100% - 150px);
+    }
+
+    .marginFrise{
+        margin-right:0;
+        margin-left:110px;
+    }
+}
+
 /*------------------------------------------------------------------------------------*/
 /*------------------------------------- CAROUSEL MONUMENTS----------------------------*/
 .arrow{
@@ -158,13 +184,14 @@ p{
     margin-top:40px;
     position:relative;
     overflow-y:hidden;
-    height:350px;
+    height:365px;
 }
 
 .carrousel-contenu{
     overflow:hidden;
     margin-right:40px;
     margin-left:40px;
+    height:450px;
 }
 
 .carrousel-contenu .card {
@@ -196,6 +223,8 @@ p{
     bottom: 20px;
     width: calc(100% - 2.5rem);
     transition: 500ms color,border ease-in-out;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .cache .card-body a{
@@ -222,12 +251,11 @@ p{
 .EnsavoirPlus{
     position:relative;
     height:350px;
-    margin-left:20px;
-    margin-right:20px;
     margin-top:20px;
     display:none;
     box-shadow: 19px 20px 0px -8px #E98B39;
     padding-right:0;
+    height:450px;
 }
 
 .imgSavoirPlus{
@@ -311,7 +339,7 @@ p{
 /*------------------------------------------------------------------------------------*/
 /*------------------------------RESTAURANT-------------------------------------------*/
 .containerCard{
-    height:350px;
+    height:365px;
     margin:20px;
     overflow:hidden;
     transition:height 1s ease-in-out;
@@ -338,6 +366,8 @@ p{
     position:absolute;
     bottom: 20px;
     width: calc(100% - 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #ctnRestaurants{

@@ -40,6 +40,7 @@ define('TITRE_LIENS_PRATIQUES', 'Liens Pratiques');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 
+define('TXT_META_DESC_ACCUEIL',"Lyon, ville de tous les plaisirs, découvrez le quartier dynamique de la presqu’île. Vous allez découvrir les restaurants, activités et monument se cachant dans les rues de la presqu’île. Programmez vos sorties et bougez dans le quartier le plus dynamique de Lyon.");
 define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son histoire, sa gastronomie, ses activités    ');
 define('TXT_TITRE_TOPIC', 'Titre du topic');
 define('TXT_TITRE_DESCRIPTION', 'Description du topic');

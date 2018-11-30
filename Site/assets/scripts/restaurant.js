@@ -25,7 +25,7 @@ function CreateContainerRestaurants(tabRestaurants){
         setTimeout(function(){ 
             location.href="#anchorBodyRestaurants";
         }, 1000);
-        $("#RestaurantCards").css("height","350px");
+        $("#RestaurantCards").css("height","365px");
         if($("#rowSavoirPlus").css("height")=="0px"){
             $("#ctnRestaurants").css("height","100%");
         }

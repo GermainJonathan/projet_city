@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="col-12" id="rowSavoirPlus">
-        <div class="EnsavoirPlus col-lg-10" id="SavoirPlusMonuments">
+        <div class="EnsavoirPlus col-lg-10 col-md-10 col-sm-12" id="SavoirPlusMonuments">
             <div class="imgSavoirPlus"></div>
             <div class="txtSavoirPlus">
                 <div class="titreSavoirPlus"></div>
