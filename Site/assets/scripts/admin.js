@@ -99,11 +99,6 @@ function loadComponents(componentToLoad) {
     oldConfig = componentToLoad;
 }
 
-// Fonction permettant de binder les inputs files (hidden) au bouton de selection d'image
-function fileBrowser(inputFile) {
-    inputFile.trigger('click');  
-}
-
 // Ajout un composant patrimoine
 function addPatrimoineComponents() {
     let lastIndex = parseInt($("#patrimoineContent").find(".media").last().attr('id'));
@@ -148,4 +143,20 @@ function updateComponent(typeComponent, component, dataComponent) {
     component.find(".media-body div").sort(function(a,b) {
         return ($(a).data("id") > $(b).data("id")) ? ($(a).data("id") > $(b).data("id")) ? 1 : 0 : -1;
     }).appendTo(component.find(".media-body"));
+}
+
+// Fonction permettant de binder les inputs files (hidden) au bouton de selection d'image
+function fileBrowser(inputFile) {
+    inputFile.trigger('click');  
+}
+
+// Permet de faire une preview de l'image a uploadé
+function upload(file, imageDiv) {
+    if (file.files && file.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            imageDiv.attr('src', e.target.result);
+        };
+        reader.readAsDataURL(file.files[0]);
+    }
 }

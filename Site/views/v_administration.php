@@ -55,7 +55,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                         <div class="media" id="0" style="display: none;">
                             <div class="relative">
                                 <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
-                                <input type="file" id="file" class="custom-file custom-file-input" capture style="display: none;">
+                                <input type="file" id="file" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
                                 <button type="file" id="upfile" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
                             </div>
                             <div class="media-body align-self-center">
@@ -80,7 +80,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                     <div class="media">
                         <div class="relative">
                             <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
-                            <input type="file" id="file2" class="custom-file custom-file-input" capture style="display: none;">
+                            <input type="file" id="file2" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
                             <button type="file" id="upfile2" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
                         </div>
                         <div class="media-body align-self-center">
