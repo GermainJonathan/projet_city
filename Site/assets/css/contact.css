@@ -21,9 +21,19 @@
 
 /*partie formulaire*/
 
+input.SetOnError{
+    background-color: #f1f1f1;
+    border-color: #ca0000;
+    border: 2px solid #ca0000;
+}
+
 #contact-block-formulaire{
     margin-top: 70px;
     margin-bottom: 50px;
+}
+
+.btnPageContact{
+    margin-top:20px;
 }
 
 .contact-text-area{
@@ -42,5 +52,10 @@
     color:red;
 }
 
+@media screen and (max-width: 767px){
+    #btnValiderContact {
+        font-size: initial;
+    }
+}
 
 

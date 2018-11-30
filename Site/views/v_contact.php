@@ -16,7 +16,7 @@ require_once(PATH_VIEWS.'alert.php');?>
 <!-- Partie a propos -->
 
 <div class="row container-fluid" id="contact-block-aPropos">
-    <div class="col-lg-4 offset-lg-4 col-sm-8 offset-lg-2">
+    <div class="col-lg-4 offset-lg-4 col-sm-8 offset-sm-2">
         <h1 class="contact-title"> <?= TITRE_CONTACT_A_PROPOS ?> </h1>
         <div class="contact-desc">
         <p><?= TXT_CONTACT_APROPOS ?></p>
@@ -30,38 +30,27 @@ require_once(PATH_VIEWS.'alert.php');?>
 
 <!--  Partie formulaire -->
 <div class="row container-fluid" id="contact-block-formulaire">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-4 col-md-6 col-sm-12">
-        <form>
-            <label for="validationServer01"><?=CHAMP_NOM ?> <span class="Obligatoire"> *</span></label>
-            <input type="text" class="form-control formInput" maxLength=50 id="validationServer01" required>
-            <label for="validationServer02"><?=CHAMP_PRENOM ?> <span class="Obligatoire"> *</span></label>
-            <input type="text" class="form-control formInput" maxLength=50 id="validationServer02" required>
-            <div class="form-group">
-                <label for="exampleFormControlInput1"><?=CHAMP_EMAIL ?> <span class="Obligatoire"> *</span></label>
-                <input type="email" class="form-control formInput" id="exampleFormControlInput1" placeholder="nom@example.com">
-            </div>
-        </form>
+    <div class="col-lg-5 offset-lg-1 col-md-6 col-sm-12">
+        <label for="validationServer01"><?=CHAMP_NOM ?> <span class="Obligatoire"> *</span></label>
+        <input type="text" id="inputNom" class="form-control formInput" maxLength=50 id="validationServer01" required>
+        <label for="validationServer02"><?=CHAMP_PRENOM ?> <span class="Obligatoire"> *</span></label>
+        <input type="text" id="inputPrenom" class="form-control formInput" maxLength=50 id="validationServer02" required>
+        <label for="exampleFormControlInput1"><?=CHAMP_EMAIL ?> <span class="Obligatoire"> *</span></label>
+        <input type="email" id="inputEmail" class="form-control formInput" id="exampleFormControlInput1" placeholder="nom@example.com">
+
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-        <form>
-            <div class="form-group">
-                <label for="formGroupExampleInput"><?=CHAMP_SUJET ?> <span class="Obligatoire"> *</span> </label>
-                <input type="text" class="form-control" id="objet">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1"><?=CHAMP_MESSAGE ?>  </label>
-                <textarea class="form-control contact-text-area" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary"><?=TXT_VALIDER ?></button>
-            </div>
-        </form>
+    <div class="col-lg-5 col-md-6 col-sm-12">
+        <label for="formGroupExampleInput"><?=CHAMP_SUJET ?> <span class="Obligatoire"> *</span> </label>
+        <input type="text" id="inputSujet" class="form-control formInput" id="objet">
+        <label for="exampleFormControlTextarea1"><?=CHAMP_MESSAGE ?>  </label>
+        <textarea class="form-control contact-text-area" id="TextAreaMessage" rows="3"></textarea>
+        <div class="d-flex justify-content-end btnPageContact">
+            <button type="submit" id="btnValiderContact" class="btn btn-primary"><?=TXT_VALIDER ?></button>
+        </div>
     </div>
-    <div class="col-lg-1"></div>
 </div>
 <!--  Fin Partie formulaire -->
 
-
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>contact.js"></script>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');

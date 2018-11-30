@@ -23,7 +23,7 @@ class Card {
      * A ajouter a l'evenement "onAdd" des contrôles Leaflet
      */
     createCard() {
-        var mapCard = L.DomUtil.create("div", "card legend"); // Création de la div de base
+        var mapCard = L.DomUtil.create("div", "card legend border-light"); // Création de la div de base
         try {
             mapCard.append(this._createImgCard()); // On ajoute la ou les images de la carte
         } catch(CardException) {
@@ -38,7 +38,7 @@ class Card {
     /* permet de créer une carte sans l'associer à la maps*/
     createSimpleCard(){
         var mapCard =$("<div></div>");   // Création de la div de base
-        mapCard.addClass("card legend");
+        mapCard.addClass("card legend border-light");
         mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
         mapCard.append(this._createCoreCard()); 
         return mapCard;
@@ -90,6 +90,12 @@ class Card {
             class: "card-text"
         }).attr("title", this.description);
         text.append(this.description);
+
+        var footerCard="";
+        footerCard=$("<div></div>",{
+            class:"card-footer bg-transparent"
+        });
+
         var link = $("<a></a>", {
             class: "btn btn-primary btn-block"
         });
@@ -101,7 +107,8 @@ class Card {
         this.button=link;
         coreCard.prepend(title);
         coreCard.append(text);
-        coreCard.append(link);
+        footerCard.append(link);
+        coreCard.append(footerCard);
         return coreCard[0];
     }
 
