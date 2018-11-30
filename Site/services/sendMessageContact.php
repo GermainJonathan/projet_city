@@ -14,7 +14,7 @@ $code = 200;
 $administrationDAO = new administrationDAO(DEBUG);
 $array = null;
 
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['message']) && isset($_POST['mail'])) {
+if (isset($_POST['nom']) && isset($_POST['object']) && isset($_POST['prenom']) && isset($_POST['message']) && isset($_POST['mail'])) {
     $responses = $administrationDAO->createMessageContact();
     if($responses) {
         $message = makeMessage("message", "nom", "prenom", "mail");

@@ -32,9 +32,9 @@ define('PATH_CSS', PATH_ASSETS.'css/');
 define('PATH_IMAGES', PATH_ASSETS.'images/');
 define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
 define('PATH_ACCUEIL', PATH_IMAGES.'accueil/');
-define('PATH_BELLECOUR', PATH_IMAGES.'bellecour/');
-define('PATH_PERRACHE', PATH_IMAGES.'perrache/');
-define('PATH_TERREAUX', PATH_IMAGES.'terreaux/');
+define('PATH_BELLECOUR', PATH_IMAGES.'bellecour/', true);
+define('PATH_PERRACHE', PATH_IMAGES.'perrache/', true);
+define('PATH_TERREAUX', PATH_IMAGES.'terreaux/', true);
 define('PATH_CONTACT', PATH_IMAGES.'contact/');
 define('PATH_CORE', PATH_IMAGES.'core/');
 

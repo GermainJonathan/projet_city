@@ -15,8 +15,8 @@ $array = null;
 
 if (isset($_POST['idMonument']) && file_exists($_FILES['photo']['tmp_name'])) {
     $erreur = null;
-    // TODO: trouver un moyen de charger dynamiquement le path du fichier en fonction du qurtier
-    $fichier = PATH_PHOTO;
+    // TODO: trouver un moyen de charger dynamiquement le path du fichier en fonction du quartier
+    $fichier = PATH_IMAGES . $quartier->getLibelleQuartier() . "/";
     $nouvelleImage = $fichier.basename($_FILES['photo']['name']);
     $imageType = strtolower(pathinfo($nouvelleImage,PATHINFO_EXTENSION));
 

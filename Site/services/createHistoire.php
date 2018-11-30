@@ -13,7 +13,7 @@ $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 
-if (isset($_POST['idActivite']) && file_exists($_FILES['photo']['tmp_name'])) {
+if (isset($_POST['idQuartier']) && isset($_POST['titre']) && isset($_POST['description']) && file_exists($_FILES['photo']['tmp_name'])) {
     $erreur = null;
     // TODO: trouver un moyen de charger dynamiquement le path du fichier en fonction du quartier
     $fichier = PATH_IMAGES . $quartier->getLibelleQuartier() . "/";
@@ -36,7 +36,7 @@ if (isset($_POST['idActivite']) && file_exists($_FILES['photo']['tmp_name'])) {
     if($erreur == null) {
         if (move_uploaded_file($_FILES["photo"]["tmp_name"], $nouvelleImage)) {
             $success = basename($_FILES["photo"]["name"]);
-            if (!$responses = $quartierDAO->setImageActivite($_POST['idActivite'], $success)) {
+            if (!$responses = $quartierDAO->createHistoire($_SESSION['idLang'], $_POST['idQuartier'], $_POST['titre'], $success, $_POST['description'])) {
                 $erreur = ERREUR_BDD;
                 unlink($nouvelleImage);
             }
