@@ -12,7 +12,7 @@
                 <div id="activiteconteneur" class="row">
                     <section data-panel="1">
                         <h2>Title 1</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        <p class="hide">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
@@ -23,10 +23,51 @@
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
                             ex ea commodo consequat.</p>
+                            <div class="expandbutton"><a>&#x25BD;</a></div>
                     </section>
                     <section data-panel="2">
                         <h2>Title 2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        <p class="hide">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
@@ -37,10 +78,11 @@
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
                             ex ea commodo consequat.</p>
+                            <div class="expandbutton"><a>&#x25BD;</a></div>
                     </section>
                     <section data-panel="3">
                         <h2>Title 3</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        <p class="hide">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
@@ -51,10 +93,11 @@
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
                             ex ea commodo consequat.</p>
+                            <div class="expandbutton"><a>&#x25BD;</a></div>
                     </section>
                     <section data-panel="4">
                         <h2>Title 4</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        <p class="hide">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
@@ -65,6 +108,7 @@
                             Ut enim ad minim veniam, quis nostrud
                             exercitation ullamco laboris nisi ut aliquip
                             ex ea commodo consequat.</p>
+                            <div class="expandbutton"><a>&#x25BD;</a></div>
                     </section>
                 </div>
                 <div class="arrow" id="arrowDownActivity"></div>
