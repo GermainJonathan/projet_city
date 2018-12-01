@@ -7,16 +7,19 @@ require_once PATH_MODELS."user.php";
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Max-Age: 600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 $responses = array();
 $code = 200;
 $forumDAO = new forumDAO(DEBUG);
 $array = null;
+$data = json_decode(file_get_contents("php://input"));
 session_start();
 
-if(isset($_POST['nom']))
-    $nom = $_POST['nom'];
+if(isset($data->nom))
+    $nom = $data->nom;
 if(isset($_SESSION['user'])) {
     $nom = $_SESSION['user']->getNom();
     $profile = $_SESSION['user']->getCodeProfile();
@@ -24,8 +27,8 @@ if(isset($_SESSION['user'])) {
 else
     $profile = 0;
 
-if (isset($_POST['idTopic']) && isset($_POST['message']) && isset($nom)) {
-    $responses = $forumDAO->createMessageTopic($_POST['idTopic'], $_POST['message'], $nom, $profile);
+if (isset($data->idTopic) && isset($data->message) && isset($nom)) {
+    $responses = $forumDAO->createMessageTopic($data->idTopic, $data->message, $nom, $profile);
     if($responses)
         $array = $responses->toArray();
 } else {

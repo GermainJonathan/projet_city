@@ -7,14 +7,17 @@ require_once PATH_MODELS."user.php";
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Max-Age: 600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 $responses = array();
 $code = 200;
 $administrationDAO = new administrationDAO(DEBUG);
+$data = json_decode(file_get_contents("php://input"));
 $array = null;
 
-if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['message']) && isset($_POST['mail'])) {
+if (isset($data->nom) && isset($data->prenom) && isset($data->message) && isset($data->mail)) {
     $responses = $administrationDAO->createMessageContact();
     if($responses) {
         $message = makeMessage("message", "nom", "prenom", "mail");
