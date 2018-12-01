@@ -24,13 +24,21 @@ class quartierDAO extends DAO
         return $this->queryRow("SELECT * FROM categorie WHERE codeCategorie = ?", array($idCategorie));
     }
 
+    /**
+     * Retourne l'id Lang courant
+     */
+    public function getLangId() {
+        $result = $this->queryRow("SELECT codePays FROM pays WHERE libellePaysCourt = ?", array(LANG));
+        return $result['codePays'];
+    }
+
     public function getActiviteByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = ?", array($codeQuartier));
+        $result = $this->queryAll("SELECT * FROM activite WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
         $listActivite = array();
         foreach ($result as $temp){
-            $categorie = $this->getCategorieById($result['codeCategorie']);
+            $categorie = $this->getCategorieById($temp['codeCategorie']);
             $listActivite[] = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
         }
         return $listActivite;
@@ -39,7 +47,7 @@ class quartierDAO extends DAO
     public function getRestaurantByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ?", array($codeQuartier));
+        $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
         $listRestaurant = array();
         foreach ($result as $temp){
             $listRestaurant[] = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['adresse'], $temp['numeroTelephone'], $temp['imageRestaurant'], $temp['commentaire']);
@@ -50,7 +58,7 @@ class quartierDAO extends DAO
     public function getMonumentByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT * FROM monument WHERE codeQuartier = ?", array($codeQuartier));
+        $result = $this->queryAll("SELECT * FROM monument WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
         $listMonument = array();
         foreach ($result as $temp){
             $listMonument[] = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
@@ -61,7 +69,7 @@ class quartierDAO extends DAO
     public function getHistoireByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ?", array($codeQuartier));
+        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
         $listHistoire = array();
         foreach ($result as $temp){
             $listHostoire[] = new histoire($temp['codeHistoire'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['titre'], $temp['imageHistoire'], $temp['commentaire']);

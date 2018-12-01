@@ -1,9 +1,9 @@
 <span class="anchor" id="anchorBodyMonuments"></span>
-<div id="bodyMonuments" class="row">
-    <h1>
+<div id="bodyMonuments" class="container-fluid">
+    <h1 class="row">
         <?= TITRE_MONUMENT ?>
     </h1>
-    <div class="carrousel">
+    <div class="carrousel row">
         <div class="arrow-carrousel">
             <div class="arrow" id="arrowLeftMonument"></div>
             <div class="arrow" id="arrowRightMonument"></div>

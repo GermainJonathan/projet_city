@@ -10,11 +10,11 @@ const BD_USER = 'root';
 const BD_PWD = '';
 
 // Langue du site
-const LANG ='FR-fr';
+const LANG ='FR';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'AG4île';
-const mAIL_ADMIN = 'paulpoupet@atilog.com';
+const MAIL_ADMIN = 'paulpoupet@atilog.com';
 
 
 //dossiers racines du site

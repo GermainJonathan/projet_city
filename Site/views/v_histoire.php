@@ -1,16 +1,18 @@
 <span class="anchor" id="anchorBodyHistoire"></span>
-<div id="bodyHistoire" class="row no-margin">
-    <h1 class="col-12">
+<div id="bodyHistoire" class="container-fluid">
+    <h1 class="row">
         <?= TITRE_HISTOIRE ?>
     </h1>
-    <div class="col-lg-4 col-md-4 col-sm-12">
-        <div id="sousTitreHistory">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div id="sousTitreHistory">
+            </div>
+            <p id="txtHistory" class="text-justify"></p>
         </div>
-        <p id="txtHistory" class="text-justify"></p>
-    </div>
-    <div class="col-lg-8 col-md-8 col-sm-12">
-        <!--  Catégorie Histoire  -->
-        <div id="timelineHistory">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <!--  Catégorie Histoire  -->
+            <div id="timelineHistory">
+            </div>
         </div>
     </div>
 </div>
