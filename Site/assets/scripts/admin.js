@@ -112,17 +112,20 @@ function addPatrimoineComponents() {
 function updateComponent(typeComponent, component, dataComponent) {
     switch(typeComponent) {
         case "Histoire":
+            component.find("#id").val(dataComponent.codeHistoire);
             component.find("#title").val(dataComponent.libelleMonument);
             component.find("#description").val(dataComponent.commentaire);
             break;
         case "Monument":
+            component.find("#id").val(dataComponent.codeMonument);
             component.find("#title").val(dataComponent.libelleMonument);
             component.find("#description").val(dataComponent.commentaire);
-            let architecte = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input type='text' class='form-control col-8' id='archi'></div>");
+            let architecte = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input name='architecte' type='text' class='form-control col-8' id='archi'></div>");
             architecte.find("#archi").val(dataComponent.architecte);
             architecte.appendTo(component.find(".media-body"));
             break;
         case "Activité":
+            component.find("#id").val(dataComponent.codeActivite);
             component.find("#title").val(dataComponent.titre);
             component.find("#description").val(dataComponent.commentaire);
             break;
@@ -150,10 +153,22 @@ function generateFormData(patrimoine, type) {
     let data = {};
     switch(type) {
         case "Histoire":
+            data = {
+                'idHistoire' : patrimoine[0].value,
+                'description' : patrimoine[2].value
+            }
             break;
         case "Monument":
+            data = {
+                'idMonument' : patrimoine[0].value,
+                'description' : patrimoine[3].value
+            }
             break;
         case "Activité":
+            data = {
+                'idActivite' : patrimoine[0].value,
+                'description' : patrimoine[2].value
+            }
             break;
         case "Restaurant":
             data = {
@@ -184,23 +199,58 @@ function upload(file, imageDiv) {
 }
 
 function savePatrimoine() {
+    $("#patrimoineConfig").hide();
+    $(".contentAdmin > .spinner").show();
     var objects = [];
+    var images = [];
     $("#patrimoineContent > form").each(function() {
+        var formData = new FormData();
+        if($(this).find("#file").prop('files')[0]) {
+            formData.append('image', $(this).find("#file").prop('files')[0], $(this).find("#file").prop('files')[0].name);
+        }
+        images.push($(this).find("#file").prop('files')[0]);
         objects.push($(this).serializeArray());
     })
     objects.shift();
+    images.shift();
     var type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
-    for(let elem of objects) {
-        console.log(elem);
-        let data = generateFormData(elem, type);
-        console.log(data);
+    for(let i = 0; i<objects.length; i++) {
+        let data = generateFormData(objects[i], type);
+        // Mise à jour des champs
         $.ajax({
             method: 'POST',
             url: environnement.serviceUrl + "adminUpdateDescription" + type.replace(/é/gi, "e") + ".php",
             data : JSON.stringify(data),
             contentType : 'application/json'
-        }).done(function(data) {
-            console.log(data);
+        }).done(function() {
+            $.notify({
+                message: "Object update"
+            }, {
+                type:'info'
+            });
+            $(".contentAdmin > .spinner").hide();
+            $("#patrimoineConfig").show();
         });
+        if(images[i]) {
+            var formData = new FormData();
+            formData.append('id', objects[i][0].value);
+            formData.append('image', images[i], images[i].name);
+            // Upload de l'image
+            $.ajax({
+                method: 'POST',
+                url: environnement.serviceUrl + "adminUpdateImage" + type.replace(/é/gi, "e") + ".php",
+                data : formData,
+                cache: false,
+                dataType: 'json',
+                processData: false,
+                contentType: false
+            }).done(function() {
+                $.notify({
+                    message: "Upload success"
+                }, {
+                    type:'info'
+                });
+            })
+        }
     }
 }

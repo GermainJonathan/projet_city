@@ -16,6 +16,7 @@ const LANG ='FR';
 const AUTEUR = 'AG4île';
 const MAIL_ADMIN = 'paulpoupet@atilog.com';
 
+const PATH = array('', '../assets/images/perrache/', '../assets/images/bellecour/', '../assets/images/terreaux/');
 
 //dossiers racines du site
 define('PATH_CONTROLLERS','../controllers/c_');
