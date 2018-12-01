@@ -8,21 +8,31 @@ function updateActivite() {
 
 }
 
-/* ACTIONS */
+/* EXTEND ACTION */
+
+var isExtend = false;
 
 $(".expandbutton > a").click(function () {
     var section = $(this).parents("section");
-    if (section.hasClass('sectionexpanded')) {
+
+    if (section.hasClass('sectionexpanded')) //retract
+    {
+        isExtend = false;
+        panelSnapInstance.enable();
         section.toggleClass("sectionexpanded");
 
+        $("#activiteconteneur").css({ overflow: "scroll", "overflow-x": "hidden"});
         $(this).toggleClass("arrowup");
         section.animate({ height: "50%" }, 350)
         section.children("p").animate({ height: "65%" }, 350)
         section.children("p").toggleClass("hide", 350);
     }
-    else {
+    else //expand
+    {
+        isExtend = true;
         section.toggleClass("sectionexpanded");
 
+        $("#activiteconteneur").css({ overflow: "hidden"});
         $(this).toggleClass("arrowup");
         section.animate({ height: "100%" }, 350)
         section.children("p").animate({ height: "100%" }, 350)
@@ -30,6 +40,12 @@ $(".expandbutton > a").click(function () {
     }
     panelSnapInstance.snapToPanel(section[0]);
 });
+
+function checkEnability(){
+    if (isExtend) {
+        panelSnapInstance.disable();
+    }
+}
 
 /* PANELSNAP */
 
@@ -79,5 +95,6 @@ function getActivateNumber() {
 }
 
 setTimeout(function () {
-        panelSnapInstance = new PanelSnap(options);
+    panelSnapInstance = new PanelSnap(options);
+    panelSnapInstance.on("snapStop", checkEnability);
 }, 1000);
