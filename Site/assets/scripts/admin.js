@@ -127,12 +127,13 @@ function updateComponent(typeComponent, component, dataComponent) {
             component.find("#description").val(dataComponent.commentaire);
             break;
         case "Restaurant":
+            component.find("#id").val(dataComponent.codeRestaurant);
             component.find("#title").val(dataComponent.nom);
             component.find("#description").val(dataComponent.commentaire);
-            let telephone = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input type='text' class='form-control col-8' id='tel'></div>");
+            let telephone = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input name='telephone' type='text' class='form-control col-8' id='tel'></div>");
             telephone.find("#tel").val(dataComponent.numero);
             telephone.appendTo(component.find(".media-body"));
-            let adresse = $("<div class='form-inline' data-id='3'><label class='col-2 align-self-left' for='adresse'><h4 class='text-truncate'>Adresse</h4></label><input type='text' class='form-control col-8' id='adresse'></div>");
+            let adresse = $("<div class='form-inline' data-id='3'><label class='col-2 align-self-left' for='adresse'><h4 class='text-truncate'>Adresse</h4></label><input name='adresse' type='text' class='form-control col-8' id='adresse'></div>");
             adresse.find("#adresse").val(dataComponent.adresse);
             adresse.appendTo(component.find(".media-body"));
             break;
@@ -143,6 +144,27 @@ function updateComponent(typeComponent, component, dataComponent) {
     component.find(".media-body div").sort(function(a,b) {
         return ($(a).data("id") > $(b).data("id")) ? ($(a).data("id") > $(b).data("id")) ? 1 : 0 : -1;
     }).appendTo(component.find(".media-body"));
+}
+
+function generateFormData(patrimoine, type) {
+    let data = {};
+    switch(type) {
+        case "Histoire":
+            break;
+        case "Monument":
+            break;
+        case "Activité":
+            break;
+        case "Restaurant":
+            data = {
+                'idRestaurant' : patrimoine[0].value,
+                'description' : patrimoine[4].value
+            }
+            break;
+        default:
+            break;
+    }
+    return data;
 }
 
 // Fonction permettant de binder les inputs files (hidden) au bouton de selection d'image
@@ -158,5 +180,27 @@ function upload(file, imageDiv) {
             imageDiv.attr('src', e.target.result);
         };
         reader.readAsDataURL(file.files[0]);
+    }
+}
+
+function savePatrimoine() {
+    var objects = [];
+    $("#patrimoineContent > form").each(function() {
+        objects.push($(this).serializeArray());
+    })
+    objects.shift();
+    var type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
+    for(let elem of objects) {
+        console.log(elem);
+        let data = generateFormData(elem, type);
+        console.log(data);
+        $.ajax({
+            method: 'POST',
+            url: environnement.serviceUrl + "adminUpdateDescription" + type.replace(/é/gi, "e") + ".php",
+            data : JSON.stringify(data),
+            contentType : 'application/json'
+        }).done(function(data) {
+            console.log(data);
+        });
     }
 }

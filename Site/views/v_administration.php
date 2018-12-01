@@ -52,27 +52,28 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <?php include(PATH_VIEWS.'spinner.php'); ?>
                 <div id="patrimoineConfig">
                     <div id="patrimoineContent">
-                        <div class="media" id="0" style="display: none;">
+                        <form class="media" id="0" style="display: none;">
+                            <input name="id" type="text" class="form-control col-8" id="id" hidden>
                             <div class="relative">
                                 <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
-                                <input type="file" id="file" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
-                                <button type="file" id="upfile" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
+                                <input name="image" type="file" id="file" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
+                                <button id="upfile" type="button" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
                             </div>
                             <div class="media-body align-self-center">
                                 <div class="form-inline" data-id='0'>
                                     <label class="col-2 align-self-left" for="title"><h4 class="text-truncate">Titre</h4></label>
-                                    <input type="text" class="form-control col-8" id="title">
+                                    <input name="titre" type="text" class="form-control col-8" id="title">
                                 </div>
                                 <div class="form-inline" data-id='10'>
                                     <label class="col-2 align-self-left" for="description"><h4 class="text-truncate">Description</h4></label>
-                                    <textarea class="form-control  col-8" id="description"></textarea>
+                                    <textarea name="description" class="form-control  col-8" id="description"></textarea>
                                 </div>
                             </div>
-                        </div>   
+                        </form>   
                     </div>                 
                     <div class="row justify-content-center mt-4 mb-4">
                         <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents();">Ajouter</button>
-                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
+                        <button type="button" class="btn btn-primary mr-4" onClick="savePatrimoine();">Enregistrer</button>
                         <a class="btn btn-primary" href="?page=administration">Annuler</a>
                     </div>
                 </div>

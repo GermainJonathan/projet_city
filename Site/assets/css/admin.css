@@ -59,6 +59,7 @@ div.sidebarAdmin > a.nav-link.active {
 
 .plus-sign {
     position: absolute;
+    opacity: .65;
     top: 15%;
     right: 15%;
     padding: 0;
