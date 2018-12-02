@@ -328,7 +328,7 @@ p{
 }
 
 #activiteconteneur{
-    height: 500px;
+    height: 400px;
     overflow: scroll;
     transition: 0s box-shadow;
     overflow-x: hidden;
