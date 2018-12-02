@@ -1,5 +1,5 @@
 <?php
-require_once PATH_MODELS.'Administration.DAO';
+require_once PATH_MODELS.'administrationDAO.php';
 
 class messageContact
 {

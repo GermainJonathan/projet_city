@@ -17,8 +17,8 @@ $administrationDAO = new administrationDAO(DEBUG);
 $data = json_decode(file_get_contents("php://input"));
 $array = null;
 
-    $responses = $administrationDAO->createMessageContact($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['objet'], $_POST['message']);
 if (isset($data->nom) && isset($data->prenom) && isset($data->message) && isset($data->mail)) {
+    $responses = $administrationDAO->createMessageContact($data->nom, $data->prenom, $data->mail, $data->objet, $data->message);
     if($responses) {
         $message = makeMessage("message", "nom", "prenom", "mail");
         mail(MAIL_ADMIN, 'messageContact : ' . $_POST['objet'], $message);

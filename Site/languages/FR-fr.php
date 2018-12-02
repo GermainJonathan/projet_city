@@ -70,7 +70,6 @@ define('ERREURE_NOT_IMAGE', 'C\'est pas une image ca. Moi je prends du .jpg, .jp
 define('ERREURE_TELECHARGEMENT', 'Quelle horreur ! Une erreur ! (lors tu téléchargement) c\'est la faute du serveur ou de ta co');
 define('ERREUR_BDD', 'Un truc de ouf viens de se passer avec la base de donnée.. revenir plus tard');
 
-define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validtion par l\'administrateur');
 define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validation par l\'administrateur');
 
 //  Texte pour la page de contact
