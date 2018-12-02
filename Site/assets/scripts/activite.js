@@ -3,12 +3,16 @@
 /* INIT */
 
 setTimeout(function () {
-    $.get( environnement.serviceUrl + "getActiviteByQuartier.php?quartier=" + quartier[idQuartier], function( data ) {
+    $.ajax({
+        method: "GET",
+        url: environnement.serviceUrl + "getActiviteByQuartier.php?quartier=" + quartier[idQuartier]
+      })
+      .done(function(data){
         updateActivite(data);
         panelSnapInstance = new PanelSnap(options);
         panelSnapInstance.on("snapStop", checkEnability);
         initSectionButtonClick();
-    });
+      });
 }, 1000);
 
 /* DATAS */
