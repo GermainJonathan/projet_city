@@ -16,10 +16,17 @@ $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->idHistoire) && isset($data->description)) {
-    $responses = $quartierDAO->setDescriptionHistoire($data->idHistoire, $data->description);
-    if($responses)
+if (isset($data->idHistoire) && isset($data->description) && isset($data->title)) {
+    $responses = $quartierDAO->setDescriptionHistoire($data->idHistoire, $data->description, $data->title);
+    if($responses) {
         $array = $responses->toArray();
+    } else {
+        $code = 501;
+        $array = array(
+            'error' => 'Error in SQL statement',
+            'message' => 'Error occured during update'
+        );
+    }
 } else {
     $code = 404;
     $array = array(

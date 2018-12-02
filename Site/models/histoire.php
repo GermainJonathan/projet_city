@@ -3,7 +3,7 @@
 class histoire
 {
 
-    private $_codeMonument;
+    private $_codeHistoire;
     private $_codePays;
     private $_codeQuartier;
     private $_quartier;
@@ -13,7 +13,7 @@ class histoire
 
     /**
      * histoire constructor.
-     * @param $codeMonument
+     * @param $codeHistoire
      * @param $codePays
      * @param $codeQuartier
      * @param $quartier
@@ -21,9 +21,9 @@ class histoire
      * @param $image
      * @param $commentaire
      */
-    public function __construct($codeMonument, $codePays, $codeQuartier, $quartier, $titre, $image, $commentaire)
+    public function __construct($codeHistoire, $codePays, $codeQuartier, $quartier, $titre, $image, $commentaire)
     {
-        $this->_codeMonument = $codeMonument;
+        $this->_codeHistoire = $codeHistoire;
         $this->_codePays = $codePays;
         $this->_codeQuartier = $codeQuartier;
         $this->_quartier = $quartier;
@@ -35,9 +35,9 @@ class histoire
     /**
      * @return mixed
      */
-    public function getCodeMonument()
+    public function getcodeHistoire()
     {
-        return $this->_codeMonument;
+        return $this->_codeHistoire;
     }
 
     /**
@@ -90,11 +90,11 @@ class histoire
 
     public function toArray(){
 
-        return array('codeMonument' => $this->_codeMonument,
+        return array('id' => $this->_codeHistoire,
             'codePays' => $this->_codePays,
             'codeQuartier' => $this->_codeQuartier,
             'quartier' => $this->_quartier,
-            'titre'=> $this->_quartier,
+            'titre'=> $this->_titre,
             'image' => $this->_image,
             'commentaire' => $this->_commentaire,
         );
