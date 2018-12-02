@@ -46,7 +46,7 @@ $("#btnValiderContact").click(function(){
     }
     else{
         // bootstrap notify
-        MakeNotify("danger","Veuillez remplir tout les champs")
+        MakeNotify("danger","Veuillez remplir tout les champs");
     }
    
 });
