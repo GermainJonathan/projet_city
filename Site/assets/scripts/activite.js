@@ -3,8 +3,7 @@
 /* INIT */
 
 setTimeout(function () {
-    //$.get( environnement.serviceUrl + "getMarkerParQuartier.php?quartier=" + environnement["codePage"], function( data ) {
-    $.get( "http://localhost/projet_city/Site/services/getActiviteByQuartier.php?quartier=" + environnement["codePage"], function( data ) {
+    $.get( environnement.serviceUrl + "getActiviteByQuartier.php?quartier=" + environnement["codePage"], function( data ) {
         updateActivite(data);
         panelSnapInstance = new PanelSnap(options);
         panelSnapInstance.on("snapStop", checkEnability);
