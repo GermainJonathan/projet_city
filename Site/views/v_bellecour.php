@@ -11,6 +11,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>quartier.js"></script>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>bellecourEnv.js"></script>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>cardMapFactory.js"></script>
+<script type="text/javascript">var idQuartier = 2;</script>
 <!-- TODO: FAIRE UNE VUE SIDEBAR -->
 <!-- SideBar Page -->
 <?php require_once(PATH_VIEWS.'sidebar.php');?>

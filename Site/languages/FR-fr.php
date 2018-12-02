@@ -3,6 +3,8 @@
 //Les textes affichés sur le site, sous forme de constantes
 //Les constantes se comprennent sans commentaires. 
 
+//Version Française
+
 // titre de page
 define('MENU_ACCUEIL','Accueil');
 define('MENU_TERREAUX', 'Terreaux');
@@ -38,6 +40,7 @@ define('TITRE_LIENS_PRATIQUES', 'Liens Pratiques');
 
 define('TITRE_PAGE_ACCUEIL','DÉCOUVREZ LA PRESQU\'ÎLE');
 
+define('TXT_META_DESC_ACCUEIL',"Lyon, ville de tous les plaisirs, découvrez le quartier dynamique de la presqu’île. Vous allez découvrir les restaurants, activités et monument se cachant dans les rues de la presqu’île. Programmez vos sorties et bougez dans le quartier le plus dynamique de Lyon.");
 define('TXT_FOOTER_DESCRIPTION', 'La Presqu\'île, quartier le plus dynamique de Lyon, découvrez son histoire, sa gastronomie, ses activités    ');
 define('TXT_TITRE_TOPIC', 'Titre du topic');
 define('TXT_TITRE_DESCRIPTION', 'Description du topic');
@@ -68,3 +71,15 @@ define('ERREURE_TELECHARGEMENT', 'Quelle horreur ! Une erreur ! (lors tu téléc
 define('ERREUR_BDD', 'Un truc de ouf viens de se passer avec la base de donnée.. revenir plus tard');
 
 define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validtion par l\'administrateur');
+define('SUCCESS_CREATE_TOPIC', 'Topic en attente de validation par l\'administrateur');
+
+//  Texte pour la page de contact
+define ('TITRE_CONTACT_A_PROPOS'," À propos");
+define('TXT_CONTACT_APROPOS',"Une question, un besoin , une remarque ... ? <br/> Nous sommes à votre disposition et vous répondrons dans les meilleurs délais. N'hésitez pas à nous contacter !");
+define('TXT_CONTACT_FORMULAIRE',"Ou Compléter le formulaire");
+// Champ Formlaire
+define('CHAMP_NOM',"Votre Nom");
+define ("CHAMP_PRENOM","Votre Prénom");
+define("CHAMP_EMAIL","Votre Email");
+define("CHAMP_SUJET","Sujet");
+define("CHAMP_MESSAGE","Votre Message");

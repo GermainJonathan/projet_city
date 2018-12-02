@@ -1,16 +1,16 @@
 <span class="anchor" id="anchorBodyRestaurants"></span>
-<div id="bodyRestaurants" class="row">
-    <h1>
+<div id="bodyRestaurants" class="container-fluid">
+    <h1 class="row">
         <?= TITRE_RESTAURANT ?>
     </h1>
-    <div class="containerCard" id="RestaurantCards">
+    <div class="containerCard row" id="RestaurantCards">
     </div>
-    <div class="arrow-restaurant mx-auto row" id="ArrowRes">
+    <div class="arrow-restaurant justify-content-center row" id="ArrowRes">
         <a class="arrow" id="arrowTopRestaurant" href="#anchorBodyRestaurants"></a>
         <a class="arrow" id="arrowDownRestaurant"></a>
     </div>
     <div class="col-12" id="rowSavoirPlus">
-        <div class="EnsavoirPlus col-lg-10" id="SavoirPlusRestaurants">
+        <div class="EnsavoirPlus col-lg-10 col-md-10 col-sm-12" id="SavoirPlusRestaurants">
             <div class="imgSavoirPlus"></div>
             <div class="txtSavoirPlus">
                 <div class="titreSavoirPlus"></div>

@@ -29,7 +29,8 @@ class Api extends DAO
         $sql = "SELECT mon.codeMonument as id, mon.codeQuartier as idQuartier, mon.libelleMonument as name, mon.imageMonument as images, AsText(mon.coordonnees) as coordonees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y') as dateConstruction, mon.architecte, mon.commentaire
                 FROM monument mon
                 INNER JOIN quartier qua ON mon.codeQuartier = qua.codeQuartier
-                WHERE qua.libelleQuartier = :quartier";
+                WHERE qua.libelleQuartier = :quartier
+                AND mon.codePays = 1";
         $monumentResult = $this->queryAll($sql, array('quartier' => $quarter));
         // TODO: Remonter d'erreur BDD - Notification TOAST
         // FIXME: Compléter le if avec isArray
@@ -50,7 +51,8 @@ class Api extends DAO
         $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.imageRestaurant as images, res.nom as name, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
                 FROM restaurant res
                 INNER JOIN quartier qua ON res.codeQuartier = qua.codeQuartier
-                WHERE qua.libelleQuartier = :quartier";
+                WHERE qua.libelleQuartier = :quartier
+                AND res.codePays = 1";
         $restaurantResult = $this->queryAll($sql, array('quartier' => $quarter));
         // TODO: Remonter d'erreur BDD - Notification TOAST
         // FIXME: Compléter le if avec isArray
@@ -72,7 +74,8 @@ class Api extends DAO
         $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.imageActivite as images, act.commentaire
                 FROM activite act
                 INNER JOIN quartier qua ON act.codeQuartier = qua.codeQuartier
-                WHERE qua.libelleQuartier = :quartier";
+                WHERE qua.libelleQuartier = :quartier
+                AND act.codePays = 1";
         $activiteResult = $this->queryAll($sql, array('quartier' => $quarter));
         // TODO: Remonter d'erreur BDD - Notification TOAST
         // FIXME: Compléter le if avec isArray

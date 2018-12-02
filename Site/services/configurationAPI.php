@@ -10,12 +10,13 @@ const BD_USER = 'root';
 const BD_PWD = '';
 
 // Langue du site
-const LANG ='FR-fr';
+const LANG ='FR';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'AG4île';
 const MAIL_ADMIN = 'paulpoupet@atilog.com';
 
+const PATH = array('', '../assets/images/perrache/', '../assets/images/bellecour/', '../assets/images/terreaux/');
 
 //dossiers racines du site
 define('PATH_CONTROLLERS','../controllers/c_');

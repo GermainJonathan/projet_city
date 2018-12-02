@@ -21,3 +21,13 @@ Thème : Promouvoir sa ville à travers son quartier
 ## Installation API
 
 > Renommer le fichier *"config.js.template"* en *"config.js"* (./Site/config/) puis renseigner la variable **environnement** suivant le besoin
+
+## Installation BDD
+
+> Type de base MariaDB
+> SGBD : PhpMyAdmin
+>
+> Script d'installation : projet_city.sql
+> Jeux de donnée : dataDump.sql
+
+La configuration des accès à la base doit être renseigner dans le fichier **configuration.php**

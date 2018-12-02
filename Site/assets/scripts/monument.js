@@ -1,6 +1,16 @@
 /**** CAROUSEL MONUMENTS ******/
 var tabMonument=new Array();
 
+$.ajax({
+    method: "GET",
+    url: environnement.serviceUrl + "getMonumentByQuartier.php?quartier=" + quartier[idQuartier]
+}).done(function(data) {
+    console.log(data);
+    for (let monument of data){
+        //FIXME: J'ai pas encore de données
+    }
+});
+
 for (var i=0; i<7; i++){
     tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.",environnement.codePage,"bellecour.jpg"));    
 }
@@ -23,6 +33,7 @@ CreateCarousel(tabMonument);
         }
         if(i>=lengthCaroussel){
             card.addClass("cache");
+            card.addClass("noVisibility");
         }
         $("#carrouselMonument").append(card);
     }
@@ -70,9 +81,11 @@ function putEventsCaroussel(){
         if(cards[0]!==activeLeft[0]){
             activeRight.removeClass("active-right");
             activeRight.addClass("cache");
+            setTimeout(function(){ activeRight.addClass("noVisibility"); }, 1000);
             activeRight.prev().addClass("active-right");
             activeLeft.removeClass("active-left");
             activeLeft.prev().removeClass("cache");
+            activeLeft.prev().removeClass("noVisibility");
             activeLeft.prev().addClass("active-left");
         }
     });
@@ -86,8 +99,10 @@ function putEventsCaroussel(){
         if(cards[length-_lengthCarousel]!==activeLeft[0]){
             activeLeft.removeClass("active-left");
             activeLeft.addClass("cache");
+            setTimeout(function(){ activeLeft.addClass("noVisibility"); }, 1000);
             activeLeft.next().addClass("active-left");
             activeRight.next().removeClass("cache");
+            activeRight.next().removeClass("noVisibility");
             activeRight.removeClass("active-right");
             activeRight.next().addClass("active-right");
         }
@@ -107,9 +122,11 @@ function MakeCarroussel(lengthCaroussel){
 
     var cards=$(".cardMonument");
     cards.addClass("cache");
+    cards.addClass("noVisibility");
     var activeLeft =$(".cardMonument.active-left");
     var activeRight=$(".cardMonument.active-right");
     activeLeft.removeClass("cache");
+    activeLeft.removeClass("noVisibility");
     activeRight.removeClass("active-right");
     var i=0;
     var next=activeLeft;
@@ -118,6 +135,7 @@ function MakeCarroussel(lengthCaroussel){
         var temp=next.next();
         if(temp.length!=0){
             temp.removeClass("cache");
+            temp.removeClass("noVisibility");
             next=temp;
             i++;
         }
@@ -132,6 +150,7 @@ function MakeCarroussel(lengthCaroussel){
     if (noFind){
         var temp2=activeLeft.prev();
         temp2.removeClass("cache");
+        temp2.removeClass("noVisibility");
         temp2.addClass("active-left");
         activeLeft.removeClass("active-left");
         j=i+1;
@@ -140,6 +159,7 @@ function MakeCarroussel(lengthCaroussel){
             var temp3=prev.prev();
             prev.removeClass("active-left");
             temp3.removeClass("cache");
+            temp3.removeClass("noVisibility");
             temp3.addClass("active-left");
             j++;
         }

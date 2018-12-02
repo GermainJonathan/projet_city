@@ -1,11 +1,5 @@
 /**** PARTIE ACTIVITE ******/
 
-updateActivite();
-
-function updateActivite() {
-
-}
-
 var panelSnapInstance;
 var container = $("#activiteconteneur")[0];
 
@@ -20,6 +14,17 @@ $("#arrowUpActivity").click(function(){
 
 $("#arrowDownActivity").click(function(){
     fluidSnap("bottom");
+});
+
+$.ajax({
+    method: "GET",
+    url: environnement.serviceUrl + "getActiviteByQuartier.php?quartier=" + quartier[idQuartier]
+}).done(function(data) {
+    console.log(data);
+    for (let activite of data){
+        //TODO: Générer les élements avec les infos reçu de l'API
+    }
+    // Suite du code ici
 });
 
 function fluidSnap(direction)
@@ -59,6 +64,6 @@ function getActivateNumber()
 }
 
 
-  setTimeout(function() {
-        panelSnapInstance = new PanelSnap(options);
+setTimeout(function() {
+    panelSnapInstance = new PanelSnap(options);
 }, 1000);

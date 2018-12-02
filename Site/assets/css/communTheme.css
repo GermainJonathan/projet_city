@@ -121,6 +121,15 @@ body::-webkit-scrollbar-thumb {
 }
 /* Fin Scroll Bar */
 
+/* COMMUN CARD */
+.card-footer{
+    border-top:none;
+}
+
+.card.border-light{
+    box-shadow:5px 5px 10px 2px #B3B3B3;
+}
+
 /* PROVISOIRE */
 .alert {
     z-index: 1020;

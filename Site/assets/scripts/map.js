@@ -30,7 +30,7 @@ var layerControl = L.control.layers({},{
 }, {
     collapsed : false
 });
-console.log(layerControl);
+
 if(isMobileDevice) {
     // TODO: Colapse le filtre de couche
     // layerControl.setOption({
@@ -241,7 +241,7 @@ function setupQuarterCard(quarterName) {
     legend = L.control({position: 'topleft'});
     switch (quarterName) {
         case "Perrache" :
-            var perracheCard = new Card(quarterName, textDescriptionFactice, 1, ["perrache.jpg", "bellecour.jpg", "terreaux.jpg"]);
+            var perracheCard = new Card(quarterName, textDescriptionFactice, 1, ["perrache.jpg", "statut-de-la-republique.jpg", "vattel.jpg"]);
             legend.onAdd = perracheCard.createCard();
             break;
         case "Bellecour" :
