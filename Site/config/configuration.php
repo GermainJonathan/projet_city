@@ -10,10 +10,11 @@ const BD_USER = 'root';
 const BD_PWD = '';
 
 // Langue du site
-const LANG ='FR-fr';
+const LANG ='FR';
 
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'AG4île';
+const MAIL_ADMIN = 'paulpoupet@atilog.com';
 
 
 //dossiers racines du site
@@ -39,5 +40,5 @@ define('PATH_CORE', PATH_IMAGES.'core/');
 
 
 //fichiers
-define('PATH_LOGO', PATH_IMAGES.'logo.png');
+define('PATH_LOGO', PATH_IMAGES.'core/logo.png');
 define('PATH_MENU', PATH_VIEWS.'menu.php');

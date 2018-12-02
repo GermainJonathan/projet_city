@@ -13,23 +13,23 @@ class histoire
 
     /**
      * histoire constructor.
-     * @param $_codeMonument
-     * @param $_codePays
-     * @param $_codeQuartier
-     * @param $_quartier
-     * @param $_titre
-     * @param $_image
-     * @param $_commentaire
+     * @param $codeMonument
+     * @param $codePays
+     * @param $codeQuartier
+     * @param $quartier
+     * @param $titre
+     * @param $image
+     * @param $commentaire
      */
-    public function __construct($_codeMonument, $_codePays, $_codeQuartier, $_quartier, $_titre, $_image, $_commentaire)
+    public function __construct($codeMonument, $codePays, $codeQuartier, $quartier, $titre, $image, $commentaire)
     {
-        $this->_codeMonument = $_codeMonument;
-        $this->_codePays = $_codePays;
-        $this->_codeQuartier = $_codeQuartier;
-        $this->_quartier = $_quartier;
-        $this->_titre = $_titre;
-        $this->_image = $_image;
-        $this->_commentaire = $_commentaire;
+        $this->_codeMonument = $codeMonument;
+        $this->_codePays = $codePays;
+        $this->_codeQuartier = $codeQuartier;
+        $this->_quartier = $quartier;
+        $this->_titre = $titre;
+        $this->_image = $image;
+        $this->_commentaire = $commentaire;
     }
 
     /**

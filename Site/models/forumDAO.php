@@ -9,11 +9,8 @@ class forumDAO extends DAO
 {
 
     // sort les topics validé par l'admin
-    public function getTopicValid()
-    {
-
-        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
-        
+    public function getTopicValid(){
+        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2 OR codeEtat = 4");
         $listTopic = array();
         foreach ($result as $temp){
             $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
@@ -48,7 +45,6 @@ class forumDAO extends DAO
 
     // sort les messages d'un topic
     public function getMessageByTopic($idTopic){
-
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
 
         $listMessage = array();
@@ -61,6 +57,16 @@ class forumDAO extends DAO
             }
         }
         return $listMessage;
+    }
+
+    public function getMessageById($id){
+        $result = $this->queryRow("SELECT * FROM message WHERE codeMessage = ?", array($id));
+        if($result['codeProfile'] == 0)
+            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date']);
+        else {
+            $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($result['codeProfile']));
+            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date'], $result['codeProfile'], $res['libelleProfile']);
+        }
     }
 
     // vérifi si un topic exciste et est actif
@@ -77,16 +83,33 @@ class forumDAO extends DAO
 
         $result = $this->queryBdd("INSERT INTO topic (codeTopic, codePays, libelleTopic, description, codeEtat, date) VALUES (?, ?, ?, ?, ?, CURRENT_DATE)", array($maxId, $idLang, $titre, $description, 1));
 
-        //var_dump($result);
-
         return $result;
 
     }
 
+    /**
+     * fonction qui permet de modifier l'état du topic dans la base de donnée
+     * @var etat: réprésente l'état sélectionné par l'administrateur
+     * @var idTopic: représente le topic dont l'état va être modifié
+     */
     public function setEtatTopicByCode($idTopic, $etat){
         $result = $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic  = ?", array($etat, $idTopic));
         if($result)
             return $this->getTopicById($idTopic);
+        return false;
+    }
+
+    public function sendMessage($idTopic, $nom, $message, $profile = 0){
+        $date = date('Y-M-d');
+        $result = $this->queryRow("SELECT MAX(codeMessage) as max FROM message");
+        $max = ($result['max'] == null)? 0 : $result['max'] + 1;
+
+        $res = $this->queryBdd("INSERT INTO commentaire VALUES (?, ?, ?, ?, ?, ?, ?)",
+            array($max, $idTopic, htmlspecialchars(trim($nom)), htmlspecialchars(trim($message)), $date, $profile));
+
+        if($res){
+            return $this->getMessageById($max);
+        }
         return false;
     }
 

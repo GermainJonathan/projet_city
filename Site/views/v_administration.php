@@ -32,6 +32,95 @@ require_once(PATH_VIEWS.'alert.php');?>
         </tbody>
     </table>
 </div>
-
+<div class="container-fluid">
+    <nav id="pageSelector" class="nav nav-pills nav-justified">
+        <a class="nav-item nav-link active" data-index="0" href="#"><?= MENU_ACCUEIL ?></a>
+        <a class="nav-item nav-link" data-index="1" href="#"><?= MENU_TERREAUX ?></a>
+        <a class="nav-item nav-link" data-index="2" href="#"><?= MENU_BELLECOUR ?></a>
+        <a class="nav-item nav-link" data-index="3" href="#"><?= MENU_PERRACHE ?></a>
+        <a class="nav-item nav-link" data-index="4" href="#"><?= MENU_CONTACT ?></a>
+    </nav>
+    <hr>
+    <div class="adminContainer">
+        <?php include(PATH_VIEWS.'spinner.php'); ?>
+        <div id="content" class="row">
+            <div class="align-self-center col-3">
+                <div class="sidebarAdmin nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                </div>
+            </div>
+            <div class="contentAdmin col-9">
+                <?php include(PATH_VIEWS.'spinner.php'); ?>
+                <div id="patrimoineConfig">
+                    <div id="patrimoineContent">
+                        <form class="media" id="0" style="display: none;">
+                            <input name="id" type="text" class="form-control col-8" id="id" hidden>
+                            <div class="relative">
+                                <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
+                                <input name="image" type="file" id="file" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
+                                <button id="upfile" type="button" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
+                            </div>
+                            <div class="media-body align-self-center">
+                                <div class="form-inline" data-id='0'>
+                                    <label class="col-2 align-self-left" for="title"><h4 class="text-truncate">Titre</h4></label>
+                                    <input name="titre" type="text" class="form-control col-8" id="title">
+                                </div>
+                                <div class="form-inline" data-id='10'>
+                                    <label class="col-2 align-self-left" for="description"><h4 class="text-truncate">Description</h4></label>
+                                    <textarea name="description" class="form-control  col-8" id="description"></textarea>
+                                </div>
+                            </div>
+                        </form>   
+                    </div>                 
+                    <div class="row justify-content-center mt-4 mb-4">
+                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents();">Ajouter</button>
+                        <button type="button" class="btn btn-primary mr-4" onClick="savePatrimoine();">Enregistrer</button>
+                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                    </div>
+                </div>
+                <div id="parallaxConfig" style="display: none;">
+                    <div class="media">
+                        <div class="relative">
+                            <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
+                            <input type="file" id="file2" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
+                            <button type="file" id="upfile2" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <div class="form-inline" data-id='0'>
+                                <label class="col-2 align-self-left" for="text"><h4 class="text-truncate">Text</h4></label>
+                                <input type="text" class="form-control col-8" id="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-4 mb-4">
+                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
+                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                    </div> 
+                </div>
+                <div id="bandeauConfig" style="display: none;">
+                    <div class="form-inline">
+                        <label class="offset-1 col-2 align-self-left" for="textBandeau"><h4 class="text-truncate">Titre bandeau</h4></label>
+                        <input type="text" class="form-control col-8" id="textBandeau" value="">
+                    </div>
+                    <div class="row justify-content-center mt-4 mb-4">
+                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
+                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                    </div> 
+                </div>
+                <div id="contactConfig" style="display: none;">
+                    <div class="form-inline">
+                        <label class="offset-1 col-2 align-self-left" for="textContact"><h4 class="text-truncate">Text contact</h4></label>
+                        <textarea class="form-control col-8" id="textContact" value=""></textarea>
+                    </div>
+                    <div class="row justify-content-center mt-4 mb-4">
+                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
+                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>admin.js"></script>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');

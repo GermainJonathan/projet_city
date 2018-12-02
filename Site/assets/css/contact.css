@@ -5,20 +5,35 @@
 }
 
 .contact-desc{
-    text-align:justify;
+    text-align:center;
 }
 
 .contact-title{
     text-align:center;
+    color: #444;
+    border-bottom: 1px solid #E98B39;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    padding-bottom: 3px;
 }
 
 /*Fin partie à propos*/
 
-/*Debut partie formulaire*/
+/*partie formulaire*/
+
+input.SetOnError{
+    background-color: #f1f1f1;
+    border-color: #ca0000;
+    border: 2px solid #ca0000;
+}
 
 #contact-block-formulaire{
     margin-top: 70px;
     margin-bottom: 50px;
+}
+
+.btnPageContact{
+    margin-top:20px;
 }
 
 .contact-text-area{
@@ -29,4 +44,18 @@
     justify-content:end;
 }
 
-/*FIN Debut partie formulaire*/
+.formInput{
+    margin-bottom:20px;
+}
+
+.Obligatoire{
+    color:red;
+}
+
+@media screen and (max-width: 767px){
+    #btnValiderContact {
+        font-size: initial;
+    }
+}
+
+

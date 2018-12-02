@@ -65,6 +65,7 @@ function checkVarAjoutPhoto()
 	}
 }
 
+// fonction qui récupère le langage de la page
 function getLangage(){
 
     require_once PATH_MODELS.'manager.php';
@@ -85,30 +86,53 @@ function getLangage(){
     return "FR-fr";
 }
 
+// Récupère l'action valider du forum suivant l'état
 function getActionValidByEtat($etat){
     switch ($etat) {
-
+        // Etat en attente: le topic peut être valider
         case 1:
-            Return array("action" => TXT_VALIDER, "codeAction" => 2);
+            return array("action" => TXT_VALIDER, "codeAction" => 2);
+            // Etat valider: le topic peut être résolu
         case 2:
-            return array("action" => TXT_RESOLUE, "codeAction" => 1);
+            return array("action" => TXT_RESOLUE, "codeAction" => 4);
+            // Etat annuler: le topic peut être valider
         case 3:
-            return array("action" => TXT_VALIDER, "codeAction" => 3);
+            return array("action" => TXT_VALIDER, "codeAction" => 2);
+            // Etat résolue: le topic ne peut rien faire comme action valid
+        case 4:
+            return array("action" => TXT_RESOLUE, "codeAction" => 0);
+            // Etat refuser: le topic peut être valider 
+        case 5:
+            return array("action" => TXT_VALIDER, "codeAction" => 2);
         default:
             return false;
     }
 }
 
+// Récupère l'action refuser du forum suivant l'état
 function getActionRefuseByEtat($etat){
     switch ($etat) {
 
+        // Etat en attente: le topic peut être refuser
         case 1:
-            Return array("action" => TXT_REFUSER, "codeAction" => 1);
+            return array("action" => TXT_REFUSER, "codeAction" => 5);
+        // Etat valider: le topic peut etre annuler
         case 2:
-            return array("action" => TXT_ANNULER, "codeAction" => 2);
+            return array("action" => TXT_ANNULER, "codeAction" => 3);
+        // Etat annuler : le topic peut être refuser
         case 3:
-            return array("action" => TXT_SUPPRIMER, "codeAction" => 3);
+            return array("action" => TXT_REFUSER, "codeAction" => 5);
+        // Etat résolu: le topic peut être annuler
+        case 4:
+            return array("action" => TXT_ANNULER, "codeAction" => 3);
+            // Etat refuser le topic ne peut rien faire en action refuse
+        case 5:
+            return array("action" => TXT_REFUSER, "codeAction" => 0); 
         default:
             return false;
     }
+}
+
+function makeMessage($message, $nom, $prenom, $mail){
+    return 'salut !!';
 }

@@ -30,7 +30,7 @@ var layerControl = L.control.layers({},{
 }, {
     collapsed : false
 });
-console.log(layerControl);
+
 if(isMobileDevice) {
     // TODO: Colapse le filtre de couche
     // layerControl.setOption({
@@ -193,7 +193,7 @@ function zoomToFeature(e) {
         // récupération des données markers
         $.ajax({
           method: "GET",
-          url: environnement.serviceUrl + "getMarkerParQuartier.php?quartier="+e.target.feature.properties.name
+          url: environnement.serviceUrl + "getMarkerByQuartier.php?quartier="+e.target.feature.properties.name
         }).done(function(data) {
           addMarkerMonuments(data.monuments);
           addMarkerActivites(data.activites);
@@ -241,7 +241,7 @@ function setupQuarterCard(quarterName) {
     legend = L.control({position: 'topleft'});
     switch (quarterName) {
         case "Perrache" :
-            var perracheCard = new Card(quarterName, textDescriptionFactice, 1, ["perrache.jpg", "bellecour.jpg", "terreaux.jpg"]);
+            var perracheCard = new Card(quarterName, textDescriptionFactice, 1, ["perrache.jpg", "statut-de-la-republique.jpg", "vattel.jpg"]);
             legend.onAdd = perracheCard.createCard();
             break;
         case "Bellecour" :

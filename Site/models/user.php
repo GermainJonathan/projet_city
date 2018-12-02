@@ -17,6 +17,10 @@ class user
         $this->_profile = $profile;
     }
 
+    public function getCodeProfile()
+    {
+        return $this->_codeProfile;
+    }
 
     public function getCodeUser()
     {

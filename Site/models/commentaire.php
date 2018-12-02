@@ -89,5 +89,17 @@ class commentaire
         return $this->_date;
     }
 
+    public function toArray(){
+        return array(
+            $this->_codeCommentaire,
+            $this->_codePays,
+            $this->_pays,
+            $this->_codeQuartier,
+            $this->_quartier,
+            $this->_nom,
+            $this->_commentaire,
+            $this->_date
+        );
+    }
 
 }
