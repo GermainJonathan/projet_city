@@ -456,26 +456,6 @@ p{
 }
 
 /*--------------------- RESPONSIVE ------------------------------*/
-@media screen and (max-width: 2560px) {
-
-    .carrousel-contenu .card{
-        width:17%;
-    }
-}
-
-@media screen and (max-width: 1920px) {
-
-    .carrousel-contenu .card{
-        width:22%;
-    }
-}
-
-@media screen and (max-width: 1600px) {
-
-    .carrousel-contenu .card{
-        width:30%;
-    }
-}
 
 @media screen and (max-width: 992px) {
     
