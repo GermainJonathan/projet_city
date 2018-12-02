@@ -199,7 +199,7 @@ a.list-group-item:hover {
     border: none !important;
 }
 
-.modal-header {
+#mobileHeader {
     position: absolute;
     z-index: 1;
     right: 0;
@@ -207,10 +207,10 @@ a.list-group-item:hover {
     border-bottom: none;
 }
 
-.modal-body {
+#mobileBody {
     padding: 0;
 }
 
-.modal-content {
+#mobileContent {
     border: none;
 }
