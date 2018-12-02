@@ -1,45 +1,71 @@
 /**** PARTIE ACTIVITE ******/
 
+/* INIT */
+
+setTimeout(function () {
+    //$.get( environnement.serviceUrl + "getMarkerParQuartier.php?quartier=" + environnement["codePage"], function( data ) {
+    $.get( "http://localhost/projet_city/Site/services/getActiviteByQuartier.php?quartier=" + environnement["codePage"], function( data ) {
+        updateActivite(data);
+        panelSnapInstance = new PanelSnap(options);
+        panelSnapInstance.on("snapStop", checkEnability);
+        initSectionButtonClick();
+    });
+}, 1000);
+
 /* DATAS */
 
-updateActivite();
+const sectionStructure = '<section data-panel=""><h2></h2><p class="hide"></p><div class="expandbutton"><a>▽</a></div></section>';
 
-function updateActivite() {
-
+function updateActivite(data) {
+    buildSectionStructure(data.length);
+    $("#activiteconteneur > section").each(function( index ) {
+        $(this).children("h2").text(data[index]["titre"]);
+        $(this).children("p").text(data[index]["commentaire"]);
+    });
 }
 
-/* EXTEND ACTION */
+function buildSectionStructure(size){
+    for (let i = 1; i < size + 1; i++) {
+        $("#activiteconteneur").append(sectionStructure);
+        $("#activiteconteneur > section").last().attr("data-panel", i);
+    }
+}
+
+/* EXTENDING ACTION */
 
 var isExtend = false;
 
-$(".expandbutton > a").click(function () {
-    var section = $(this).parents("section");
+function initSectionButtonClick(){
+    $(".expandbutton > a").click(function () {
+        var section = $(this).parents("section");
+    
+        if (section.hasClass('sectionexpanded')) //retract
+        {
+            isExtend = false;
+            panelSnapInstance.enable();
+            section.toggleClass("sectionexpanded");
+    
+            $("#activiteconteneur").css({ overflow: "scroll", "overflow-x": "hidden"});
+            $(this).toggleClass("arrowup");
+            section.animate({ height: "50%" }, 350)
+            section.children("p").animate({ height: "65%" }, 350)
+            section.children("p").toggleClass("hide", 350);
+        }
+        else //expand
+        {
+            isExtend = true;
+            section.toggleClass("sectionexpanded");
+    
+            $("#activiteconteneur").css({ overflow: "hidden"});
+            $(this).toggleClass("arrowup");
+            section.animate({ height: "100%" }, 350)
+            section.children("p").animate({ height: "100%" }, 350)
+            section.children("p").toggleClass("hide", 350);
+        }
+        panelSnapInstance.snapToPanel(section[0]);
+    });
+}
 
-    if (section.hasClass('sectionexpanded')) //retract
-    {
-        isExtend = false;
-        panelSnapInstance.enable();
-        section.toggleClass("sectionexpanded");
-
-        $("#activiteconteneur").css({ overflow: "scroll", "overflow-x": "hidden"});
-        $(this).toggleClass("arrowup");
-        section.animate({ height: "50%" }, 350)
-        section.children("p").animate({ height: "65%" }, 350)
-        section.children("p").toggleClass("hide", 350);
-    }
-    else //expand
-    {
-        isExtend = true;
-        section.toggleClass("sectionexpanded");
-
-        $("#activiteconteneur").css({ overflow: "hidden"});
-        $(this).toggleClass("arrowup");
-        section.animate({ height: "100%" }, 350)
-        section.children("p").animate({ height: "100%" }, 350)
-        section.children("p").toggleClass("hide", 350);
-    }
-    panelSnapInstance.snapToPanel(section[0]);
-});
 
 function checkEnability(){
     if (isExtend) {
@@ -93,8 +119,3 @@ function getSectionCount() {
 function getActivateNumber() {
     return panelSnapInstance.activePanel.getAttribute("data-panel");
 }
-
-setTimeout(function () {
-    panelSnapInstance = new PanelSnap(options);
-    panelSnapInstance.on("snapStop", checkEnability);
-}, 1000);
