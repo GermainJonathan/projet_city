@@ -10,7 +10,7 @@ class forumDAO extends DAO
 
     // sort les topics validé par l'admin
     public function getTopicValid(){
-        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2");
+        $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2 OR codeEtat = 4");
         $listTopic = array();
         foreach ($result as $temp){
             $res = $this->queryRow("SELECT libelleEtat FROM etatTopic WHERE codeEtat = ?", array($temp['codeEtat']));
@@ -87,6 +87,11 @@ class forumDAO extends DAO
 
     }
 
+    /**
+     * fonction qui permet de modifier l'état du topic dans la base de donnée
+     * @var etat: réprésente l'état sélectionné par l'administrateur
+     * @var idTopic: représente le topic dont l'état va être modifié
+     */
     public function setEtatTopicByCode($idTopic, $etat){
         $result = $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic  = ?", array($etat, $idTopic));
         if($result)

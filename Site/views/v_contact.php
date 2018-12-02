@@ -50,7 +50,7 @@ require_once(PATH_VIEWS.'alert.php');?>
     </div>
 </div>
 <!--  Fin Partie formulaire -->
-
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>alert.js"></script>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>contact.js"></script>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');

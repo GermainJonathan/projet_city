@@ -51,7 +51,7 @@ define('TXT_COMM_COMM', 'Commentaire');
 define('TXT_ENVOYER', 'Envoyer');
 
 define('TXT_VALIDER', 'Valider');
-define('TXT_RESOLUE', 'Résolue');
+define('TXT_RESOLUE', 'Résolu');
 define('TXT_REFUSER', 'Refuser');
 define('TXT_ANNULER', 'Annuler');
 define('TXT_SUPPRIMER', 'Supprimer');

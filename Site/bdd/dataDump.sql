@@ -5,7 +5,9 @@ INSERT INTO `pays` (`codePays`, `libellePays`, `libellePaysCourt`, `fichier`) VA
 INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
 (1, 'En attente'),
 (2, 'Valider'),
-(3, 'Annuler');
+(3, 'Annuler'),
+(4, 'Résolu'),
+(4, 'Refuser'),;
 
 INSERT INTO `quartier` (`codeQuartier`, `libelleQuartier`) VALUES
 (1, 'Perrache'),
