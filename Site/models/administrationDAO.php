@@ -2,6 +2,7 @@
 
 require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS.'user.php';
+require_once PATH_MODELS.'messageContact.php';
 
 
 class administrationDAO extends DAO
@@ -58,24 +59,38 @@ class administrationDAO extends DAO
     }
 
     /**
-     * @return bool
+     * @return array
      */
     public function getMessageContactAll(){
-        return true;
+        $result = $this->queryAll("SELECT * FROM messageContact");
+        $listMessageContact = array();
+        foreach ($result as $temp)
+            $listMessageContact[] = new messageContact($temp["codeMessage"], $temp["nom"], $temp["prenom"], $temp["mail"], $temp["objet"], $temp["message"], date($temp["date"]));
+        return $listMessageContact;
     }
 
     /**
      * @param $id
-     * @return bool
+     * @return messageContact
      */
     public function getMessageContactById($id){
-        return true;
+        $result = $this->queryRow("SELECT * FROM messageContact WHERE codeMessage = ?", array($id));
+        return new messageContact($result["codeMessage"], $result["nom"], $result["prenom"], $result["mail"], $result["objet"], $result["message"], $result["date"]);
     }
 
+
     /**
-     * @return bool
+     * @param $nom
+     * @param $prenom
+     * @param $mail
+     * @param $objet
+     * @param $message
+     * @return messageContact
      */
-    public function createMessageContact(){
-        return true;
+    public function createMessageContact($nom, $prenom, $mail, $objet, $message){
+        $max = $this->queryRow("SELECT MAX(codeMessage) as max FROM messageContact");
+        $max = ($max['max'] == null)? 0 : $max['max'] + 1;
+        $this->queryBdd("INSERT INTO messageContact VALUES(?, ?, ?, ?, ?, ?, CURRENT_DATE)", array($max, $nom, $prenom, $mail, $objet, $message));
+        return $this->getMessageContactById($max);
     }
 }

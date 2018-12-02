@@ -14,11 +14,11 @@ $code = 200;
 $administrationDAO = new administrationDAO(DEBUG);
 $array = null;
 
-if (isset($_POST['nom']) && isset($_POST['object']) && isset($_POST['prenom']) && isset($_POST['message']) && isset($_POST['mail'])) {
-    $responses = $administrationDAO->createMessageContact();
+if (isset($_POST['nom']) && isset($_POST['objet']) && isset($_POST['prenom']) && isset($_POST['message']) && isset($_POST['mail'])) {
+    $responses = $administrationDAO->createMessageContact($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['objet'], $_POST['message']);
     if($responses) {
         $message = makeMessage("message", "nom", "prenom", "mail");
-        mail(MAIL_ADMIN, 'messageContact', $message);
+        mail(MAIL_ADMIN, 'messageContact : ' . $_POST['objet'], $message);
         $array = $responses->toArray();
     }
 } else {
