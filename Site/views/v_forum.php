@@ -26,21 +26,43 @@ require_once(PATH_VIEWS.'alert.php');?>
 
         foreach ($listTopic as $topic) {
             ?>
+
+        <?php
+            if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
+        ?>
                 <tr>
                     <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= dateBaseToSite($topic->getDate()) ?></td>
                     <td data-label=<?= '"'.TITRE_TOPIC.'"' ?>><a class="list-group-item list-group-item-action" href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
-                    <?php
-                    if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")){
-                        ?>
-                        <td data-label=<?= '"'.TITRE_ETATA_TOPIC.'"' ?>><?= $topic->getEtat() ?></td>
-                        <td data-label=<?= '"'.TITRE_ACTION.'"' ?>>
-                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-success btnForumAdmin" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
-                            <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-danger btnForumAdmin" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
-                        </td>
-                        <?php
-                    }
-                    ?>
+                    <td data-label=<?= '"'.TITRE_ETATA_TOPIC.'"' ?>><?= $topic->getEtat() ?></td>
+                    <td data-label=<?= '"'.TITRE_ACTION.'"' ?>>
+                        <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-success btnForumAdmin" value="<?= $topic->getCodeActionValid() ?>"><?= $topic->getActionValid() ?></button>
+                        <button id="<?= $topic->getId() ?>" class="btn col-5 btn-outline-danger btnForumAdmin" value="<?= $topic->getCodeActionRefuse() ?>"><?= $topic->getActionRefuse() ?></button>
+                    </td>
+        <?php
+            }else{            
+        ?>
                 </tr>
+            <?php
+                if ($topic->getCodeEtat() != 3 && $topic->getCodeEtat() != 5){
+            ?>
+                <tr>
+                    <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= dateBaseToSite($topic->getDate()) ?></td>
+                    <td data-label=<?= '"'.TITRE_TOPIC.'"' ?>><a class="list-group-item list-group-item-action" href="?page=topic&topic=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a></td>
+                    <?php 
+                        if ($topic->getCodeEtat() == 4){
+                    ?>
+                        <td><img class="imgResoluForum" src="assets/images/core/check.svg"/></td>
+                </tr>
+                    <?php
+                        }
+                    ?>
+            <?php
+                }
+            ?>
+
+             <?php
+            }           
+            ?>
             
             <?php
         }
