@@ -115,7 +115,7 @@ class restaurant
      */
     public function toArray(){
         return array(
-            'codeRestaurant' => $this->_codeRestaurant,
+            'id' => $this->_codeRestaurant,
             'codePays' => $this->_codePays,
             'codeQuartier' => $this->_codeQuartier,
             'quartier' => $this->_quartier,

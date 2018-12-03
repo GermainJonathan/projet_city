@@ -1,7 +1,10 @@
+// Page selectionné (Accueil, Bellecour, etc)
 var selectPage = 0;
 
+// Ordre des parges iso au site mais différents dans la suite du codeQuartier
 var adminPageOrder = ["", "terreaux", "bellecour", "perrache"];
 
+// Variable de l'ancien type de composant chargé
 var oldConfig;
 
 // Schéma Menu
@@ -17,7 +20,7 @@ var componentsConfig = {
     "Bandeau": "bandeauConfig",
     "Text contact": "contactConfig"
 };
-
+// Initialisation
 generateList(listMenu[0]);
 
 // Au click sur les boutons de sélection de page
@@ -42,6 +45,10 @@ $("a.nav-item.nav-link").click(function() {
     }
 });
 
+/**
+ * Génèration des menus et recupération des données existantes
+ * @param {*} list 
+ */
 function generateList(list) {
     $("div.sidebarAdmin").empty();
     for(let elem in list) {
@@ -49,6 +56,9 @@ function generateList(list) {
         $("div.sidebarAdmin").append(item);
     }
     $("div.sidebarAdmin").children(":first").addClass("active show");
+    /**
+     * Fonction au click sur un lien dans le menu
+     */
     $("a.nav-link#v-pills-settings-tab").click(function() {
         $("#patrimoineConfig").hide();
         $(".contentAdmin > .spinner").show();
@@ -67,16 +77,13 @@ function generateList(list) {
                 url: environnement.serviceUrl + "get" + typeComponent.replace(/é/gi, "e") + "ByQuartier.php?quartier=" + adminPageOrder[selectPage]
                 }).done(function(data) {
                     for(let patrimoine of data) {
-                        let newComponent = addPatrimoineComponents();
                         $.ajax({
                             url: path[patrimoine.codeQuartier] + patrimoine.image,
                             type: 'HEAD',
                         }).fail(function () {
-                            newComponent.find("img.imgAdmin").attr('src', "/assets/images/core/undefined.png");
-                            updateComponent(typeComponent, newComponent, patrimoine);
+                            addPatrimoineComponents(patrimoine, false);
                         }).done(function() {
-                            newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image);
-                            updateComponent(typeComponent, newComponent, patrimoine);
+                            addPatrimoineComponents(patrimoine, true);
                         });
                     }
                     $(".contentAdmin > .spinner").hide();
@@ -99,40 +106,61 @@ function loadComponents(componentToLoad) {
     oldConfig = componentToLoad;
 }
 
-// Ajout un composant patrimoine
-function addPatrimoineComponents() {
+// Ajout un composant patrimoine et lui associe un id en html
+function addPatrimoineComponents(patrimoine, imageChange = true) {
+    let typeComponent = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
     let lastIndex = parseInt($("#patrimoineContent").find(".media").last().attr('id'));
     let content = $("#patrimoineContent").find(".media").first();
     content.clone().appendTo($("#patrimoineContent"));
     $("#patrimoineContent").find(".media").last().attr('id', lastIndex +1);
     $("#patrimoineContent").find(".media").last().show();
-    return $("#patrimoineContent").find(".media").last();
+    let newComponent =  $("#patrimoineContent").find(".media").last();
+    if(!imageChange) {
+        newComponent.find("img.imgAdmin").attr('src', "/assets/images/core/undefined.png");
+    } else {
+        newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image);
+    }
+    updateComponent(typeComponent, newComponent, patrimoine);
 }
 
+/**
+ * Génère des inputs en fonction du type de composant et association des données dans les formulaires de saisie
+ * 
+ * @param {*} typeComponent 
+ * @param {*} component 
+ * @param {*} dataComponent 
+ */
 function updateComponent(typeComponent, component, dataComponent) {
+    console.log(dataComponent);
     switch(typeComponent) {
         case "Histoire":
-            component.find("#id").val(dataComponent.codeHistoire);
-            component.find("#title").val(dataComponent.libelleMonument);
+            component.find("#id").val(dataComponent.id);
+            component.find("#title").val(dataComponent.titre);
             component.find("#description").val(dataComponent.commentaire);
             break;
         case "Monument":
-            component.find("#id").val(dataComponent.codeMonument);
+            component.find("#id").val(dataComponent.id);
             component.find("#title").val(dataComponent.libelleMonument);
             component.find("#description").val(dataComponent.commentaire);
             let architecte = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input name='architecte' type='text' class='form-control col-8' id='archi'></div>");
             architecte.find("#archi").val(dataComponent.architecte);
             architecte.appendTo(component.find(".media-body"));
+            let coordonneesMonument = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x' disabled><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y' disabled></div>");
+            coordonneesMonument.appendTo(component.find(".media-body"));
             break;
         case "Activité":
-            component.find("#id").val(dataComponent.codeActivite);
+            component.find("#id").val(dataComponent.id);
             component.find("#title").val(dataComponent.titre);
+            let coordonneesActivité = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x' disabled><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y' disabled></div>");
+            coordonneesActivité.appendTo(component.find(".media-body"));
             component.find("#description").val(dataComponent.commentaire);
             break;
         case "Restaurant":
-            component.find("#id").val(dataComponent.codeRestaurant);
+            component.find("#id").val(dataComponent.id);
             component.find("#title").val(dataComponent.nom);
             component.find("#description").val(dataComponent.commentaire);
+            let coordonneesRestaurant = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x' disabled><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y' disabled></div>");
+            coordonneesRestaurant.appendTo(component.find(".media-body"));
             let telephone = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input name='telephone' type='text' class='form-control col-8' id='tel'></div>");
             telephone.find("#tel").val(dataComponent.numero);
             telephone.appendTo(component.find(".media-body"));
@@ -149,31 +177,47 @@ function updateComponent(typeComponent, component, dataComponent) {
     }).appendTo(component.find(".media-body"));
 }
 
+/**
+ * Génération des formats de données à renvoyer
+ * @param {*} patrimoine 
+ * @param {*} type 
+ */
 function generateFormData(patrimoine, type) {
     let data = {};
     switch(type) {
         case "Histoire":
             data = {
                 'idHistoire' : patrimoine[0].value,
-                'description' : patrimoine[2].value
+                'codeQuartier' : adminPageOrder[selectPage],
+                'description' : patrimoine[2].value,
+                'title' : patrimoine[1].value
             }
             break;
         case "Monument":
             data = {
                 'idMonument' : patrimoine[0].value,
-                'description' : patrimoine[3].value
+                'codeQuartier' : adminPageOrder[selectPage],
+                'description' : patrimoine[3].value,
+                'architecte' : patrimoine[2].value,
+                'title' : patrimoine[1].value
             }
             break;
         case "Activité":
             data = {
                 'idActivite' : patrimoine[0].value,
-                'description' : patrimoine[2].value
+                'codeQuartier' : adminPageOrder[selectPage],
+                'description' : patrimoine[2].value,
+                'title' : patrimoine[1].value
             }
             break;
         case "Restaurant":
             data = {
                 'idRestaurant' : patrimoine[0].value,
-                'description' : patrimoine[4].value
+                'codeQuartier' : adminPageOrder[selectPage],
+                'description' : patrimoine[4].value,
+                'telephone' : patrimoine[2].value,
+                'adresse' : patrimoine[3].value,
+                'title' : patrimoine[1].value
             }
             break;
         default:
@@ -198,6 +242,9 @@ function upload(file, imageDiv) {
     }
 }
 
+/**
+ * Action au click du bouton enregistrer
+ */
 function savePatrimoine() {
     $("#patrimoineConfig").hide();
     $(".contentAdmin > .spinner").show();
@@ -214,43 +261,114 @@ function savePatrimoine() {
     objects.shift();
     images.shift();
     var type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
-    for(let i = 0; i<objects.length; i++) {
+    
+    for(let i = 0; i < objects.length; i++) {
         let data = generateFormData(objects[i], type);
-        // Mise à jour des champs
-        $.ajax({
-            method: 'POST',
-            url: environnement.serviceUrl + "adminUpdateDescription" + type.replace(/é/gi, "e") + ".php",
-            data : JSON.stringify(data),
-            contentType : 'application/json'
-        }).done(function() {
-            $.notify({
-                message: "Object update"
-            }, {
-                type:'info'
-            });
-            $(".contentAdmin > .spinner").hide();
-            $("#patrimoineConfig").show();
-        });
-        if(images[i]) {
-            var formData = new FormData();
-            formData.append('id', objects[i][0].value);
-            formData.append('image', images[i], images[i].name);
-            // Upload de l'image
+    //------------------Création des objets-----------------------
+        if(objects[i][0].value == "") {
             $.ajax({
                 method: 'POST',
-                url: environnement.serviceUrl + "adminUpdateImage" + type.replace(/é/gi, "e") + ".php",
-                data : formData,
-                cache: false,
-                dataType: 'json',
-                processData: false,
-                contentType: false
-            }).done(function() {
+                url: environnement.serviceUrl + "adminCreate" + type.replace(/é/gi, "e") + ".php",
+                data : JSON.stringify(data),
+                contentType : 'application/json'
+            }).done(function(data) {
                 $.notify({
-                    message: "Upload success"
+                    message: "Object create with id : " + data.id
                 }, {
-                    type:'info'
+                    type:'success'
                 });
-            })
+                objects[i][0].value = data.id;
+                //-----------------Upload de l'image-------------------
+                uploadImage(images, objects, i, type);
+                if(i == objects.length - 1) {
+                    $(".contentAdmin > .spinner").hide();
+                    $("#patrimoineConfig").show();
+                }
+            });
+        } else {
+        //------------------Modification des objets--------------------
+            //-------------Mise à jour des champs-------------------
+            $.ajax({
+                method: 'POST',
+                url: environnement.serviceUrl + "adminUpdateDescription" + type.replace(/é/gi, "e") + ".php",
+                data : JSON.stringify(data),
+                contentType : 'application/json'
+            }).done(function(data) {
+                $.notify({
+                    message: "Object update with id : " + data.id
+                }, {
+                    type:'success'
+                });
+                //-----------------Upload de l'image-------------------
+                uploadImage(images, objects, i, type);
+                if(i == objects.length - 1) {
+                    $(".contentAdmin > .spinner").hide();
+                    $("#patrimoineConfig").show();
+                }
+            });
         }
     }
+}
+
+/**
+ * Permet d'upload l'image
+ * 
+ * @param {*} images 
+ * @param {*} objects 
+ * @param {*} i 
+ * @param {*} type 
+ */
+function uploadImage(images, objects, i, type) {
+    if(images[i]) {
+        var formData = new FormData();
+        formData.append('id', objects[i][0].value);
+        formData.append('image', images[i], images[i].name);
+        $.ajax({
+            method: 'POST',
+            url: environnement.serviceUrl + "adminUpdateImage" + type.replace(/é/gi, "e") + ".php",
+            data : formData,
+            cache: false,
+            dataType: 'json',
+            processData: false,
+            contentType: false
+        }).done(function(data) {
+            $.notify({
+                message: "Image upload success with id : " + data.id
+            }, {
+                type:'success'
+            });
+        })
+    }
+}
+
+function openModal(ObjectId) {
+    $('#adminModal').modal('show');
+    $('#adminModal').find("input#idModal").val(ObjectId);
+}
+
+function deleteObject(ObjectId) {
+    $('#adminModal').modal('hide');
+    let type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
+    $.ajax({
+        method: 'GET',
+        url: environnement.serviceUrl + "adminDelete" + type.replace(/é/gi, "e") + ".php?id=" + ObjectId
+    }).done(function () {
+        $.notify({
+            message: "Object deleted with id : " + ObjectId
+        }, {
+            type:'success'
+        });
+        $("form > input#id").each(function() {
+            console.log($(this));
+            if($(this).val() == ObjectId) {
+                $(this).parent().hide();
+            }
+        });
+    }).fail(function() {
+        $.notify({
+            message: "Error on delete object with id : " + ObjectId
+        }, {
+            type:'warning'
+        });
+    });
 }

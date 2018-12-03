@@ -7,14 +7,10 @@ $.ajax({
 }).done(function(data) {
     console.log(data);
     for (let monument of data){
-        //FIXME: J'ai pas encore de données
+        tabMonument.push(new Card(monument.libelleMonument,monument.commentaire,environnement.codePage,monument.image));    
     }
+    CreateCarousel(tabMonument);
 });
-
-for (var i=0; i<7; i++){
-    tabMonument.push(new Card("Card "+i,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.",environnement.codePage,"bellecour.jpg"));    
-}
-CreateCarousel(tabMonument);
 
  // Création du carrousel
  function CreateCarousel(tabMonuments){

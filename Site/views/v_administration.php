@@ -83,7 +83,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                 <div id="patrimoineConfig">
                     <div id="patrimoineContent">
                         <form class="media" id="0" style="display: none;">
-                            <input name="id" type="text" class="form-control col-8" id="id" hidden>
+                            <input name="id" type="text" class="form-control" id="id" hidden>
                             <div class="relative">
                                 <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
                                 <input name="image" type="file" id="file" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
@@ -99,10 +99,11 @@ require_once(PATH_VIEWS.'alert.php');?>
                                     <textarea name="description" class="form-control  col-8" id="description"></textarea>
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-outline-danger align-self-center mr-4" onClick="openModal($(this).parent().find('input#id').val());"><span class="bin"></span></button>
                         </form>   
                     </div>                 
                     <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents();">Ajouter</button>
+                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents({}, false);">Ajouter</button>
                         <button type="button" class="btn btn-primary mr-4" onClick="savePatrimoine();">Enregistrer</button>
                         <a class="btn btn-primary" href="?page=administration">Annuler</a>
                     </div>
@@ -150,6 +151,27 @@ require_once(PATH_VIEWS.'alert.php');?>
         </div>
     </div>
     <hr>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adminModalTitle">Delete confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="idModal" type="text" class="form-control" hidden>
+                <p>Are you sure to delete this object ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onClick="deleteObject($('#adminModal').find('input#idModal').val());">Continue</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>admin.js"></script>
 <!--  Pied de page -->

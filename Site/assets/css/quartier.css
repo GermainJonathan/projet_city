@@ -309,14 +309,14 @@ p{
 
 
 #arrowUpActivity{
-    transform:rotate(270deg);
+    transform: rotate(270deg);
     height: 40px;
     width: 40px;
     margin: 30px;
 }
 
 #arrowDownActivity{
-    transform:rotate(90deg);
+    transform: rotate(90deg);
     height: 40px;
     width: 40px;
     margin: 30px;
@@ -328,12 +328,61 @@ p{
 }
 
 #activiteconteneur{
-    height: 300px;
-    overflow-y: scroll;
+    height: 400px;
+    overflow: scroll;
+    transition: 0s box-shadow;
+    overflow-x: hidden;
+}
+
+#activiteconteneur:hover{
+    box-shadow: 0px 0px 4px 2px #E98B39A0;
+    transition-duration: 1s;
+    transition-delay: 0.5s;
 }
 
 #activiteconteneur > section{
+    position: relative;
     height: 50%;
+    width: 100%;
+    padding: 10px;
+}
+
+#activiteconteneur > section > p{
+    height: 65%;
+    overflow: hidden;
+}
+
+#activiteconteneur > section > p.hide{
+    mask-image: -webkit-gradient(linear, left top, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    -webkit-mask-image: -webkit-gradient(linear, left top, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
+.expandbutton{
+    position: absolute;
+    left: 5%;
+    bottom: 20px;
+    width: 90%;
+    height: 4px;
+    background: #E98B39;
+    text-align: center;
+    color: white;
+}
+
+.expandbutton > a{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #E98B39;
+    display: inline-block;
+    top: -10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.expandbutton > .arrowup{
+    transform: rotate(180deg);
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -407,26 +456,6 @@ p{
 }
 
 /*--------------------- RESPONSIVE ------------------------------*/
-@media screen and (max-width: 2560px) {
-
-    .carrousel-contenu .card{
-        width:17%;
-    }
-}
-
-@media screen and (max-width: 1920px) {
-
-    .carrousel-contenu .card{
-        width:22%;
-    }
-}
-
-@media screen and (max-width: 1600px) {
-
-    .carrousel-contenu .card{
-        width:30%;
-    }
-}
 
 @media screen and (max-width: 992px) {
     

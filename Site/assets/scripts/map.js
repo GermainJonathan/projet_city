@@ -263,10 +263,10 @@ function setupQuarterCard(quarterName) {
  * Mise à jour de la carte descriptif pour un patrimoine
  * @param {data} patrimoine 
  */
-function setupMarkerCard(patrimoine) {
+function setupMarkerCard(patrimoine, link) {
     legend.remove();
     legend = L.control({position: 'topleft'});
-    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.idQuartier, patrimoine.images);
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.idQuartier, patrimoine.images, link);
     legend.onAdd = patrimoineCard.createCard();
     legend.addTo(mymap);
 }
@@ -275,8 +275,8 @@ function setupMarkerCard(patrimoine) {
  * Mise à jour de la carte descriptif pour un patrimoine
  * @param {data} patrimoine 
  */
-function setupModalMarkerCard(patrimoine) {
-    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.idQuartier, patrimoine.images);
+function setupModalMarkerCard(patrimoine, link) {
+    var patrimoineCard = new Card(patrimoine.name, patrimoine.description, patrimoine.idQuartier, patrimoine.images, link);
     var card = patrimoineCard.createSimpleCard()
     card.removeClass("legend");
     card.addClass('modalCard');
@@ -295,9 +295,9 @@ function addMarkerMonuments(monuments) {
         let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
         .on('click', function() {
             if(isMobileDevice) {
-                setupModalMarkerCard(monument);
+                setupModalMarkerCard(monument, '#anchorBodyMonuments');
             } else {
-                setupMarkerCard(monument);
+                setupMarkerCard(monument, '#anchorBodyMonuments');
             }
         })
         .on('mouseover', function() {
@@ -321,9 +321,9 @@ function addMarkerRestaurants(restaurants) {
         let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
         .on('click', function() {
             if(isMobileDevice) {
-                setupModalMarkerCard(restaurant);
+                setupModalMarkerCard(restaurant, "#anchorBodyRestaurants");
             } else {
-                setupMarkerCard(restaurant);
+                setupMarkerCard(restaurant, "#anchorBodyRestaurants");
             }
         })
         .on('mouseover', function() {
@@ -347,9 +347,9 @@ function addMarkerActivites(activites) {
         let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
         .on('click', function() {
             if(isMobileDevice) {
-                setupModalMarkerCard(activite);
+                setupModalMarkerCard(activite, "#anchorBodyActivites");
             } else {
-                setupMarkerCard(activite);
+                setupMarkerCard(activite, "#anchorBodyActivites");
             }
         })
         .on('mouseover', function() {

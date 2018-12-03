@@ -128,7 +128,7 @@ class activite
      */
     public function toArray(){
         return array(
-        'codeActivite' => $this->_codeActivite,
+        'id' => $this->_codeActivite,
         'codePays' => $this->_codePays,
         'codeQuartier' => $this->_codeQuartier,
         'quartier' => $this->_quartier,
