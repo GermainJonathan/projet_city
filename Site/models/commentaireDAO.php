@@ -1,12 +1,13 @@
 <?php
 
 require_once PATH_MODELS.'DAO.php';
+require_once PATH_MODELS.'commentaire.php';
 
 class commentaireDAO extends DAO
 {
 
     public function addCommentaire($codePays, $codeQuartier, $commentaire, $nom){
-        $date = date('dd-MM-YYYY');
+        $date = date("Y-m-d");
         $result = $this->queryRow("SELECT MAX(codeCommentaire) as max FROM commentaire");
         $max = ($result['max'] == null)? 0 : $result['max'] + 1;
 

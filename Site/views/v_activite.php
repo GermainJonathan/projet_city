@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-lg-6 col-sm-12 align-self-center">
-            <img src="assets/images/perrache/Monument - Basilic Saint Martin D'annay.jpg" style="transform: rotate(90deg);" class="img-fluid" alt="Responsive image">
+                <img src="assets/images/perrache/Monument - Basilic Saint Martin D'annay.jpg" style="transform: rotate(90deg);" class="img-fluid" alt="Responsive image">
             </div>
         </div>
     </div>

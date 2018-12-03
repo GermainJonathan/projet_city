@@ -7,16 +7,16 @@
         if (empty($_SESSION['user'])){
             ?>
     <div class="col-12">
-        <form action="" name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
+        <form name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
             <div class="form-group">
                 <label for="nomCommentaire">
                     <?= TXT_COMM_NOM ?></label>
-                <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
+                <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" placeholder="Nom" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
             </div>
             <div class="form-group">
                 <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
             </div>
-            <button type="submit" form="formCommentaireBellecour" name="valFormCommentaireBellecour" class="btn btn-primary">
+            <button type="button" name="valFormCommentaireBellecour" class="btn btn-primary" onClick="sendMessage();">
                 <?= TXT_ENVOYER ?></button>
         </form>
     </div>
@@ -39,11 +39,11 @@
                     ?>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="commentaireTable">
                 <?php
                     foreach ($listCommentaire as $commentaire){
                         ?>
-                <td>
+                <tr><td>
                     <?= $commentaire->getDate() ?>
                 </td>
                 <td>
@@ -58,9 +58,13 @@
                 <td><button class="btn btn-danger">X</button></td>
                 <?php
                         }
+                    ?>
+                </tr>
+                <?php
                     }
-                ?>
+                    ?>
             </tbody>
         </table>
     </div>
 </div>
+<script type="text/javascript" src="<?= PATH_SCRIPTS ?>commentaire.js"></script>
