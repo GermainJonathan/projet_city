@@ -11,6 +11,7 @@ class monument
     private $_architecte;
     private $_image;
     private $_commentaire;
+    private $_coordonnees;
 
     /**
      * monument constructor.
@@ -101,6 +102,19 @@ class monument
         return $this->_commentaire;
     }
 
+    /**
+     * @return array
+     */
+    public function getCoordonnees(){
+        return $this->_coordonnees;
+    }
+
+    /**
+     * @param $coordonnes
+     */
+    public function setCoordonnees($coordonnes){
+        $this->_coordonnees = $coordonnes;
+    }
 
     /**
      * @return array
@@ -115,6 +129,7 @@ class monument
             'architecte' => $this->_architecte,
             'image' => $this->_image,
             'commentaire' => $this->_commentaire,
+            'coordonnees' => $this->_coordonnees
             );
     }
 }

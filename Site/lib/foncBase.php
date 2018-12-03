@@ -142,3 +142,14 @@ function makeMessage($message, $nom, $prenom, $mail){
     $message .= "\r\n";
     return $message;
 }
+
+
+/**
+ * @param $arrayToConvert
+ * @return array[x, y]
+ */
+function convertCoordonees($arrayToConvert) {
+    preg_match("/\d*.\d* \d*.\d*/", $arrayToConvert, $chaine);
+    $chaine[0] = explode(' ', $chaine[0]);
+    return array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
+}

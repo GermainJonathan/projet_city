@@ -14,6 +14,7 @@ class activite
     private $_nomLieux;
     private $_image;
     private $_commentaire;
+    private $_coordonnees;
 
     /**
      * activite constructor.
@@ -126,6 +127,20 @@ class activite
     /**
      * @return array
      */
+    public function getCoordonnees(){
+        return $this->_coordonnees;
+    }
+
+    /**
+     * @param $coordonnes
+     */
+    public function setCoordonnees($coordonnes){
+        $this->_coordonnees = $coordonnes;
+    }
+
+    /**
+     * @return array
+     */
     public function toArray(){
         return array(
         'id' => $this->_codeActivite,
@@ -136,7 +151,8 @@ class activite
         'titre' => $this->_titre,
         'nomLieux' => $this->_nomLieux,
         'image' => $this->_image,
-        'commentaire' => $this->_commentaire
+        'commentaire' => $this->_commentaire,
+        'cordonnees' => $this->_coordonnees
         );
     }
 

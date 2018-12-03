@@ -32,7 +32,7 @@ class quartierDAO extends DAO
      * @param $idCategorie
      * @return bool|mixed
      */
-    public function getCategorieById($idCategorie){
+    private function getCategorieById($idCategorie){
         return $this->queryRow("SELECT * FROM categorie WHERE codeCategorie = ?", array($idCategorie));
     }
 
@@ -48,6 +48,10 @@ class quartierDAO extends DAO
         return $result['codePays'];
     }
 
+    /**
+     * @param $libelleQuartier
+     * @return array
+     */
     public function getActiviteByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
@@ -55,7 +59,9 @@ class quartierDAO extends DAO
         $listActivite = array();
         foreach ($result as $temp){
             $categorie = $this->getCategorieById($result['codeCategorie']);
-            $listActivite[] = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
+            $activite = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
+            $activite->setCoordonnees(convertCoordonees($temp["coordonnees"]));
+            $listActivite[] = $activite;
         }
         return $listActivite;
     }
@@ -70,7 +76,9 @@ class quartierDAO extends DAO
         $result = $this->queryAll("SELECT * FROM restaurant WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
         $listRestaurant = array();
         foreach ($result as $temp){
-            $listRestaurant[] = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['adresse'], $temp['numeroTelephone'], $temp['imageRestaurant'], $temp['commentaire']);
+            $restaurant = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['adresse'], $temp['numeroTelephone'], $temp['imageRestaurant'], $temp['commentaire']);
+            $restaurant->setCoordonnees(convertCoordonees($temp["coordonnees"]));
+            $listRestaurant[] = $restaurant;
         }
         return $listRestaurant;
     }
@@ -85,7 +93,9 @@ class quartierDAO extends DAO
         $result = $this->queryAll("SELECT * FROM monument WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
         $listMonument = array();
         foreach ($result as $temp){
-            $listMonument[] = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
+            $monument = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
+            $monument->setCoordonnees(convertCoordonees($temp["coordonnees"]));
+            $listMonument[] = $monument;
         }
         return $listMonument;
     }
@@ -126,7 +136,9 @@ class quartierDAO extends DAO
         $result = $this->queryRow("SELECT * FROM monument WHERE codeMonument = ?", array($idMonument));
         if($result) {
             $quartier = $this->getQuartierByCode($result['codeQuartier']);
-            return new monument($result['codeMonument'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['libelleMonument'], $result['imageMonument'], $result['dateConstruction'], $result['architecte'], $result['commentaire']);
+            $monument =  new monument($result['codeMonument'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['libelleMonument'], $result['imageMonument'], $result['dateConstruction'], $result['architecte'], $result['commentaire']);
+            $monument->setCoordonnees(convertCoordonees($result["coordonnees"]));
+            return $monument;
         }
         return false;
     }
@@ -140,7 +152,9 @@ class quartierDAO extends DAO
         if($result) {
             $quartier = $this->getQuartierByCode($result['codeQuartier']);
             $categorie = $this->getCategorieById($result['codeCategorie']);
-            return new activite($result['codeActivite'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['codeCategorie'], $categorie['libelleCategorie'], $result['nom'], $result['nomLieux'], $result['imageActivite'], $result['commentaire']);
+            $activite =  new activite($result['codeActivite'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['codeCategorie'], $categorie['libelleCategorie'], $result['nom'], $result['nomLieux'], $result['imageActivite'], $result['commentaire']);
+            $activite->setCoordonnees(convertCoordonees($result["coordonnees"]));
+            return $activite;
         }
         return false;
     }
@@ -153,11 +167,19 @@ class quartierDAO extends DAO
         $result = $this->queryRow("SELECT * FROM restaurant WHERE codeRestaurant = ?", array($idRestaurant));
         if($result) {
             $quartier = $this->getQuartierByCode($result['codeQuartier']);
-            return new restaurant($result['codeRestaurant'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['nom'], $result['adresse'], $result['numeroTelephone'], $result['imageRestaurant'], $result['commentaire']);
+            $restaurant =  new restaurant($result['codeRestaurant'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['nom'], $result['adresse'], $result['numeroTelephone'], $result['imageRestaurant'], $result['commentaire']);
+            $restaurant->setCoordonnees(convertCoordonees($result["coordonnees"]));
+            return $restaurant;
         }
         return false;
     }
 
+    /**
+     * @param $idHistoire
+     * @param $description
+     * @param $titre
+     * @return bool|histoire
+     */
     public function setDescriptionHistoire($idHistoire, $description, $titre){
         $result = $this->queryBdd("UPDATE histoire SET commentaire = ?, titre = ? WHERE codeHistoire = ?", array($description, $titre, $idHistoire));
         if($result)
@@ -165,6 +187,13 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idMonument
+     * @param $description
+     * @param $titre
+     * @param $architecte
+     * @return bool|monument
+     */
     public function setDescriptionMonument($idMonument, $description, $titre, $architecte){
         $result = $this->queryBdd("UPDATE monument SET commentaire = ?, libelleMonument = ?, architecte = ? WHERE codeMonument = ?", array($description, $titre, $architecte, $idMonument));
         if($result)
@@ -172,6 +201,12 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idActivite
+     * @param $description
+     * @param $titre
+     * @return activite|bool
+     */
     public function setDescriptionActivite($idActivite, $description, $titre){
         $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ? WHERE codeActivite = ?", array($description, $titre, $idActivite));
         if($result)
@@ -179,6 +214,12 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idRestaurant
+     * @param $description
+     * @param $titre
+     * @return bool|restaurant
+     */
     public function setDescriptionRestaurant($idRestaurant, $description, $titre){
         $result = $this->queryBdd("UPDATE restaurant SET commentaire = ?, nom = ? WHERE codeRestaurant = ?", array($description, $titre, $idRestaurant));
         if($result)
@@ -234,6 +275,12 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @param $titre
+     * @param $description
+     * @return bool|histoire
+     */
     public function createHistoire($libelleQuartier, $titre, $description){
         $max = $this->queryRow("SELECT MAX(codeHistoire) as max FROM histoire");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
@@ -244,6 +291,13 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @param $titre
+     * @param $architecte
+     * @param $description
+     * @return bool|monument
+     */
     public function createMonument($libelleQuartier, $titre, $architecte, $description){
         $max = $this->queryRow("SELECT MAX(codeMonument) as max FROM monument");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
@@ -254,6 +308,12 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @param $titre
+     * @param $description
+     * @return activite|bool
+     */
     public function createActivite($libelleQuartier, $titre, $description){
         $max = $this->queryRow("SELECT MAX(codeActivite) as max FROM activite");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
@@ -264,6 +324,14 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @param $titre
+     * @param $telephone
+     * @param $adresse
+     * @param $description
+     * @return bool|restaurant
+     */
     public function createRestaurant($libelleQuartier, $titre, $telephone, $adresse, $description){
         $max = $this->queryRow("SELECT MAX(codeRestaurant) as max FROM restaurant");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);

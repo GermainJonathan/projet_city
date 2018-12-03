@@ -12,6 +12,7 @@ class restaurant
     private $_numero;
     private $_image;
     private $_commentaire;
+    private $_coordonnees;
 
     /**
      * restaurant constructor.
@@ -109,6 +110,19 @@ class restaurant
     {
         return $this->_commentaire;
     }
+    /**
+     * @return array
+     */
+    public function getCoordonnees(){
+        return $this->_coordonnees;
+    }
+
+    /**
+     * @param $coordonnes
+     */
+    public function setCoordonnees($coordonnes){
+        $this->_coordonnees = $coordonnes;
+    }
 
     /**
      * @return array
@@ -123,7 +137,8 @@ class restaurant
             'numero' => $this->_numero,
             'image' => $this->_image,
             'adresse' => $this->_adresse,
-            'commentaire' => $this->_commentaire
+            'commentaire' => $this->_commentaire,
+            'coordonnees' => $this->_coordonnees
         );
     }
 

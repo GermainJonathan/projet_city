@@ -84,13 +84,13 @@ class messageContact
 
     public function toArray(){
         return  array(
-            $this->_codeMessage,
-            $this->_nom,
-            $this->_prenom,
-            $this->_mail,
-            $this->_objet,
-            $this->_message,
-            $this->_date
+            'codeMesage' => $this->_codeMessage,
+            'nom' => $this->_nom,
+            'prenom' => $this->_prenom,
+            'mail' => $this->_mail,
+            'objet' => $this->_objet,
+            'message' => $this->_message,
+            'date' => $this->_date
         );
     }
 
