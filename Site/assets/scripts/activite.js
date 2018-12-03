@@ -9,18 +9,18 @@ setTimeout(function () {
       })
       .done(function(data){
         updateActivite(data);
-        panelSnapInstance = new PanelSnap(options);
-        panelSnapInstance.on("snapStop", checkEnability);
+        activitePanelSnapInstance = new PanelSnap(activiteOptions);
+        activitePanelSnapInstance.on("snapStop", checkEnability);
         initSectionButtonClick();
       });
 }, 1000);
 
 /* DATAS */
 
-const sectionStructure = '<section data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row"><p class="col-8 mr-4 hide"></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
+const activiteSectionStructure = '<section data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row"><p class="col-8 mr-4 hide"></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
 
 function updateActivite(data) {
-    buildSectionStructure(data.length);
+    buildActiviteSectionStructure(data.length);
     $("#activiteconteneur > section").each(function( index ) {
         $(this).children("h2").text(data[index]["titre"]);
         $(this).find("p").text(data[index]["commentaire"]);
@@ -28,9 +28,9 @@ function updateActivite(data) {
     });
 }
 
-function buildSectionStructure(size){
+function buildActiviteSectionStructure(size){
     for (let i = 1; i < size + 1; i++) {
-        $("#activiteconteneur").append(sectionStructure);
+        $("#activiteconteneur").append(activiteSectionStructure);
         $("#activiteconteneur > section").last().attr("data-panel", i);
     }
 }
@@ -46,7 +46,7 @@ function initSectionButtonClick(){
         if (section.hasClass('sectionexpanded')) //retract
         {
             isExtend = false;
-            panelSnapInstance.enable();
+            activitePanelSnapInstance.enable();
             section.toggleClass("sectionexpanded");
     
             $("#activiteconteneur").css({ overflow: "scroll", "overflow-x": "hidden"});
@@ -68,24 +68,24 @@ function initSectionButtonClick(){
             section.find("p").toggleClass("hide", 350);
             section.find(".imageActivite").toggleClass("hide", 350);
         }
-        panelSnapInstance.snapToPanel(section[0]);
+        activitePanelSnapInstance.snapToPanel(section[0]);
     });
 }
 
 
 function checkEnability(){
     if (isExtend) {
-        panelSnapInstance.disable();
+        activitePanelSnapInstance.disable();
     }
 }
 
 /* PANELSNAP */
 
-var panelSnapInstance;
-var container = $("#activiteconteneur")[0];
+var activitePanelSnapInstance;
+var activiteContainer = $("#activiteconteneur")[0];
 
-var options = {
-    container: container,
+var activiteOptions = {
+    container: activiteContainer,
     slideSpeed: 200,
 };
 
@@ -115,7 +115,7 @@ function fluidSnap(direction) {
             panelToSnap = $("section[data-panel='" + (parseInt(getActivateNumber()) + 1) + "']")[0];
         }
     }
-    panelSnapInstance.snapToPanel(panelToSnap);
+    activitePanelSnapInstance.snapToPanel(panelToSnap);
 }
 
 function getSectionCount() {
@@ -123,5 +123,5 @@ function getSectionCount() {
 }
 
 function getActivateNumber() {
-    return panelSnapInstance.activePanel.getAttribute("data-panel");
+    return activitePanelSnapInstance.activePanel.getAttribute("data-panel");
 }

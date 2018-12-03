@@ -154,100 +154,13 @@ p{
 }
 
 /*------------------------------------------------------------------------------------*/
-/*------------------------------------- CAROUSEL MONUMENTS----------------------------*/
-.arrow{
-    background-image:url(../images/core/arrow-right.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width:30px;
-    cursor:pointer;
-    height: 100%;
+/*------------------------------MONUMENTS-------------------------------------------*/
+
+#monumentconteneur{
+    flex-wrap: nowrap;
+    overflow-x: scroll;
 }
 
-#arrowLeftMonument{
-    transform: rotate(180deg);
-    float: left;
-    position: absolute;
-    z-index:100;
-}
-
-#arrowRightMonument{
-    right:5%;
-    float: left;
-    position: absolute;
-    z-index:100;
-}
-
-.carrousel{
-    margin-left:20px;
-    margin-top:40px;
-    position:relative;
-    overflow-y:hidden;
-    height:365px;
-}
-
-.carrousel-contenu{
-    overflow:hidden;
-    margin-right:40px;
-    margin-left:40px;
-    height:450px;
-}
-
-.carrousel-contenu .card {
-    float:left;
-    margin-right:20px;
-    transition: 1000ms width,border,margin-right ease-in-out;
-    display:block!important;
-    height:350px;
-    position:relative;
-    max-width:330px;
-}
-
-.carrousel-contenu .card img{
-    height:50%!important;
-}
-
-.carrousel-contenu .card .card-body{
-    height:50%!important;
-    position:relative;
-    transition: 500ms color ease-in-out;
-}
-
-.carrousel-contenu .card .card-body h5{
-    transition: 500ms color ease-in-out;
-}
-
-.carrousel-contenu .card .card-body a{
-    position:absolute;
-    bottom: 20px;
-    width: calc(100% - 2.5rem);
-    transition: 500ms color,border ease-in-out;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.cache .card-body a{
-    border:none !important;
-    color:white !important;
-}
-.cardMonument.cache{
-    width:0!important;
-    border:none!important;
-    padding:0!important;
-    color:white!important;
-    flex:0!important;
-    margin-right:0!important;
-    /* visibility: hidden!important; */
-}
-
-.cache .card-body{
-    color:white;
-}
-
-.cache h5{
-    color:white;
-}
 .EnsavoirPlus{
     position:relative;
     height:350px;
@@ -311,7 +224,7 @@ p{
     background-size: contain !important;
 }
 
-#arrowUpActivity{
+ #arrowUpActivity{
     transform: rotate(270deg);
     height: 40px;
     width: 40px;
@@ -387,7 +300,7 @@ p{
 
 .expandbutton > .arrowup{
     transform: rotate(180deg);
-}
+} 
 
 /*------------------------------------------------------------------------------------*/
 /*------------------------------RESTAURANT-------------------------------------------*/

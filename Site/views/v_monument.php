@@ -1,15 +1,15 @@
 <span class="anchor" id="anchorBodyMonuments"></span>
+
 <div id="bodyMonuments" class="container-fluid">
-    <h1 class="row">
-        <?= TITRE_MONUMENT ?>
-    </h1>
-    <div class="carrousel row">
-        <div class="arrow-carrousel">
-            <div class="arrow" id="arrowLeftMonument"></div>
-            <div class="arrow" id="arrowRightMonument"></div>
-        </div>
-        <div class="carrousel-contenu" id="carrouselMonument">
-        </div>
+    <div class="row">
+        <h1>
+            <?= TITRE_MONUMENT ?>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="arrow" id="arrowUpActivity"></div>
+        <div id="monumentconteneur" class="row"></div>
+        <div class="arrow" id="arrowDownActivity"></div>
     </div>
     <div class="col-12" id="rowSavoirPlus">
         <div class="EnsavoirPlus col-lg-10 col-md-10 col-sm-12" id="SavoirPlusMonuments">
