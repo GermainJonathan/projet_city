@@ -7,7 +7,7 @@ INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
 (2, 'Valider'),
 (3, 'Annuler'),
 (4, 'Résolu'),
-(4, 'Refuser'),;
+(5, 'Refuser');
 
 INSERT INTO `quartier` (`codeQuartier`, `libelleQuartier`) VALUES
 (1, 'Perrache'),

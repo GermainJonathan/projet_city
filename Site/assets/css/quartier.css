@@ -307,6 +307,9 @@ p{
 /*------------------------------------------------------------------------------------*/
 /*------------------------------ACTIVITÉ-------------------------------------------*/
 
+.imageActivite {
+    background-size: contain !important;
+}
 
 #arrowUpActivity{
     transform: rotate(270deg);
@@ -352,7 +355,8 @@ p{
     overflow: hidden;
 }
 
-#activiteconteneur > section > p.hide{
+#activiteconteneur > section > div > .imageActivite.hide,
+#activiteconteneur > section > div > p.hide {
     mask-image: -webkit-gradient(linear, left top, 
     left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     -webkit-mask-image: -webkit-gradient(linear, left top, 

@@ -17,13 +17,14 @@ setTimeout(function () {
 
 /* DATAS */
 
-const sectionStructure = '<section data-panel=""><h2></h2><p class="hide"></p><div class="expandbutton"><a>▽</a></div></section>';
+const sectionStructure = '<section data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row"><p class="col-8 mr-4 hide"></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
 
 function updateActivite(data) {
     buildSectionStructure(data.length);
     $("#activiteconteneur > section").each(function( index ) {
         $(this).children("h2").text(data[index]["titre"]);
-        $(this).children("p").text(data[index]["commentaire"]);
+        $(this).find("p").text(data[index]["commentaire"]);
+        $(this).find(".imageActivite").css('background', 'url(' + path[data[index].codeQuartier] + data[index].image + ') no-repeat');
     });
 }
 
@@ -51,8 +52,9 @@ function initSectionButtonClick(){
             $("#activiteconteneur").css({ overflow: "scroll", "overflow-x": "hidden"});
             $(this).toggleClass("arrowup");
             section.animate({ height: "50%" }, 350)
-            section.children("p").animate({ height: "65%" }, 350)
-            section.children("p").toggleClass("hide", 350);
+            section.find("p").animate({ height: "65%" }, 350)
+            section.find("p").toggleClass("hide", 350);
+            section.find(".imageActivite").toggleClass("hide", 350);
         }
         else //expand
         {
@@ -61,9 +63,10 @@ function initSectionButtonClick(){
     
             $("#activiteconteneur").css({ overflow: "hidden"});
             $(this).toggleClass("arrowup");
-            section.animate({ height: "100%" }, 350)
-            section.children("p").animate({ height: "100%" }, 350)
-            section.children("p").toggleClass("hide", 350);
+            section.animate({ height: "100%" }, 350);
+            section.find("p").animate({ height: "100%" }, 350);
+            section.find("p").toggleClass("hide", 350);
+            section.find(".imageActivite").toggleClass("hide", 350);
         }
         panelSnapInstance.snapToPanel(section[0]);
     });

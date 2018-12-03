@@ -12,7 +12,7 @@
 
 .card-body > p {
     overflow: hidden;
-    height: 4em;
+    max-height: 4em;
 }
 
 @media screen and (max-width: 576px) {
