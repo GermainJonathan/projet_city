@@ -3,14 +3,10 @@ $(".btnForumAdmin").click(function(){
     var idTopic= this.id;
     var idButton= this.value;
     var btn=this;
-    console.log(idTopic);
-    console.log(idButton);
-    console.log(btn);
     $.ajax({
         method: "GET",
         url:environnement.serviceUrl +"forumMajEtatTopic.php?topic="+idTopic+"&etat="+idButton
       }).done(function(data) {
-        console.log(data);
         // Modification de l'état du topic
         $(btn).parent().prev().text(data.etat);
         // Modification des boutons 
