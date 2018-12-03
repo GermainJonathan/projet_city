@@ -23,11 +23,18 @@ function sendMessage() {
         data : JSON.stringify(data),
         contentType : 'application/json'
     }).done(function(data) {
-        console.log(data);
         $.notify({
             message: "Thanks for comment !"
         }, {
             type:'success'
         });
+        let comment = $("<tr><td>" + data.nom + "</td><td>" + data.commentaire + "</td><td>" + data.date + "</td></tr>");
+        $("#commentaireTable").append(comment);
+        $("#bodyCommentaires").find("input#nomCommentaire").val("");
+        $("#bodyCommentaires").find("textarea#commentaire").val("");
     });
+}
+
+function openCommentaireModal() {
+    $("#commentaireModal").modal('show');
 }

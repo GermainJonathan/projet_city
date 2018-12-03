@@ -308,7 +308,16 @@ p{
 /*------------------------------ACTIVITÉ-------------------------------------------*/
 
 .imageActivite {
+    background-position-x: right !important;
     background-size: contain !important;
+    min-width: 100%;
+    position: absolute;
+    height: 50%;
+    transition: all 1s ease-out 0s;
+}
+
+.panelActivite {
+    overflow: hidden;
 }
 
 #arrowUpActivity{
