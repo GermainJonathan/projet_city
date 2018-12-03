@@ -4,6 +4,7 @@
  */
 
 require_once 'DAO.php';
+require_once PATH_LIB.'foncBase.php';
 
 class Api extends DAO
 {
@@ -33,8 +34,6 @@ class Api extends DAO
                 WHERE qua.libelleQuartier = :quartier
                 AND mon.codePays = 1";
         $monumentResult = $this->queryAll($sql, array('quartier' => $quarter));
-        // TODO: Remonter d'erreur BDD - Notification TOAST
-        // FIXME: Compléter le if avec isArray
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
@@ -55,8 +54,6 @@ class Api extends DAO
                 WHERE qua.libelleQuartier = :quartier
                 AND res.codePays = 1";
         $restaurantResult = $this->queryAll($sql, array('quartier' => $quarter));
-        // TODO: Remonter d'erreur BDD - Notification TOAST
-        // FIXME: Compléter le if avec isArray
         if(!$restaurantResult) {
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
         } else {
@@ -71,15 +68,12 @@ class Api extends DAO
      * @return array monument[]
      */
     public function getDataActiviteByQuarter($quarter) {
-        // TODO: Terminer la requête
         $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.imageActivite as images, act.commentaire
                 FROM activite act
                 INNER JOIN quartier qua ON act.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier
                 AND act.codePays = 1";
         $activiteResult = $this->queryAll($sql, array('quartier' => $quarter));
-        // TODO: Remonter d'erreur BDD - Notification TOAST
-        // FIXME: Compléter le if avec isArray
         if(!$activiteResult) {
             error_log('Activité - Erreur lors de l\'execution de la requête');
         } else {

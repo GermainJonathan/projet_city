@@ -131,7 +131,6 @@ function addPatrimoineComponents(patrimoine, imageChange = true) {
  * @param {*} dataComponent 
  */
 function updateComponent(typeComponent, component, dataComponent) {
-    console.log(dataComponent);
     switch(typeComponent) {
         case "Histoire":
             component.find("#id").val(dataComponent.id);
@@ -145,13 +144,17 @@ function updateComponent(typeComponent, component, dataComponent) {
             let architecte = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='archi'><h4 class='text-truncate'>Architecte</h4></label><input name='architecte' type='text' class='form-control col-8' id='archi'></div>");
             architecte.find("#archi").val(dataComponent.architecte);
             architecte.appendTo(component.find(".media-body"));
-            let coordonneesMonument = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x' disabled><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y' disabled></div>");
+            let coordonneesMonument = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x'><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y'></div>");
+            coordonneesMonument.find("#x").val(dataComponent.coordonnees.x);
+            coordonneesMonument.find("#y").val(dataComponent.coordonnees.y);
             coordonneesMonument.appendTo(component.find(".media-body"));
             break;
         case "Activité":
             component.find("#id").val(dataComponent.id);
             component.find("#title").val(dataComponent.titre);
-            let coordonneesActivité = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x' disabled><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y' disabled></div>");
+            let coordonneesActivité = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x'><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y'></div>");
+            coordonneesActivité.find("#x").val(dataComponent.cordonnees.x);
+            coordonneesActivité.find("#y").val(dataComponent.cordonnees.y);
             coordonneesActivité.appendTo(component.find(".media-body"));
             component.find("#description").val(dataComponent.commentaire);
             break;
@@ -159,13 +162,15 @@ function updateComponent(typeComponent, component, dataComponent) {
             component.find("#id").val(dataComponent.id);
             component.find("#title").val(dataComponent.nom);
             component.find("#description").val(dataComponent.commentaire);
-            let coordonneesRestaurant = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x' disabled><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y' disabled></div>");
-            coordonneesRestaurant.appendTo(component.find(".media-body"));
+            let coordonneesRestaurant = $("<div class='form-inline' data-id='8'><label class='col-2 align-self-left' for='coordonnees'><h4 class='text-truncate'>Coordonnées</h4></label><input name='coordonnéesX' type='number' step='0.000001' class='form-control mr-4' id='x'><input name='coordonnéesY' type='number' step='0.000001' class='form-control' id='y'></div>");
+            coordonneesRestaurant.find("#x").val(dataComponent.coordonnees.x);
+            coordonneesRestaurant.find("#y").val(dataComponent.coordonnees.y);
             let telephone = $("<div class='form-inline' data-id='2'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input name='telephone' type='text' class='form-control col-8' id='tel'></div>");
             telephone.find("#tel").val(dataComponent.numero);
-            telephone.appendTo(component.find(".media-body"));
             let adresse = $("<div class='form-inline' data-id='3'><label class='col-2 align-self-left' for='adresse'><h4 class='text-truncate'>Adresse</h4></label><input name='adresse' type='text' class='form-control col-8' id='adresse'></div>");
             adresse.find("#adresse").val(dataComponent.adresse);
+            coordonneesRestaurant.appendTo(component.find(".media-body"));
+            telephone.appendTo(component.find(".media-body"));
             adresse.appendTo(component.find(".media-body"));
             break;
         default:

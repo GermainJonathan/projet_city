@@ -70,7 +70,7 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="form-group">
                 <textarea name="descriptionTopic" id="descriptionTopic" class="form-control" placeholder="<?= TXT_TITRE_DESCRIPTION ?>"></textarea>
             </div>
-            <button type="submit" form="formTopic" name="valFormTopic" class="btn btn-primary"><?= TXT_ENVOYER ?></button>
+            <button type="button" form="formTopic" name="valFormTopic" class="btn btn-primary"><?= TXT_ENVOYER ?></button>
         </form>
     </div>
     <?php
