@@ -79,9 +79,19 @@ function sendTopic() {
 		data : JSON.stringify(data),
 		contentType : 'application/json'
 	}).done(function(data) {
-		let comment = $("<tr><td></td><td>" + data.nom + "</td><td>" + data.message + "</td></tr>");
-		$("#messageTopic").append(comment);
-		$("#topicBody").find("input#nomTopic").val("");
-		$("#topicBody").find("textarea#messageTopic").val("");
-	});
+        $.notify({
+            message: "Topic soumis à validation avec l'état : " + data.etat
+        }, {
+            type:'info'
+        });
+    }).fail(function() {
+        $.notify({
+            message: "Erreur lors de la demande de Topic"
+        }, {
+            type:'warning'
+        });
+    }).always(function() {
+        $("#formTopic").find("textarea#descriptionTopic").val("");
+		$("#formTopic").find("input#titreTopic").val("");
+    });
 }
