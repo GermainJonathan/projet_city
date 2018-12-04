@@ -35,7 +35,7 @@ abstract class DAO
         } else {
             $pdos = Connexion::getInstance()->getBdd()->prepare($sql);// requête préparée
             if(!$pdos->execute($args)) {
-                $this->erreur = $pdos->errorInfo();
+                $this->_erreur = $pdos->errorInfo();
             }
         }
         return $pdos;
@@ -50,7 +50,7 @@ abstract class DAO
             $res = Connexion::getInstance()->getBdd()->lastInsertId();
         } catch (PDOException $e) {
             if ($this->_debug) {
-                die($e->getMessage);
+                die($e->getMessage());
             }
             $this->_erreur = 'query';
             $res = false;

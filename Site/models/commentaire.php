@@ -98,7 +98,7 @@ class commentaire
             'quartier' => $this->_quartier,
             'nom' => $this->_nom,
             'commentaire' => $this->_commentaire,
-            'description' => $this->_date
+            'date' => $this->_date
         );
     }
 

@@ -17,7 +17,7 @@ setTimeout(function () {
 
 /* DATAS */
 
-const sectionStructure = '<section data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row"><p class="col-8 mr-4 hide"></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
+const sectionStructure = '<section class="panelActivite" data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row activiteContent"><p class="col-8 mr-4 hide"></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
 
 function updateActivite(data) {
     buildSectionStructure(data.length);
@@ -55,6 +55,7 @@ function initSectionButtonClick(){
             section.find("p").animate({ height: "65%" }, 350)
             section.find("p").toggleClass("hide", 350);
             section.find(".imageActivite").toggleClass("hide", 350);
+            section.find(".imageActivite").css('opacity', '.7');
         }
         else //expand
         {
@@ -67,6 +68,7 @@ function initSectionButtonClick(){
             section.find("p").animate({ height: "100%" }, 350);
             section.find("p").toggleClass("hide", 350);
             section.find(".imageActivite").toggleClass("hide", 350);
+            section.find(".imageActivite").css('opacity', '1');
         }
         panelSnapInstance.snapToPanel(section[0]);
     });
