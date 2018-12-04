@@ -4,8 +4,6 @@ require_once "configurationAPI.php";
 require_once PATH_MODELS."forumDAO.php";
 require_once PATH_LIB.'foncBase.php';
 
-session_start();
-
 if(isset($_SESSION["lang"]))
     $lang = $_SESSION["lang"];
 else

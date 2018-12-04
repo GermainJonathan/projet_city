@@ -16,12 +16,11 @@ $code = 200;
 $forumDAO = new forumDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
-session_start();
-
 
 if (isset($data->titreTopic) && isset($data->descriptionTopic)) {
     $responses = $forumDAO->createNewTopic($data->titreTopic, $data->descriptionTopic, $_SESSION["idLang"]);
-    mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
+    
+    //mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
 
     if($responses)
         $array = $responses->toArray();
