@@ -6,7 +6,7 @@
  * @param quartier string libelleQuartier
  */
 require_once "configurationAPI.php";
-require_once PATH_MODELS."apiDAO.php";
+require_once PATH_MODELS."quartierDAO.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -15,10 +15,10 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $responses = array();
 $code = 200;
-$bo = new Api(DEBUG);
+$quartierDAO = new quartierDAO(DEBUG);
 
 if (isset($_GET['quartier'])) {
-    $responses = $bo->getAllDataByQuarter($_GET['quartier']);
+    $responses = $quartierDAO->getAllDataByQuarter($_GET['quartier']);
 } else {
     $code = 404;
     $responses = array(
