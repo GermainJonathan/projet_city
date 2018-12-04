@@ -16,8 +16,8 @@ $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->codeQuartier) && isset($data->description) && isset($data->title)) {
-    $responses = $quartierDAO->createActivite($data->codeQuartier, $data->title, $data->description);
+if (isset($data->codeQuartier) && isset($data->description) && isset($data->title) && isset($data->coordonnees)) {
+    $responses = $quartierDAO->createActivite($data->codeQuartier, $data->title, $data->description, $data->coordonnees);
     if($responses) {
         $array = $responses->toArray();
     } else {

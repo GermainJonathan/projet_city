@@ -16,8 +16,8 @@ $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->idRestaurant) && isset($data->description) && isset($data->title)) {
-    $responses = $quartierDAO->setDescriptionRestaurant($data->idRestaurant, $data->description, $data->title);
+if (isset($data->idRestaurant) && isset($data->description) && isset($data->title) && isset($data->coordonnees)) {
+    $responses = $quartierDAO->setDescriptionRestaurant($data->idRestaurant, $data->description, $data->title, $data->coordonnees);
     if($responses) {
         $array = $responses->toArray();
     } else {
