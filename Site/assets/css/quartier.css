@@ -274,7 +274,7 @@ p{
 
 .txtSavoirPlus{
     position: absolute;
-    width:40%;
+    width:50%;
     text-align:justify;
     margin-left:20px;
     left:50%;
@@ -295,6 +295,43 @@ p{
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+.contactSavoirPlus{
+    float: left;
+    transform: translateY(-100%);
+    padding: 10px;
+    background: white;
+    opacity: 0.5;
+}
+
+.contactRowSavoirPlus{
+    padding: 5px;
+}
+
+.mapicon{
+    background-image: url(../images/core/maps-and-flags.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: bottom;
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+}
+
+.telicon{
+    background-image: url(../images/core/telephone.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 24px;
+    margin-right: 5px;
+}
+
 
 #tableCommentaire {
     margin: 30px;

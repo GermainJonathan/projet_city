@@ -8,12 +8,14 @@
  * @param {string | Array[string]} images 
  */
 class Card {    
-    constructor(title, description, codeQuartier, images = "", link = "") {
+    constructor(title, description, adresse = "", numero = "", codeQuartier, images = "", link = "") {
         this.images = images;
         this.link = link;
         this.title  = title;
         this.codeQuartier = codeQuartier;
         this.description = description;
+        this.adresse = adresse;
+        this.numero = numero;
         this.button=null;
     }
 
@@ -71,6 +73,26 @@ class Card {
      */
     changeDescription(description) {
         this.description = description;
+        this._createCoreCard();
+    }
+
+    /**
+     * Permet de modifier la description de la carte
+     * 
+     * @param {string} adresse 
+     */
+    changeDescription(adresse) {
+        this.adresse = adresse;
+        this._createCoreCard();
+    }
+
+    /**
+     * Permet de modifier la description de la carte
+     * 
+     * @param {string} numero 
+     */
+    changeDescription(numero) {
+        this.telephone = numero;
         this._createCoreCard();
     }
 
@@ -153,11 +175,15 @@ class Card {
     createButtonEvt(idEvt){
         this.button.attr("href","#"+idEvt);
         var that=this;
+        console.log(that)
         this.button.click(function(){
             $("#"+idEvt).css("display","inline-block");
             $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[that.codeQuartier]+that.images+")");
             $("#"+idEvt+" .txtSavoirPlus .titreSavoirPlus").text(that.title);
             $("#"+idEvt+" .txtSavoirPlus .descSavoirPlus").text(that.description);
+            $("#"+idEvt+" .contactSavoirPlus .adresseSavoirPlus").text(that.adresse);
+            $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").text(that.numero);
+            $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").attr("href", "tel:" + that.numero);
         });
     }
 }
