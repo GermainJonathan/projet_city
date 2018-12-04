@@ -7,7 +7,8 @@ $.ajax({
     url: environnement.serviceUrl + "getRestaurantByQuartier.php?quartier=" + quartier[idQuartier]
     }).done(function(data) {
         for (let restaurant of data){
-            tabRestaurants.push(new Card(restaurant.nom, restaurant.commentaire, restaurant.codeQuartier, restaurant.image));    
+            tabRestaurants.push(new Card(restaurant.nom, restaurant.commentaire, restaurant.adresse, restaurant.numero
+                , restaurant.codeQuartier, restaurant.image)); 
         }
         CreateContainerRestaurants(tabRestaurants);
     });

@@ -16,6 +16,16 @@
                 <div class="titreSavoirPlus"></div>
                 <div class="descSavoirPlus"></div>
             </div>
+            <div class="contactSavoirPlus">
+                <div class="contactRowSavoirPlus">
+                    <span class="mapicon"></span>
+                    <span class="adresseSavoirPlus"></span>
+                </div>
+                <div class="contactRowSavoirPlus">
+                    <span class="telicon"></span>
+                    <a class="telephoneSavoirPlus"></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
