@@ -154,8 +154,8 @@ class quartierDAO extends DAO
      * @param $architecte
      * @return bool|monument
      */
-    public function setDescriptionMonument($idMonument, $description, $titre, $architecte){
-        $result = $this->queryBdd("UPDATE monument SET commentaire = ?, libelleMonument = ?, architecte = ? WHERE codeMonument = ?", array($description, $titre, $architecte, $idMonument));
+    public function setDescriptionMonument($idMonument, $description, $titre, $architecte, $coordonnees){
+        $result = $this->queryBdd("UPDATE monument SET commentaire = ?, libelleMonument = ?, architecte = ?, coordonnees = ST_GeomFromText(?) WHERE codeMonument = ?", array($description, $titre, $architecte, $coordonnees, $idMonument));
         if($result)
             return $this->getMonumentById($idMonument);
         return false;
@@ -167,8 +167,8 @@ class quartierDAO extends DAO
      * @param $titre
      * @return activite|bool
      */
-    public function setDescriptionActivite($idActivite, $description, $titre){
-        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ? WHERE codeActivite = ?", array($description, $titre, $idActivite));
+    public function setDescriptionActivite($idActivite, $description, $titre, $coordonnees){
+        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?) WHERE codeActivite = ?", array($description, $titre, $coordonnees, $idActivite));
         if($result)
             return $this->getActiviteById($idActivite);
         return false;
@@ -180,8 +180,8 @@ class quartierDAO extends DAO
      * @param $titre
      * @return bool|restaurant
      */
-    public function setDescriptionRestaurant($idRestaurant, $description, $titre){
-        $result = $this->queryBdd("UPDATE restaurant SET commentaire = ?, nom = ? WHERE codeRestaurant = ?", array($description, $titre, $idRestaurant));
+    public function setDescriptionRestaurant($idRestaurant, $description, $titre, $coordonnees){
+        $result = $this->queryBdd("UPDATE restaurant SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?) WHERE codeRestaurant = ?", array($description, $titre, $coordonnees, $idRestaurant));
         if($result)
             return $this->getRestaurantById($idRestaurant);
         return false;
@@ -238,11 +238,11 @@ class quartierDAO extends DAO
      * @param $description
      * @return bool|monument
      */
-    public function createMonument($libelleQuartier, $titre, $architecte, $description){
+    public function createMonument($libelleQuartier, $titre, $architecte, $description, $coordonnees){
         $max = $this->queryRow("SELECT MAX(codeMonument) as max FROM monument");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO monument VALUES(?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, $titre, null, 'POINT(0 0)', null, $architecte, $description));
+        $result = $this->queryBdd("INSERT INTO monument VALUES(?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, $titre, null, $coordonnees, null, $architecte, $description));
         if($result)
             return $this->getMonumentById($max['max'] +1);
         return false;
@@ -254,11 +254,11 @@ class quartierDAO extends DAO
      * @param $description
      * @return activite|bool
      */
-    public function createActivite($libelleQuartier, $titre, $description){
+    public function createActivite($libelleQuartier, $titre, $description, $coordonnees){
         $max = $this->queryRow("SELECT MAX(codeActivite) as max FROM activite");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, 100, $titre, null, 'POINT(0 0)', null, $description));
+        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, 100, $titre, null, $coordonnees, null, $description));
         if($result)
             return $this->getActiviteById($max['max'] +1);
         return false;
@@ -272,11 +272,11 @@ class quartierDAO extends DAO
      * @param $description
      * @return bool|restaurant
      */
-    public function createRestaurant($libelleQuartier, $titre, $telephone, $adresse, $description){
+    public function createRestaurant($libelleQuartier, $titre, $telephone, $adresse, $description, $coordonnees){
         $max = $this->queryRow("SELECT MAX(codeRestaurant) as max FROM restaurant");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO restaurant VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, $titre, $adresse, $telephone, 'POINT(0 0)', null, $description));
+        $result = $this->queryBdd("INSERT INTO restaurant VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, $titre, $adresse, $telephone, $coordonnees, null, $description));
         if($result)
             return $this->getRestaurantById($max['max'] +1);
         return false;

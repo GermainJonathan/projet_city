@@ -149,7 +149,6 @@ function makeMessage($message, $nom, $prenom, $mail){
  * @return array[x, y]
  */
 function convertCoordonees($arrayToConvert) {
-    error_log(var_export($arrayToConvert,true));
     preg_match("/\d*.\d* \d*.\d*/", $arrayToConvert, $chaine);
     $chaine[0] = explode(' ', $chaine[0]);
     return array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
