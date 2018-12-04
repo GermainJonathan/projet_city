@@ -154,15 +154,14 @@ function makeMessage($message, $nom, $prenom, $mail){
     return $message;
 }
 
-
 /**
  * @param $arrayToConvert
  * @return array[x, y]
  */
 function convertCoordonees($coordonnees) {
     preg_match("/\d*.\d* \d*.\d*/", $coordonnees, $chaine);
-    $chaine[0] = explode(' ', $chaine[0]);
-    return array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
+    $chaine = explode(' ', $chaine[0]);
+    return array('x' => floatval($chaine[0]), 'y' => floatval($chaine[1]));
 }
 
 function getUserIP()
