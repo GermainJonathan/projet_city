@@ -36,4 +36,8 @@ class commentaireDAO extends DAO
         return $listCommentaire;
     }
 
+    public function deleteCommentaire($id){
+        return $this->queryBdd("DELETE FROM commentaire WHERE codeCommentaire = ?", array($id));
+    }
+
 }
