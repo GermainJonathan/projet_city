@@ -29,4 +29,18 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="SavoirPlusmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        
+            <div class="modal-body">
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>restaurant.js"></script>
