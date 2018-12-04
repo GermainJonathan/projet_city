@@ -16,8 +16,8 @@ class Api extends DAO
         $result = array();
         foreach($arrayToConvert as $key => $elem) {
             preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
-            $chaine[0] = explode(' ', $chaine[0]);
-            $arrayToConvert[$key]['coordonees'] = array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
+            $chaine = explode(' ', $chaine[0]);
+            $arrayToConvert[$key]['coordonees'] = array('x' => floatval($chaine[0]), 'y' => floatval($chaine[1]));
         }
         return $arrayToConvert;
     }
@@ -37,7 +37,9 @@ class Api extends DAO
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
-            $monumentResult = $this->convertCoordonees($monumentResult);
+            foreach($monumentResult as $item) {
+                $item['coordonnees'] = $this->convertCoordonees($item['coordonnees']);
+            }
         }
         return $monumentResult;
     }
