@@ -9,6 +9,9 @@ class forumDAO extends DAO
 {
 
     // sort les topics validé par l'admin
+    /**
+     * @return array
+     */
     public function getTopicValid(){
         $result = $this->queryAll("SELECT * FROM topic WHERE codeEtat = 2 OR codeEtat = 4");
         $listTopic = array();
@@ -22,6 +25,10 @@ class forumDAO extends DAO
     }
 
     // sort tous les topics (pour l'admin)
+
+    /**
+     * @return array
+     */
     public function getTopicAll(){
         $result = $this->queryAll("SELECT * FROM topic");
         $listTopic = array();
@@ -34,6 +41,11 @@ class forumDAO extends DAO
     }
 
     // sort un topic ou false par un ID
+
+    /**
+     * @param $idTopic
+     * @return topic
+     */
     public function getTopicById($idTopic){
 
         $result = $this->queryRow("SELECT * FROM topic WHERE codeTopic  = ?", array($idTopic));
@@ -44,6 +56,11 @@ class forumDAO extends DAO
     }
 
     // sort les messages d'un topic
+
+    /**
+     * @param $idTopic
+     * @return array
+     */
     public function getMessageByTopic($idTopic){
         $result = $this->queryAll("SELECT * FROM message WHERE codetopic  = ?", array($idTopic));
 
@@ -59,23 +76,41 @@ class forumDAO extends DAO
         return $listMessage;
     }
 
+
+    /**
+     * @param $id
+     * @return bool|message
+     */
     public function getMessageById($id){
         $result = $this->queryRow("SELECT * FROM message WHERE codeMessage = ?", array($id));
+        if(!$result)
+            return false;
         if($result['codeProfile'] == 0)
-            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date']);
+            return new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date']);
         else {
             $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($result['codeProfile']));
-            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date'], $result['codeProfile'], $res['libelleProfile']);
+            return new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date'], $result['codeProfile'], $res['libelleProfile']);
         }
     }
 
     // vérifi si un topic exciste et est actif
+
+    /**
+     * @param $idTopic
+     * @return bool|mixed
+     */
     public function verifyTopic($idTopic){
 
         return $this->queryRow("SELECT * FROM topic WHERE codeTopic = ?", array($idTopic));
 
     }
 
+    /**
+     * @param $titre
+     * @param $description
+     * @param $idLang
+     * @return bool|mixed
+     */
     public function createNewTopic($titre, $description, $idLang){
 
         $result = $this->queryRow("SELECT MAX(codeTopic) FROM topic");
@@ -87,10 +122,11 @@ class forumDAO extends DAO
 
     }
 
+
     /**
-     * fonction qui permet de modifier l'état du topic dans la base de donnée
-     * @var etat: réprésente l'état sélectionné par l'administrateur
-     * @var idTopic: représente le topic dont l'état va être modifié
+     * @param $idTopic
+     * @param $etat
+     * @return bool|topic
      */
     public function setEtatTopicByCode($idTopic, $etat){
         $result = $this->queryBdd("UPDATE topic SET codeEtat = ? WHERE codeTopic  = ?", array($etat, $idTopic));
@@ -99,6 +135,14 @@ class forumDAO extends DAO
         return false;
     }
 
+
+    /**
+     * @param $idTopic
+     * @param $nom
+     * @param $message
+     * @param int $profile
+     * @return bool|message
+     */
     public function sendMessage($idTopic, $nom, $message, $profile = 0){
         $date = date('Y-M-d');
         $result = $this->queryRow("SELECT MAX(codeMessage) as max FROM message");
