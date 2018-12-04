@@ -15,8 +15,10 @@ header("Content-Type: application/json; charset=UTF-8");
 $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
+session_start();
+
 if (isset($_GET['quartier'])) {
-    $responses = $quartierDAO->getHistoireByQuartier($_GET['quartier']);
+    $responses = $quartierDAO->getHistoireByQuartier($_GET['quartier'], $_SESSION["idLang"]);
     $array = array();
     if ($responses != false) {
         foreach ($responses as $temp)
