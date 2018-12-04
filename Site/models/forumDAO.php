@@ -105,20 +105,24 @@ class forumDAO extends DAO
 
     }
 
+
     /**
      * @param $titre
      * @param $description
      * @param $idLang
-     * @return bool|mixed
+     * @return bool|topic
      */
     public function createNewTopic($titre, $description, $idLang){
 
-        $result = $this->queryRow("SELECT MAX(codeTopic) FROM topic");
-        $maxId = $result['codeTopic'] + 1;
+        $max = $this->queryRow("SELECT MAX(codeTopic) as max FROM topic");
+        $max = ($max['max'] == null)? 0 : $max['max'] + 1;
 
-        $result = $this->queryBdd("INSERT INTO topic (codeTopic, codePays, libelleTopic, description, codeEtat, date) VALUES (?, ?, ?, ?, ?, CURRENT_DATE)", array($maxId, $idLang, $titre, $description, 1));
+        $result = $this->queryBdd("INSERT INTO topic (codeTopic, codePays, libelleTopic, description, codeEtat, date) VALUES (?, ?, ?, ?, ?, CURRENT_DATE)", array($max, $idLang, $titre, $description, 1));
 
-        return $result;
+        if($result)
+            return $this->getTopicById($max);
+
+        return false;
 
     }
 
