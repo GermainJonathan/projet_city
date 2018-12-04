@@ -8,19 +8,6 @@ require_once PATH_LIB.'foncBase.php';
 
 class Api extends DAO
 {
-    /**
-     * @var array $arrayToConvert
-     * @return array $result
-     */
-    private function convertCoordonees($arrayToConvert) {
-        $result = array();
-        foreach($arrayToConvert as $key => $elem) {
-            preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
-            $chaine[0] = explode(' ', $chaine[0]);
-            $arrayToConvert[$key]['coordonees'] = array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
-        }
-        return $arrayToConvert;
-    }
 
     /**
      * Renvoie un tableau contenant les données des Monuments enregistrés par quartier
@@ -37,7 +24,10 @@ class Api extends DAO
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
-            $monumentResult = $this->convertCoordonees($monumentResult);
+            $monumentResult = array();
+            foreach ($monumentResult as $item) {
+                $monumentResult[] = convertCoordonees($item["coordonnees"]);
+            }
         }
         return $monumentResult;
     }
@@ -57,7 +47,10 @@ class Api extends DAO
         if(!$restaurantResult) {
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
         } else {
-            $restaurantResult = $this->convertCoordonees($restaurantResult);
+            $restaurantResult = array();
+            foreach ($restaurantResult as $item) {
+                $restaurantResult[] = convertCoordonees($item["coordonnees"]);
+            }
         }
         return $restaurantResult;
     }
@@ -77,7 +70,10 @@ class Api extends DAO
         if(!$activiteResult) {
             error_log('Activité - Erreur lors de l\'execution de la requête');
         } else {
-            $activiteResult = $this->convertCoordonees($activiteResult);
+            $activiteResult = array();
+            foreach ($activiteResult as $item) {
+                $activiteResult[] = convertCoordonees($item["coordonnees"]);
+            }
         }
         return $activiteResult;
     }

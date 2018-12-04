@@ -10,4 +10,7 @@ $manager = new manager();
 
 $listUser = $manager->getUserAll();
 
+if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur"))
+    $listMessage = $manager->getMessageContact();
+
 require_once PATH_VIEWS.'administration.php';

@@ -39,6 +39,5 @@ $paysDAO = new paysDAO(DEBUG);
 
 $listPays = $paysDAO->getPays();
 
-
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');

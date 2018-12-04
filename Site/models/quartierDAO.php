@@ -10,11 +10,19 @@ require_once PATH_MODELS.'histoire.php';
 
 class quartierDAO extends DAO
 {
+    /**
+     * @param $nomQuartier
+     * @return quartier
+     */
     public function getQuartierByLibelle($nomQuartier){
         $result = $this->queryRow("SELECT * FROM quartier WHERE libelleQuartier = ?", array($nomQuartier));
         return new quartier($result['codeQuartier'], $result['libelleQuartier']);
     }
 
+    /**
+     * @param $codeQuartier
+     * @return quartier
+     */
     public function getQuartierByCode($codeQuartier){
         $result = $this->queryRow("SELECT * FROM quartier WHERE codeQuartier = ?", array($codeQuartier));
         return new quartier($result['codeQuartier'], $result['libelleQuartier']);
@@ -28,6 +36,10 @@ class quartierDAO extends DAO
         return $this->queryRow("SELECT * FROM categorie WHERE codeCategorie = ?", array($idCategorie));
     }
 
+    /**
+     * @param $libelleQuartier
+     * @return array
+     */
     /**
      * Retourne l'id Lang courant
      */
@@ -54,6 +66,10 @@ class quartierDAO extends DAO
         return $listActivite;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @return array
+     */
     public function getRestaurantByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
@@ -67,6 +83,10 @@ class quartierDAO extends DAO
         return $listRestaurant;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @return array
+     */
     public function getMonumentByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
@@ -80,6 +100,10 @@ class quartierDAO extends DAO
         return $listMonument;
     }
 
+    /**
+     * @param $libelleQuartier
+     * @return array
+     */
     public function getHistoireByQuartier($libelleQuartier){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
@@ -91,6 +115,10 @@ class quartierDAO extends DAO
         return $listHistoire;
     }
 
+    /**
+     * @param $idHistoire
+     * @return bool|histoire
+     */
     public function getHistoireById($idHistoire){
         $result = $this->queryRow("SELECT * FROM histoire WHERE codeHistoire = ?", array($idHistoire));
         if($result) {
@@ -100,6 +128,10 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idMonument
+     * @return bool|monument
+     */
     public function getMonumentById($idMonument){
         $result = $this->queryRow("SELECT *, AsText(coordonnees) as coordonneesT FROM monument WHERE codeMonument = ?", array($idMonument));
         if($result) {
@@ -111,6 +143,10 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idActivite
+     * @return activite|bool
+     */
     public function getActiviteById($idActivite){
         $result = $this->queryRow("SELECT *, AsText(coordonnees) as coordonneesT FROM activite WHERE codeActivite = ?", array($idActivite));
         if($result) {
@@ -123,6 +159,10 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idRestaurant
+     * @return bool|restaurant
+     */
     public function getRestaurantById($idRestaurant){
         $result = $this->queryRow("SELECT *, AsText(coordonnees) as coordonneesT FROM restaurant WHERE codeRestaurant = ?", array($idRestaurant));
         if($result) {
@@ -187,6 +227,11 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idHistoire
+     * @param $image
+     * @return bool|histoire
+     */
     public function setImageHistoire($idHistoire, $image){
         $result = $this->queryBdd("UPDATE histoire SET imageHistoire = ? WHERE codeHistoire = ?", array($image, $idHistoire));
         if($result)
@@ -194,6 +239,11 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idMonument
+     * @param $image
+     * @return bool|monument
+     */
     public function setImageMonument($idMonument, $image){
         $result = $this->queryBdd("UPDATE monument SET imageMonument = ? WHERE codeMonument = ?", array($image, $idMonument));
         if($result)
@@ -201,6 +251,11 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idActivite
+     * @param $image
+     * @return activite|bool
+     */
     public function setImageActivite($idActivite, $image){
         $result = $this->queryBdd("UPDATE activite SET imageActivite = ? WHERE codeActivite = ?", array($image, $idActivite));
         if($result)
@@ -208,6 +263,11 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idRestaurant
+     * @param $image
+     * @return bool|restaurant
+     */
     public function setImageRestaurant($idRestaurant, $image){
         $result = $this->queryBdd("UPDATE restaurant SET imageRestaurant = ? WHERE codeRestaurant = ?", array($image, $idRestaurant));
         if($result)
@@ -282,18 +342,34 @@ class quartierDAO extends DAO
         return false;
     }
 
+    /**
+     * @param $idHistoire
+     * @return bool
+     */
     public function deleteHistoire($idHistoire){
         return $this->queryBdd("DELETE FROM histoire WHERE codeHistoire = ?", array($idHistoire));
     }
 
+    /**
+     * @param $idMonument
+     * @return bool
+     */
     public function deleteMonument($idMonument){
         return $this->queryBdd("DELETE FROM monument WHERE codeMonument = ?", array($idMonument));
     }
 
+    /**
+     * @param $idActivite
+     * @return bool
+     */
     public function deleteActivite($idActivite){
         return $this->queryBdd("DELETE FROM Activite WHERE codeActivite = ?", array($idActivite));
     }
 
+    /**
+     * @param $idRestaurant
+     * @return bool
+     */
     public function deleteRestaurant($idRestaurant){
         return $this->queryBdd("DELETE FROM restaurant WHERE codeRestaurant = ?", array($idRestaurant));
     }
