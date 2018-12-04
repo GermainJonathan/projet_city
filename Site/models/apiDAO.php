@@ -24,9 +24,8 @@ class Api extends DAO
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
-            $monumentResult = array();
-            foreach ($monumentResult as $item) {
-                $monumentResult[] = convertCoordonees($item["coordonnees"]);
+            foreach($monumentResult as $item) {
+                $item['coordonnees'] = convertCoordonees($item['coordonnees']);
             }
         }
         return $monumentResult;

@@ -2,6 +2,7 @@
 
 require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS."topic.php";
+require_once PATH_LIB.'foncBase.php';
 require_once PATH_MODELS."message.php";
 
 // class de discustion avec la bd pour la partie forum
