@@ -18,4 +18,10 @@ class paysDAO extends DAO
 
         return $listPays;
     }
+
+    public function getPaysById($id){
+        $result = $this->queryRow("SELECT * FROM pays WHERE codePays = ?", array($id));
+
+        return new pays($result['codePays'], $result['libellePays'], $result['libellePaysCourt'], $result['fichier']);
+    }
 }

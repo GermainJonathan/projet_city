@@ -10,10 +10,15 @@ require_once PATH_MODELS.'paysDAO.php';
 //selection de la langue
 session_start();
 
-if(isset($_SESSION["lang"]))
-    $lang = $_SESSION["lang"];
+if(empty($_GET["lang"])) {
+    if (isset($_SESSION["lang"]))
+        $lang = $_SESSION["lang"];
+    else
+        $lang = getLangage();
+}
 else
-    $lang = getLangage();
+    $lang = setLangageById($_GET["lang"]);
+
 require_once(PATH_TEXTES.$lang.'.php');
 
 //vérification de la page demandée

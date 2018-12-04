@@ -17,6 +17,11 @@ class manager
         return $paysDAO->getPays();
     }
 
+    public function getLangById($id){
+        $paysDAO = new paysDAO(DEBUG);
+        return $paysDAO->getPaysById($id);
+    }
+
     public function getQuartierByLibelle($quartier){
         $quartierDAO = new quartierDAO(DEBUG);
         return $quartierDAO->getQuartierByLibelle($quartier);
