@@ -19,6 +19,8 @@ $quartierDAO = new quartierDAO(DEBUG);
 
 session_start();
 
+session_start();
+
 if (isset($_GET['quartier'])) {
     $responses = $bo->getAllDataByQuarter($_GET['quartier'], $_SESSION["idLang"]);
 } else {
