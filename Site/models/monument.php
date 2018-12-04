@@ -34,7 +34,10 @@ class monument
         $this->_libelleMonument = $libelleMonument;
         $this->_dateConstruction = $dateConstruction;
         $this->_architecte = $architect;
-        $this->_image = $image;
+        if($image == null || !file_exists(PATH_IMAGES.$quartier."/".$image))
+            $this->_image = "undefined.png";
+        else
+            $this->_image = $image;
         $this->_commentaire = $commentaire;
     }
 

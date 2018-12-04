@@ -7,6 +7,9 @@ require_once PATH_MODELS.'pays.php';
 class paysDAO extends DAO
 {
 
+    /**
+     * @return array
+     */
     public function getPays(){
 
         $result = $this->queryAll("SELECT * FROM pays");
@@ -17,5 +20,11 @@ class paysDAO extends DAO
         }
 
         return $listPays;
+    }
+
+    public function getPaysById($id){
+        $result = $this->queryRow("SELECT * FROM pays WHERE codePays = ?", array($id));
+
+        return new pays($result['codePays'], $result['libellePays'], $result['libellePaysCourt'], $result['fichier']);
     }
 }

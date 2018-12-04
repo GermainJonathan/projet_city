@@ -31,6 +31,36 @@ require_once(PATH_VIEWS.'alert.php');?>
         ?>
         </tbody>
     </table>
+    <?php
+        if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur")){
+            ?>
+            <table  class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"><?= TITRE_ACTION ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($listMessage as $message){
+                    ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button class="btn col-2 btn-danger">X</button></td>
+                    </tr>
+                    <?php
+                }
+                ?>
+                </tbody>
+            </table>
+            <?php
+        }
+    ?>
 </div>
 <div class="container-fluid">
     <nav id="pageSelector" class="nav nav-pills nav-justified">

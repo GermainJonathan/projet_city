@@ -105,13 +105,6 @@ class forumDAO extends DAO
 
     }
 
-
-    /**
-     * @param $titre
-     * @param $description
-     * @param $idLang
-     * @return bool|topic
-     */
     public function createNewTopic($titre, $description, $idLang){
 
         $max = $this->queryRow("SELECT MAX(codeTopic) as max FROM topic");

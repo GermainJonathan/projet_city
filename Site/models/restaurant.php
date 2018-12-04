@@ -35,7 +35,10 @@ class restaurant
         $this->_nom = $nom;
         $this->_adresse = $adresse;
         $this->_numero = $numero;
-        $this->_image = $image;
+        if($image == null || !file_exists(PATH_IMAGES.$quartier."/".$image))
+            $this->_image = "undefined.png";
+        else
+            $this->_image = $image;
         $this->_commentaire = $commentaire;
     }
 
