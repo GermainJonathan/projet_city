@@ -44,16 +44,19 @@ define('PATH_CORE', PATH_IMAGES.'core/');
 define('PATH_LOGO', PATH_IMAGES.'logo.png');
 define('PATH_MENU', PATH_VIEWS.'menu.php');
 
+require_once PATH_LIB.'foncBase.php';
+
 //selection de la langue
 session_start();
 
 if(empty($_GET["lang"])) {
-    if (isset($_SESSION["lang"]))
+    if (isset($_SESSION["lang"]) && !empty($_SESSION["lang"]))
         $lang = $_SESSION["lang"];
     else
         $lang = getLangage();
 }
-else
+else {
     $lang = setLangageById($_GET["lang"]);
+}
 
-require_once(PATH_TEXTES.$lang.'.php');
+require_once PATH_TEXTES.$lang.'.php';
