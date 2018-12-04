@@ -77,13 +77,24 @@ function getLangage(){
 
     foreach ($listPays as $pays){
         if($pays->getLibelleCourt() == $lang) {
-            $_SESSION["lang"] = $pays->getFicher();
+            $_SESSION["lang"] = $pays->getFichier();
             $_SESSION["idLang"] = $pays->getId();
-            return $pays->getFicher();
+            return $pays->getFichier();
         }
     }
     $_SESSION["idLang"] = 1;
     return "FR-fr";
+}
+
+function setLangageById($id){
+
+    require_once PATH_MODELS.'manager.php';
+
+    $manager = new manager();
+    $pays = $manager->getLangById($id);
+    $_SESSION["lang"] = $pays->getFichier();
+    $_SESSION["idLang"] = $pays->getId();
+    return $_SESSION["lang"];
 }
 
 // Récupère l'action valider du forum suivant l'état

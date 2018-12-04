@@ -28,7 +28,10 @@ class histoire
         $this->_codeQuartier = $codeQuartier;
         $this->_quartier = $quartier;
         $this->_titre = $titre;
-        $this->_image = $image;
+        if($image == null || !file_exists(PATH_IMAGES.$quartier."/".$image))
+            $this->_image = "undefined.png";
+        else
+            $this->_image = $image;
         $this->_commentaire = $commentaire;
     }
 
