@@ -17,8 +17,10 @@ $responses = array();
 $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
+session_start();
+
 if (isset($_GET['quartier'])) {
-    $responses = $quartierDAO->getAllDataByQuarter($_GET['quartier']);
+    $responses = $bo->getAllDataByQuarter($_GET['quartier'], $_SESSION["idLang"]);
 } else {
     $code = 404;
     $responses = array(
