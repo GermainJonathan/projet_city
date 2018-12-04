@@ -20,7 +20,7 @@
                     <?php
                     foreach ($listPays as $pays){
                         ?>
-                        <a class="dropdown-item" href="#"><i></i><?= $pays->getLibelleCourt()?><?= ($_SESSION['idLang'] == $pays->getId())? " ✓" : "" ?></a>
+                        <a class="dropdown-item" href="?lang=<?= $pays->getId() ?>"><i></i><?= $pays->getLibelleCourt()?><?= ($_SESSION['idLang'] == $pays->getId())? " ✓" : "" ?></a>
                         <?php
                     }
                     ?>
