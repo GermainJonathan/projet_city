@@ -18,7 +18,7 @@ $array = null;
 $data = json_decode(file_get_contents("php://input"));
 session_start();
 
-if (isset($_GET['idQuartier']) && isset($_GET['message']) && isset($data->nom)) {
+if (isset($data->idQuartier) && isset($data->message) && isset($data->nom)) {
     $responses = $commentaireDAO->addCommentaire($_SESSION['idLang'], $data->idQuartier, $data->message, $data->nom);
     if($responses)
         $array = $responses->toArray();

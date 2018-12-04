@@ -98,5 +98,17 @@ class message
         return $this->_idMessage.$this->_nom.$this->_message.$this->_date;
     }
 
+    public function toArray(){
+        return array(
+            "idMessage" => $this->_idMessage,
+            "idTopic" => $this->_idTopic,
+            "nom" => $this->_nom,
+            "message" => $this->_message,
+            "date" => $this->_date,
+            "codeProfile" => $this->_codeProfile,
+            "profile" => $this->_profile
+        );
+    }
+
 
 }

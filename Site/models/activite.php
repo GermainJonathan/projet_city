@@ -152,7 +152,7 @@ class activite
         'nomLieux' => $this->_nomLieux,
         'image' => $this->_image,
         'commentaire' => $this->_commentaire,
-        'cordonnees' => $this->_coordonnees
+        'coordonnees' => $this->_coordonnees
         );
     }
 

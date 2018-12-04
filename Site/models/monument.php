@@ -116,9 +116,6 @@ class monument
         $this->_coordonnees = $coordonnes;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(){
         return array('id' => $this->_codeMonument,
             'codePays' => $this->_codePays,

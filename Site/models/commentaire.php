@@ -105,14 +105,14 @@ class commentaire
      */
     public function toArray(){
         return array(
-            $this->_codeCommentaire,
-            $this->_codePays,
-            $this->_pays,
-            $this->_codeQuartier,
-            $this->_quartier,
-            $this->_nom,
-            $this->_commentaire,
-            $this->_date
+            'id' => $this->_codeCommentaire,
+            'codePays' => $this->_codePays,
+            'libellePays' => $this->_pays,
+            'codeQuartier' => $this->_codeQuartier,
+            'quartier' => $this->_quartier,
+            'nom' => $this->_nom,
+            'commentaire' => $this->_commentaire,
+            'date' => $this->_date
         );
     }
 

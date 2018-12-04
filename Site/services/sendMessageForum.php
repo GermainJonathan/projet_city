@@ -28,7 +28,7 @@ else
     $profile = 0;
 
 if (isset($data->idTopic) && isset($data->message) && isset($nom)) {
-    $responses = $forumDAO->createMessageTopic($data->idTopic, $data->message, $nom, $profile);
+    $responses = $forumDAO->sendMessage($data->idTopic, $data->message, $nom, $profile);
     if($responses)
         $array = $responses->toArray();
 } else {

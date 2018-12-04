@@ -1,6 +1,7 @@
 <?php
 
 require_once PATH_MODELS.'DAO.php';
+require_once PATH_MODELS.'commentaire.php';
 
 class commentaireDAO extends DAO
 {
@@ -13,7 +14,7 @@ class commentaireDAO extends DAO
      * @return bool|commentaire
      */
     public function addCommentaire($codePays, $codeQuartier, $commentaire, $nom){
-        $date = date('dd-MM-YYYY');
+        $date = date("Y-m-d");
         $result = $this->queryRow("SELECT MAX(codeCommentaire) as max FROM commentaire");
         $max = ($result['max'] == null)? 0 : $result['max'] + 1;
 
@@ -45,6 +46,10 @@ class commentaireDAO extends DAO
             $listCommentaire[] = new commentaire($temp['codeCommentaire'], $codePays, $pays['libellePays'], $codeQuartier, $quartier['libelleQuartier'], $temp['nom'], $temp['commentaire'], $temp['date']);
         }
         return $listCommentaire;
+    }
+
+    public function deleteCommentaire($id){
+        return $this->queryBdd("DELETE FROM commentaire WHERE codeCommentaire = ?", array($id));
     }
 
 }

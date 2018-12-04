@@ -1,7 +1,8 @@
 <?php
 
 require_once "configurationAPI.php";
-require_once PATH_MODELS."quartierDAO.php";
+require_once PATH_MODELS."forumDAO.php";
+require_once PATH_MODELS."user.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -12,21 +13,18 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 $responses = array();
 $code = 200;
-$quartierDAO = new quartierDAO(DEBUG);
+$forumDAO = new forumDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
+session_start();
 
-if (isset($data->idRestaurant) && isset($data->description) && isset($data->title) && isset($data->coordonnees)) {
-    $responses = $quartierDAO->setDescriptionRestaurant($data->idRestaurant, $data->description, $data->title, $data->coordonnees);
-    if($responses) {
+
+if (isset($data->titreTopic) && isset($data->descriptionTopic)) {
+    $responses = $forumDAO->createNewTopic($data->titreTopic, $data->descriptionTopic, $_SESSION["idLang"]);
+    mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
+
+    if($responses)
         $array = $responses->toArray();
-    } else {
-        $code = 501;
-        $array = array(
-            'error' => 'Error in SQL statement',
-            'message' => 'Error occured during update'
-        );
-    }
 } else {
     $code = 404;
     $array = array(

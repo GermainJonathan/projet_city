@@ -8,6 +8,7 @@ require_once PATH_MODELS."message.php";
 class forumDAO extends DAO
 {
 
+    // sort les topics validé par l'admin
     /**
      * @return array
      */
@@ -23,6 +24,8 @@ class forumDAO extends DAO
 
     }
 
+    // sort tous les topics (pour l'admin)
+
     /**
      * @return array
      */
@@ -37,6 +40,8 @@ class forumDAO extends DAO
         return $listTopic;
     }
 
+    // sort un topic ou false par un ID
+
     /**
      * @param $idTopic
      * @return topic
@@ -49,6 +54,8 @@ class forumDAO extends DAO
         return new topic($result['codeTopic'], $result['codePays'], $result['libelleTopic'], $result['description'], $res['libelleEtat'], $result['codeEtat'], $result['date'], $message['message']);
 
     }
+
+    // sort les messages d'un topic
 
     /**
      * @param $idTopic
@@ -69,18 +76,24 @@ class forumDAO extends DAO
         return $listMessage;
     }
 
+
     /**
      * @param $id
+     * @return bool|message
      */
     public function getMessageById($id){
         $result = $this->queryRow("SELECT * FROM message WHERE codeMessage = ?", array($id));
+        if(!$result)
+            return false;
         if($result['codeProfile'] == 0)
-            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date']);
+            return new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date']);
         else {
             $res = $this->queryRow("SELECT * FROM profile WHERE codeProfile = ?", array($result['codeProfile']));
-            $listMessage[] = new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date'], $result['codeProfile'], $res['libelleProfile']);
+            return new message($result['codeMessage'], $result['codeTopic'], $result['nom'], $result['message'], $result['date'], $result['codeProfile'], $res['libelleProfile']);
         }
     }
+
+    // vérifi si un topic exciste et est actif
 
     /**
      * @param $idTopic
@@ -92,20 +105,20 @@ class forumDAO extends DAO
 
     }
 
-    /**
-     * @param $titre
-     * @param $description
-     * @param $idLang
-     * @return bool
-     */
     public function createNewTopic($titre, $description, $idLang){
 
-        $result = $this->queryRow("SELECT MAX(codeTopic) FROM topic");
-        $max = ($result['max'] == null)? 0 : $result['max'] + 1;
+        $max = $this->queryRow("SELECT MAX(codeTopic) as max FROM topic");
+        $max = ($max['max'] == null)? 0 : $max['max'] + 1;
 
-        return $this->queryBdd("INSERT INTO topic (codeTopic, codePays, libelleTopic, description, codeEtat, date) VALUES (?, ?, ?, ?, ?, CURRENT_DATE)", array($max, $idLang, $titre, $description, 1));
+        $result = $this->queryBdd("INSERT INTO topic (codeTopic, codePays, libelleTopic, description, codeEtat, date) VALUES (?, ?, ?, ?, ?, CURRENT_DATE)", array($max, $idLang, $titre, $description, 1));
+
+        if($result)
+            return $this->getTopicById($max);
+
+        return false;
 
     }
+
 
     /**
      * @param $idTopic
@@ -119,12 +132,13 @@ class forumDAO extends DAO
         return false;
     }
 
+
     /**
      * @param $idTopic
      * @param $nom
      * @param $message
      * @param int $profile
-     * @return bool|void
+     * @return bool|message
      */
     public function sendMessage($idTopic, $nom, $message, $profile = 0){
         $date = date('Y-M-d');
@@ -138,6 +152,10 @@ class forumDAO extends DAO
             return $this->getMessageById($max);
         }
         return false;
+    }
+
+    public function deleteMesage($id){
+        return $this->queryBdd("DELETE FROM message WHERE codeMessage = ?", array($id));
     }
 
 }
