@@ -13,8 +13,8 @@
                     <?php
                     if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                         ?>
-                    <th scope="col"><?= TITRE_ACTION ?></th>
-                    <?php
+                        <th scope="col"><?= TITRE_ACTION ?></th>
+                        <?php
                     }
                     ?>
                 </tr>

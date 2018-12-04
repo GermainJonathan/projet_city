@@ -1,6 +1,6 @@
 INSERT INTO `pays` (`codePays`, `libellePays`, `libellePaysCourt`, `fichier`) VALUES
-(1, 'France', 'FR', ''),
-(2, 'English', 'EN', '');
+(1, 'France', 'FR', 'FR-fr'),
+(2, 'English', 'EN', 'EN-en');
 
 INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
 (1, 'En attente'),

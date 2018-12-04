@@ -7,6 +7,9 @@ require_once PATH_MODELS.'pays.php';
 class paysDAO extends DAO
 {
 
+    /**
+     * @return array
+     */
     public function getPays(){
 
         $result = $this->queryAll("SELECT * FROM pays");

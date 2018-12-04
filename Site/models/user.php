@@ -8,6 +8,14 @@ class user
     private $_codeProfile;
     private $_profile;
 
+    /**
+     * user constructor.
+     * @param $codeUser
+     * @param $nom
+     * @param $mail
+     * @param $codeProfile
+     * @param $profile
+     */
     public function __construct($codeUser, $nom, $mail, $codeProfile, $profile)
     {
         $this->_codeUser = $codeUser;
@@ -17,26 +25,41 @@ class user
         $this->_profile = $profile;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCodeProfile()
     {
         return $this->_codeProfile;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCodeUser()
     {
         return $this->_codeUser;
     }
 
+    /**
+     * @return mixed
+     */
     public function getNom()
     {
         return $this->_nom;
     }
 
+    /**
+     * @return mixed
+     */
     public function getMail()
     {
         return $this->_mail;
     }
 
+    /**
+     * @return mixed
+     */
     public function getProfile()
     {
         return $this->_profile;
