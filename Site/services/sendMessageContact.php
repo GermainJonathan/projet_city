@@ -1,6 +1,7 @@
 <?php
 
 require_once "configurationAPI.php";
+require_once PATH_LIB.'foncBase.php';
 require_once PATH_MODELS."administrationDAO.php";
 require_once PATH_MODELS."user.php";
 
@@ -17,18 +18,18 @@ $administrationDAO = new administrationDAO(DEBUG);
 $data = json_decode(file_get_contents("php://input"));
 $array = null;
 
-if (isset($data->nom) && isset($data->prenom) && isset($data->message) && isset($data->mail)) {
+if (isset($data->nom) && isset($data->prenom) && isset($data->message) && isset($data->mail) && isset($data->objet)) {
     $responses = $administrationDAO->createMessageContact($data->nom, $data->prenom, $data->mail, $data->objet, $data->message);
     if($responses) {
         $message = makeMessage("message", "nom", "prenom", "mail");
-        mail(MAIL_ADMIN, 'messageContact : ' . $_POST['objet'], $message);
+        mail(MAIL_ADMIN, 'messageContact : ' . $data->objet, $message);
         $array = $responses->toArray();
     }
 } else {
     $code = 404;
     $array = array(
         'error' => 'No parameter',
-        'message' => 'This service need quarter parameter'
+        'message' => $data
     );
 }
 // Envoie de la réponse

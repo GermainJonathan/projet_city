@@ -52,6 +52,14 @@ input.SetOnError{
     color:red;
 }
 
+a{
+    color:#444;
+}
+
+a:hover{
+    color:#E98B39;
+}
+
 @media screen and (max-width: 767px){
     #btnValiderContact {
         font-size: initial;
