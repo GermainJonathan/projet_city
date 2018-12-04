@@ -140,9 +140,15 @@ class Card {
             carousel.children(":first-child").addClass("active");
             imageCard.carousel();
         } else {
-            var imageCard = $("<img>", {
-                class: "card-img-top d-block w-100"
-            }).attr("src", path[this.codeQuartier]+this.images);
+            if(this.images == "undefined.png") {
+                var imageCard = $("<img>", {
+                    class: "card-img-top d-block w-100"
+                }).attr("src", 'assets/images/core/' + this.images);
+            } else {
+                var imageCard = $("<img>", {
+                    class: "card-img-top d-block w-100"
+                }).attr("src", path[this.codeQuartier]+this.images);
+            }
         }
         return imageCard[0];
     }
