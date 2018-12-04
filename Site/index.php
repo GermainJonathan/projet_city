@@ -34,7 +34,5 @@ $paysDAO = new paysDAO(DEBUG);
 
 $listPays = $paysDAO->getPays();
 
-echo getUserIP();
-
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');

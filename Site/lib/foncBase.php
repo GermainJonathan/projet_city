@@ -164,10 +164,7 @@ function getUserIP()
     $client  = @$_SERVER['HTTP_CLIENT_IP'];
     $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
     $remote  = $_SERVER['REMOTE_ADDR'];
-
-    echo $client . "<br>";
-    echo $forward . "<br>";
-    echo $remote . "<br>";
+    
 
     if(filter_var($client, FILTER_VALIDATE_IP))
     {
