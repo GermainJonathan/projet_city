@@ -161,4 +161,8 @@ class forumDAO extends DAO
         return false;
     }
 
+    public function deleteMesage($id){
+        return $this->queryBdd("DELETE FROM message WHERE codeMessage = ?", array($id));
+    }
+
 }
