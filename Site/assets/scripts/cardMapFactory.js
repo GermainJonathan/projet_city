@@ -162,10 +162,10 @@ class Card {
             carousel.children(":first-child").addClass("active");
             imageCard.carousel();
         } else {
-            if(this.images == "undefined.png") {
+            if(this.images == "undefined") {
                 var imageCard = $("<img>", {
                     class: "card-img-top d-block w-100"
-                }).attr("src", 'assets/images/core/' + this.images);
+                }).attr("src", 'assets/images/core/' + this.images + ".png");
             } else {
                 var imageCard = $("<img>", {
                     class: "card-img-top d-block w-100"

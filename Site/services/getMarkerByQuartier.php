@@ -12,17 +12,12 @@ require_once PATH_MODELS."quartierDAO.php";
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
 $responses = array();
 $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
-session_start();
-
-session_start();
-
 if (isset($_GET['quartier'])) {
-    $responses = $bo->getAllDataByQuarter($_GET['quartier'], $_SESSION["idLang"]);
+    $responses = $quartierDAO->getAllDataByQuarter($_GET['quartier'], $_SESSION["idLang"]);
 } else {
     $code = 404;
     $responses = array(

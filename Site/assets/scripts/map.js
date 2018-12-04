@@ -292,7 +292,7 @@ function setupModalMarkerCard(patrimoine, link) {
  */
 function addMarkerMonuments(monuments) {
     monuments.forEach(function(monument) {
-        let markerMonument = L.marker([monument.coordonees.x, monument.coordonees.y], {icon: monumentIcon})
+        let markerMonument = L.marker([monument.coordonnees.x, monument.coordonnees.y], {icon: monumentIcon})
         .on('click', function() {
             if(isMobileDevice) {
                 setupModalMarkerCard(monument, '#anchorBodyMonuments');
@@ -318,7 +318,7 @@ function addMarkerMonuments(monuments) {
 
 function addMarkerRestaurants(restaurants) {
     restaurants.forEach(function(restaurant) {
-        let markerRestaurant = L.marker([restaurant.coordonees.x, restaurant.coordonees.y], {icon: restaurantIcon})
+        let markerRestaurant = L.marker([restaurant.coordonnees.x, restaurant.coordonnees.y], {icon: restaurantIcon})
         .on('click', function() {
             if(isMobileDevice) {
                 setupModalMarkerCard(restaurant, "#anchorBodyRestaurants");
@@ -344,7 +344,7 @@ function addMarkerRestaurants(restaurants) {
 
 function addMarkerActivites(activites) {
         activites.forEach(function(activite) {
-        let markerActivite = L.marker([activite.coordonees.x, activite.coordonees.y], {icon: activiteIcon})
+        let markerActivite = L.marker([activite.coordonnees.x, activite.coordonnees.y], {icon: activiteIcon})
         .on('click', function() {
             if(isMobileDevice) {
                 setupModalMarkerCard(activite, "#anchorBodyActivites");
