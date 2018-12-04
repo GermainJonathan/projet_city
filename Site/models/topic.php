@@ -18,6 +18,17 @@ class topic
     private $_nbMessage;
 
 
+    /**
+     * topic constructor.
+     * @param $id
+     * @param $idLang
+     * @param $titre
+     * @param $description
+     * @param $etat
+     * @param $codeEtat
+     * @param $date
+     * @param $nbMessage
+     */
     public function __construct($id, $idLang, $titre, $description, $etat, $codeEtat, $date, $nbMessage)
     {
         $this->_id = $id;
@@ -36,36 +47,57 @@ class topic
         $this->_nbMessage = $nbMessage;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->_id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getIdLang()
     {
         return $this->_idLang;
     }
 
+    /**
+     * @return mixed
+     */
     public function getTitre()
     {
         return $this->_titre;
     }
 
+    /**
+     * @return mixed
+     */
     public function getDescription()
     {
         return $this->_description;
     }
 
+    /**
+     * @return mixed
+     */
     public function getEtat()
     {
         return $this->_etat;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCodeEtat()
     {
         return $this ->_codeEtat;
     }
 
+    /**
+     * @return mixed
+     */
     public function getDate()
     {
         return $this->_date;
@@ -120,11 +152,17 @@ class topic
         $this->_nbMessage = $nbMessage;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->_id.$this->_idLang.$this->_titre.$this->_description.$this->_etat.$this->_date;
     }
 
+    /**
+     * @return array
+     */
     public function toArray(){
         return array ('codeTopic' => $this->_id,
         'codeLang' => $this->_idLang,

@@ -2,6 +2,7 @@
 
 require_once PATH_MODELS."DAO.php";
 require_once PATH_MODELS."topic.php";
+require_once PATH_LIB.'foncBase.php';
 require_once PATH_MODELS."message.php";
 
 // class de discustion avec la bd pour la partie forum
@@ -105,13 +106,6 @@ class forumDAO extends DAO
 
     }
 
-
-    /**
-     * @param $titre
-     * @param $description
-     * @param $idLang
-     * @return bool|topic
-     */
     public function createNewTopic($titre, $description, $idLang){
 
         $max = $this->queryRow("SELECT MAX(codeTopic) as max FROM topic");
@@ -159,6 +153,10 @@ class forumDAO extends DAO
             return $this->getMessageById($max);
         }
         return false;
+    }
+
+    public function deleteMesage($id){
+        return $this->queryBdd("DELETE FROM message WHERE codeMessage = ?", array($id));
     }
 
 }

@@ -55,3 +55,33 @@ $(".btnForumAdmin").click(function(){
       });
 });
 
+function sendTopic() {
+	if($("#formTopic").find("input#titreTopic").val() === "") {
+		$("#formTopic").find("input#titreTopic").addClass("is-invalid");
+	} else {
+		$("#formTopic").find("input#titreTopic").removeClass("is-invalid");
+	}
+	if($("#formTopic").find("textarea#descriptionTopic").val() === "") {
+		$("#formTopic").find("textarea#descriptionTopic").addClass("is-invalid")
+	} else {
+		$("#formTopic").find("textarea#descriptionTopic").removeClass("is-invalid")
+	}
+	if($("#formTopic").find("textarea#descriptionTopic").val() === "" || $("#topicBody").find("input#titreTopic").val() === "") {
+		return;
+	}
+	data = {
+		'descriptionTopic': $("#formTopic").find("textarea#descriptionTopic").val(),
+		'titreTopic': $("#formTopic").find("input#titreTopic").val()
+	};
+  	$.ajax({
+		method: 'POST',
+		url: environnement.serviceUrl + "sendTopicForum.php",
+		data : JSON.stringify(data),
+		contentType : 'application/json'
+	}).done(function(data) {
+		let comment = $("<tr><td></td><td>" + data.nom + "</td><td>" + data.message + "</td></tr>");
+		$("#messageTopic").append(comment);
+		$("#topicBody").find("input#nomTopic").val("");
+		$("#topicBody").find("textarea#messageTopic").val("");
+	});
+}

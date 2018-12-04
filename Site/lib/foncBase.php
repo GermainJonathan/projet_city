@@ -77,13 +77,24 @@ function getLangage(){
 
     foreach ($listPays as $pays){
         if($pays->getLibelleCourt() == $lang) {
-            $_SESSION["lang"] = $pays->getFicher();
+            $_SESSION["lang"] = $pays->getFichier();
             $_SESSION["idLang"] = $pays->getId();
-            return $pays->getFicher();
+            return $pays->getFichier();
         }
     }
     $_SESSION["idLang"] = 1;
     return "FR-fr";
+}
+
+function setLangageById($id){
+
+    require_once PATH_MODELS.'manager.php';
+
+    $manager = new manager();
+    $pays = $manager->getLangById($id);
+    $_SESSION["lang"] = $pays->getFichier();
+    $_SESSION["idLang"] = $pays->getId();
+    return $_SESSION["lang"];
 }
 
 // Récupère l'action valider du forum suivant l'état
@@ -148,8 +159,36 @@ function makeMessage($message, $nom, $prenom, $mail){
  * @param $arrayToConvert
  * @return array[x, y]
  */
-function convertCoordonees($arrayToConvert) {
-    preg_match("/\d*.\d* \d*.\d*/", $arrayToConvert, $chaine);
+function convertCoordonees($coordonnees) {
+    preg_match("/\d*.\d* \d*.\d*/", $coordonnees, $chaine);
     $chaine[0] = explode(' ', $chaine[0]);
     return array('x' => floatval($chaine[0][0]), 'y' => floatval($chaine[0][1]));
+}
+
+function getUserIP()
+{
+    // Get real visitor IP behind CloudFlare network
+    if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+        $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        $_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    }
+    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+    
+
+    if(filter_var($client, FILTER_VALIDATE_IP))
+    {
+        $ip = $client;
+    }
+    elseif(filter_var($forward, FILTER_VALIDATE_IP))
+    {
+        $ip = $forward;
+    }
+    else
+    {
+        $ip = $remote;
+    }
+
+    return $ip;
 }
