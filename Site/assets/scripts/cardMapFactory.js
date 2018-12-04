@@ -181,7 +181,6 @@ class Card {
     createButtonEvt(idEvt){
         this.button.attr("href","#"+idEvt);
         var that=this;
-        console.log(that)
         this.button.click(function(){
             $("#"+idEvt).css("display","inline-block");
             $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[that.codeQuartier]+that.images+")");

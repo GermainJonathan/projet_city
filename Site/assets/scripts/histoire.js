@@ -4,7 +4,6 @@ $.ajax({
     method: "GET",
     url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quartier[idQuartier]
 }).done(function(data) {
-    console.log(data);
     for (let histoire of data){
         //FIXME: J'ai pas encore de données
     }
