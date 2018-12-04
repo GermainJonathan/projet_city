@@ -92,7 +92,6 @@ body{
 
 #basePage {
     min-height:100%;
-    overflow: auto;
     display: none;
 }
 
