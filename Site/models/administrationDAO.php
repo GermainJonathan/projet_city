@@ -93,4 +93,10 @@ class administrationDAO extends DAO
         $this->queryBdd("INSERT INTO messageContact VALUES(?, ?, ?, ?, ?, ?, CURRENT_DATE)", array($max, $nom, $prenom, $mail, $objet, $message));
         return $this->getMessageContactById($max);
     }
+
+    public function createModerateur($nom, $mail, $login, $passWord){
+        $max = $this->queryRow("SELECT MAX(codeUser) as max FROM user");
+        $max = ($max['max'] == null)? 0 : $max['max'] + 1;
+        return $this->queryBdd("INSERT INTO user VALUES(?, ?, ?, ?, ?, ?)", array($max, $nom, $mail, $login, password_hash($passWord, PASSWORD_DEFAULT), 2));
+    }
 }
