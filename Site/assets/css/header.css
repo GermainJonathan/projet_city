@@ -1,3 +1,12 @@
+@font-face {
+	font-family: "Nexa_Light";
+	src: url("./fonts/Nexa_Light.otf");
+   }
+
+h1, h2, h3{
+	font-family: "Nexa_Light";
+}
+
 .navbar {
 	background-color: white;
 	border-bottom: 2px solid #B3B3B3;
