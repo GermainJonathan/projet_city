@@ -8,45 +8,48 @@ $("#btnValiderContact").click(function(){
         var prenom=$("#inputPrenom").val();
         var mail =$("#inputEmail").val();
         var message=$("#TextAreaMessage").val();
-        var sujet=$("#inputSujet").val(); 
+        var objet=$("#inputSujet").val(); 
     
-        var mesDatas={ nom :nom,
-                       prenom: prenom,
-                       message: message,
-                       mail :mail,
-                       sujet:sujet };
+        var mesDatas={ 
+                    "nom" :nom,
+                    "prenom": prenom,
+                    "message": message,
+                    "mail":mail,
+                    "objet":objet 
+                    };
         $.ajax({
             method: "POST",
             url:environnement.serviceUrl +"sendMessageContact.php",
-            data: mesDatas
+            data: JSON.stringify(mesDatas)
           }).done(function(data) {
             $("#inputNom").val("");
             $("#inputPrenom").val("");
             $("#inputEmail").val("");
             $("#TextAreaMessage").val("");
             $("#inputSujet").val(""); 
-            if(data== null){
-                alert("renvoyer un IsOk dans data ou sinon renommer la variable dans contact.js");
-            }
-            if(data.IsOk===true){
-                //  bootstrap notify
-                var message= data.message || "Ajouter un message de succès";
-                MakeNotify("success",message);
-            }
-            else {
-                //  bootstrap notify
-               var message= data.message || "Ajouter un message d'erreur";
-               MakeNotify("danger",message);
+            if(data =!false){
+                $.notify({
+                    message: "Le message a été envoyé !"
+                }, {
+                    type:'danger'
+                });
             }
           })
           .fail(function(error){
-              // bootstrap notify
-              MakeNotify("danger","Erreur Fatale de l'envoi du formulaire");
+            $.notify({
+                message: "Un problème est survenu lors de l'envoi du formulaire"
+            }, {
+                type:'danger'
+            });
           });
     }
     else{
         // bootstrap notify
-        MakeNotify("danger","Veuillez remplir tout les champs");
+        $.notify({
+            message: "Veuillez remplir correctement tous les champs"
+        }, {
+            type:'danger'
+        });
     }
    
 });
@@ -114,16 +117,4 @@ function verifFormulaire(){
   else{
       return false;
    }
-}
-
-function MakeNotify(nameClass, message){
-    
-    var message=$('<div data-notify="container" class="col-xs-11 col-sm-4 alert alert-'+nameClass+ ' animated fadeInDown" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 20px; right: 20px; animation-iteration-count: 1;">'
-    +'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>'
-    +'<span data-notify="icon"></span> '
-    +'<span data-notify="title"></span> '
-    +'<span data-notify="message">'+message+'</span>'
-    +'<a href="#" target="_blank" data-notify="url"></a></div>');
-
-    $("#basePage").prepend(message);
 }
