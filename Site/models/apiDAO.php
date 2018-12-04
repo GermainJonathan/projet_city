@@ -8,6 +8,19 @@ require_once PATH_LIB.'foncBase.php';
 
 class Api extends DAO
 {
+    /**
+     * @var array $arrayToConvert
+     * @return array $result
+     */
+    private function convertCoordonees($arrayToConvert) {
+        $result = array();
+        foreach($arrayToConvert as $key => $elem) {
+            preg_match("/\d*.\d* \d*.\d*/", $elem['coordonees'], $chaine);
+            $chaine = explode(' ', $chaine[0]);
+            $arrayToConvert[$key]['coordonees'] = array('x' => floatval($chaine[0]), 'y' => floatval($chaine[1]));
+        }
+        return $arrayToConvert;
+    }
 
     /**
      * Renvoie un tableau contenant les données des Monuments enregistrés par quartier
@@ -24,9 +37,8 @@ class Api extends DAO
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
-            $monumentResult = array();
-            foreach ($monumentResult as $item) {
-                $monumentResult[] = convertCoordonees($item["coordonnees"]);
+            foreach($monumentResult as $item) {
+                $item['coordonnees'] = $this->convertCoordonees($item['coordonnees']);
             }
         }
         return $monumentResult;

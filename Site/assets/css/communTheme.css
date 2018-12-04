@@ -138,14 +138,14 @@ body::-webkit-scrollbar-thumb {
     z-index: 1020;
 }
 
-.erreur404FR-fr {
+.erreur404FR {
     background: url("../images//core/404-fr.svg") no-repeat;
     background-size: contain;
     background-position: center center;
     height: 50vh;
 }
 
-.erreur404EN-en {
+.erreur404EN {
     background: url("../images//core/404-en.svg") no-repeat;
     background-size: contain;
     background-position: center center;
