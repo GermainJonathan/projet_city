@@ -144,7 +144,8 @@ p{
     }
 
     .btnHistory{
-        width: calc(100% - 150px);
+        width: calc(100% - 110px);
+        margin-left:109px;
     }
 
     .marginFrise{
@@ -184,7 +185,7 @@ p{
     margin-top:40px;
     position:relative;
     overflow-y:hidden;
-    height:365px;
+    height:360px;
 }
 
 .carrousel-contenu{

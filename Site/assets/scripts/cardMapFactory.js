@@ -191,4 +191,24 @@ class Card {
             $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").attr("href", "tel:" + that.numero);
         });
     }
+
+    /**
+     * Création de la div en savoir plus si nous ne sommes pas en mode mobile;
+     */
+    setupEnSavoirPlus(idEvt){
+        $("#"+idEvt).css("display","inline-block");
+        $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[this.codeQuartier]+this.images+")");
+        $("#"+idEvt+" .txtSavoirPlus .titreSavoirPlus").text(this.title);
+        $("#"+idEvt+" .txtSavoirPlus .descSavoirPlus").text(this.description);
+    }
+
+    /**
+     * Création de la modale en savoir plus si nous somme en mode mobile;
+     */
+    setupModalEnSavoirPlus(idEvt){
+        var modal = $('#mobileModal').find('.modal-body'); // On récupère la modal du template
+        modal.empty();  // On vide la modal
+        modal.html(card); // Mise à jour de la modal
+        $('#mobileModal').modal({show: true}); // Affichage de la modal
+    }
 }

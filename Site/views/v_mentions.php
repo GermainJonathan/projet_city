@@ -47,7 +47,7 @@ require_once(PATH_VIEWS.'alert.php');?>
         <p>Vos données personnelles sont confidentielles et ne seront en aucun cas communiquées à des tiers hormis pour la bonne exécution de la prestation. </p>
 
         <div class="TitreMentionsLegales"><h2>Propriété intellectuelle</h2></div>
-        <p>Tout le contenu du présent site, incluant, de façon non limitative, les graphismes, images, textes, animations, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de Loïc Gastard à l'exception des marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.
+        <p>Tout le contenu du présent site, incluant, de façon non limitative, les graphismes, images, textes, animations, logos ainsi que leur mise en forme sont la propriété exclusive de Loïc Gastard à l'exception des marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.
             Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l'accord exprès par écrit de Loïc Gastard. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.3335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à votre encontre.
         </p>
 
@@ -73,12 +73,11 @@ require_once(PATH_VIEWS.'alert.php');?>
         <p>Aucune autre garantie n'est accordée au visiteur, auquel incombe l'obligation de formuler clairement ses besoins et le devoir de s'informer. Si des informations fournies par Loïc Gastard apparaissent inexactes, il appartiendra au visiteur de procéder lui-même à toutes vérifications de la cohérence ou de la vraisemblance des résultats obtenus. Loïc Gastard ne sera en aucune façon responsable vis à vis des tiers de l'utilisation par le visiteur des informations ou de leur absence contenues dans le site internet. </p>
 
         <div class="TitreMentionsLegales"><h2>Forum de discussion</h2></div>
-        <p>Le forum de discussion ainsi que la publication de commentaires sont ouvert à tout le monde, chacun est libre d’y intervenir, de manière anonyme ou identifiée. Nous avons choisi de les modérer a posteriori pour le rendre plus vivant. Les messages postés sont donc immédiatement visibles en ligne. Ceci implique de la part des utilisateurs que les propos tenus sur le forum de discussion restent courtois, respectueux et surtout conformes aux lois en vigueur. Les modérateurs pourront effacer donc immédiatement les messages :</p>
+        <p>Le forum de discussion ainsi que la publication de commentaires sont ouvert à tout le monde, chacun est libre d’y intervenir, de manière anonyme ou identifiée. Nous avons choisi de les modérer a posteriori pour le rendre plus vivant. Les messages postés sont donc immédiatement visibles en ligne. Ceci implique de la part des utilisateurs que les propos tenus sur le forum de discussion restent courtois, respectueux et surtout conformes aux lois en vigueur. Les modérateurs pourront effacer immédiatement les messages :</p>
         <ul>
             <li>Insultants, diffamatoires…,</li>
-            <li>Publicitaire ou promotionnel (promotion de médicaments, produits de régimes, publicité pour un praticien…),</li>
             <li>Racistes, homophobes…,</li>
-            <li>Comprenant des adresses ou des numéros de téléphone,</li>
+            <li>Comprenant des données privées,</li>
             <li>Inintelligibles, hors sujets ou postés dans plusieurs discussions à la fois.</li>
         </ul>
         <p>Cette liste n’est pas exhaustive.  Loïc Gastard se réserve le droit de supprimer des messages qui n’entreraient pas dans l’une de ces catégories.</p>
