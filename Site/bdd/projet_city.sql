@@ -34,10 +34,11 @@ CREATE TABLE `activite` (
   `codeQuartier` int(5) DEFAULT NULL,
   `codeCategorie` int(5) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
-  `nomLieux` varchar(50) DEFAULT NULL,
+  `adresse` varchar(50) DEFAULT NULL,
   `coordonnees` point NOT NULL,
   `imageActivite` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `commentaire` text,
+  `telephone` varchar(20) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -158,7 +159,8 @@ CREATE TABLE `monument` (
   `coordonnees` point NOT NULL,
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `commentaire` text,
+  `adresse` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

@@ -150,6 +150,9 @@ function updateComponent(typeComponent, component, dataComponent) {
                 coordonneesMonument.find("#y").val(dataComponent.coordonnees.y);
             }
             coordonneesMonument.appendTo(component.find(".media-body"));
+            let adresseMonument = $("<div class='form-inline' data-id='9'><label class='col-2 align-self-left' for='adresseMonument'><h4 class='text-truncate'>Adresse</h4></label><input name='adresseMonument' type='text' class='form-control col-8' id='adresseMonument'></div>");
+            adresseMonument.find("#adresseMonument").val(dataComponent.adresse);
+            adresseMonument.appendTo(component.find(".media-body"));
             break;
         case "Activité":
             component.find("#id").val(dataComponent.id);
@@ -208,10 +211,11 @@ function generateFormData(patrimoine, type) {
             data = {
                 'idMonument' : patrimoine[0].value,
                 'codeQuartier' : adminPageOrder[selectPage],
-                'description' : patrimoine[5].value,
+                'description' : patrimoine[6].value,
                 'architecte' : patrimoine[2].value,
                 'title' : patrimoine[1].value,
                 'coordonnees' : "POINT(" + patrimoine[3].value + " " + patrimoine[4].value + ")",
+                'adresse' : patrimoine[5].value,
             }
             break;
         case "Activité":
