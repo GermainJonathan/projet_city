@@ -10,9 +10,9 @@ require_once(PATH_VIEWS.'alert.php');?>
     <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th><?= TITRE_DATE ?></th>
-                <th><?= TITRE_COMM_NOM ?></th>
-                <th scope="col"><?= TITRE_MESSAGE ?></th>
+                <th scope="col" style="width: 15%;"><?= TITRE_COMM_NOM ?></th>
+                <th><?= TITRE_MESSAGE ?></th>
+                <th style="width: 15%;"><?= TITRE_DATE ?></th>
                 <?php
                     if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
                         ?>
@@ -23,27 +23,26 @@ require_once(PATH_VIEWS.'alert.php');?>
             </tr>
         </thead>
         <tbody id="messageTopic">
-            <tr>
-                <?php
-                foreach ($listMessage as $message) {
-                    ?>
-                    <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= $message->getDate() ?></td>
-                    <td data-label=<?= '"'.TITRE_COMM_NOM.'"' ?>><?= $message->getNom().($message->getProfile() != 'User')? "" : " ★" ?></td>
+            <?php
+            foreach ($listMessage as $message) {
+                ?>
+                <tr>
+                    <td data-label=<?= '"'.TITRE_COMM_NOM.'"' ?>><?= $message->getNom().($message->getProfile() != 'Administrateur' ? "" : " ★") ?></td>
                     <td data-label=<?= '"'.TITRE_MESSAGE.'"' ?>><?= $message->getMessage() ?></td>
+                    <td data-label=<?= '"'.TITRE_DATE.'"' ?>><?= $message->getDate() ?></td>
                     <?php
                     if (isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur" || $_SESSION['user']->getProfile() == "Moderateur")) {
                         ?>
-                        <td data-label=<?= '"'.TITRE_ACTION.'"' ?>><button class="btn btn-danger">X</button></td>
+                        <td data-label=<?= '"'.TITRE_ACTION.'"' ?>><button class="btn btn-danger" id="<?=$message->getIdMessage()?>" onClick="deleteMessage($(this));">X</button></td>
                         <?php
                     }
-                }
-                ?>
-            </tr>
+                    ?>
+                </tr>
+                <?php
+            }
+            ?>
         </tbody>
     </table>
-    <?php
-        if (empty($_SESSION['user']) || $_SESSION['user']->getCodeProfile() == 0){
-    ?>
     <div>
         <form name="formTopic" id="formTopic" class="mt-4">
             <div class="form-group">
@@ -55,9 +54,27 @@ require_once(PATH_VIEWS.'alert.php');?>
             <button type="button" form="formTopic" name="valFormTopic" class="btn btn-primary" onClick="sendMessage(<?= $topic->getId() ?>);"><?= TXT_ENVOYER ?></button>
         </form>
     </div>
-    <?php
-        }
-    ?>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalTitle">Delete confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="idModal" type="text" class="form-control" hidden>
+                <p>Are you sure to delete this object ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onClick="confirmDelete($('#messageModal').find('input#idModal').val());">Continue</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>topic.js"></script>
 

@@ -142,11 +142,11 @@ class forumDAO extends DAO
      * @return bool|message
      */
     public function sendMessage($idTopic, $nom, $message, $profile = 0){
-        $date = date('Y-M-d');
+        $date = date('Y-m-d');
         $result = $this->queryRow("SELECT MAX(codeMessage) as max FROM message");
         $max = ($result['max'] == null)? 0 : $result['max'] + 1;
 
-        $res = $this->queryBdd("INSERT INTO commentaire VALUES (?, ?, ?, ?, ?, ?, ?)",
+        $res = $this->queryBdd("INSERT INTO message VALUES (?, ?, ?, ?, ?, ?)",
             array($max, $idTopic, htmlspecialchars(trim($nom)), htmlspecialchars(trim($message)), $date, $profile));
 
         if($res){
