@@ -390,6 +390,8 @@ class quartierDAO extends DAO
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
             foreach($monumentResult as $key => $item) {
+                if($item['images'] == null || !file_exists(PATH_IMAGES.$quarter."/".$item['images']))
+                    $monumentResult[$key]['images'] = "undefined.png";
                 $monumentResult[$key]['coordonnees'] = convertCoordonees($item['coordonnees']);
             }
         }
@@ -412,6 +414,8 @@ class quartierDAO extends DAO
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
         } else {
             foreach($restaurantResult as $key => $item) {
+                if($item['images'] == null || !file_exists(PATH_IMAGES.$quarter."/".$item['images']))
+                    $restaurantResult[$key]['images'] = "undefined.png";
                 $restaurantResult[$key]['coordonnees'] = convertCoordonees($item["coordonnees"]);
             }
         }
@@ -434,6 +438,8 @@ class quartierDAO extends DAO
             error_log('Activité - Erreur lors de l\'execution de la requête');
         } else {
             foreach($activiteResult as $key => $item) {
+                if($item['images'] == null || ! file_exists(PATH_IMAGES.$quarter."/".$item['images']))
+                    $activiteResult[$key]['images'] = "undefined.png";
                 $activiteResult[$key]['coordonnees'] = convertCoordonees($item["coordonnees"]);
             }
         }
