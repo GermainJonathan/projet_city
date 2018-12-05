@@ -203,6 +203,7 @@ p{
     height:350px;
     position:relative;
     max-width:330px;
+    margin-bottom:30px;
 }
 
 .carrousel-contenu .card img{
@@ -273,6 +274,16 @@ p{
     visibility: hidden;
 }
 
+.closeBtnSavoirPlus{
+    color: #444;
+    background-color:white;
+    border:none;
+    
+}
+.closeBtnSavoirPlus span{
+    font-size:20px;
+}
+
 .txtSavoirPlus{
     position: absolute;
     width:50%;
@@ -290,6 +301,19 @@ p{
     opacity:0.9;
 }
 
+
+#titreSavoirPlusModal{
+    text-align:center;
+    color: #444;
+    padding-bottom:10px;
+    border-bottom: 1px solid #E98B39;
+    width:100%;
+}
+
+.txtSavoirPlusModal .descSavoirPlus{
+    text-align:justify;
+}
+
 .titreSavoirPlus{
     font-size: 20px;
     color: #444;
@@ -297,6 +321,9 @@ p{
     margin-bottom: 10px;
 }
 
+.modal-header.modalSavoirPlus{
+    border-bottom:none!important;
+}
 .contactSavoirPlus{
     float: left;
     transform: translateY(-100%);
@@ -488,7 +515,9 @@ p{
     color:#444;
     font-size:40px;
     font-weight: normal;
-    margin-left:20px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #E98B39;
+    margin-bottom:30px;
 }
 
 .arrow-restaurant{

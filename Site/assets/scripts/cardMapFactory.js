@@ -183,10 +183,10 @@ class Card {
         var that=this;
         this.button.click(function(){
             if(isMobileDevice) {
-                that.setupModalEnSavoirPlus(idEvt);
+                that.setupModalEnSavoirPlus();
             }
             else{
-                that.setupEnSavoirPlus();
+                that.setupEnSavoirPlus(idEvt);
             }
         });
     }
@@ -195,8 +195,12 @@ class Card {
      * Création de la div en savoir plus si nous ne sommes pas en mode mobile;
      */
     setupEnSavoirPlus(idEvt){
+        var pathImg=path[this.codeQuartier]+this.images;
+        if(this.images =="undefined.png"){
+            pathImg="assets/images/core/undefined.png";
+        }
         $("#"+idEvt).css("display","inline-block");
-        $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[this.codeQuartier]+this.images+")");
+        $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+pathImg+")");
         $("#"+idEvt+" .txtSavoirPlus .titreSavoirPlus").text(this.title);
         $("#"+idEvt+" .txtSavoirPlus .descSavoirPlus").text(this.description);
         $("#"+idEvt+" .contactSavoirPlus .adresseSavoirPlus").text(this.adresse);
@@ -208,16 +212,21 @@ class Card {
      * Création de la modale en savoir plus si nous somme en mode mobile;
      */
     setupModalEnSavoirPlus(){
+        var pathImg=path[this.codeQuartier]+this.images;
+        if(this.images == "undefined.png"){
+            pathImg="assets/images/core/undefined.png";
+        }
         var divSavoirPlus=$('<div class="modalSavoirPlus">'+
-            '<div class="imgModalSavoirPlus" style="background-image:url("'+path[this.codeQuartier]+this.images+'"></div>'+
+            '<div class="imgModalSavoirPlus"></div>'+
             '<div class="txtSavoirPlusModal">'+
-                '<div class="titreSavoirPlus">'+this.title+'</div>'+
                 '<div class="descSavoirPlus">'+this.description+'</div>'+
             '</div>'+
         '</div>');
         var modal = $('#SavoirPlusmodal').find('.modal-body'); // On récupère la modal du template
         modal.empty();  // On vide la modal
         modal.html(divSavoirPlus); // Mise à jour de la modal
+        $("#titreSavoirPlusModal").text(this.title);
+        modal.find(".imgModalSavoirPlus").css("background-image","url("+pathImg+")");
         $('#SavoirPlusmodal').modal({show: true}); // Affichage de la modal
     }
 }
