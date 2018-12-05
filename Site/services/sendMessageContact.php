@@ -21,7 +21,7 @@ $array = null;
 if (isset($data->nom) && isset($data->prenom) && isset($data->message) && isset($data->mail) && isset($data->objet)) {
     $responses = $administrationDAO->createMessageContact($data->nom, $data->prenom, $data->mail, $data->objet, $data->message);
     if($responses) {
-        $message = makeMessage("message", "nom", "prenom", "mail");
+        $message = makeMessage($data->message, $data->nom, $data->prenom, $data->mail);
         mail(MAIL_ADMIN, 'messageContact : ' . $data->objet, $message);
         $array = $responses->toArray();
     }

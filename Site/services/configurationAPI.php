@@ -27,6 +27,7 @@ define('PATH_LIB','../lib/');
 define('PATH_MODELS','../models/');
 define('PATH_VIEWS','../views/v_');
 define('PATH_TEXTES','../languages/');
+define('PATH_BANNED_WORDS', '../banned words/words.txt');
 
 //sous dossiers
 define('PATH_CSS', PATH_ASSETS.'css/');
