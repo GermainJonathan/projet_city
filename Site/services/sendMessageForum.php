@@ -29,6 +29,9 @@ else
 
 if (isset($data->idTopic) && isset($data->message) && isset($nom)) {
     $responses = $forumDAO->sendMessage($data->idTopic, $data->message, $nom, $profile);
+    if((isset($_SESSION['user']) && $_SESSION['user']->getProfile() == 0 ) || empty($_SESSION['user'])){
+        $_SESSION['user'] = new user(0, $nom, "", 0, "User");
+    }
     if($responses)
         $array = $responses->toArray();
 } else {
