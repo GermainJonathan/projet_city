@@ -35,6 +35,28 @@ function sendMessage() {
     });
 }
 
-function openCommentaireModal() {
+function openCommentaireModal(button) {
+    $('#commentaireModal').find('input#idModal').val(button.attr('id'));
     $("#commentaireModal").modal('show');
+}
+
+function confirmDeleteCommentaire(idMessage) {
+    $("#commentaireModal").modal('hide');
+    $.ajax({
+        method: 'GET',
+        url: environnement.serviceUrl + "adminDeleteCommentaireQuartier.php?id=" + idMessage
+    }).done(function () {
+        $.notify({
+            message: "Object deleted with id : " + idMessage
+        }, {
+            type:'success'
+        });
+        $("#commentaireTable > tr > td > button#" + idMessage).parents("tr").hide();
+    }).fail(function() {
+        $.notify({
+            message: "Error on delete object with id : " + idMessage
+        }, {
+            type:'warning'
+        });
+    });
 }
