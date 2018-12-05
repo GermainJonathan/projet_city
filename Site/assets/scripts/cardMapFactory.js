@@ -8,7 +8,7 @@
  * @param {string | Array[string]} images 
  */
 class Card {    
-    constructor(title, description, adresse = "", numero = "", codeQuartier, images = "", link = "") {
+    constructor(title, description, codeQuartier, images = "", adresse = "", numero = "", link = "") {
         this.images = images;
         this.link = link;
         this.title  = title;
@@ -16,7 +16,7 @@ class Card {
         this.description = description;
         this.adresse = adresse;
         this.numero = numero;
-        this.button=null;
+        this.button = null;
     }
 
     /**
@@ -169,7 +169,7 @@ class Card {
             } else {
                 var imageCard = $("<img>", {
                     class: "card-img-top d-block w-100"
-                }).attr("src", path[this.codeQuartier]+this.images);
+                }).attr("src", path[this.codeQuartier] + this.images);
             }
         }
         return imageCard[0];

@@ -374,23 +374,25 @@ class quartierDAO extends DAO
         return $this->queryBdd("DELETE FROM restaurant WHERE codeRestaurant = ?", array($idRestaurant));
     }
 
-        /**
+    /**
      * Renvoie un tableau contenant les données des Monuments enregistrés par quartier
      * @var string quarter nom du quartier
      * @return array monument[]
      */
-    public function getDataMonumentByQuarter($quarter) {
-        $sql = "SELECT mon.codeMonument as id, mon.codeQuartier as idQuartier, mon.libelleMonument as name, mon.imageMonument as images, AsText(mon.coordonnees) as coordonees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y') as dateConstruction, mon.architecte, mon.commentaire
+    public function getDataMonumentByQuarter($quarter, $idLang = 1) {
+        $sql = "SELECT mon.codeMonument as id, mon.codeQuartier as idQuartier, mon.libelleMonument as name, mon.imageMonument as images, AsText(mon.coordonnees) as coordonnees, DATE_FORMAT(mon.dateConstruction, '%d %m %Y') as dateConstruction, mon.architecte, mon.commentaire
                 FROM monument mon
                 INNER JOIN quartier qua ON mon.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier
-                AND mon.codePays = 1";
-        $monumentResult = $this->queryAll($sql, array('quartier' => $quarter));
+                AND mon.codePays = :lang";
+        $monumentResult = $this->queryAll($sql, array('quartier' => $quarter, 'lang' => $idLang));
         if(!$monumentResult) {
             error_log('Monument - Erreur lors de l\'execution de la requête');
         } else {
             foreach($monumentResult as $key => $item) {
-                $monumentResult[$key]['coordonees'] = convertCoordonees($item['coordonees']);
+                if($item['images'] == null || !file_exists(PATH_IMAGES.$quarter."/".$item['images']))
+                    $monumentResult[$key]['images'] = "undefined.png";
+                $monumentResult[$key]['coordonnees'] = convertCoordonees($item['coordonnees']);
             }
         }
         return $monumentResult;
@@ -401,18 +403,20 @@ class quartierDAO extends DAO
      * @var string quarter nom du quartier
      * @return array restaurant[]
      */
-    public function getDataRestaurantByQuarter($quarter) {
-        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.imageRestaurant as images, res.nom as name, AsText(res.coordonnees) as coordonees, res.numeroTelephone, res.commentaire
+    public function getDataRestaurantByQuarter($quarter, $idLang = 1) {
+        $sql = "SELECT res.codeRestaurant as id, res.codeQuartier as idQuartier, res.imageRestaurant as images, res.nom as name, AsText(res.coordonnees) as coordonnees, res.numeroTelephone, res.commentaire
                 FROM restaurant res
                 INNER JOIN quartier qua ON res.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier
-                AND res.codePays = 1";
-        $restaurantResult = $this->queryAll($sql, array('quartier' => $quarter));
+                AND res.codePays = :lang";
+        $restaurantResult = $this->queryAll($sql, array('quartier' => $quarter, 'lang' => $idLang));       
         if(!$restaurantResult) {
             error_log('Restaurant - Erreur lors de l\'execution de la requête');
         } else {
-            foreach ($restaurantResult as $key => $item) {
-                $restaurantResult[$key]['coordonees'] = convertCoordonees($item["coordonees"]);
+            foreach($restaurantResult as $key => $item) {
+                if($item['images'] == null || !file_exists(PATH_IMAGES.$quarter."/".$item['images']))
+                    $restaurantResult[$key]['images'] = "undefined.png";
+                $restaurantResult[$key]['coordonnees'] = convertCoordonees($item["coordonnees"]);
             }
         }
         return $restaurantResult;
@@ -421,20 +425,22 @@ class quartierDAO extends DAO
     /**
      * Renvoie un tableau contenant les données des Activités enregistrés par quartier
      * @var string quarter nom du quartier
-     * @return array monument[]
+     * @return array activite[]
      */
-    public function getDataActiviteByQuarter($quarter) {
-        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonees, act.imageActivite as images, act.commentaire
+    public function getDataActiviteByQuarter($quarter, $idLang = 1) {
+        $sql = "SELECT act.codeActivite as id, act.codeQuartier as idQuartier, act.codeCategorie as idCategorie, act.nom as name, act.nomLieux as adresse, AsText(act.coordonnees) as coordonnees, act.imageActivite as images, act.commentaire
                 FROM activite act
                 INNER JOIN quartier qua ON act.codeQuartier = qua.codeQuartier
                 WHERE qua.libelleQuartier = :quartier
-                AND act.codePays = 1";
-        $activiteResult = $this->queryAll($sql, array('quartier' => $quarter));
+                AND act.codePays = :lang";
+        $activiteResult = $this->queryAll($sql, array('quartier' => $quarter, 'lang' => $idLang));
         if(!$activiteResult) {
             error_log('Activité - Erreur lors de l\'execution de la requête');
         } else {
-            foreach ($activiteResult as $key => $item) {
-                $activiteResult[$key]['coordonees'] = convertCoordonees($item["coordonees"]);
+            foreach($activiteResult as $key => $item) {
+                if($item['images'] == null || ! file_exists(PATH_IMAGES.$quarter."/".$item['images']))
+                    $activiteResult[$key]['images'] = "undefined.png";
+                $activiteResult[$key]['coordonnees'] = convertCoordonees($item["coordonnees"]);
             }
         }
         return $activiteResult;
@@ -446,10 +452,10 @@ class quartierDAO extends DAO
      * @var string quarter nom du quartier 
      * @return array [activites[], restaurants[], monuments[]]
      */
-    public function getAllDataByQuarter($quarter) {
-        $activites = $this->getDataActiviteByQuarter($quarter);
-        $restaurants = $this->getDataRestaurantByQuarter($quarter);
-        $monuments = $this->getDataMonumentByQuarter($quarter);
+    public function getAllDataByQuarter($quarter, $idLang = 1) {
+        $activites = $this->getDataActiviteByQuarter($quarter, $idLang);
+        $restaurants = $this->getDataRestaurantByQuarter($quarter, $idLang);
+        $monuments = $this->getDataMonumentByQuarter($quarter, $idLang);
         return array('activites' => $activites, 'restaurants' => $restaurants, 'monuments' => $monuments);
     }
 }
