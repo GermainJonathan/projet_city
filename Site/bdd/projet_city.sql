@@ -34,7 +34,7 @@ CREATE TABLE `activite` (
   `codeQuartier` int(5) DEFAULT NULL,
   `codeCategorie` int(5) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
-  `adresse` varchar(50) DEFAULT NULL,
+  `nomLieux` varchar(50) DEFAULT NULL,
   `coordonnees` point NOT NULL,
   `imageActivite` varchar(50) DEFAULT NULL,
   `commentaire` text,
