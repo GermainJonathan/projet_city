@@ -45,8 +45,8 @@ require_once(PATH_VIEWS.'alert.php');?>
     </table>
     <div>
         <form name="formTopic" id="formTopic" class="mt-4">
-            <div class="form-group">
-                <input class="form-control" type="text" name="nomTopic" placeholder="<?= TXT_COMM_NOM ?>" id="nomTopic" value="<?= (isset($_SESSION['user']) && $_SESSION['user']->getCodeProfile() == 0) ? $_SESSION['user']->getNom() : "" ?>"/>
+            <div class="form-group" <?= (isset($_SESSION['user']) && $_SESSION['user']->getCodeProfile() != 0) ? "hidden" : "" ?>>
+                <input class="form-control" type="text" name="nomTopic" placeholder="<?= TXT_COMM_NOM ?>" id="nomTopic" value="<?= (isset($_SESSION['user'])) ? $_SESSION['user']->getNom() : "" ?>"/>
             </div>
             <div class="form-group">
                 <textarea name="messageTopic" id="messageTopic" class="form-control" placeholder="<?= TITRE_MESSAGE ?>"></textarea>

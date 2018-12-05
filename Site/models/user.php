@@ -50,6 +50,14 @@ class user
     }
 
     /**
+     * @param mixed $nom
+     */
+    public function setNom($nom): void
+    {
+        $this->_nom = $nom;
+    }
+
+    /**
      * @return mixed
      */
     public function getMail()

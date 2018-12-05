@@ -19,7 +19,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (isset($data->idQuartier) && isset($data->message) && isset($data->nom)) {
     $responses = $commentaireDAO->addCommentaire($_SESSION['idLang'], $data->idQuartier, $data->message, $data->nom);
-    if((isset($_SESSION['user']) && $_SESSION['user']->getProfile() == 0 ) || empty($_SESSION['user'])){
+    if(empty($_SESSION['user']) || $_SESSION['user']->getCodeProfile() == 0){
         $_SESSION['user'] = new user(0, $data->nom, "", 0, "User");
     }
     if($responses)
