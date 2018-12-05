@@ -182,13 +182,12 @@ class Card {
         this.button.attr("href","#"+idEvt);
         var that=this;
         this.button.click(function(){
-            $("#"+idEvt).css("display","inline-block");
-            $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[that.codeQuartier]+that.images+")");
-            $("#"+idEvt+" .txtSavoirPlus .titreSavoirPlus").text(that.title);
-            $("#"+idEvt+" .txtSavoirPlus .descSavoirPlus").text(that.description);
-            $("#"+idEvt+" .contactSavoirPlus .adresseSavoirPlus").text(that.adresse);
-            $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").text(that.numero);
-            $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").attr("href", "tel:" + that.numero);
+            if(isMobileDevice) {
+                that.setupModalEnSavoirPlus();
+            }
+            else{
+                that.setupEnSavoirPlus(idEvt);
+            }
         });
     }
 
@@ -196,19 +195,38 @@ class Card {
      * Création de la div en savoir plus si nous ne sommes pas en mode mobile;
      */
     setupEnSavoirPlus(idEvt){
+        var pathImg=path[this.codeQuartier]+this.images;
+        if(this.images =="undefined.png"){
+            pathImg="assets/images/core/undefined.png";
+        }
         $("#"+idEvt).css("display","inline-block");
-        $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+path[this.codeQuartier]+this.images+")");
+        $("#"+idEvt+" .imgSavoirPlus").css("background-image","url("+pathImg+")");
         $("#"+idEvt+" .txtSavoirPlus .titreSavoirPlus").text(this.title);
         $("#"+idEvt+" .txtSavoirPlus .descSavoirPlus").text(this.description);
+        $("#"+idEvt+" .contactSavoirPlus .adresseSavoirPlus").text(this.adresse);
+        $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").text(this.numero);
+        $("#"+idEvt+" .contactSavoirPlus .telephoneSavoirPlus").attr("href", "tel:" + this.numero);
     }
 
     /**
      * Création de la modale en savoir plus si nous somme en mode mobile;
      */
-    setupModalEnSavoirPlus(idEvt){
-        var modal = $('#mobileModal').find('.modal-body'); // On récupère la modal du template
+    setupModalEnSavoirPlus(){
+        var pathImg=path[this.codeQuartier]+this.images;
+        if(this.images == "undefined.png"){
+            pathImg="assets/images/core/undefined.png";
+        }
+        var divSavoirPlus=$('<div class="modalSavoirPlus">'+
+            '<div class="imgModalSavoirPlus"></div>'+
+            '<div class="txtSavoirPlusModal">'+
+                '<div class="descSavoirPlus">'+this.description+'</div>'+
+            '</div>'+
+        '</div>');
+        var modal = $('#SavoirPlusmodal').find('.modal-body'); // On récupère la modal du template
         modal.empty();  // On vide la modal
-        modal.html(card); // Mise à jour de la modal
-        $('#mobileModal').modal({show: true}); // Affichage de la modal
+        modal.html(divSavoirPlus); // Mise à jour de la modal
+        $("#titreSavoirPlusModal").text(this.title);
+        modal.find(".imgModalSavoirPlus").css("background-image","url("+pathImg+")");
+        $('#SavoirPlusmodal').modal({show: true}); // Affichage de la modal
     }
 }

@@ -116,6 +116,9 @@ class BubbleHistory {
        button.click(function(){
            $("#txtHistory").text(that.description);
            $("#sousTitreHistory").text(that.title);
+          setTimeout(function(){ 
+            location.href="#bodyHistoire";
+        }, 100);
        });
 
        return button[0];

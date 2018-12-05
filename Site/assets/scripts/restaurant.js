@@ -25,7 +25,7 @@ function CreateContainerRestaurants(tabRestaurants){
     $("#arrowTopRestaurant").click(function(){
         setTimeout(function(){ 
             location.href="#anchorBodyRestaurants";
-        }, 1000);
+        }, 200);
         $("#RestaurantCards").css("height","365px");
         if($("#rowSavoirPlus").css("height")=="0px"){
             $("#ctnRestaurants").css("height","100%");
@@ -41,7 +41,7 @@ function CreateContainerRestaurants(tabRestaurants){
                 var cardRestaurant= $(".cardRestaurant")[0];
                 $(cardRestaurant).find(".btn-primary").click();
             }
-        }, 700);
+        }, 200);
         $("#RestaurantCards").css("height","calc(100% - 100px)");
         $("#ctnRestaurants").css("height","75%");
        
