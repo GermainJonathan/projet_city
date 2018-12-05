@@ -101,6 +101,7 @@ p{
     padding-left: 20px;
     position:relative;
 }
+
 #timelineHistory > div > .bubble {
     background-image: url(../images/bellecour/bellecour.jpg);
     background-repeat: no-repeat;
@@ -121,10 +122,44 @@ p{
     overflow:hidden;
 }
 
+#blocHistory{
+    display: flex;
+    flex-flow: column;
+    border-right: solid 1px #E98B39;
+}
+
 #sousTitreHistory{
+    flex: 0 1 auto;
     font-size:17px;
     color:#B3B3B3;
     font-style: italic;
+}
+
+#txtHistory{
+    flex: 0 1 auto;
+}
+
+#imgHistoryContainer{
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#imgHistory{
+    /* background-image: url(../images/bellecour/bellecour.jpg); */
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid #E98B39;
+    background-size: cover;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding-bottom: 100%;
+    transform: translateX(0%);
 }
 
 @media screen and (max-width: 510px){

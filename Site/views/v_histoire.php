@@ -4,10 +4,13 @@
         <?= TITRE_HISTOIRE ?>
     </h1>
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div id="blocHistory" class="col-lg-4 col-md-4 col-sm-12">
             <div id="sousTitreHistory">
             </div>
             <p id="txtHistory" class="text-justify"></p>
+            <div id="imgHistoryContainer">
+                <div id="imgHistory"></div>
+            </div>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-12">
             <!--  Catégorie Histoire  -->
