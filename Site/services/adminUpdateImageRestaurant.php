@@ -15,42 +15,25 @@ $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 
-if (isset($_POST['idRestaurant']) && file_exists($_FILES['photo']['tmp_name'])) {
-    $erreur = null;
-    // TODO: trouver un moyen de charger dynamiquement le path du fichier en fonction du quartier
-    $fichier = PATH_IMAGES . $quartier->getLibelleQuartier() . "/";
-    $nouvelleImage = $fichier.basename($_FILES['photo']['name']);
-    $imageType = strtolower(pathinfo($nouvelleImage,PATHINFO_EXTENSION));
-
-    $check = getimagesize($_FILES["photo"]["tmp_name"]);
-    if($check === false)
-        $erreur =  ERREURE_FILE_NOT_IMAGE;
-
-    if (file_exists($nouvelleImage))
-        $erreur = ERREURE_IMAGE_EXISTANTE;
-
-    if ($_FILES["photo"]["size"] > 500000)
-        $erreur = ERREUR_IMAGE_TROP_LOURDE;
-
-    if($imageType != "jpg" && $imageType != "png" && $imageType != "jpeg" && $imageType != "gif" )
-        $erreur =  ERREURE_NOT_IMAGE;
-
-    if($erreur == null) {
-        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $nouvelleImage)) {
-            $success = basename($_FILES["photo"]["name"]);
-            if (!$responses = $quartierDAO->setImageActivite($_POST['idMonument'], $success)) {
-                $erreur = ERREUR_BDD;
-                unlink($nouvelleImage);
-            }
-            else{
-                $array = $responses->toArray();
-            }
+if(isset($_FILES['image'])) {
+    $image = $_FILES['image'];
+    $imageName = $image['name'];
+    if (isset($_POST['id']) && isset($imageName) && $image['error'] == 0) {
+        $responses = $quartierDAO->setImageRestaurant($_POST['id'], $imageName);
+        if($responses) {
+            $array = $responses->toArray();
         }
+        $codeQuartier = $array['codeQuartier'];
+        move_uploaded_file($image['tmp_name'], PATH[$codeQuartier].basename($imageName));
+    } else {
+        $code = 502;
+        $array = array(
+            'error' => 'Error during operating',
+            'message' => 'Error has occured during SQL statement or image upload'
+        );
     }
-    else
-        $erreur = ERREURE_TELECHARGEMENT;
-} else {
-    $code = 404;
+    } else {
+    $code = 403;
     $array = array(
         'error' => 'No image',
         'message' => 'Upload a image unless image...'
