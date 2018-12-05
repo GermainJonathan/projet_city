@@ -37,7 +37,7 @@
                         if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                         ?>
                     <td data-label=<?= TITRE_ACTION ?>>
-                        <button class="btn btn-danger" onClick="openCommentaireModal();">X</button>
+                        <button id="<?=$commentaire->getCodeCommentaire()?>" class="btn btn-danger" onClick="openCommentaireModal($(this));">X</button>
                     </td>
                     <?php
                         }
@@ -84,7 +84,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onClick="deleteObject($('#commentaireModal').find('input#idModal').val());">Continue</button>
+                <button type="button" class="btn btn-primary" onClick="confirmDeleteCommentaire($('#commentaireModal').find('input#idModal').val());">Continue</button>
             </div>
         </div>
     </div>
