@@ -16,7 +16,6 @@ $code = 200;
 $commentaireDAO = new commentaireDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
-session_start();
 
 if (isset($data->idQuartier) && isset($data->message) && isset($data->nom)) {
     $responses = $commentaireDAO->addCommentaire($_SESSION['idLang'], $data->idQuartier, $data->message, $data->nom);
