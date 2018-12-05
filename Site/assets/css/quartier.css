@@ -324,6 +324,7 @@ p{
 .modal-header.modalSavoirPlus{
     border-bottom:none!important;
 }
+
 .contactSavoirPlus{
     float: left;
     transform: translateY(-100%);

@@ -50,23 +50,22 @@
         </table>
     </div>
     <?php
-        if (empty($_SESSION['user'])){
+        if (empty($_SESSION['user']) || $_SESSION['user']->getCodeProfile() == 0){
             ?>
     <div class="col-12 mb-4">
-        <form name="formCommentaireBellecour" id="formCommentaireBellecour" method="post">
+        <form name="formCommentaire" id="formCommentaire">
             <div class="form-group">
-                <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" placeholder="Nom" value="<?= (isset($_POST['titreTopic'])) ? $_POST['titreTopic'] : "" ?>" />
+                <input class="form-control" type="text" name="nomCommentaire" id="nomCommentaire" placeholder="Nom" value="<?= (isset($_SESSION['user']) && $_SESSION['user']->getCodeProfile() == 0) ? $_SESSION['user']->getNom() : "" ?>" />
             </div>
             <div class="form-group">
                 <textarea name="commentaire" id="commentaire" class="form-control" placeholder="<?= TXT_COMM_COMM ?>"></textarea>
             </div>
-            <button type="button" name="valFormCommentaireBellecour" class="btn btn-primary" onClick="sendMessage();">
-                <?= TXT_ENVOYER ?></button>
+            <button type="button" name="valFormCommentaire" class="btn btn-primary" onClick="sendMessage();"><?= TXT_ENVOYER ?></button>
         </form>
     </div>
     <?php
         }
-        ?>
+    ?>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="commentaireModal" tabindex="-1" role="dialog" aria-labelledby="commentaireModalTitle" aria-hidden="true">

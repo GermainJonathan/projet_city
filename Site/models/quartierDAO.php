@@ -40,22 +40,10 @@ class quartierDAO extends DAO
      * @param $libelleQuartier
      * @return array
      */
-    /**
-     * Retourne l'id Lang courant
-     */
-    public function getLangId() {
-        $result = $this->queryRow("SELECT codePays FROM pays WHERE libellePaysCourt = ?", array(LANG));
-        return $result['codePays'];
-    }
-
-    /**
-     * @param $libelleQuartier
-     * @return array
-     */
-    public function getActiviteByQuartier($libelleQuartier){
+    public function getActiviteByQuartier($libelleQuartier, $idLang = 1){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT *, AsText(coordonnees) as coordonneesT FROM activite WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
+        $result = $this->queryAll("SELECT *, AsText(coordonnees) as coordonneesT FROM activite WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $idLang));
         $listActivite = array();
         foreach ($result as $temp){
             $categorie = $this->getCategorieById($temp['codeCategorie']);
@@ -70,10 +58,10 @@ class quartierDAO extends DAO
      * @param $libelleQuartier
      * @return array
      */
-    public function getRestaurantByQuartier($libelleQuartier){
+    public function getRestaurantByQuartier($libelleQuartier, $idLang = 1){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT *, AsText(coordonnees) as coordonneesT FROM restaurant WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
+        $result = $this->queryAll("SELECT *, AsText(coordonnees) as coordonneesT FROM restaurant WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $idLang));
         $listRestaurant = array();
         foreach ($result as $temp){
             $restaurant = new restaurant($temp['codeRestaurant'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['nom'], $temp['adresse'], $temp['numeroTelephone'], $temp['imageRestaurant'], $temp['commentaire']);
@@ -87,10 +75,10 @@ class quartierDAO extends DAO
      * @param $libelleQuartier
      * @return array
      */
-    public function getMonumentByQuartier($libelleQuartier){
+    public function getMonumentByQuartier($libelleQuartier, $idLang = 1){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT *, AsText(coordonnees) as coordonneesT FROM monument WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
+        $result = $this->queryAll("SELECT *, AsText(coordonnees) as coordonneesT FROM monument WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $idLang));
         $listMonument = array();
         foreach ($result as $temp){
             $monument = new monument($temp['codeMonument'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['libelleMonument'], $temp['dateConstruction'], $temp['architecte'], $temp['imageMonument'], $temp['commentaire']);
@@ -104,10 +92,10 @@ class quartierDAO extends DAO
      * @param $libelleQuartier
      * @return array
      */
-    public function getHistoireByQuartier($libelleQuartier){
+    public function getHistoireByQuartier($libelleQuartier, $idLang = 1){
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $codeQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $this->getLangId()));
+        $result = $this->queryAll("SELECT * FROM histoire WHERE codeQuartier = ? AND codePays = ?", array($codeQuartier, $idLang));
         $listHistoire = array();
         foreach ($result as $temp){
             $listHistoire[] = new histoire($temp['codeHistoire'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['titre'], $temp['imageHistoire'], $temp['commentaire']);

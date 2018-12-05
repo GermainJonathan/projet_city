@@ -191,3 +191,12 @@ function getUserIP()
 
     return $ip;
 }
+
+function forbiden_words($commentaire)
+{
+    $commentaire = htmlspecialchars(trim($commentaire));
+    $forbiden_words = explode("\n", file_get_contents(PATH_BANNED_WORDS));
+    foreach ($forbiden_words as $key => $word)
+        $forbiden_words[$key] = '/\b' . $word . '\b/i';
+    return preg_replace($forbiden_words, "*****", $commentaire);
+}

@@ -26,7 +26,10 @@ else
     $profile = 0;
 
 if (isset($data->idTopic) && isset($data->message) && isset($nom)) {
-    $responses = $forumDAO->sendMessage($data->idTopic, $nom, $data->message, $profile);
+    $responses = $forumDAO->sendMessage($data->idTopic, forbiden_words($nom),  forbiden_words($data->message), $profile);
+    if(empty($_SESSION['user']) || $_SESSION['user']->getCodeProfile() == 0){
+        $_SESSION['user'] = new user(0, $data->nom, "", 0, "User");
+    }
     if($responses)
         $array = $responses->toArray();
 } else {
