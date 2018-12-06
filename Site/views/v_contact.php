@@ -38,14 +38,14 @@ require_once(PATH_VIEWS.'alert.php');?>
         <input type="text" id="inputNom" class="form-control formInput" maxLength=50 id="validationServer01" required>
         <label for="validationServer02"><?=CHAMP_PRENOM ?> <span class="Obligatoire"> *</span></label>
         <input type="text" id="inputPrenom" class="form-control formInput" maxLength=50 id="validationServer02" required>
-        <label for="exampleFormControlInput1"><?=CHAMP_EMAIL ?> <span class="Obligatoire"> *</span></label>
-        <input type="email" id="inputEmail" class="form-control formInput" id="exampleFormControlInput1" placeholder="nom@example.com">
+        <label for="inputEmail"><?=CHAMP_EMAIL ?> <span class="Obligatoire"> *</span></label>
+        <input type="email" id="inputEmail" class="form-control formInput" placeholder="nom@example.com">
 
     </div>
     <div class="col-lg-5 col-md-6 col-sm-12">
-        <label for="formGroupExampleInput"><?=CHAMP_SUJET ?> <span class="Obligatoire"> *</span> </label>
+        <label for="inputSujet"><?=CHAMP_SUJET ?> <span class="Obligatoire"> *</span> </label>
         <input type="text" id="inputSujet" class="form-control formInput" id="objet">
-        <label for="exampleFormControlTextarea1"><?=CHAMP_MESSAGE ?>  </label>
+        <label for="TextAreaMessage"><?=CHAMP_MESSAGE ?>  </label>
         <textarea class="form-control contact-text-area" id="TextAreaMessage" rows="3"></textarea>
         <div class="d-flex justify-content-end btnPageContact">
             <button type="submit" id="btnValiderContact" class="btn btn-primary"><?=TXT_VALIDER ?></button>
