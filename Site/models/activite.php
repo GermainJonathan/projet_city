@@ -45,7 +45,7 @@ class activite
         else
             $this->_image = $image;
         $this->_commentaire = $commentaire;
-        $this->_commentaire = $telephone;
+        $this->_telphone = $telephone;
     }
 
     /**

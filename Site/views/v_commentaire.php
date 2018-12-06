@@ -4,50 +4,33 @@
         <?= TITRE_COMMENTAIRE ?>
     </h1>
     <div class="col-12 mx-auto" id="tableCommentaire">
-        <table class="table table-borderless">
-            <thead style="text-align: left;">
-                <tr>
-                    <th scope="col" style="width: 15%;"><?= TITRE_COMM_NOM ?></th>
-                    <th scope="col"><?= TITRE_COMMENTAIRE ?></th>
-                    <th scope="col" style="width: 15%;"><?= TITRE_DATE ?></th>
-                    <?php
-                    if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
-                        ?>
-                        <th scope="col"><?= TITRE_ACTION ?></th>
-                        <?php
-                    }
-                    ?>
-                </tr>
-            </thead>
-            <tbody id="commentaireTable" style="text-align: left;">
+            <div id="commentaireTable" style="text-align: left;">
                 <?php
                     foreach ($listCommentaire as $commentaire){
                         ?>
-                <tr>
-                    <td data-label=<?= TITRE_COMM_NOM ?>>
-                        <?= $commentaire->getNom() ?>
-                    </td>
-                    <td data-label=<?= TITRE_COMMENTAIRE ?>>
-                        <?= $commentaire->getCommentaire() ?>
-                    </td>
-                    <td data-label=<?= TITRE_DATE ?>>
-                        <?= $commentaire->getDate() ?>
-                    </td>
+                
+                <div class="Uncommentaire">
+                    <div class="titreCommentaire">
+                        <h5> <?= $commentaire->getNom() ?> </h5>
+                        <h5> <?= $commentaire->getDate() ?> </h5>
+                    </div>
+                    <div class="commentaireTxt">
+                        <p><?= $commentaire->getCommentaire() ?></p>
+                    </div>
+                </div>
                     <?php
                         if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
                         ?>
-                    <td data-label=<?= TITRE_ACTION ?>>
+                    <div>
                         <button id="<?=$commentaire->getCodeCommentaire()?>" class="btn btn-danger" onClick="openCommentaireModal($(this));">X</button>
-                    </td>
+                        </div>
                     <?php
                         }
                         ?>
-                </tr>
                 <?php
                     }
                     ?>
-            </tbody>
-        </table>
+        </div>
     </div>
     <?php
         if (empty($_SESSION['user']) || $_SESSION['user']->getCodeProfile() == 0){

@@ -47,7 +47,7 @@ class quartierDAO extends DAO
         $listActivite = array();
         foreach ($result as $temp){
             $categorie = $this->getCategorieById($temp['codeCategorie']);
-            $activite = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
+            $activite = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire'], $temp['telephone']);
             $activite->setCoordonnees(convertCoordonees($temp["coordonneesT"]));
             $listActivite[] = $activite;
         }
@@ -195,8 +195,8 @@ class quartierDAO extends DAO
      * @param $titre
      * @return activite|bool
      */
-    public function setDescriptionActivite($idActivite, $description, $titre, $coordonnees){
-        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?) WHERE codeActivite = ?", array($description, $titre, $coordonnees, $idActivite));
+    public function setDescriptionActivite($idActivite, $description, $titre, $coordonnees,$adresse,$telephone){
+        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?),nomLieux= ?, telephone= ? WHERE codeActivite = ?", array($description, $titre, $coordonnees, $idActivite,$adresse,$telephone));
         if($result)
             return $this->getActiviteById($idActivite);
         return false;

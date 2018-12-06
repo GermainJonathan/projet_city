@@ -164,10 +164,12 @@ function updateComponent(typeComponent, component, dataComponent) {
             }
             coordonneesActivité.appendTo(component.find(".media-body"));
             component.find("#description").val(dataComponent.commentaire);
-            let telephone = $("<div class='form-inline' data-id='9'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input name='telephone' type='text' class='form-control col-8' id='tel'></div>");
-            telephone.find("#tel").val(dataComponent.telephone);
-            let adresse = $("<div class='form-inline' data-id='10'><label class='col-2 align-self-left' for='adresse'><h4 class='text-truncate'>Adresse</h4></label><input name='adresse' type='text' class='form-control col-8' id='adresse'></div>");
-            adresse.find("#adresse").val(dataComponent.nomLieux);
+            let telActivite = $("<div class='form-inline' data-id='12'><label class='col-2 align-self-left' for='telActivite'><h4 class='text-truncate'>Telephone</h4></label><input name='telActivite' type='text' class='form-control col-8' id='telActivite'></div>");
+            telActivite.find("#telActivite").val(dataComponent.telephone);
+            let adresseActivite = $("<div class='form-inline' data-id='13'><label class='col-2 align-self-left' for='adresseActivite'><h4 class='text-truncate'>Adresse</h4></label><input name='adresseActivite' type='text' class='form-control col-8' id='adresseActivite'></div>");
+            adresseActivite.find("#adresseActivite").val(dataComponent.nomLieux);
+            telActivite.appendTo(component.find(".media-body"));
+            adresseActivite.appendTo(component.find(".media-body"));
             break;
         case "Restaurant":
             component.find("#id").val(dataComponent.id);
@@ -229,8 +231,8 @@ function generateFormData(patrimoine, type) {
                 'description' : patrimoine[4].value,
                 'coordonnees' : "POINT(" + patrimoine[2].value + " " + patrimoine[3].value + ")",
                 'title' : patrimoine[1].value,
-                'adresse':patrimoine[9].value,
-                'telephone':patrimoine[10].value,
+                'adresse':patrimoine[6].value,
+                'telephone':patrimoine[5].value,
             }
             break;
         case "Restaurant":
