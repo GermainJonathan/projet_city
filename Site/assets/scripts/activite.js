@@ -17,15 +17,23 @@ setTimeout(function () {
 
 /* DATAS */
 
-const sectionStructure = '<section class="panelActivite" data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row activiteContent"><p class="col-8 mr-4 hide"><div class="DescriptionActivite"></div><div class="adresseActivite"></div><div class="telActivite"></div></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
+const sectionStructure = '<section class="panelActivite" data-panel=""><h2 class="row no-margin mb-4"></h2><div class="row activiteContent"><p class="col-8 mr-4 hide"></p><div class="col-3 img-fluid imageActivite hide"></div></div><div class="expandbutton"><a>▽</a></div></section>';
 
 function updateActivite(data) {
     buildSectionStructure(data.length);
     $("#activiteconteneur > section").each(function( index ) {
         $(this).children("h2").text(data[index]["titre"]);
-        $(this).find(".DescriptionActivite").text(data[index]["commentaire"]);
-        $(this).find(".adresseActivite").text(data[index]["nomLieux"]);
-        $(this).find(".telActivite").text(data[index]["telephone"]);
+        $(this).find("p").text(data[index]["commentaire"]);
+
+        if(data[index]["nomLieux"] !="" && data[index]["nomLieux"] !=null ){
+            var adresse=$('<div class="adresseActivite"><span class="mapicon"></span><div class="AdresseActiviteTxt">'+data[index]["nomLieux"]+'</div></div>');
+            $(this).find("p").append(adresse);
+        }
+        if(data[index]["telephone"]!=""&&data[index]["telephone"]!=null){
+            var tel=$('<div class="telActivite"><span class="telicon"></span><div class="TelActiviteTxt">'+data[index]["telephone"]+'</div></div>');
+            $(this).find("p").append(tel);
+        }
+        
         $(this).find(".imageActivite").css('background', 'url(' + path[data[index].codeQuartier] + data[index].image + ') no-repeat');
     });
 }

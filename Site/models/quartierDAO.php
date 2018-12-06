@@ -196,7 +196,7 @@ class quartierDAO extends DAO
      * @return activite|bool
      */
     public function setDescriptionActivite($idActivite, $description, $titre, $coordonnees,$adresse,$telephone){
-        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?),nomLieux= ?, telephone= ? WHERE codeActivite = ?", array($description, $titre, $coordonnees, $idActivite,$adresse,$telephone));
+        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?), nomLieux = ?, telephone = ? WHERE codeActivite = ?", array($description, $titre, $coordonnees,$adresse,$telephone,$idActivite));
         if($result)
             return $this->getActiviteById($idActivite);
         return false;
@@ -306,7 +306,7 @@ class quartierDAO extends DAO
         $max = $this->queryRow("SELECT MAX(codeActivite) as max FROM activite");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?,?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, 100, $titre, $adresse, $coordonnees, null, $description,$telephone));
+        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?, ? )", array($max['max'] + 1, $this->getLangId(), $idQuartier, 100, $titre, $adresse, $coordonnees, null, $description,$telephone));
         if($result)
             return $this->getActiviteById($max['max'] +1);
         return false;
