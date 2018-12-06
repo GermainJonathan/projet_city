@@ -4,7 +4,11 @@
 require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
-require_once(PATH_VIEWS.'alert.php');?>
+require_once(PATH_VIEWS.'alert.php');
+
+// Spinner au chargement de la page
+require_once(PATH_VIEWS.'spinner.php');?>
+
 <div id="imgForum">
         <div class="introForum"> 
             <h1><?= MENU_FORUM ?></h1> 
@@ -65,7 +69,7 @@ require_once(PATH_VIEWS.'alert.php');?>
         </tbody>
     </table>
     <?php
-        if (isset($_SESSION['user']) && $_SESSION['user']->getCodeProfile() == 0){
+        if (empty($_SESSION['user']) || $_SESSION['user']->getCodeProfile() == 0){
     ?>
     <div>
         <form name="formTopic" id="formTopic">

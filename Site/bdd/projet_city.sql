@@ -38,7 +38,7 @@ CREATE TABLE `activite` (
   `coordonnees` point NOT NULL,
   `imageActivite` varchar(50) DEFAULT NULL,
   `commentaire` text,
-  `telephone` varchar(20) DEFAULT NULL,
+  `telephone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

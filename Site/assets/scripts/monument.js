@@ -65,13 +65,13 @@ $.ajax({
             $(".cardMonument").css("width","97%");
             break;
         case 2:
-            $(".cardMonument").css("width","46%");
+            $(".cardMonument").css("width","44%");
             break;
         case 3:
             $(".cardMonument").css("width","30%");
             break;
         case 4:
-            $(".cardMonument").css("width","22%");
+            $(".cardMonument").css("width","22.5%");
             break;
         case 5:
             $(".cardMonument").css("width","19%");

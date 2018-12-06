@@ -84,7 +84,7 @@ class messageContact
 
     public function toArray(){
         return  array(
-            'codeMesage' => $this->_codeMessage,
+            'codeMessage' => $this->_codeMessage,
             'nom' => $this->_nom,
             'prenom' => $this->_prenom,
             'mail' => $this->_mail,
