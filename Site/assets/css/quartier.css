@@ -148,9 +148,9 @@ p{
 }
 
 #imgHistory{
+    display: none;
     background-repeat: no-repeat;
     background-position: center;
-    display: inline-block;
     border-radius: 50%;
     border: 2px solid #E98B39;
     background-size: cover;
