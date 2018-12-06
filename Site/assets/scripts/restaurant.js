@@ -1,7 +1,7 @@
 /**** PARTIE RESTAURANT ******/
 
 var tabRestaurants=new Array();
-
+// Récupération des données
 $.ajax({
     method: "GET",
     url: environnement.serviceUrl + "getRestaurantByQuartier.php?quartier=" + quartier[idQuartier]
@@ -22,7 +22,9 @@ function CreateContainerRestaurants(tabRestaurants){
         $("#RestaurantCards").append(card);
     }
 
+    // evènements sur le clic de la flèche du haut
     $("#arrowTopRestaurant").click(function(){
+        // On retourne en haut
         setTimeout(function(){ 
             location.href="#anchorBodyRestaurants";
         }, 200);
@@ -35,6 +37,7 @@ function CreateContainerRestaurants(tabRestaurants){
     });
 
     $("#arrowDownRestaurant").click(function(){
+        // On va en bas
         setTimeout(function(){ 
             location.href="#ArrowRes";
             if($("#rowSavoirPlus").css("height")=="0px"){

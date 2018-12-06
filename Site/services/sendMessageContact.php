@@ -22,7 +22,7 @@ if (isset($data->nom) && isset($data->prenom) && isset($data->message) && isset(
     $responses = $administrationDAO->createMessageContact($data->nom, $data->prenom, $data->mail, $data->objet, $data->message);
     if($responses) {
         $message = makeMessage($data->message, $data->nom, $data->prenom, $data->mail);
-        mail(MAIL_ADMIN, 'messageContact : ' . $data->objet, $message);
+        @mail(MAIL_ADMIN, 'messageContact : ' . $data->objet, $message);
         $array = $responses->toArray();
     }
 } else {

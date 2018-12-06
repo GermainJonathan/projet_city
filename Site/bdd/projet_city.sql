@@ -37,7 +37,8 @@ CREATE TABLE `activite` (
   `nomLieux` varchar(50) DEFAULT NULL,
   `coordonnees` point NOT NULL,
   `imageActivite` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `commentaire` text,
+  `telephone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -158,7 +159,8 @@ CREATE TABLE `monument` (
   `coordonnees` point NOT NULL,
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `commentaire` text,
+  `adresse` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -281,7 +283,7 @@ CREATE TABLE `user` (
 -- Index pour la table `activite`
 --
 ALTER TABLE `activite`
-  ADD PRIMARY KEY (`codeActivite`)
+  ADD PRIMARY KEY (`codeActivite`),
   ADD KEY `codePays` (`codePays`),
   ADD KEY `codeQuartier` (`codeQuartier`),
   ADD KEY `codeCategorie` (`codeCategorie`),
@@ -363,7 +365,7 @@ ALTER TABLE `quartier`
 -- Index pour la table `restaurant`
 --
 ALTER TABLE `restaurant`
-  ADD PRIMARY KEY (`codePays`),
+  ADD PRIMARY KEY (`codeRestaurant`),
   ADD KEY `codePays` (`codePays`),
   ADD KEY `codeQuartier` (`codeQuartier`),
   ADD SPATIAL KEY `coordonnees` (`coordonnees`);

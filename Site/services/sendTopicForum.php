@@ -20,7 +20,7 @@ $data = json_decode(file_get_contents("php://input"));
 if (isset($data->titreTopic) && isset($data->descriptionTopic)) {
     $responses = $forumDAO->createNewTopic($data->titreTopic, forbiden_words($data->descriptionTopic), $_SESSION["idLang"]);
     
-    //mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
+    @mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
 
     if($responses)
         $array = $responses->toArray();
