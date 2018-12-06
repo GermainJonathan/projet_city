@@ -198,7 +198,7 @@ p{
 .carrousel-contenu .card {
     float:left;
     margin-right:20px;
-    transition: 1000ms width,border,margin-right ease-in-out;
+    transition: 800ms width,border,margin-right ease-in-out;
     display:block!important;
     height:350px;
     position:relative;
@@ -213,23 +213,18 @@ p{
 .carrousel-contenu .card .card-body{
     height:50%!important;
     position:relative;
-    transition: 500ms color ease-in-out;
+    transition: 200ms color ease-in-out;
 }
 
 .carrousel-contenu .card .card-body h5{
-    transition: 500ms color ease-in-out;
+    transition: 200ms color ease-in-out;
 }
 
-.carrousel-contenu .card .card-body a{
-    position:absolute;
-    bottom: 20px;
-    width: calc(100% - 2.5rem);
-    transition: 500ms color,border ease-in-out;
-    left: 50%;
-    transform: translateX(-50%);
+.carrousel-contenu .card .card-body .card-footer a{
+    transition: 200ms color,border ease-in-out;
 }
 
-.cache .card-body a{
+.cache .card-body .card-footer a{
     border:none !important;
     color:white !important;
 }
