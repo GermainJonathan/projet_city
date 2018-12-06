@@ -119,6 +119,7 @@ class BubbleHistory {
           setTimeout(function(){ 
             location.href="#bodyHistoire";
         }, 100);
+           $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
        });
 
        return button[0];
