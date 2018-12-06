@@ -89,6 +89,10 @@ h2{
     margin-right:50px;
 }
 
+.marginFrise.titleBubble{
+    text-transform: capitalize;
+}
+
 p{
     font-size:13px;
 }
@@ -360,10 +364,37 @@ p{
 
 #tableCommentaire {
     margin: 30px;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 #SavoirPlusMonuments{
     margin-left:55px;
+}
+
+
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------COMMENTAIRE -------------------------------------------*/
+
+.titreCommentaire{
+    color:#444;
+    width:100%;
+    margin-bottom:20px;
+    float:left;
+    border-top:1px solid #444;
+    padding-top:20px;
+}
+
+
+.titreCommentaire h5{
+    float:left;
+    margin-right:20px;
+}
+
+.commentaireTxt{
+    width: 100%;
+    float:left;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -466,7 +497,7 @@ p{
     height:365px;
     margin:20px;
     overflow:hidden;
-    transition:height 1s ease-in-out;
+    transition:height 500ms ease-in-out;
 }
 
 .cardRestaurant{
