@@ -5,6 +5,11 @@ require_once(PATH_VIEWS.'header.php');
 
 // menu navigation
 require_once(PATH_VIEWS.'alert.php');?>
+<div id="imgForum">
+        <div class="introForum"> 
+            <h1><?= MENU_FORUM ?></h1> 
+        </div>
+    </div>
 <div class="bodyForum container">
     <table class="table table-hover table-striped">
         <thead>
