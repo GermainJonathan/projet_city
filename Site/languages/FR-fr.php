@@ -96,3 +96,16 @@ define("CLOSE", "Close");
 define("CHARGEMENT", "Chargement...");
 
 define("ADRESSE", "Bâtiment Les Passerelles, <br/>24 Avenue Joannès Masset, <br/>69009 Lyon");
+define("MENTION_TITRE", "Merci de lire attentivement les modalités d’utilisation suivantes avant toute utilisation du site.");
+define("EDITEUR", "Éditeur du site");
+define("CONCEPTION_REALISATION", "Conception et réalisation");
+define("HEBERGEMENT", "Hébergeur");
+define("CONDITION_UTILISATION", "Conditions d'utilisation");
+define("LIMITATION_RESPONSABILITE", "Limitation de responsabilité");
+define("LITIGES", "Litiges");
+define("CONFIDENTIALITE", "Confidentialité");
+define("PROPRIETE_INTELLECTUELLE", "Propriété intellectuelle");
+define("CONDITION_SERVICES", "Conditions de service");
+define("LIEN_HYPERTEXT", "Liens hypertextes");
+define("RECHERCHE", "Recherche");
+define("RESPONSABILITE", "Responsabilité");
