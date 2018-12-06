@@ -164,6 +164,10 @@ function updateComponent(typeComponent, component, dataComponent) {
             }
             coordonneesActivité.appendTo(component.find(".media-body"));
             component.find("#description").val(dataComponent.commentaire);
+            let telephone = $("<div class='form-inline' data-id='9'><label class='col-2 align-self-left' for='tel'><h4 class='text-truncate'>Telephone</h4></label><input name='telephone' type='text' class='form-control col-8' id='tel'></div>");
+            telephone.find("#tel").val(dataComponent.telephone);
+            let adresse = $("<div class='form-inline' data-id='10'><label class='col-2 align-self-left' for='adresse'><h4 class='text-truncate'>Adresse</h4></label><input name='adresse' type='text' class='form-control col-8' id='adresse'></div>");
+            adresse.find("#adresse").val(dataComponent.nomLieux);
             break;
         case "Restaurant":
             component.find("#id").val(dataComponent.id);
@@ -224,7 +228,9 @@ function generateFormData(patrimoine, type) {
                 'codeQuartier' : adminPageOrder[selectPage],
                 'description' : patrimoine[4].value,
                 'coordonnees' : "POINT(" + patrimoine[2].value + " " + patrimoine[3].value + ")",
-                'title' : patrimoine[1].value
+                'title' : patrimoine[1].value,
+                'adresse':patrimoine[9].value,
+                'telephone':patrimoine[10].value,
             }
             break;
         case "Restaurant":

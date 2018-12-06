@@ -1,5 +1,5 @@
 <span class="anchor" id="anchorBodyCommentaires"></span>
-<div id="bodyCommentaires" class="row">
+<div id="bodyCommentaires">
     <h1>
         <?= TITRE_COMMENTAIRE ?>
     </h1>

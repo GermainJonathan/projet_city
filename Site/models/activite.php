@@ -15,6 +15,7 @@ class activite
     private $_image;
     private $_commentaire;
     private $_coordonnees;
+    private $_telephone;
 
     /**
      * activite constructor.
@@ -29,7 +30,7 @@ class activite
      * @param $image
      * @param $commentaire
      */
-    public function __construct($codeActivite, $codePays, $codeQuartier, $quartier, $codeCategorie, $categorie, $titre, $nomLieux, $image, $commentaire)
+    public function __construct($codeActivite, $codePays, $codeQuartier, $quartier, $codeCategorie, $categorie, $titre, $nomLieux, $image, $commentaire,$telephone)
     {
         $this->_codeActivite = $codeActivite;
         $this->_codePays = $codePays;
@@ -44,6 +45,7 @@ class activite
         else
             $this->_image = $image;
         $this->_commentaire = $commentaire;
+        $this->_commentaire = $telephone;
     }
 
     /**
@@ -155,7 +157,8 @@ class activite
         'nomLieux' => $this->_nomLieux,
         'image' => $this->_image,
         'commentaire' => $this->_commentaire,
-        'coordonnees' => $this->_coordonnees
+        'coordonnees' => $this->_coordonnees,
+        'telephone' => $this->_telephone
         );
     }
 
