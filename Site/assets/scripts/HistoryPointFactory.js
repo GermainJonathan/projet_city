@@ -114,13 +114,17 @@ class BubbleHistory {
 
        var that= this;
        button.click(function(){
-           $("#txtHistory").text(that.description);
-           $("#sousTitreHistory").text(that.title);
-          setTimeout(function(){ 
+            $("#blocTxtHistory").fadeOut('fast', function(){
+            $("#txtHistory").text(that.description);
+            $("#sousTitreHistory").text(that.title);
+            $("#imgHistory").css('display', 'inline-block');
+            $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
+            $("#blocTxtHistory").fadeTo('fast', 1);
+        });
+        setTimeout(function(){ 
             location.href="#bodyHistoire";
         }, 100);
-           $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
-           $("#imgHistory").css('display', 'inline-block');
+
        });
 
        return button[0];
