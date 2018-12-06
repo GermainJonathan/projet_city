@@ -16,8 +16,8 @@ $quartierDAO = new quartierDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->codeQuartier) && isset($data->description) && isset($data->title) && isset($data->architecte) && isset($data->coordonnees)) {
-    $responses = $quartierDAO->createMonument($data->codeQuartier, $data->title, $data->architecte, $data->description, $data->coordonnees);
+if (isset($data->codeQuartier) && isset($data->description) && isset($data->title) && isset($data->architecte) && isset($data->coordonnees)&& isset($data->adresse)) {
+    $responses = $quartierDAO->createMonument($data->codeQuartier, $data->title, $data->architecte, $data->description, $data->coordonnees,$data->adresse);
     if($responses) {
         $array = $responses->toArray();
     } else {

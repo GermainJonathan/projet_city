@@ -108,10 +108,12 @@ class Card {
             class: "card-title"
         }).attr("title", this.title);
         title.append(this.title);
-        var text = $("<p></p>", {
-            class: "card-text"
-        }).attr("title", this.description);
-        text.append(this.description);
+        if(! isMobileDevice) {
+            var text = $("<p></p>", {
+                class: "card-text"
+            }).attr("title", this.description);
+            text.append(this.description);
+        }
 
         var footerCard="";
         footerCard=$("<div></div>",{
