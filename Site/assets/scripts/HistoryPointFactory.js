@@ -120,6 +120,7 @@ class BubbleHistory {
             location.href="#bodyHistoire";
         }, 100);
            $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
+           $("#imgHistory").css('display', 'inline-block');
        });
 
        return button[0];
