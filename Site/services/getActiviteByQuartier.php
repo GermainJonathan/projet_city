@@ -17,7 +17,7 @@ $code = 200;
 $quartierDAO = new quartierDAO(DEBUG);
 
 if (isset($_GET['quartier'])) {
-    $responses = $quartierDAO->getActiviteByQuartier($_GET['quartier']);
+    $responses = $quartierDAO->getActiviteByQuartier($_GET['quartier'], $_SESSION["idLang"]);
     $array = array();
     if ($responses != false) {
         foreach ($responses as $temp)

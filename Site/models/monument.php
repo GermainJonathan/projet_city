@@ -12,6 +12,7 @@ class monument
     private $_image;
     private $_commentaire;
     private $_coordonnees;
+    private $_adresse;
 
     /**
      * monument constructor.
@@ -25,7 +26,7 @@ class monument
      * @param $image
      * @param $commentaire
      */
-    public function __construct($codeMonument, $codePays, $codeQuartier, $quartier, $libelleMonument, $dateConstruction, $architect, $image, $commentaire)
+    public function __construct($codeMonument, $codePays, $codeQuartier, $quartier, $libelleMonument, $dateConstruction, $architect, $image, $commentaire,$adresse)
     {
         $this->_codeMonument = $codeMonument;
         $this->_codePays = $codePays;
@@ -39,6 +40,7 @@ class monument
         else
             $this->_image = $image;
         $this->_commentaire = $commentaire;
+        $this->_adresse = $adresse;
     }
 
     /**
@@ -129,7 +131,8 @@ class monument
             'architecte' => $this->_architecte,
             'image' => $this->_image,
             'commentaire' => $this->_commentaire,
-            'coordonnees' => $this->_coordonnees
+            'coordonnees' => $this->_coordonnees,
+            'adresse' => $this->_adresse
             );
     }
 }

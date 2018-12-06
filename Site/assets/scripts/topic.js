@@ -32,9 +32,8 @@ function sendMessage(idTopic) {
         if(data.codeProfile == null)
             message = $("<tr><td>" + data.nom + "</td><td>" + data.message + "</td><td>" + data.date + "</td></tr>");
         else
-            message = $("<tr><td>" + data.nom + " ★" + "</td><td>" + data.message + "</td><td>" + data.date + "</td><td><button class='btn btn-danger'>X</button></td></tr>");
+            message = $("<tr><td>" + data.nom + " ★" + "</td><td>" + data.message + "</td><td>" + data.date + "</td><td><button id=" + data.idMessage + " class='btn btn-danger' onClick='deleteMessage($(this));'>X</button></td></tr>");
         $("#topicBody > table > tbody").append(message);
-        $("#topicBody").find("input#nomTopic").val("");
         $("#topicBody").find("textarea#messageTopic").val("");
     }).fail(function() {
         $.notify({
@@ -62,7 +61,7 @@ function confirmDelete(idMessage) {
         }, {
             type:'success'
         });
-        $("td > button#" + idMessage).parents("tr").hide();
+        $("td > button#" + idMessage).parents("tr").remove();
     }).fail(function() {
         $.notify({
             message: "Error on delete object with id : " + idMessage
