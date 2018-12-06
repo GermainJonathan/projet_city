@@ -60,7 +60,7 @@ require_once(PATH_VIEWS.'alert.php');?>
         </tbody>
     </table>
     <?php
-        if (empty($_SESSION['user'])){
+        if (isset($_SESSION['user']) && $_SESSION['user']->getCodeProfile() == 0){
     ?>
     <div>
         <form name="formTopic" id="formTopic">
