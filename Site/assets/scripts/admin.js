@@ -295,6 +295,7 @@ function savePatrimoine() {
         }
     //------------------Création des objets-----------------------
         if(objects[i][0].value == "") {
+            console.log(data);
             $.ajax({
                 method: 'POST',
                 url: environnement.serviceUrl + "adminCreate" + type.replace(/é/gi, "e") + ".php",
