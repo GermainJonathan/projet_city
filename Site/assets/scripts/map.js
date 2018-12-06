@@ -94,8 +94,24 @@ mymap.doubleClickZoom.disable();
 mymap.dragging.disable();
 addRecentrerButton();   // Outil de recentrage
 addGeoPosition();   // Demande de géolocalisation
-setupQuarterCard("Terreaux");   // Création de la carte par défaut
 layerControl.addTo(mymap);  // Ajout du filtre sur la carte
+
+if(typeof idQuartier !== 'undefined') {
+    var featureToCall;
+    for(let feature of states.features) {
+        if(feature.properties.name.toLowerCase() == quartier[idQuartier])
+            featureToCall = feature;
+    }
+    $('#mapid').ready(function() {
+        if(idQuartier == 1) {
+            mymap._layers[2]._layers[idQuartier].fire('click');
+        } else {
+            mymap._layers[2]._layers[idQuartier + 1].fire('click');
+        }
+    });
+} else {
+    setupQuarterCard("Terreaux");
+}
 
 /**
  * Geolocalisation
@@ -239,7 +255,7 @@ function setupQuarterCard(quarterName) {
         case "Perrache" :
             $.ajax({
                 method: 'GET',
-                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+                url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quarterName
             }).done(function(data) {
                 var perracheCard = new Card(quarterName, data[0].commentaire, 1, ["perrache.jpg", "statut-de-la-republique.jpg", "vattel.jpg"]);
                 legend.remove();
@@ -251,7 +267,7 @@ function setupQuarterCard(quarterName) {
         case "Bellecour" :
             $.ajax({
                 method: 'GET',
-                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+                url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quarterName
             }).done(function(data) {
                 var bellecourCard = new Card(quarterName, data[0].commentaire, 2, ["bellecour.jpg", "leondelyon.jpg", "brasserie-sud.jpg"]);
                 legend.remove();
@@ -263,7 +279,7 @@ function setupQuarterCard(quarterName) {
         case "Terreaux":
             $.ajax({
                 method: 'GET',
-                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+                url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quarterName
             }).done(function(data) {
                 var terreauxCard = new Card(quarterName, data[0].commentaire, 3,  ["terreaux.jpg", "hotel-de-ville-lyon-1.jpg"]);
                 legend.remove();

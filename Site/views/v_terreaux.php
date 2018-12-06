@@ -24,6 +24,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
             require_once(PATH_VIEWS.'monument.php'); 
             require_once(PATH_VIEWS.'activite.php');
             require_once(PATH_VIEWS.'restaurant.php'); 
+            require_once(PATH_VIEWS.'map.php');  
             require_once(PATH_VIEWS.'commentaire.php');  
         ?>
     </div>
