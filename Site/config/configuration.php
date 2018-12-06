@@ -26,7 +26,10 @@ define('PATH_LIB','lib/');
 define('PATH_MODELS','models/');
 define('PATH_VIEWS','views/v_');
 define('PATH_TEXTES','languages/');
+
+// fichiers
 define('PATH_BANNED_WORDS', 'banned words/words.txt');
+define('PATH_LANG_VOID', PATH_TEXTES . 'void.php');
 
 //sous dossiers
 define('PATH_CSS', PATH_ASSETS.'css/');

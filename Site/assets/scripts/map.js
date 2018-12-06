@@ -234,29 +234,51 @@ function style() {
  * @param {string} quarterName 
  */
 function setupQuarterCard(quarterName) {
-    const textDescriptionFactice = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus felis at congue tempus. Integer egestas vehicula orci, sodales vulputate diam sodales nec.';
     let lastCard = legend;
-    legend.remove();
-
-    legend = L.control({position: 'topleft'});
     switch (quarterName) {
         case "Perrache" :
-            var perracheCard = new Card(quarterName, textDescriptionFactice, 1, ["perrache.jpg", "statut-de-la-republique.jpg", "vattel.jpg"]);
-            legend.onAdd = perracheCard.createCard();
+            $.ajax({
+                method: 'GET',
+                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+            }).done(function(data) {
+                var perracheCard = new Card(quarterName, data[0].commentaire, 1, ["perrache.jpg", "statut-de-la-republique.jpg", "vattel.jpg"]);
+                legend.remove();
+                legend = L.control({position: 'topleft'});
+                legend.onAdd = perracheCard.createCard();
+                legend.addTo(mymap);
+            })
             break;
         case "Bellecour" :
-            var bellecourCard = new Card(quarterName, textDescriptionFactice, 2, "bellecour.jpg");
-            legend.onAdd = bellecourCard.createCard();
+            $.ajax({
+                method: 'GET',
+                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+            }).done(function(data) {
+                var bellecourCard = new Card(quarterName, data[0].commentaire, 2, ["bellecour.jpg", "leondelyon.jpg", "brasserie-sud.jpg"]);
+                legend.remove();
+                legend = L.control({position: 'topleft'});
+                legend.onAdd = bellecourCard.createCard();
+                legend.addTo(mymap);
+            });
             break;
         case "Terreaux":
-            var terreauxCard = new Card(quarterName, textDescriptionFactice, 3,  "terreaux.jpg");
-            legend.onAdd = terreauxCard.createCard();
+            $.ajax({
+                method: 'GET',
+                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+            }).done(function(data) {
+                var terreauxCard = new Card(quarterName, data[0].commentaire, 3,  ["terreaux.jpg", "hotel-de-ville-lyon-1.jpg"]);
+                legend.remove();
+                legend = L.control({position: 'topleft'});
+                legend.onAdd = terreauxCard.createCard();
+                legend.addTo(mymap);
+            });
             break;
         default:
+            legend.remove();
+            legend = L.control({position: 'topleft'});
             legend.onAdd = lastCard.onAdd;
+            legend.addTo(mymap);
             break;
     }
-    legend.addTo(mymap);
 }
 
 /**

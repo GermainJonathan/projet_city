@@ -75,8 +75,12 @@ class BubbleHistory {
      * création de la bulle
      */
     _createBubble(){
-       var bubble=$('<div></div>').addClass("bubble");
-       bubble.css("background-image", + "url(" + path[this.codeQuartier] + this.images + ")");
+       var bubble = $('<div></div>').addClass("bubble");
+        if(this.images == "undefined.png") {
+            bubble.attr("style","background-image : url(assets/images/core/" + this.images + ")");
+        } else {
+            bubble.attr("style","background-image : url(" + path[this.codeQuartier] + this.images + ")");
+        }
        return bubble[0];
     }
 

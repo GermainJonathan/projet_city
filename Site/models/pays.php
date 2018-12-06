@@ -62,4 +62,13 @@ class pays
     public function __toString(){
         return $this->_id." ".$this->_libelle;
     }
+
+    public function toArray(){
+        return array(
+            "codePays" => $this->_id,
+            "libelle" => $this->_libelle,
+            "libelleCourt" => $this->_libelleCourt,
+            "fichier" => $this->_fichier
+        );
+    }
 }
