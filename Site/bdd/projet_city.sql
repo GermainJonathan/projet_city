@@ -281,7 +281,7 @@ CREATE TABLE `user` (
 -- Index pour la table `activite`
 --
 ALTER TABLE `activite`
-  ADD PRIMARY KEY (`codeActivite`)
+  ADD PRIMARY KEY (`codeActivite`),
   ADD KEY `codePays` (`codePays`),
   ADD KEY `codeQuartier` (`codeQuartier`),
   ADD KEY `codeCategorie` (`codeCategorie`),
@@ -363,7 +363,7 @@ ALTER TABLE `quartier`
 -- Index pour la table `restaurant`
 --
 ALTER TABLE `restaurant`
-  ADD PRIMARY KEY (`codePays`),
+  ADD PRIMARY KEY (`codeRestaurant`),
   ADD KEY `codePays` (`codePays`),
   ADD KEY `codeQuartier` (`codeQuartier`),
   ADD SPATIAL KEY `coordonnees` (`coordonnees`);
