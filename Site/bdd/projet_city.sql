@@ -131,10 +131,10 @@ CREATE TABLE `message` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `messagecontact`
+-- Structure de la table `messageContact`
 --
 
-CREATE TABLE `messagecontact` (
+CREATE TABLE `messageContact` (
   `codeMessage` int(5) NOT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,

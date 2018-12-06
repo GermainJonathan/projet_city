@@ -115,7 +115,7 @@ function addPatrimoineComponents(patrimoine, imageChange = true) {
     $("#patrimoineContent").find(".media").last().show();
     let newComponent =  $("#patrimoineContent").find(".media").last();
     if(!imageChange) {
-        newComponent.find("img.imgAdmin").attr('src', "/assets/images/core/undefined.png");
+        newComponent.find("img.imgAdmin").attr('src', "assets/images/core/undefined.png");
     } else {
         newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image);
     }
