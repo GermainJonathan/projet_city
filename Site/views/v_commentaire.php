@@ -1,6 +1,6 @@
 <span class="anchor" id="anchorBodyCommentaires"></span>
-<div id="bodyCommentaires" class="row">
-    <h1>
+<div id="bodyCommentaires" class="container-fluid">
+    <h1 class="row">
         <?= TITRE_COMMENTAIRE ?>
     </h1>
     <div class="col-12 mx-auto" id="tableCommentaire">
