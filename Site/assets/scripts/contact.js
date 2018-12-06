@@ -4,19 +4,19 @@ $("#btnValiderContact").click(function(){
     var formulaireOk =verifFormulaire();
     
     if(formulaireOk){
-        var nom= $("#inputNom").val();
-        var prenom=$("#inputPrenom").val();
-        var mail =$("#inputEmail").val();
-        var message=$("#TextAreaMessage").val();
-        var objet=$("#inputSujet").val(); 
+        var nom = $("#inputNom").val();
+        var prenom = $("#inputPrenom").val();
+        var mail = $("#inputEmail").val();
+        var message = $("#TextAreaMessage").val();
+        var objet = $("#inputSujet").val(); 
     
-        var mesDatas={ 
-                    "nom" :nom,
-                    "prenom": prenom,
-                    "message": message,
-                    "mail":mail,
-                    "objet":objet 
-                    };
+        var mesDatas = { 
+            "nom" :nom,
+            "prenom": prenom,
+            "message": message,
+            "mail":mail,
+            "objet":objet 
+        };
         $.ajax({
             method: "POST",
             url:environnement.serviceUrl +"sendMessageContact.php",
@@ -27,28 +27,26 @@ $("#btnValiderContact").click(function(){
             $("#inputEmail").val("");
             $("#TextAreaMessage").val("");
             $("#inputSujet").val(""); 
-            if(data =!false){
+            if(data =! false){
                 $.notify({
                     message: "Le message a été envoyé !"
                 }, {
-                    type:'danger'
+                    type:'info'
                 });
             }
-          })
-          .fail(function(error){
+          }).fail(function(){
             $.notify({
                 message: "Un problème est survenu lors de l'envoi du formulaire"
             }, {
                 type:'danger'
             });
           });
-    }
-    else{
+    } else {
         // bootstrap notify
         $.notify({
             message: "Veuillez remplir correctement tous les champs"
         }, {
-            type:'danger'
+            type : 'warning'
         });
     }
    

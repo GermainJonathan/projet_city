@@ -75,8 +75,12 @@ class BubbleHistory {
      * création de la bulle
      */
     _createBubble(){
-       var bubble=$('<div></div>').addClass("bubble");
-       bubble.css("background-image", + "url(" + path[this.codeQuartier] + this.images + ")");
+       var bubble = $('<div></div>').addClass("bubble");
+        if(this.images == "undefined.png") {
+            bubble.attr("style","background-image : url(assets/images/core/" + this.images + ")");
+        } else {
+            bubble.attr("style","background-image : url(" + path[this.codeQuartier] + this.images + ")");
+        }
        return bubble[0];
     }
 
@@ -114,13 +118,16 @@ class BubbleHistory {
 
        var that= this;
        button.click(function(){
-           $("#txtHistory").text(that.description);
-           $("#sousTitreHistory").text(that.title);
-          setTimeout(function(){ 
+            $("#blocTxtHistory").fadeOut('fast', function(){
+            $("#txtHistory").text(that.description);
+            $("#sousTitreHistory").text(that.title);
+            $("#imgHistory").css('display', 'inline-block');
+            $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
+            $("#blocTxtHistory").fadeTo('fast', 1);
+        });
+        setTimeout(function(){ 
             location.href="#bodyHistoire";
         }, 100);
-           $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
-           $("#imgHistory").css('display', 'inline-block');
        });
 
        return button[0];

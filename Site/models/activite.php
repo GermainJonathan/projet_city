@@ -39,7 +39,7 @@ class activite
         $this->_categorie = $categorie;
         $this->_titre = $titre;
         $this->_nomLieux = $nomLieux;
-        if($image == null || !file_exists(PATH_IMAGES.$quartier."/".$image))
+        if($image == null || !file_exists(PATH_IMAGES.strtolower($quartier)."/".$image))
             $this->_image = "undefined.png";
         else
             $this->_image = $image;

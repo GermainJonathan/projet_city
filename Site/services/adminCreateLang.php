@@ -1,8 +1,7 @@
 <?php
 
 require_once "configurationAPI.php";
-require_once PATH_MODELS."forumDAO.php";
-require_once PATH_MODELS."user.php";
+require_once PATH_MODELS."paysDAO.php";
 
 // Header de retour pour le type JSON et éviter les erreurs cross-origin ( rendre accessible l'API )
 header("Access-Control-Allow-Origin: *");
@@ -13,17 +12,23 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 $responses = array();
 $code = 200;
-$forumDAO = new forumDAO(DEBUG);
+$paysDAO = new paysDAO(DEBUG);
 $array = null;
 $data = json_decode(file_get_contents("php://input"));
 
-if (isset($data->titreTopic) && isset($data->descriptionTopic)) {
-    $responses = $forumDAO->createNewTopic($data->titreTopic, forbiden_words($data->descriptionTopic), $_SESSION["idLang"]);
-    
-    @mail(MAIL_ADMIN, 'création de topic', makeMessage("", "", "", ""));
-
-    if($responses)
+if (isset($data->libelle) && isset($data->libelleCourt)) {
+    $fichier = $data->libelleCourt . '-' . strtolower($data->libelleCourt);
+    $responses = $paysDAO->addPays($data->codelibelle, $data->libelleCourt, $fichier);
+    if($responses) {
+        copy(PATH_LANG_VOID, $responses->getFichier());
         $array = $responses->toArray();
+    } else {
+        $code = 501;
+        $array = array(
+            'error' => 'Error in SQL statement',
+            'message' => 'Error occured during update'
+        );
+    }
 } else {
     $code = 404;
     $array = array(
