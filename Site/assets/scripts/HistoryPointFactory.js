@@ -8,13 +8,13 @@
  */
 class BubbleHistory {
 
-    constructor(title, description, codeQuartier, images = "",line=true) {
+    constructor(title, description, codeQuartier, images = "", line=true) {
         this.images = images;
         this.title  = title;
         this.description = description;
         this.codeQuartier = codeQuartier;
-        this.line=line;
-        this.historisation=null;
+        this.line = line;
+        this.historisation = null;
     }
 
     /**
@@ -33,7 +33,7 @@ class BubbleHistory {
             BubbleHistory.append($('<div></div>').addClass("lineTimeline")[0]);
         }
 
-        this.historisation=BubbleHistory;
+        this.historisation = BubbleHistory;
 
         return BubbleHistory;
     }
@@ -46,7 +46,7 @@ class BubbleHistory {
     changeImg(images) {
         this.images = images;
         var classNameBubble= this.historisation.getElementsByClassName("bubble");
-        classNameBubble[0].css("background-image",path[this.codeQuartier]+images);
+        classNameBubble[0].css("background-image","url(" + path[this.codeQuartier]+images + ")");
     }
 
     /**
@@ -76,7 +76,7 @@ class BubbleHistory {
      */
     _createBubble(){
        var bubble=$('<div></div>').addClass("bubble");
-       bubble.css("background-image",path[this.codeQuartier]+this.images);
+       bubble.css("background-image", + "url(" + path[this.codeQuartier] + this.images + ")");
        return bubble[0];
     }
 

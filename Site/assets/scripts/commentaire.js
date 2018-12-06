@@ -30,7 +30,6 @@ function sendMessage() {
         });
         let comment = $("<tr><td>" + data.nom + "</td><td>" + data.commentaire + "</td><td>" + data.date + "</td></tr>");
         $("#commentaireTable").append(comment);
-        $("#bodyCommentaires").find("input#nomCommentaire").val("");
         $("#bodyCommentaires").find("textarea#commentaire").val("");
     });
 }
@@ -51,7 +50,7 @@ function confirmDeleteCommentaire(idMessage) {
         }, {
             type:'success'
         });
-        $("#commentaireTable > tr > td > button#" + idMessage).parents("tr").hide();
+        $("#commentaireTable > tr > td > button#" + idMessage).parents("tr").remove();
     }).fail(function() {
         $.notify({
             message: "Error on delete object with id : " + idMessage

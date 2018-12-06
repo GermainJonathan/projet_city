@@ -5,6 +5,7 @@ $.ajax({
     method: "GET",
     url: environnement.serviceUrl + "getMonumentByQuartier.php?quartier=" + quartier[idQuartier]
 }).done(function(data) {
+    console.log(data);
     for (let monument of data){
         tabMonument.push(new Card(monument.libelleMonument, monument.commentaire, environnement.codePage,
             monument.image, monument.adresse));    
@@ -41,6 +42,7 @@ $.ajax({
     }
 
     putEventsCaroussel();
+    GetWidthCaroussel(lengthCaroussel);
  }
 
  // Retourne la taille du caroussel suivant la taille de la fenêtre
@@ -56,6 +58,26 @@ $.ajax({
     else 
         return 1;
  }
+
+ function GetWidthCaroussel(length){
+    switch(length){
+        case 1:
+            $(".cardMonument").css("width","97%");
+            break;
+        case 2:
+            $(".cardMonument").css("width","46%");
+            break;
+        case 3:
+            $(".cardMonument").css("width","30%");
+            break;
+        case 4:
+            $(".cardMonument").css("width","22%");
+            break;
+        case 5:
+            $(".cardMonument").css("width","19%");
+            break;
+    }
+ }
  
 // Ajout d'évènements au caroussel
 function putEventsCaroussel(){
@@ -64,7 +86,8 @@ function putEventsCaroussel(){
     window.onresize=function(){
         setTimeout(function(){
             _lengthCarousel=GetLengthCaroussel();
-            MakeCarroussel(_lengthCarousel); 
+            MakeCarroussel(_lengthCarousel);
+            GetWidthCaroussel (_lengthCarousel);
         }, 1000);
        
     }

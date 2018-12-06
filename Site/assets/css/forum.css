@@ -103,6 +103,30 @@ a.list-group-item.list-group-item-action {
     vertical-align: middle;
 }
 
+#imgForum{
+    background-size:cover;
+    height:200px;
+    background-position:center;
+    background-repeat: no-repeat;
+    width:100%;
+    position: relative;
+    background-image:url("../images/accueil/lyon.jpg");
+}
+
+.introForum{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    padding-bottom:10px;
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+
+
 @media screen and (max-width: 767px) {
     .login-form-group {
         width: 60%;
