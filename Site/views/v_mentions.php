@@ -15,21 +15,15 @@ require_once(PATH_VIEWS.'alert.php');?>
     <div class="col-8 offset-2 lesMentionsLegales">
         <div class="TitreMentionsLegales"><h2> Éditeur du site </h2></div>
         <p>Loïc Gastard<br/>
-        Bâtiment Les Passerelles, <br/>
-        24 Avenue Joannès Masset, <br/>
-        69009 Lyon</p>
+        <?= ADRESSE ?></p>
 
         <div class="TitreMentionsLegales"><h2> Conception et réalisation </h2></div>
         <p>AG4Ile<br/>
-        Bâtiment Les Passerelles, <br/>
-        24 Avenue Joannès Masset, <br/>
-        69009 Lyon</p>       
+        <?= ADRESSE ?></p>
         
         <div class="TitreMentionsLegales"><h2> Hébergeur </h2></div>
         <p>InstitutG4<br/>
-        Bâtiment Les Passerelles, <br/>
-        24 Avenue Joannès Masset, <br/>
-        69009 Lyon</p>
+        <?= ADRESSE ?></p>
 
         <div class="TitreMentionsLegales"><h2>Conditions d'utilisation</h2></div>
         <p>Le site accessible par l’url suivante : www.presqueIle.fr est exploité dans le respect de la législation française. L'utilisation de ce site est régie par les présentes conditions générales. En utilisant le site, vous reconnaissez avoir pris connaissance de ces conditions et les avoir acceptées. Celles-ci pourront être modifiées à tout moment et sans préavis par Loïc Gastard qui ne saurait être tenu pour responsable en aucune manière d’une mauvaise utilisation du service. </p>

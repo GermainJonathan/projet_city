@@ -20,10 +20,10 @@ require_once(PATH_VIEWS.'alert.php');?>
         <h1 class="contact-title"> <?= TITRE_CONTACT_A_PROPOS ?> </h1>
         <div class="contact-desc">
         <p><?= TXT_CONTACT_APROPOS ?></p>
-        <p>Bâtiment Les Passerelles,<br/> 24 Avenue Joannès Masset, <br/>69009 Lyon</p>
+        <p><?= ADRESSE ?></p>
         <p>
-            <a href="tel:0484251692">04 84 25 16 92</a><br/>
-            <a href="mailto:lgastard@g-4.fr">lgastard@g-4.fr</a>
+            <a href="tel:<?= TEL_ADMIN ?>"><?= TEL_ADMIN_TEXT ?></a><br/>
+            <a href="mailto:<?= MAIL_ADMIN ?>"><?= MAIL_ADMIN ?></a>
         </p>
         <p> <strong> <?=TXT_CONTACT_FORMULAIRE ?> </strong> </p>
         </div>

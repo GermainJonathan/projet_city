@@ -141,6 +141,11 @@ class manager
         return $administrationDAO->getMessageContactAll();
     }
 
+    public function addModo(){
+        $admin = new administrationDAO(DEBUG);
+        $admin->createModerateur("modo", "mail", "test", "test");
+    }
+
     /**
      * @return array
      */

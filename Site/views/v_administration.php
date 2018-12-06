@@ -103,7 +103,7 @@ require_once(PATH_VIEWS.'alert.php');?>
                         </form>   
                     </div>                 
                     <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents({}, false);">Ajouter</button>
+                        <button type="button" class="btn btn-primary mr-4" id="add" onClick="addPatrimoineComponents({}, false);"><?= AJOUTER ?></button>
                         <button type="button" class="btn btn-primary mr-4" onClick="savePatrimoine();">Enregistrer</button>
                         <a class="btn btn-primary" href="?page=administration">Annuler</a>
                     </div>
@@ -117,14 +117,14 @@ require_once(PATH_VIEWS.'alert.php');?>
                         </div>
                         <div class="media-body align-self-center">
                             <div class="form-inline" data-id='0'>
-                                <label class="col-2 align-self-left" for="text"><h4 class="text-truncate">Text</h4></label>
+                                <label class="col-2 align-self-left" for="text"><h4 class="text-truncate"><?= TEXT ?></h4></label>
                                 <input type="text" class="form-control col-8" id="text">
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
-                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                        <button type="button" class="btn btn-primary mr-4"><?= ENREGISTRER ?></button>
+                        <a class="btn btn-primary" href="?page=administration"><?= TXT_ANNULER ?></a>
                     </div> 
                 </div>
                 <div id="bandeauConfig" style="display: none;">
@@ -133,8 +133,8 @@ require_once(PATH_VIEWS.'alert.php');?>
                         <input type="text" class="form-control col-8" id="textBandeau" value="">
                     </div>
                     <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
-                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                        <button type="button" class="btn btn-primary mr-4"><?= ENREGISTRER ?></button>
+                        <a class="btn btn-primary" href="?page=administration"><?= TXT_ANNULER ?></a>
                     </div> 
                 </div>
                 <div id="contactConfig" style="display: none;">
@@ -143,8 +143,8 @@ require_once(PATH_VIEWS.'alert.php');?>
                         <textarea class="form-control col-8" id="textContact" value=""></textarea>
                     </div>
                     <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4">Enregistrer</button>
-                        <a class="btn btn-primary" href="?page=administration">Annuler</a>
+                        <button type="button" class="btn btn-primary mr-4"><?= ENREGISTRER ?></button>
+                        <a class="btn btn-primary" href="?page=administration"><?= TXT_ANNULER ?></a>
                     </div> 
                 </div>
             </div>
@@ -157,18 +157,18 @@ require_once(PATH_VIEWS.'alert.php');?>
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="adminModalTitle">Delete confirmation</h5>
+                <h5 class="modal-title" id="adminModalTitle"><?= DELETE_CONFIRM ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <input id="idModal" type="text" class="form-control" hidden>
-                <p>Are you sure to delete this object ?</p>
+                <p><?= TEXT_CONFIRM_DELETE ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onClick="deleteObject($('#adminModal').find('input#idModal').val());">Continue</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= CANCEL ?></button>
+                <button type="button" class="btn btn-primary" onClick="deleteObject($('#adminModal').find('input#idModal').val());"><?= CONTINUER ?></button>
             </div>
         </div>
     </div>

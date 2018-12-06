@@ -82,3 +82,17 @@ define ("CHAMP_PRENOM","Votre Prénom");
 define("CHAMP_EMAIL","Votre Email");
 define("CHAMP_SUJET","Sujet");
 define("CHAMP_MESSAGE","Votre Message");
+
+define("RETOUR_ACCUEIL", "Retour à l'accueil");
+define("AJOUTER", "Ajouter");
+define("TEXT", "Text");
+define("ENREGISTRER", "Enregistrer");
+define("DELETE_CONFIRM", "Delete confirmation");
+define("TEXT_CONFIRM_DELETE", "Are you sure to delete this object ?");
+define("CANCEL", "Cancel");
+define("CONTINUER", "Continuer");
+define("COPYRIGHT", "Copyright © 2018 Presque Île. All Rights Reserved.");
+define("CLOSE", "Close");
+define("CHARGEMENT", "Chargement...");
+
+define("ADRESSE", "Bâtiment Les Passerelles, <br/>24 Avenue Joannès Masset, <br/>69009 Lyon");

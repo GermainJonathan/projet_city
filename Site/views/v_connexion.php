@@ -30,7 +30,7 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="row justify-content-between no-margin">
                 <div class="col-6"></div>
                 <div class="col-6">
-                    <button form="formConnexion" class="btn btn-primary" type="submit" name="valFormConnexion" id="valFormConnexion">Valider</button>
+                    <button form="formConnexion" class="btn btn-primary" type="submit" name="valFormConnexion" id="valFormConnexion"><?= TXT_VALIDER ?></button>
                 </div>
             </div>
         </form>

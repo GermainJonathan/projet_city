@@ -60,18 +60,18 @@ require_once(PATH_VIEWS.'alert.php');?>
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="messageModalTitle">Delete confirmation</h5>
+                <h5 class="modal-title" id="messageModalTitle"><?= DELETE_CONFIRM ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <input id="idModal" type="text" class="form-control" hidden>
-                <p>Are you sure to delete this object ?</p>
+                <p><?= TEXT_CONFIRM_DELETE ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onClick="confirmDelete($('#messageModal').find('input#idModal').val());">Continue</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= CANCEL ?></button>
+                <button type="button" class="btn btn-primary" onClick="confirmDelete($('#messageModal').find('input#idModal').val());"><?= CONTINUER ?></button>
             </div>
         </div>
     </div>

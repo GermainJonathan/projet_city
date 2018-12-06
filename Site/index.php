@@ -40,5 +40,9 @@ $paysDAO = new paysDAO(DEBUG);
 
 $listPays = $paysDAO->getPays();
 
+// ajout modo : test, test
+//$manager = new manager();
+//$manager->addModo();
+
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');
