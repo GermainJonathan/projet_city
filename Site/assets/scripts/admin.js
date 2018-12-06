@@ -277,7 +277,7 @@ function savePatrimoine() {
     })
     objects.shift();
     images.shift();
-    var type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
+    var type = listMenu[$(".sidebarAdmin>a.nav-link.active").data("index")];
     
     for(let i = 0; i < objects.length; i++) {
         let data = generateFormData(objects[i], type);
@@ -392,21 +392,21 @@ function deleteObject(ObjectId) {
     });
 }
 
- function mailWatcher() {
+function mailWatcher() {
     $("div.sidebarAdmin").empty();
     generateMailingList();
     $("#administrationConfig").show();
- }
+}
 
- function generateMailingList() {
+function generateMailingList() {
     $("#sidebarData > input").each(function() {
-        let mail = $("<p class='inline'><a class='btn btn-light mailObject' onClick='openMail(" + $(this).data("idmessage") + ");'>" + $(this).val() + "</a><button type='button' class='btn btn-outline-danger'><span class='bin'></span></button></p>");
+        let mail = $("<p class='row inline'><a class='btn btn-light col-10 mailObject' onClick='openMail(" + $(this).data("idmessage") + ");'>" + $(this).val() + "</a><button type='button' class='btn btn-outline-danger col-2' onClick='modalDeleteMail(" + $(this).data('idmessage') + ");'><span class='bin'></span></button></p>");
         $("div.sidebarAdmin").append(mail);
     });
     $(".adminContainer > .spinner:first").hide();
- }
+}
 
- function openMail(idMessage) {
+function openMail(idMessage) {
     if(oldMail == undefined) {
         $("#mailContent > div#" + idMessage).show();
         oldMail = idMessage;
@@ -415,4 +415,34 @@ function deleteObject(ObjectId) {
         $("#mailContent > div#" + idMessage).show();
         oldMail = idMessage;
     }
- }
+}
+
+function modalDeleteMail(idMessage) {
+    $('#adminModalMail').modal('show');
+    $('#adminModalMail').find("input#idModal").val(idMessage);
+}
+
+function deleteMail(idMessage) {
+    $('#adminModal').modal('hide');
+    $.ajax({
+        method: 'GET',
+        url: environnement.serviceUrl + "adminDeleteMessageContact.php?id=" + idMessage
+    }).done(function () {
+        $.notify({
+            message: "Message deleted with id : " + idMessage
+        }, {
+            type:'success'
+        });
+        $("form > input#id").each(function() {
+            if($(this).val() == idMessage) {
+                $(this).parent().hide();
+            }
+        });
+    }).fail(function() {
+        $.notify({
+            message: "Error on delete message with id : " + idMessage
+        }, {
+            type:'warning'
+        });
+    });
+}

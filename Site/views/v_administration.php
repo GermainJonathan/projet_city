@@ -130,6 +130,27 @@ require_once(PATH_VIEWS.'alert.php');?>
         </div>
     </div>
 </div>
+<!-- Modal Mail -->
+<div class="modal fade" id="adminModalMail" tabindex="-1" role="dialog" aria-labelledby="adminModalMailTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adminModalMailTitle">Delete confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="idModal" type="text" class="form-control" hidden>
+                <p>Are you sure to delete this message ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onClick="deleteObject($('#adminModalMail').find('input#idModal').val());">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="<?= PATH_SCRIPTS ?>admin.js"></script>
 <!--  Pied de page -->
 <?php require_once(PATH_VIEWS.'footer.php');
