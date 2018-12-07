@@ -241,7 +241,7 @@ function setupQuarterCard(quarterName) {
                 method: 'GET',
                 url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
             }).done(function(data) {
-                var perracheCard = new Card(quarterName, data[0].commentaire, 1, ["perrache.jpg", "statut-de-la-republique.jpg", "vattel.jpg"]);
+                var perracheCard = new Card(quarterName, data[0].commentaire, 1, ["perrache.jpg", "monument-ampere.jpg", "place-carnot.jpg"]);
                 legend.remove();
                 legend = L.control({position: 'topleft'});
                 legend.onAdd = perracheCard.createCard();
@@ -253,7 +253,7 @@ function setupQuarterCard(quarterName) {
                 method: 'GET',
                 url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
             }).done(function(data) {
-                var bellecourCard = new Card(quarterName, data[0].commentaire, 2, ["bellecour.jpg", "leondelyon.jpg", "brasserie-sud.jpg"]);
+                var bellecourCard = new Card(quarterName, data[0].commentaire, 2, ["place-bellecour.jpg", "leondelyon.jpg"]);
                 legend.remove();
                 legend = L.control({position: 'topleft'});
                 legend.onAdd = bellecourCard.createCard();
@@ -265,7 +265,7 @@ function setupQuarterCard(quarterName) {
                 method: 'GET',
                 url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
             }).done(function(data) {
-                var terreauxCard = new Card(quarterName, data[0].commentaire, 3,  ["terreaux.jpg", "hotel-de-ville-lyon-1.jpg"]);
+                var terreauxCard = new Card(quarterName, data[0].commentaire, 3,  ["opera.jpg", "musee-beaux-arts.jpg"]);
                 legend.remove();
                 legend = L.control({position: 'topleft'});
                 legend.onAdd = terreauxCard.createCard();
