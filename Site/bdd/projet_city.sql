@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  ven. 28 sep. 2018 à 17:27
+-- Généré le :  Dim 18 nov. 2018 à 19:53
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.10
 
@@ -29,14 +29,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activite` (
-  `codeActivte` int(5) NOT NULL,
+  `codeActivite` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
   `codeCategorie` int(5) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `nomLieux` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `coordonnees` point NOT NULL,
+  `imageActivite` varchar(50) DEFAULT NULL,
+  `commentaire` text,
+  `telephone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `activite`
+--
+
 
 -- --------------------------------------------------------
 
@@ -49,6 +57,11 @@ CREATE TABLE `categorie` (
   `libelleCategorie` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `categorie`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -59,8 +72,10 @@ CREATE TABLE `commentaire` (
   `codeCommentaire` int(5) NOT NULL,
   `codePays` int(5) DEFAULT NULL,
   `codeQuartier` int(5) DEFAULT NULL,
+  `nom` varchar(50) DEFAULT NULL,
   `commentaire` text,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT NULL,
+  `actif` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -78,10 +93,6 @@ CREATE TABLE `etatTopic` (
 -- Déchargement des données de la table `etatTopic`
 --
 
-INSERT INTO `etatTopic` (`codeEtat`, `libelleEtat`) VALUES
-(1, 'En attente'),
-(2, 'Valider'),
-(3, 'Annuler');
 
 -- --------------------------------------------------------
 
@@ -93,6 +104,8 @@ CREATE TABLE `histoire` (
   `codeHistoire` int(5) NOT NULL,
   `codePays` int(5) NOT NULL,
   `codeQuartier` int(5) NOT NULL,
+  `titre` varchar(50) DEFAULT NULL,
+  `imageHistoire` varchar(50) DEFAULT NULL,
   `commentaire` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -105,16 +118,15 @@ CREATE TABLE `histoire` (
 CREATE TABLE `message` (
   `codeMessage` int(5) NOT NULL,
   `codeTopic` int(5) DEFAULT NULL,
+  `nom` varchar(50) NOT NULL,
   `message` text,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT NULL,
+  `codeProfile` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `message`
 --
-
-INSERT INTO `message` (`codeMessage`, `codeTopic`, `message`, `date`) VALUES
-(1, 1, 'test message 1', '2018-09-28');
 
 -- --------------------------------------------------------
 
@@ -144,10 +156,17 @@ CREATE TABLE `monument` (
   `codeQuartier` int(5) DEFAULT NULL,
   `libelleMonument` varchar(50) DEFAULT NULL,
   `imageMonument` varchar(50) DEFAULT NULL,
+  `coordonnees` point NOT NULL,
   `dateConstruction` date DEFAULT NULL,
   `architecte` varchar(50) DEFAULT NULL,
-  `commentaire` text
+  `commentaire` text,
+  `adresse` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `monument`
+--
+
 
 -- --------------------------------------------------------
 
@@ -166,8 +185,22 @@ CREATE TABLE `pays` (
 -- Déchargement des données de la table `pays`
 --
 
-INSERT INTO `pays` (`codePays`, `libellePays`, `libellePaysCourt`, `fichier`) VALUES
-(1, 'France', 'FR', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `profile`
+--
+
+CREATE TABLE `profile` (
+  `codeProfile` int(5) NOT NULL,
+  `libelleProfile` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `profile`
+--
+
 
 -- --------------------------------------------------------
 
@@ -179,6 +212,11 @@ CREATE TABLE `quartier` (
   `codeQuartier` int(5) NOT NULL,
   `libelleQuartier` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `quartier`
+--
+
 
 -- --------------------------------------------------------
 
@@ -193,6 +231,8 @@ CREATE TABLE `restaurant` (
   `nom` varchar(50) DEFAULT NULL,
   `adresse` varchar(50) DEFAULT NULL,
   `numeroTelephone` varchar(20) DEFAULT NULL,
+  `coordonnees` point NOT NULL,
+  `imageRestaurant` varchar(50) DEFAULT NULL,
   `commentaire` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -215,9 +255,25 @@ CREATE TABLE `topic` (
 -- Déchargement des données de la table `topic`
 --
 
-INSERT INTO `topic` (`codeTopic`, `codePays`, `libelleTopic`, `description`, `codeEtat`, `date`) VALUES
-(1, 1, 'test1', 'ceci est un test', 1, '2018-09-27'),
-(2, 1, 'testSite', 'test depuis le site', 1, '2018-09-28');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE `user` (
+  `codeUser` int(5) NOT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `mail` varchar(50) DEFAULT NULL,
+  `login` varchar(255) DEFAULT NULL,
+  `passWord` varchar(255) DEFAULT NULL,
+  `codeProfile` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `user`
+--
 
 --
 -- Index pour les tables déchargées
@@ -227,9 +283,11 @@ INSERT INTO `topic` (`codeTopic`, `codePays`, `libelleTopic`, `description`, `co
 -- Index pour la table `activite`
 --
 ALTER TABLE `activite`
+  ADD PRIMARY KEY (`codeActivite`),
   ADD KEY `codePays` (`codePays`),
   ADD KEY `codeQuartier` (`codeQuartier`),
-  ADD KEY `codeCategorie` (`codeCategorie`);
+  ADD KEY `codeCategorie` (`codeCategorie`),
+  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
 
 --
 -- Index pour la table `categorie`
@@ -269,7 +327,8 @@ ALTER TABLE `histoire`
 ALTER TABLE `message`
   ADD PRIMARY KEY (`codeMessage`),
   ADD KEY `codeMessage` (`codeMessage`),
-  ADD KEY `codeTopic` (`codeTopic`);
+  ADD KEY `codeTopic` (`codeTopic`),
+  ADD KEY `codeProfile` (`codeProfile`);
 
 --
 -- Index pour la table `monument`
@@ -278,7 +337,8 @@ ALTER TABLE `monument`
   ADD PRIMARY KEY (`codeMonument`),
   ADD KEY `codeMonument` (`codeMonument`),
   ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
+  ADD KEY `codeQuartier` (`codeQuartier`),
+  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
 
 --
 -- Index pour la table `pays`
@@ -286,6 +346,13 @@ ALTER TABLE `monument`
 ALTER TABLE `pays`
   ADD PRIMARY KEY (`codePays`),
   ADD KEY `codePays` (`codePays`);
+
+--
+-- Index pour la table `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`codeProfile`),
+  ADD KEY `codeProfile` (`codeProfile`);
 
 --
 -- Index pour la table `quartier`
@@ -298,8 +365,10 @@ ALTER TABLE `quartier`
 -- Index pour la table `restaurant`
 --
 ALTER TABLE `restaurant`
+  ADD PRIMARY KEY (`codeRestaurant`),
   ADD KEY `codePays` (`codePays`),
-  ADD KEY `codeQuartier` (`codeQuartier`);
+  ADD KEY `codeQuartier` (`codeQuartier`),
+  ADD SPATIAL KEY `coordonnees` (`coordonnees`);
 
 --
 -- Index pour la table `topic`
@@ -311,16 +380,17 @@ ALTER TABLE `topic`
   ADD KEY `codeEtat` (`codeEtat`);
 
 --
--- Contraintes pour les tables déchargées
+-- Index pour la table `user`
 --
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`codeUser`),
+  ADD UNIQUE KEY `login` (`login`),
+  ADD KEY `codeUser` (`codeUser`),
+  ADD KEY `codeProfile` (`codeProfile`);
 
 --
--- Contraintes pour la table `activite`
+-- Contraintes pour les tables déchargées
 --
-ALTER TABLE `activite`
-  ADD CONSTRAINT `activite_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
-  ADD CONSTRAINT `activite_ibfk_2` FOREIGN KEY (`codeQuartier`) REFERENCES `quartier` (`codeQuartier`),
-  ADD CONSTRAINT `activite_ibfk_3` FOREIGN KEY (`codeCategorie`) REFERENCES `categorie` (`codeCategorie`);
 
 --
 -- Contraintes pour la table `commentaire`
@@ -340,28 +410,21 @@ ALTER TABLE `histoire`
 -- Contraintes pour la table `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`codeTopic`) REFERENCES `topic` (`codeTopic`);
-
---
--- Contraintes pour la table `monument`
---
-ALTER TABLE `monument`
-  ADD CONSTRAINT `monument_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
-  ADD CONSTRAINT `monument_ibfk_2` FOREIGN KEY (`codeQuartier`) REFERENCES `quartier` (`codeQuartier`);
-
---
--- Contraintes pour la table `restaurant`
---
-ALTER TABLE `restaurant`
-  ADD CONSTRAINT `restaurant_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
-  ADD CONSTRAINT `restaurant_ibfk_2` FOREIGN KEY (`codeQuartier`) REFERENCES `quartier` (`codeQuartier`);
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`codeTopic`) REFERENCES `topic` (`codeTopic`),
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`codeProfile`) REFERENCES `profile` (`codeProfile`);
 
 --
 -- Contraintes pour la table `topic`
 --
 ALTER TABLE `topic`
   ADD CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`codePays`) REFERENCES `pays` (`codePays`),
-  ADD CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`codeEtat`) REFERENCES `etatTopic` (`codeEtat`);
+  ADD CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`codeEtat`) REFERENCES `etattopic` (`codeEtat`);
+
+--
+-- Contraintes pour la table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`codeProfile`) REFERENCES `profile` (`codeProfile`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

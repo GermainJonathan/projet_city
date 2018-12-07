@@ -1,3 +1,12 @@
+@font-face {
+	font-family: "Nexa_Light";
+	src: url("./fonts/Nexa_Light.otf");
+   }
+
+h1, h2, h3{
+	font-family: "Nexa_Light";
+}
+
 .navbar {
 	background-color: white;
 	border-bottom: 2px solid #B3B3B3;
@@ -66,13 +75,95 @@
 	margin-left: 30px;
 }
 
-.main-header {
-	position: sticky;
-	top: 0;
-	z-index: 15;
+.dropdown {
+	display: inline-block;
+}
+
+/*------------------Boutons Administration--------------------*/
+.adminTools {
+	right: 0;
+	top: 5px;
+    align-self: flex-start;
+    position: absolute;
+    padding: 15px;
+}
+
+.logout {
+	background-image: url(../images/core/logout.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	height: 30px;
+	width: 30px;
+}
+
+.admin {
+	background-image: url(../images/core/pc-administrator.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	height: 30px;
+	width: 30px;
+}
+
+.worlwide {
+	background-image: url(../images/core/worlwide.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+	width: 24px;
+}
+
+button#dropdownMenuButton {
+	border : none;
+}
+
+.show>.btn-primary.dropdown-toggle span,
+.dropdown:hover span {
+	background-image: url(../images/core/worlwideHover.svg);
+}
+
+.dropdown-toggle::after {
+	margin-left: 0;
+	vertical-align: 0;
+}
+
+.adminTools .dropdown-menu {
+	min-width: 30px !important;
+}
+
+
+.dropdown-item {
+	padding: .25rem .9rem !important;
+}
+
+.show>.btn-primary.dropdown-toggle,
+.disconnect:hover  {
+	background-color: #E98B39;
+}
+
+.disconnect:hover .logout {
+	background-image: url(../images/core/logoutHover.svg);
+}
+
+.disconnect:hover .admin {
+	background-image: url(../images/core/pc-administratorHover.svg);
+}
+
+button.btn#valFormConnexion {
+	width: 100% !important;
+	margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 992px) {
+	.adminTools {
+		margin-top: 15px;
+		left: 0;
+		right: unset;
+	}
 	.navbar {
 		justify-content: center;
 	}
@@ -88,5 +179,32 @@
 	#logo-header {
 		position: relative;
 		margin-top: 0px;
+		width:80px;
+		height:80px;
+	}
+	.admin,
+	.logout,
+	.worlwide {
+		height: 18px;
+	}
+	button#dropdownMenuButton,
+	.disconnect {
+		padding: 0px;
+	}
+
+	.adminTools .dropdown-menu {
+		min-width: 18px !important;
+	}
+}
+
+@media screen and (max-width: 1092px) and (min-width: 992px) {
+	.navbar {
+		justify-content: center;
+	}
+	.navbar-nav li{
+		margin: 2px;
+	}
+	.adminTools {
+		padding: 2px;
 	}
 }

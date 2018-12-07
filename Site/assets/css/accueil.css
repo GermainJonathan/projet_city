@@ -6,6 +6,18 @@
     margin: 10px 0px 0px 0px;
 }
 
+.card-title {
+    color: black;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+    
+}
+
+.card-body > p {
+    overflow: hidden;
+    max-height: 3em;
+}
 
 @media screen and (max-width: 576px) {
     .legend {
@@ -27,8 +39,9 @@
         border: 1px solid black;
     }
     
+    .carousel img,
     .card-img-top {
-        height: 11em;
+        height: 13em;
     }
 
     .card-text {
@@ -47,16 +60,17 @@
         width: 20em;
         border: 1px solid black;
     }
-    
-    .card-img-top {
-        height: 11em;
-    }
 
     .card-text {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: auto;        
         overflow-x: hidden;    
+    }
+
+    .carousel img,
+    .card-img-top {
+        height: 13em;
     }
 }
 
@@ -68,6 +82,12 @@
         width: 25em;
         border: 1px solid black;
     }
+
+    .carousel img,
+    .card-img-top {
+        height: 15em;
+    }
+
 }
 
 .view {
@@ -78,15 +98,35 @@
     background-position: center center;
 }
 
-.leaflet-left {
+.leaflet-top.leaflet-left {
+    top: 50% !important;
     left: 15% !important;
-    transform: translate(-15%, 0%);
+    transform: translate(-15%, -50%);
 }
 
-.leaflet-top {
-    top: 15% !important;
-    transform: translate(-15%, 0%);
+/* Animation des Cartes */
+
+.card.legend.leaflet-control,
+.leaflet-marker-icon {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
 }
+
+/* Enlève la scrollbar du contrôle de couche */
+form.leaflet-control-layers-list.leaflet-control-layers-scrollbar {
+    overflow: hidden;
+}
+
+.card.legend.leaflet-control:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transition: all .2s ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+}
+
+/* Fin Animation des cartes */
 
 .AccueilIcon{
     width:80px;
@@ -95,9 +135,86 @@
     padding-top:20px;
 }
 
+#titreAccueil {
+    z-index: 1000;
+}
+
 .AccueilIcon:hover{
     cursor:pointer;
 }
+
 .sousTitreAccueil{
     padding-top:20px;
+}
+
+/*-------------------Flipping Accueil-------------------*/
+.iconPatrimoine {
+    perspective: 600px;
+    height: 125px;
+}
+
+.toSpinCard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-font{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.card-back-face {
+    transform: rotateY( 180deg );
+}
+
+.card-font-face {
+    transform: rotateY(0deg);
+}
+
+.toSpinCard.isSpin {
+    transform: rotateY(180deg);
+}
+
+a.list-group-item {
+    background: white;
+    color:black;
+    transition: all 0.4s;
+}
+a.list-group-item:hover {
+    background:#E98B39 !important;
+    color: white !important;
+}
+
+/*------------------- MODAL -------------------*/
+.close {
+    opacity: 1;
+}
+
+.close > span {
+    color: white;
+}
+
+.modalCard {
+    border: none !important;
+}
+
+#mobileHeader {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    padding: .5rem;
+    border-bottom: none;
+}
+
+#mobileBody {
+    padding: 0;
+}
+
+#mobileContent {
+    border: none;
 }

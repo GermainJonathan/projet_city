@@ -2,15 +2,25 @@
 
 // Initialisation des paramètres du site
 require_once './config/configuration.php';
-require_once './lib/foncBase.php';
+require_once PATH_LIB.'foncBase.php';
+
+require_once PATH_MODELS.'user.php';
+require_once PATH_MODELS.'paysDAO.php';
 
 //selection de la langue
 session_start();
-if(isset($_SESSION["lang"]))
-    $lang = $_SESSION["lang"];
-else
-    $lang = getLangage();
-require_once(PATH_TEXTES.$lang.'.php');
+
+if(empty($_GET["lang"])) {
+    if (isset($_SESSION["lang"]) && !empty($_SESSION["lang"]))
+        $lang = $_SESSION["lang"];
+    else
+        $lang = getLangage();
+}
+else {
+    $lang = setLangageById($_GET["lang"]);
+}
+
+require_once PATH_TEXTES.$lang.'.php';
 
 //vérification de la page demandée
 if(isset($_GET['page']))
@@ -25,6 +35,14 @@ else {
 	header('Location: ?page=accueil');
 	$page='accueil'; //page d'accueil du site - http://.../index.php
 }
+
+$paysDAO = new paysDAO(DEBUG);
+
+$listPays = $paysDAO->getPays();
+
+// ajout modo : test, test
+//$manager = new manager();
+//$manager->addModo();
 
 //appel du controller
 require_once(PATH_CONTROLLERS.$page.'.php');

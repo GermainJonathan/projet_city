@@ -3,7 +3,7 @@
  * To use the parallax effect, set the class of the div to parallax, the data-height attribute to the height of the parallax in percent
  * and the data-image-src attribute to the picture to use.
  */
-jQuery(document).ready(function () {
+$(function () {
 
     setParallax();
 
@@ -29,18 +29,18 @@ jQuery(document).ready(function () {
      * Sync the movement of the picture with the scroll.
      */
     $(window).scroll(function () {
-        var scrolled = $(window).scrollTop()
+        var scrolled = $(window).scrollTop();
         $('.parallax').each(function (index, element) {
-            var initY = $(this).offset().top
-            var height = $(this).height()
-            var endY = initY + $(this).height()
+            var initY = $(this).offset().top;
+            var height = $(this).height();
+            var endY = initY + $(this).height();
 
             // Check if the element is in the viewport.
-            var visible = isInViewport(this)
+            var visible = isInViewport(this);
             if (visible) {
-                var diff = scrolled - initY
-                var ratio = Math.round((diff / height) * 100)
-                $(this).css('background-position', 'center ' + parseInt(-(ratio * 2)) + 'px')
+                var diff = scrolled - initY;
+                var ratio = Math.round((diff / height) * 100);
+                $(this).css('background-position', 'center ' + parseInt(-(ratio * 1/2)) + 'px')
             }
         })
     })

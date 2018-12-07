@@ -1,0 +1,737 @@
+/** La side bar **/
+#sideBar{
+    top: 200px;
+    width: 160px;
+    border:1px solid #444;
+    position: fixed;
+    height: 360px;
+    z-index:11;
+    bottom:10px;
+    background: white;
+}
+
+/* La barre de navigation */
+.nav {
+    position: absolute;
+    top: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-top:10px;
+  }
+  
+  .nav li {
+    line-height: 40px;
+    padding-top:5px;
+    padding-bottom:5px;
+    font-size:17px;
+  }
+
+  .nav li a.active {
+    font-size:20px;
+    text-decoration: none;
+    border-left:4px solid #444;
+    font-weight: bold;
+    color: #E98B39;
+}
+
+.nav li a:hover{
+    font-size:20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #E98B39;
+}
+
+/* texte du lien de navigation */
+.navLien{
+    margin:0;
+    padding:0;
+    padding-left:30px;
+}
+
+/* Un lien de navigation */  
+.nav-link{
+    color: #B3B3B3;
+    display: block;
+    text-decoration: none;
+    padding-left: 30px;
+}
+
+.nav-link:hover{
+    color:#B3B3B3;
+} 
+    
+/* ------------------------ TIMELINE HISTORY ----------------------------------------*/
+
+.btnHistory{
+    position: absolute;
+    width: 50%;
+    margin-left: 150px;
+    width: calc(100% - 220px);
+    margin-top:-6px;
+    max-width:300px;
+}
+
+h2{
+    font-size:20px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.lineTimeline{
+    height: 80px;
+    border-left: 2px solid #E98B39;
+    margin-left: 60px;
+}
+
+.marginFrise{
+    margin-left:150px;
+    margin-right:50px;
+}
+
+.marginFrise.titleBubble{
+    text-transform: capitalize;
+}
+
+p{
+    font-size:13px;
+}
+        
+#timelineHistory {
+    position: relative;
+}
+
+#timelineHistory > div {
+    padding-left: 20px;
+    position:relative;
+}
+
+#timelineHistory > div > .bubble {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #E98B39;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 400;
+    background-size: cover;
+}
+
+.txtBubble{
+    height:72px;
+    overflow:hidden;
+}
+
+#blocTxtHistory{
+    display: flex;
+    flex-flow: column;
+}
+
+#blocTimelineHistory{
+    border-left: solid 1px #E98B39;
+}
+
+#sousTitreHistory{
+    flex: 0 1 auto;
+    font-size:17px;
+    color:#B3B3B3;
+    font-style: italic;
+}
+
+#txtHistory{
+    flex: 0 1 auto;
+}
+
+#imgHistoryContainer{
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+#imgHistory{
+    display: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid #E98B39;
+    background-size: cover;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding-bottom: 80%;
+    transform: translateX(0%);
+}
+
+@media screen and (max-width: 510px){
+    .lineTimeline{
+        display:none;
+    }
+
+    #timelineHistory > div{
+        padding-left:0;
+        padding-bottom:50px;
+    }
+
+    #timelineHistory > div > .bubble{
+        left:0;
+        width:100px;
+        height:100px;
+    }
+
+    .btnHistory{
+        width: calc(100% - 110px);
+        margin-left:109px;
+    }
+
+    .marginFrise{
+        margin-right:0;
+        margin-left:110px;
+    }
+}
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------- CAROUSEL MONUMENTS----------------------------*/
+.arrow{
+    background-image:url(../images/core/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:30px;
+    cursor:pointer;
+    height: 100%;
+}
+
+#arrowLeftMonument{
+    transform: rotate(180deg);
+    float: left;
+    position: absolute;
+    z-index:100;
+}
+
+#arrowRightMonument{
+    right:5%;
+    float: left;
+    position: absolute;
+    z-index:100;
+}
+
+.carrousel{
+    margin-left:20px;
+    margin-top:40px;
+    position:relative;
+    overflow-y:hidden;
+    height:360px;
+}
+
+.carrousel-contenu{
+    overflow:hidden;
+    margin-right:40px;
+    margin-left:40px;
+    height:450px;
+    width:98%;
+}
+
+.carrousel-contenu .card {
+    float:left;
+    margin-right:20px;
+    transition: 800ms width,border,margin-right ease-in-out;
+    display:block!important;
+    height:350px;
+    position:relative;
+    max-width:330px;
+    margin-bottom:30px;
+}
+
+.carrousel-contenu .card img{
+    height:50%!important;
+}
+
+.carrousel-contenu .card .card-body{
+    height:50%!important;
+    position:relative;
+    transition: 200ms color ease-in-out;
+}
+
+.carrousel-contenu .card .card-body h5{
+    transition: 200ms color ease-in-out;
+}
+
+.carrousel-contenu .card .card-body .card-footer a{
+    transition: 200ms color,border ease-in-out;
+}
+
+.cache .card-body .card-footer a{
+    border:none !important;
+    color:white !important;
+}
+.cardMonument.cache{
+    width:0!important;
+    border:none!important;
+    padding:0!important;
+    color:white!important;
+    flex:0!important;
+    margin-right:0!important;
+    /* visibility: hidden!important; */
+}
+
+.cache .card-body{
+    color:white;
+}
+
+.cache h5{
+    color:white;
+}
+.EnsavoirPlus{
+    position:relative;
+    height:350px;
+    margin-top:20px;
+    display:none;
+    box-shadow: 19px 20px 0px -8px #E98B39;
+    padding-right:0;
+    height:450px;
+}
+
+.imgSavoirPlus{
+    background-image:url("");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover;
+    width:100%;
+    height:100%;
+    opacity:0.7;
+}
+
+.cardMonument.cache.noVisibility{
+    visibility: hidden;
+}
+
+.closeBtnSavoirPlus{
+    color: #444;
+    background-color:white;
+    border:none;
+    
+}
+.closeBtnSavoirPlus span{
+    font-size:20px;
+}
+
+.txtSavoirPlus{
+    position: absolute;
+    width:50%;
+    text-align:justify;
+    margin-left:20px;
+    left:50%;
+    top:50%;
+    box-shadow:4px 3px 10px 5px #444;
+    height:auto;
+    overflow:hidden;
+    max-height:350px;
+    transform:translate(-50%,-50%);
+    background-color:white;
+    padding:10px;
+    opacity:0.9;
+}
+
+
+#titreSavoirPlusModal{
+    text-align:center;
+    color: #444;
+    padding-bottom:10px;
+    border-bottom: 1px solid #E98B39;
+    width:100%;
+}
+
+.txtSavoirPlusModal .descSavoirPlus{
+    text-align:justify;
+}
+
+.titreSavoirPlus{
+    font-size: 20px;
+    color: #444;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-header.modalSavoirPlus{
+    border-bottom:none!important;
+}
+
+.contactSavoirPlus{
+    float: left;
+    transform: translateY(-100%);
+    padding: 10px;
+    background: white;
+    opacity: 0.5;
+}
+
+.contactRowSavoirPlus{
+    padding: 5px;
+}
+
+.mapicon{
+    background-image: url(../images/core/maps-and-flags.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: bottom;
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+}
+
+.telicon{
+    background-image: url(../images/core/telephone.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 24px;
+    margin-right: 5px;
+}
+
+
+#tableCommentaire {
+    margin: 30px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+#SavoirPlusMonuments{
+    margin-left:55px;
+}
+
+
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------COMMENTAIRE -------------------------------------------*/
+
+.titreCommentaire{
+    color:#444;
+    width:100%;
+    margin-bottom:20px;
+    float:left;
+}
+
+
+.titreCommentaire h5{
+    float:left;
+    margin-right:20px;
+}
+
+.commentaireTxt{
+    width: 100%;
+    float:left;
+    border-bottom:1px solid #444;
+    margin-bottom:20px;
+}
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------ACTIVITÉ-------------------------------------------*/
+
+.imageActivite {
+    background-position-x: right !important;
+    background-size: contain !important;
+    min-width: 100%;
+    position: absolute;
+    height: 50%;
+    transition: all 1s ease-out 0s;
+}
+
+#imgActivitePrincipale{
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+
+.panelActivite {
+    overflow: hidden;
+}
+
+.ImgOpacityGrande{
+    ms-flex: 0 0 25%!important;
+    flex: 0 0 25%!important;
+    max-width: 25%!important;
+}
+
+#arrowUpActivity{
+    transform: rotate(270deg);
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+}
+
+#arrowDownActivity{
+    transform: rotate(90deg);
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+}
+
+#parallaxactivite{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#activiteconteneur{
+    height: 400px;
+    overflow: scroll;
+    transition: 0s box-shadow;
+    overflow-x: hidden;
+}
+
+#activiteconteneur:hover{
+    box-shadow: 0px 0px 4px 2px #E98B39A0;
+    transition-duration: 1s;
+    transition-delay: 0.5s;
+}
+
+#activiteconteneur > section{
+    position: relative;
+    height: 50%;
+    width: 100%;
+    padding: 10px;
+}
+
+#activiteconteneur > section > p{
+    height: 65%;
+    overflow: hidden;
+}
+
+#activiteconteneur > section > div > .imageActivite.hide,
+#activiteconteneur > section > div > p.hide {
+    mask-image: -webkit-gradient(linear, left top, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    -webkit-mask-image: -webkit-gradient(linear, left top, 
+    left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
+.activiteContent{
+    height: 73%;
+    overflow: hidden;
+}
+
+.expandbutton{
+    position: absolute;
+    left: 5%;
+    bottom: 20px;
+    width: 90%;
+    height: 4px;
+    background: #E98B39;
+    text-align: center;
+    color: white;
+}
+
+.expandbutton > a{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #E98B39;
+    display: inline-block;
+    top: -10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.expandbutton > .arrowup{
+    transform: rotate(180deg);
+}
+
+.adresseActivite{
+    margin-top:20px;
+    width:100%;
+    height:20px;
+}
+
+.adresseActivite span{
+    float:left;
+}
+
+.adresseActivite div{
+    float:left;
+}
+
+.telActivite{
+    margin-top:20px;
+    width:100%;
+    height:20px;
+}
+
+.telActivite span{
+    float:left;
+}
+
+.telActivite div{
+    float:left;
+}
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------RESTAURANT-------------------------------------------*/
+.containerCard{
+    height:365px;
+    margin:20px;
+    overflow:hidden;
+    transition:height 500ms ease-in-out;
+}
+
+.cardRestaurant{
+    float:left;
+    margin-right:20px;
+    margin-bottom:20px;
+    display:block!important;
+    height:350px;
+    width:300px;
+}
+.cardRestaurant img{
+    height:50%!important;
+}
+
+.cardRestaurant .card-body{
+    height:50%!important;
+    position:relative;
+}
+
+.cardRestaurant .card-body a{
+    position:absolute;
+    bottom: 20px;
+    width: calc(100% - 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#ctnRestaurants{
+    height:50%;
+    transition:height 1s ease-in-out;
+}
+
+/*------------------------------------------------------------------------------------*/
+/***** BODY ***********/
+
+#BodyHistoire{
+    padding-left:25px;
+}
+
+  /* le texte de la page */
+
+.bodyQuartier h1{
+    color:#444;
+    font-size:40px;
+    font-weight: normal;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #E98B39;
+    margin-bottom:30px;
+}
+
+.arrow-restaurant{
+    height:35px;
+}
+
+#arrowTopRestaurant{
+    transform:rotate(270deg);
+    float:left;
+}
+
+#arrowDownRestaurant{
+    transform:rotate(90deg);
+    float:left;
+    margin-left:30px;
+}
+
+/*--------------------- RESPONSIVE ------------------------------*/
+
+@media screen and (max-width: 992px) {
+    
+    #sideBar{
+        padding-left:0;
+    }
+
+    .carrousel-contenu .card{
+        width:45%;
+    }
+}
+@media screen and (max-width: 768px) {
+    
+    #sideBar{
+        display:none!important;
+    }
+
+    .anchor{
+        padding-top:30px;
+    }
+
+    #RestaurantCards{
+        margin:0 !important;
+    }
+
+    #RestaurantCards .card{
+        width:46%;
+    }
+
+    #imgActivitePrincipale{
+        display:none;
+    }
+
+    .txtSavoirPlus{
+        width:60%;
+    }
+
+    #bodyActivites>div.row{
+        margin-right:0 !important;
+        margin-left:0 !important;
+    }
+
+    #CtnActivite{
+        padding-left:10px !important;
+        padding-right:5px !important;
+    }
+
+    #ChildCtnActivite{
+        padding-right:0 !important;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    #RestaurantCards .card{
+        width:98%;
+    }
+
+    .bodyQuartier h1{
+        margin-left: 10px !important;
+        width: calc(100% - 15px);
+    }
+
+    .container-fluid{
+        padding-right:0 !important;
+        padding-left:0!important;
+    }
+
+    .carrousel{
+        margin-left:0 !important;
+        margin-top:0 !important;
+    }
+
+    #arrowRightMonument{
+        right:0% !important;
+    }
+
+    .carrousel-contenu .card{
+        width:95%;
+    }
+
+    .txtSavoirPlus{
+        width:70%;
+    }
+
+}

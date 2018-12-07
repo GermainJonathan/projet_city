@@ -1,3 +1,21 @@
+html,body {
+    scroll-behavior: smooth;
+}
+
+/*** POUR POSITIONNER LE FOOTER EN BAS DE PAGE AUTOMATIQUEMENT **/
+html{
+    height:100%;
+}
+
+body{
+    min-height:100%;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    position:relative;
+}
+/***************************************************************/
+
 .no-margin{
     margin-left: 0;
     margin-right: 0;
@@ -21,8 +39,14 @@
     border-color: #E98B39 !important;
 }
 
-.card-title {
-    color: black;
+.form-control:focus {
+    border-color: #E98B39;
+    box-shadow: 0 0 0 2px #E98B39A0
+}
+
+.btn:focus,
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem #E98B39 ;
 }
 
 .pulse {
@@ -43,6 +67,8 @@
   
 .spinner {
     height: 100%;
+    text-align: center;
+    margin: 0;
 }
 
 @-webkit-keyframes sk-scaleout {
@@ -65,5 +91,146 @@
 }
 
 #basePage {
-    /* display: none; */
+    min-height:100%;
+    overflow: auto;
+    display: none;
+}
+
+
+.anchor {
+    display: block;
+    padding-top: 80px;
+}
+
+/* Scroll Bar */
+#activiteconteneur::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#activiteconteneur::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	width: 8px;
+	background-color: #FFFFFF;
+}
+
+#activiteconteneur::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #E98B39;
+}
+/* Fin Scroll Bar */
+
+/* COMMUN CARD */
+.card-footer{
+    border-top:none;
+}
+
+.card.border-light{
+    box-shadow:5px 5px 10px 2px #B3B3B3;
+}
+
+.card.Responsive img, .carrousel-contenu .card.Responsive img{
+    height: 60% !important;
+}
+
+.card.Responsive .card-body{
+    height:auto !important;
+}
+
+.card.Responsive .card-body .card-footer{
+    margin-top:30px;
+}
+/* PROVISOIRE */
+.alert {
+    z-index: 1020;
+}
+
+.erreur404FR {
+    background: url("../images//core/404-fr.svg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 50vh;
+}
+
+.erreur404EN {
+    background: url("../images//core/404-en.svg") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 50vh;
+}
+
+#button404 {
+    margin: 10px;
+}
+
+@media screen and (max-width: 510px) {
+    /** RESPONSIVE POUR LES TABLEAUX **/
+    table, thead, tbody, tr, th, td{
+        display:block;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tr{
+        margin-bottom:1rem;
+        border: 2px solid #dee2e6;
+        box-shadow: 4px 5px 6px #BEBEBE;
+    }
+    td{
+        padding-left:150px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        position:relative;
+        margin-top:-1px;
+        background:white;
+        text-align:right;
+    }
+
+    td:before{
+        padding:10px;
+        content:attr(data-label);
+        position: absolute;
+        top:0;
+        left:0;
+        width:130px;
+        bottom:0;
+        background-color:#444;
+        color:white;
+        display:flex;
+        align-items: center;
+    }
+
+    td:hover{
+        background-color: rgba(0,0,0,.08);
+    }
+
+    .table-striped tbody tr td:nth-child(odd){
+        background-color: rgba(0,0,0,.05);
+    }
+
+    td .btn{
+        width:80px;
+        float:right;
+    }
+
+    td .btn:last-child{
+        margin-right:10px;
+    }
+
+    td .list-group-item {
+        width:70%;
+        float:right;
+        padding-right:0px;
+    }
+
+    td .list-group-item:hover{
+        padding-right:20px;
+    }
+    
 }
