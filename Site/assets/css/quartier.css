@@ -434,6 +434,11 @@ p{
     left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
+.activiteContent{
+    height: 73%;
+    overflow: hidden;
+}
+
 .expandbutton{
     position: absolute;
     left: 5%;
