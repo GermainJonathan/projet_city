@@ -2,7 +2,7 @@
     <div class="pulse"></div>
     <div class="waitingLogo"><img src="<?= PATH_CORE.'logo.svg'?>"/>
         <p>
-            Chargement...
+            <?= CHARGEMENT ?>
         </p>
     </div>
 </div>

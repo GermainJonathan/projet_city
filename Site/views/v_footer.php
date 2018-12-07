@@ -38,7 +38,7 @@
                                 <a href="https://www.instagram.com/institut_g4/" target=_blank><div class="icon" id="iconInsta"></div></a><a href="https://twitter.com/g4formation" target=_blank><div class="icon" id="iconTwitter"></div></a><a href="https://www.facebook.com/InstitutG4/" target=_blank><div class="icon" id="iconFb"></div></a>
                         </div>
                         <div class = "col-lg-12 d-flex justify-content-center">
-                            <p class="copyright"> Copyright © 2018 Presque Île. All Rights Reserved.</p>
+                            <p class="copyright"><?= COPYRIGHT ?></p>
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,8 @@ const LANG ='FR';
 // Paramètres du site : nom de l'auteur ou des auteurs
 const AUTEUR = 'AG4île';
 const MAIL_ADMIN = 'paulpoupet@atilog.com';
+const TEL_ADMIN = '0484251692';
+const TEL_ADMIN_TEXT = '04 84 25 16 92';
 
 
 //dossiers racines du site

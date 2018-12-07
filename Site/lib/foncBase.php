@@ -206,10 +206,10 @@ function getLang(){
     $langs = ResourceBundle::getLocales('');
     foreach ($langs as $key => $lang){
         $pays = strtoupper(substr($lang, 0, 2));
-        $region = "-" . strtolower(substr($lang, 3));
-        $langs[$key] = strtoupper(substr($lang, 0, 2)) . "-" . strtolower(substr($lang, 3));
+        $region = strtolower(substr($lang, 3));
+        var_dump($pays ." ". $region);
+        $langs[$key] = $pays . "-" . strtolower(substr($lang, 3));
         var_dump(Locale::getDisplayRegion($region, 'fr'));
     }
 }
 */
-

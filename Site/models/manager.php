@@ -12,20 +12,27 @@ require_once PATH_MODELS.'commentaireDAO.php';
 class manager
 {
     /**
-     * @param null $id
      * @return array
      */
-    public function getPays($id = null)
+    public function getPays()
     {
         $paysDAO = new paysDAO(DEBUG);
         return $paysDAO->getPays();
     }
 
+    /**
+     * @param $id
+     * @return pays
+     */
     public function getLangById($id){
         $paysDAO = new paysDAO(DEBUG);
         return $paysDAO->getPaysById($id);
     }
 
+    /**
+     * @param $quartier
+     * @return quartier
+     */
     public function getQuartierByLibelle($quartier){
         $quartierDAO = new quartierDAO(DEBUG);
         return $quartierDAO->getQuartierByLibelle($quartier);
@@ -127,14 +134,22 @@ class manager
     }
 
     /**
-     * @return bool
+     * @return array
      */
     public function getMessageContact(){
         $administrationDAO = new administrationDAO(DEBUG);
         return $administrationDAO->getMessageContactAll();
     }
 
-    function getLang(){
+    public function addModo(){
+        $admin = new administrationDAO(DEBUG);
+        $admin->createModerateur("modo", "mail", "test", "test");
+    }
+
+    /**
+     * @return array
+     */
+    /*function getLang(){
         $pays = array(
             'AF' => 'Afghanistan',
             'AX' => 'Aland Islands',
@@ -391,7 +406,7 @@ class manager
                 unset($pays[$key]);
         }
         return $pays;
-    }
+    }*/
 
 }
 
