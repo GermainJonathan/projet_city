@@ -37,7 +37,6 @@ function updateActivite(data) {
         $(this).find(".imageActivite").css('background', 'url(' + path[data[index].codeQuartier] + data[index].image + ') no-repeat');
     });
 
-    console.log(idQuartier);
     if(idQuartier== 1){
         $("#imgActivitePrincipale").css("background-image","url('assets/images/perrache/gare-perrache.jpg')");
     }
