@@ -129,6 +129,9 @@ class BubbleHistory {
 
     showTxt(){
         var bubble = this;
+        if ($("#txtHistory").text() == bubble.description) {
+            return
+        }
         $("#blocTxtHistory").fadeOut('fast', function(){
             $("#txtHistory").text(bubble.description);
             $("#sousTitreHistory").text(bubble.title);
