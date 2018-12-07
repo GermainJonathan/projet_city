@@ -200,3 +200,16 @@ function forbiden_words($commentaire)
         $forbiden_words[$key] = '/\b' . htmlspecialchars(trim($word)) . '\b/i';
     return preg_replace($forbiden_words, "*****", $commentaire);
 }
+
+/*
+function getLang(){
+    $langs = ResourceBundle::getLocales('');
+    foreach ($langs as $key => $lang){
+        $pays = strtoupper(substr($lang, 0, 2));
+        $region = "-" . strtolower(substr($lang, 3));
+        $langs[$key] = strtoupper(substr($lang, 0, 2)) . "-" . strtolower(substr($lang, 3));
+        var_dump(Locale::getDisplayRegion($region, 'fr'));
+    }
+}
+*/
+
