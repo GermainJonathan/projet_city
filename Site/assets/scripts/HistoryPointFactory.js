@@ -118,13 +118,7 @@ class BubbleHistory {
 
        var that= this;
        button.click(function(){
-            $("#blocTxtHistory").fadeOut('fast', function(){
-            $("#txtHistory").text(that.description);
-            $("#sousTitreHistory").text(that.title);
-            $("#imgHistory").css('display', 'inline-block');
-            $("#imgHistory").css('background-image', 'url(' + path[that.codeQuartier]+that.images + ')');
-            $("#blocTxtHistory").fadeTo('fast', 1);
-        });
+           that.showTxt(that);
         setTimeout(function(){ 
             location.href="#bodyHistoire";
         }, 100);
@@ -132,4 +126,16 @@ class BubbleHistory {
 
        return button[0];
     }
+
+    showTxt(){
+        var bubble = this;
+        $("#blocTxtHistory").fadeOut('fast', function(){
+            $("#txtHistory").text(bubble.description);
+            $("#sousTitreHistory").text(bubble.title);
+            $("#imgHistory").css('display', 'inline-block');
+            $("#imgHistory").css('background-image', 'url(' + path[bubble.codeQuartier]+bubble.images + ')');
+            $("#blocTxtHistory").fadeTo('fast', 1);
+        });
+    }
+
 }
