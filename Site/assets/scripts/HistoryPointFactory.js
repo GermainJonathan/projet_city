@@ -118,13 +118,27 @@ class BubbleHistory {
 
        var that= this;
        button.click(function(){
-           $("#txtHistory").text(that.description);
-           $("#sousTitreHistory").text(that.title);
-          setTimeout(function(){ 
+           that.showTxt(that);
+        setTimeout(function(){ 
             location.href="#bodyHistoire";
         }, 100);
        });
 
        return button[0];
     }
+
+    showTxt(){
+        var bubble = this;
+        if ($("#txtHistory").text() == bubble.description) {
+            return
+        }
+        $("#blocTxtHistory").fadeOut('fast', function(){
+            $("#txtHistory").text(bubble.description);
+            $("#sousTitreHistory").text(bubble.title);
+            $("#imgHistory").css('display', 'inline-block');
+            $("#imgHistory").css('background-image', 'url(' + path[bubble.codeQuartier]+bubble.images + ')');
+            $("#blocTxtHistory").fadeTo('fast', 1);
+        });
+    }
+
 }

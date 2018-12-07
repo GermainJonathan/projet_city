@@ -7,6 +7,7 @@ $.ajax({
     for (let histoire of data){
         tabHistory.push(new BubbleHistory(histoire.titre, histoire.commentaire, idQuartier, histoire.image));
     }
+    tabHistory[0].showTxt(tabHistory[0]);
     let last = data[data.length - 1];
     tabHistory.pop();
     tabHistory.push(new BubbleHistory(last.titre, last.commentaire, idQuartier, last.image, false));
