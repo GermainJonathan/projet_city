@@ -239,7 +239,7 @@ function setupQuarterCard(quarterName) {
         case "Perrache" :
             $.ajax({
                 method: 'GET',
-                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+                url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quarterName
             }).done(function(data) {
                 var perracheCard = new Card(quarterName, data[0].commentaire, 1, ["perrache.jpg", "monument-ampere.jpg", "place-carnot.jpg"]);
                 legend.remove();
@@ -251,7 +251,7 @@ function setupQuarterCard(quarterName) {
         case "Bellecour" :
             $.ajax({
                 method: 'GET',
-                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+                url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quarterName
             }).done(function(data) {
                 var bellecourCard = new Card(quarterName, data[0].commentaire, 2, ["place-bellecour.jpg", "leondelyon.jpg"]);
                 legend.remove();
@@ -263,7 +263,7 @@ function setupQuarterCard(quarterName) {
         case "Terreaux":
             $.ajax({
                 method: 'GET',
-                url: environnement.serviceUrl + "getHistoireByQuartier?quartier=" + quarterName
+                url: environnement.serviceUrl + "getHistoireByQuartier.php?quartier=" + quarterName
             }).done(function(data) {
                 var terreauxCard = new Card(quarterName, data[0].commentaire, 3,  ["opera.jpg", "musee-beaux-arts.jpg"]);
                 legend.remove();
