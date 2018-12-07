@@ -133,6 +133,17 @@ body::-webkit-scrollbar-thumb {
     box-shadow:5px 5px 10px 2px #B3B3B3;
 }
 
+.card.Responsive img, .carrousel-contenu .card.Responsive img{
+    height: 60% !important;
+}
+
+.card.Responsive .card-body{
+    height:auto !important;
+}
+
+.card.Responsive .card-body .card-footer{
+    margin-top:30px;
+}
 /* PROVISOIRE */
 .alert {
     z-index: 1020;
@@ -213,7 +224,7 @@ body::-webkit-scrollbar-thumb {
     }
 
     td .list-group-item {
-        width:80px;
+        width:70%;
         float:right;
         padding-right:0px;
     }

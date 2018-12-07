@@ -447,8 +447,21 @@ p{
     transition: all 1s ease-out 0s;
 }
 
+#imgActivitePrincipale{
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+
 .panelActivite {
     overflow: hidden;
+}
+
+.ImgOpacityGrande{
+    ms-flex: 0 0 25%!important;
+    flex: 0 0 25%!important;
+    max-width: 25%!important;
 }
 
 #arrowUpActivity{
@@ -656,13 +669,62 @@ p{
         padding-top:30px;
     }
 
+    #RestaurantCards{
+        margin:0 !important;
+    }
+
+    #RestaurantCards .card{
+        width:46%;
+    }
+
+    #imgActivitePrincipale{
+        display:none;
+    }
+
     .txtSavoirPlus{
         width:60%;
     }
 
+    #bodyActivites>div.row{
+        margin-right:0 !important;
+        margin-left:0 !important;
+    }
+
+    #CtnActivite{
+        padding-left:10px !important;
+        padding-right:5px !important;
+    }
+
+    #ChildCtnActivite{
+        padding-right:0 !important;
+    }
+
 }
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 576px) {
+
+    #RestaurantCards .card{
+        width:98%;
+    }
+
+    .bodyQuartier h1{
+        margin-left: 10px !important;
+        width: calc(100% - 15px);
+    }
+
+    .container-fluid{
+        padding-right:0 !important;
+        padding-left:0!important;
+    }
+
+    .carrousel{
+        margin-left:0 !important;
+        margin-top:0 !important;
+    }
+
+    #arrowRightMonument{
+        right:0% !important;
+    }
 
     .carrousel-contenu .card{
         width:95%;
