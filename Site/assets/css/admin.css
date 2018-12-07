@@ -86,3 +86,16 @@ div.sidebarAdmin > a.nav-link.active {
     vertical-align: middle;
     width: 30px;
 }
+
+.mailObject {
+    text-align: left;
+}
+
+.inline {
+    display: inline-flex;
+}
+
+p > .bin {
+    height: 15px;
+    width: 15px;
+}
