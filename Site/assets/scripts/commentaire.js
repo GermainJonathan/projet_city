@@ -28,7 +28,7 @@ function sendMessage() {
         }, {
             type:'success'
         });
-        let comment = $("<div class='UnCommentaire'><div class='titreCommentaire'><h5>" + data.nom + "</h5><h5>" + data.date + "</h5></div><div class='commentaireTxt'><p>" + data.commentaire + "</p></div></div>");
+        let comment = $("<div class='UnCommentaire'><div class='titreCommentaire'><h5>" + data.nom + "</h5><h5>" + data.date + "</h5></div><div class='commentaireTxt'><pre>" + data.commentaire + "</pre></div></div>");
         $("#commentaireTable").append(comment);
         $("#bodyCommentaires").find("textarea#commentaire").val("");
     });
@@ -50,7 +50,7 @@ function confirmDeleteCommentaire(idMessage) {
         }, {
             type:'success'
         });
-        $("#commentaireTable > tr > td > button#" + idMessage).parents("tr").remove();
+        $("#commentaireTable > div#" + idMessage).remove();
     }).fail(function() {
         $.notify({
             message: "Error on delete object with id : " + idMessage

@@ -7,26 +7,25 @@
             <div id="commentaireTable" style="text-align: left;">
                 <?php
                     foreach ($listCommentaire as $commentaire){
-                        ?>
-                
-                <div class="Uncommentaire">
+                ?>
+                <div class="Uncommentaire" id="<?=$commentaire->getCodeCommentaire()?>">
                     <div class="titreCommentaire">
                         <h5> <?= $commentaire->getNom() ?> </h5>
                         <h5> <?= $commentaire->getDate() ?> </h5>
+                        <?php
+                            if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
+                        ?>
+                            <div style="float: right;">
+                                <button id="<?=$commentaire->getCodeCommentaire()?>" class="btn btn-danger" onClick="openCommentaireModal($(this));">X</button>
+                            </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <div class="commentaireTxt">
-                        <p><?= $commentaire->getCommentaire() ?></p>
+                        <pre><?= $commentaire->getCommentaire() ?></pre>
                     </div>
                 </div>
-                    <?php
-                        if(isset($_SESSION['user']) && $_SESSION['user']->getProfile() == "Administrateur"){
-                        ?>
-                    <div>
-                        <button id="<?=$commentaire->getCodeCommentaire()?>" class="btn btn-danger" onClick="openCommentaireModal($(this));">X</button>
-                        </div>
-                    <?php
-                        }
-                        ?>
                 <?php
                     }
                     ?>
