@@ -24,8 +24,28 @@ function updateActivite(data) {
     $("#activiteconteneur > section").each(function( index ) {
         $(this).children("h2").text(data[index]["titre"]);
         $(this).find("p").text(data[index]["commentaire"]);
+
+        if(data[index]["nomLieux"] !="" && data[index]["nomLieux"] !=null ){
+            var adresse=$('<div class="adresseActivite"><span class="mapicon"></span><div class="AdresseActiviteTxt">'+data[index]["nomLieux"]+'</div></div>');
+            $(this).find("p").append(adresse);
+        }
+        if(data[index]["telephone"]!=""&&data[index]["telephone"]!=null){
+            var tel=$('<div class="telActivite"><span class="telicon"></span><div class="TelActiviteTxt">'+data[index]["telephone"]+'</div></div>');
+            $(this).find("p").append(tel);
+        }
+        
         $(this).find(".imageActivite").css('background', 'url(' + path[data[index].codeQuartier] + data[index].image + ') no-repeat');
     });
+
+    if(idQuartier== 1){
+        $("#imgActivitePrincipale").css("background-image","url('assets/images/perrache/gare-perrache.jpg')");
+    }
+    else if (idQuartier ==2){
+        $("#imgActivitePrincipale").css("background-image","url('assets/images/bellecour/grande-roue.jpg')");
+    }
+    else if(idQuartier ==3){
+        $("#imgActivitePrincipale").css("background-image","url('assets/images/terreaux/opera.jpg')");
+    }
 }
 
 function buildSectionStructure(size){
@@ -54,6 +74,7 @@ function initSectionButtonClick(){
             section.animate({ height: "50%" }, 350)
             section.find("p").animate({ height: "65%" }, 350)
             section.find("p").toggleClass("hide", 350);
+            section.find("p").removeClass("ImgOpacityGrande");
             section.find(".imageActivite").toggleClass("hide", 350);
             section.find(".imageActivite").css('opacity', '.7');
         }
@@ -67,6 +88,7 @@ function initSectionButtonClick(){
             section.animate({ height: "100%" }, 350);
             section.find("p").animate({ height: "100%" }, 350);
             section.find("p").toggleClass("hide", 350);
+            section.find("p").addClass("ImgOpacityGrande");
             section.find(".imageActivite").toggleClass("hide", 350);
             section.find(".imageActivite").css('opacity', '1');
         }

@@ -31,44 +31,13 @@ require_once(PATH_VIEWS.'alert.php');?>
         ?>
         </tbody>
     </table>
-    <?php
-        if(isset($_SESSION['user']) && ($_SESSION['user']->getProfile() == "Administrateur")){
-            ?>
-            <table  class="table table-hover table-striped">
-                <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"><?= TITRE_ACTION ?></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($listMessage as $message){
-                    ?>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button class="btn col-2 btn-danger">X</button></td>
-                    </tr>
-                    <?php
-                }
-                ?>
-                </tbody>
-            </table>
-            <?php
-        }
-    ?>
 </div>
 <div class="container-fluid">
     <nav id="pageSelector" class="nav nav-pills nav-justified">
-        <a class="nav-item nav-link active" data-index="0" href="#"><?= MENU_ACCUEIL ?></a>
-        <a class="nav-item nav-link" data-index="1" href="#"><?= MENU_TERREAUX ?></a>
+        <a class="nav-item nav-link active" data-index="1" href="#"><?= MENU_TERREAUX ?></a>
         <a class="nav-item nav-link" data-index="2" href="#"><?= MENU_BELLECOUR ?></a>
         <a class="nav-item nav-link" data-index="3" href="#"><?= MENU_PERRACHE ?></a>
-        <a class="nav-item nav-link" data-index="4" href="#"><?= MENU_CONTACT ?></a>
+        <a class="nav-item nav-link" data-index="4" href="#"><?= MENU_ADMINISTRATION ?></a>
     </nav>
     <hr>
     <div class="adminContainer">
@@ -108,44 +77,32 @@ require_once(PATH_VIEWS.'alert.php');?>
                         <a class="btn btn-primary" href="?page=administration">Annuler</a>
                     </div>
                 </div>
-                <div id="parallaxConfig" style="display: none;">
-                    <div class="media">
-                        <div class="relative">
-                            <img src="<?=PATH_LOGO?>" class="border imgAdmin img-thumbnail img-fluid rounded align-self-center shadow" alt="">
-                            <input type="file" id="file2" class="custom-file custom-file-input" capture style="display: none;" onchange="upload(this, $(this).prev());">
-                            <button type="file" id="upfile2" class="btn btn-light plus-sign" onClick="fileBrowser($(this).prev());"><img class="plus"></button>
-                        </div>
-                        <div class="media-body align-self-center">
-                            <div class="form-inline" data-id='0'>
-                                <label class="col-2 align-self-left" for="text"><h4 class="text-truncate"><?= TEXT ?></h4></label>
-                                <input type="text" class="form-control col-8" id="text">
-                            </div>
-                        </div>
+                <div id="administrationConfig" style="display: none;">
+                    <div id="sidebarData">
+                        <?php
+                            foreach($listMessage as $message) {
+                            ?>
+                                <input type="text" value="<?=$message->getNom() . ' ' . $message->getPrenom() . ' [' . $message->getObjet() . ']'?>" data-idMessage="<?=$message->getCodeMessage()?>" hidden>
+                            <?php
+                            }
+                        ?>
                     </div>
-                    <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4"><?= ENREGISTRER ?></button>
-                        <a class="btn btn-primary" href="?page=administration"><?= TXT_ANNULER ?></a>
-                    </div> 
-                </div>
-                <div id="bandeauConfig" style="display: none;">
-                    <div class="form-inline">
-                        <label class="offset-1 col-2 align-self-left" for="textBandeau"><h4 class="text-truncate">Titre bandeau</h4></label>
-                        <input type="text" class="form-control col-8" id="textBandeau" value="">
+                    <div id="mailContent" class="container">
+                        <?php
+                            foreach($listMessage as $message) {
+                            ?>
+                                <div id="<?=$message->getCodeMessage()?>" style="display: none;">
+                                    <div>
+                                        <pre>---- From: <?=$message->getNom(). ' ' .$message->getPrenom()?> <?=$message->getMail()?> - Object: [<?=$message->getObjet()?>] ----</pre>
+                                    </div>
+                                    <div class="mailMessage">
+                                        <pre><?=$message->getMessage()?></pre>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        ?>
                     </div>
-                    <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4"><?= ENREGISTRER ?></button>
-                        <a class="btn btn-primary" href="?page=administration"><?= TXT_ANNULER ?></a>
-                    </div> 
-                </div>
-                <div id="contactConfig" style="display: none;">
-                    <div class="form-inline">
-                        <label class="offset-1 col-2 align-self-left" for="textContact"><h4 class="text-truncate">Text contact</h4></label>
-                        <textarea class="form-control col-8" id="textContact" value=""></textarea>
-                    </div>
-                    <div class="row justify-content-center mt-4 mb-4">
-                        <button type="button" class="btn btn-primary mr-4"><?= ENREGISTRER ?></button>
-                        <a class="btn btn-primary" href="?page=administration"><?= TXT_ANNULER ?></a>
-                    </div> 
                 </div>
             </div>
         </div>
@@ -169,6 +126,27 @@ require_once(PATH_VIEWS.'alert.php');?>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= CANCEL ?></button>
                 <button type="button" class="btn btn-primary" onClick="deleteObject($('#adminModal').find('input#idModal').val());"><?= CONTINUER ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Mail -->
+<div class="modal fade" id="adminModalMail" tabindex="-1" role="dialog" aria-labelledby="adminModalMailTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adminModalMailTitle">Delete confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="idModal" type="text" class="form-control" hidden>
+                <p>Are you sure to delete this message ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onClick="deleteObject($('#adminModalMail').find('input#idModal').val());">Continue</button>
             </div>
         </div>
     </div>

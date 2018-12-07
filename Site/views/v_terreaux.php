@@ -17,7 +17,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
 <?php require_once(PATH_VIEWS.'sidebar.php');?>
 <div class="container-fluid">
     <!--  Les catégories  -->
-    <div class="bodyQuartier col-lg-10 offset-lg-2 col-md-10 offset-md-2 col-sm-12">
+    <div class="bodyQuartier col-lg-10 offset-lg-2 col-md-12 col-sm-12">
         <!-- Composant histoire -->
         <?php 
             require_once(PATH_VIEWS.'histoire.php');

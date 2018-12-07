@@ -6,22 +6,21 @@ var adminPageOrder = ["", "terreaux", "bellecour", "perrache"];
 
 // Variable de l'ancien type de composant chargé
 var oldConfig;
+var oldMail;
 
 // Schéma Menu
-var listMenu = [["Parallaxe", "Bandeau"], ["Histoire", "Monument", "Activité", "Restaurant", "Parallaxe"], ["Parallaxe", "Text contact"]];
+var listMenu = ["Histoire", "Monument", "Activité", "Restaurant"];
 
 // Liste des composants
 var componentsConfig = {
     "Histoire": "patrimoineConfig",
     "Monument": "patrimoineConfig",
     "Activité": "patrimoineConfig",
-    "Restaurant": "patrimoineConfig",
-    "Parallaxe": "parallaxConfig",
-    "Bandeau": "bandeauConfig",
-    "Text contact": "contactConfig"
+    "Restaurant": "patrimoineConfig"
 };
 // Initialisation
-generateList(listMenu[0]);
+selectPage = 1;
+generateList(listMenu);
 
 // Au click sur les boutons de sélection de page
 $("a.nav-item.nav-link").click(function() {
@@ -34,14 +33,14 @@ $("a.nav-item.nav-link").click(function() {
     });
     selectPage = $(this).data("index");
     $(this).addClass("active");
-    if(selectPage == 0) {
-        generateList(listMenu[0]);
-    }
-    else if(selectPage == 4) {
-        generateList(listMenu[2]);
-    }
-    else {
-        generateList(listMenu[1]);
+    if(selectPage == 4) {
+        $("#patrimoineConfig").hide();
+        $(".adminContainer > .spinner:first").show();
+        mailWatcher();
+    } else {
+        $("#administrationConfig").hide();
+        $("#patrimoineConfig").show();
+        generateList(listMenu);
     }
 });
 
@@ -108,7 +107,7 @@ function loadComponents(componentToLoad) {
 
 // Ajout un composant patrimoine et lui associe un id en html
 function addPatrimoineComponents(patrimoine, imageChange = true) {
-    let typeComponent = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
+    let typeComponent = listMenu[$(".sidebarAdmin>a.nav-link.active").data("index")];
     let lastIndex = parseInt($("#patrimoineContent").find(".media").last().attr('id'));
     let content = $("#patrimoineContent").find(".media").first();
     content.clone().appendTo($("#patrimoineContent"));
@@ -116,7 +115,7 @@ function addPatrimoineComponents(patrimoine, imageChange = true) {
     $("#patrimoineContent").find(".media").last().show();
     let newComponent =  $("#patrimoineContent").find(".media").last();
     if(!imageChange) {
-        newComponent.find("img.imgAdmin").attr('src', "/assets/images/core/undefined.png");
+        newComponent.find("img.imgAdmin").attr('src', "assets/images/core/undefined.png");
     } else {
         newComponent.find("img.imgAdmin").attr('src', path[patrimoine.codeQuartier] + patrimoine.image);
     }
@@ -164,6 +163,12 @@ function updateComponent(typeComponent, component, dataComponent) {
             }
             coordonneesActivité.appendTo(component.find(".media-body"));
             component.find("#description").val(dataComponent.commentaire);
+            let telActivite = $("<div class='form-inline' data-id='12'><label class='col-2 align-self-left' for='telActivite'><h4 class='text-truncate'>Telephone</h4></label><input name='telActivite' type='text' class='form-control col-8' id='telActivite'></div>");
+            telActivite.find("#telActivite").val(dataComponent.telephone);
+            let adresseActivite = $("<div class='form-inline' data-id='13'><label class='col-2 align-self-left' for='adresseActivite'><h4 class='text-truncate'>Adresse</h4></label><input name='adresseActivite' type='text' class='form-control col-8' id='adresseActivite'></div>");
+            adresseActivite.find("#adresseActivite").val(dataComponent.nomLieux);
+            telActivite.appendTo(component.find(".media-body"));
+            adresseActivite.appendTo(component.find(".media-body"));
             break;
         case "Restaurant":
             component.find("#id").val(dataComponent.id);
@@ -224,7 +229,9 @@ function generateFormData(patrimoine, type) {
                 'codeQuartier' : adminPageOrder[selectPage],
                 'description' : patrimoine[4].value,
                 'coordonnees' : "POINT(" + patrimoine[2].value + " " + patrimoine[3].value + ")",
-                'title' : patrimoine[1].value
+                'title' : patrimoine[1].value,
+                'adresse':patrimoine[6].value,
+                'telephone':patrimoine[5].value,
             }
             break;
         case "Restaurant":
@@ -278,7 +285,7 @@ function savePatrimoine() {
     })
     objects.shift();
     images.shift();
-    var type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
+    var type = listMenu[$(".sidebarAdmin>a.nav-link.active").data("index")];
     
     for(let i = 0; i < objects.length; i++) {
         let data = generateFormData(objects[i], type);
@@ -369,7 +376,7 @@ function openModal(ObjectId) {
 
 function deleteObject(ObjectId) {
     $('#adminModal').modal('hide');
-    let type = listMenu[1][$(".sidebarAdmin>a.nav-link.active").data("index")];
+    let type = listMenu[$(".sidebarAdmin>a.nav-link.active").data("index")];
     $.ajax({
         method: 'GET',
         url: environnement.serviceUrl + "adminDelete" + type.replace(/é/gi, "e") + ".php?id=" + ObjectId
@@ -387,6 +394,61 @@ function deleteObject(ObjectId) {
     }).fail(function() {
         $.notify({
             message: "Error on delete object with id : " + ObjectId
+        }, {
+            type:'warning'
+        });
+    });
+}
+
+function mailWatcher() {
+    $("div.sidebarAdmin").empty();
+    generateMailingList();
+    $("#administrationConfig").show();
+}
+
+function generateMailingList() {
+    $("#sidebarData > input").each(function() {
+        let mail = $("<p class='row inline'><a class='btn btn-light col-10 mailObject' onClick='openMail(" + $(this).data("idmessage") + ");'>" + $(this).val() + "</a><button type='button' class='btn btn-outline-danger col-2' onClick='modalDeleteMail(" + $(this).data('idmessage') + ");'><span class='bin'></span></button></p>");
+        $("div.sidebarAdmin").append(mail);
+    });
+    $(".adminContainer > .spinner:first").hide();
+}
+
+function openMail(idMessage) {
+    if(oldMail == undefined) {
+        $("#mailContent > div#" + idMessage).show();
+        oldMail = idMessage;
+    } else {
+        $("#mailContent > div#" + oldMail).hide();
+        $("#mailContent > div#" + idMessage).show();
+        oldMail = idMessage;
+    }
+}
+
+function modalDeleteMail(idMessage) {
+    $('#adminModalMail').modal('show');
+    $('#adminModalMail').find("input#idModal").val(idMessage);
+}
+
+function deleteMail(idMessage) {
+    $('#adminModal').modal('hide');
+    $.ajax({
+        method: 'GET',
+        url: environnement.serviceUrl + "adminDeleteMessageContact.php?id=" + idMessage
+    }).done(function () {
+        $.notify({
+            message: "Message deleted with id : " + idMessage
+        }, {
+            type:'success'
+        });
+        $("form > input#id").each(function() {
+            if($(this).val() == idMessage) {
+                $(this).parent().hide();
+            }
+        });
+    }).fail(function() {
+        $.notify({
+            message: "Error on delete message with id : " + idMessage
         }, {
             type:'warning'
         });

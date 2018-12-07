@@ -41,6 +41,9 @@ class Card {
     createSimpleCard(){
         var mapCard =$("<div></div>");   // Création de la div de base
         mapCard.addClass("card legend border-light");
+        if(isMobileDevice) {
+            mapCard.addClass("Responsive");
+        }
         mapCard.append(this._createImgCard());                        // On ajoute la ou les images de la carte
         mapCard.append(this._createCoreCard()); 
         return mapCard;

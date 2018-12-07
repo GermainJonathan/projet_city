@@ -5,7 +5,6 @@ $.ajax({
     method: "GET",
     url: environnement.serviceUrl + "getMonumentByQuartier.php?quartier=" + quartier[idQuartier]
 }).done(function(data) {
-    console.log(data);
     for (let monument of data){
         tabMonument.push(new Card(monument.libelleMonument, monument.commentaire, environnement.codePage,
             monument.image, monument.adresse));    

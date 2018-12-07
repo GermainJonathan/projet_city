@@ -28,7 +28,7 @@ function sendMessage() {
         }, {
             type:'success'
         });
-        let comment = $("<tr><td>" + data.nom + "</td><td>" + data.commentaire + "</td><td>" + data.date + "</td></tr>");
+        let comment = $("<div class='UnCommentaire'><div class='titreCommentaire'><h5>" + data.nom + "</h5><h5>" + data.date + "</h5></div><div class='commentaireTxt'><p>" + data.commentaire + "</p></div></div>");
         $("#commentaireTable").append(comment);
         $("#bodyCommentaires").find("textarea#commentaire").val("");
     });

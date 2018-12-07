@@ -47,7 +47,7 @@ class quartierDAO extends DAO
         $listActivite = array();
         foreach ($result as $temp){
             $categorie = $this->getCategorieById($temp['codeCategorie']);
-            $activite = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire']);
+            $activite = new activite($temp['codeActivite'], $temp['codePays'], $temp['codeQuartier'], $quartier->getLibelleQuartier(), $temp['codeCategorie'], $categorie['libelleCategorie'], $temp['nom'], $temp['nomLieux'], $temp['imageActivite'], $temp['commentaire'], $temp['telephone']);
             $activite->setCoordonnees(convertCoordonees($temp["coordonneesT"]));
             $listActivite[] = $activite;
         }
@@ -140,7 +140,7 @@ class quartierDAO extends DAO
         if($result) {
             $quartier = $this->getQuartierByCode($result['codeQuartier']);
             $categorie = $this->getCategorieById($result['codeCategorie']);
-            $activite =  new activite($result['codeActivite'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['codeCategorie'], $categorie['libelleCategorie'], $result['nom'], $result['nomLieux'], $result['imageActivite'], $result['commentaire']);
+            $activite =  new activite($result['codeActivite'], $result['codePays'], $result['codeQuartier'], $quartier->getLibelleQuartier(), $result['codeCategorie'], $categorie['libelleCategorie'], $result['nom'], $result['nomLieux'], $result['imageActivite'], $result['commentaire'],$result['telephone']);
             $activite->setCoordonnees(convertCoordonees($result["coordonneesT"]));
             return $activite;
         }
@@ -195,8 +195,8 @@ class quartierDAO extends DAO
      * @param $titre
      * @return activite|bool
      */
-    public function setDescriptionActivite($idActivite, $description, $titre, $coordonnees){
-        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?) WHERE codeActivite = ?", array($description, $titre, $coordonnees, $idActivite));
+    public function setDescriptionActivite($idActivite, $description, $titre, $coordonnees,$adresse,$telephone){
+        $result = $this->queryBdd("UPDATE activite SET commentaire = ?, nom = ?, coordonnees = ST_GeomFromText(?), nomLieux = ?, telephone = ? WHERE codeActivite = ?", array($description, $titre, $coordonnees,$adresse,$telephone,$idActivite));
         if($result)
             return $this->getActiviteById($idActivite);
         return false;
@@ -273,7 +273,7 @@ class quartierDAO extends DAO
         $max = $this->queryRow("SELECT MAX(codeHistoire) as max FROM histoire");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO histoire VALUES(?, ?, ?, ?, ?, ?)", array($max['max'] +1, $this->getLangId(), $idQuartier, $titre, null, $description));
+        $result = $this->queryBdd("INSERT INTO histoire VALUES(?, ?, ?, ?, ?, ?)", array($max['max'] +1, $_SESSION["idLang"], $idQuartier, $titre, null, $description));
         if($result)
             return $this->getHistoireById($max['max'] + 1);
         return false;
@@ -290,7 +290,7 @@ class quartierDAO extends DAO
         $max = $this->queryRow("SELECT MAX(codeMonument) as max FROM monument");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO monument VALUES(?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?, ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, $titre, null, $coordonnees, null, $architecte, $description,$adresse));
+        $result = $this->queryBdd("INSERT INTO monument VALUES(?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?, ?, ?)", array($max['max'] + 1, $_SESSION["idLang"], $idQuartier, $titre, null, $coordonnees, null, $architecte, $description,$adresse));
         if($result)
             return $this->getMonumentById($max['max'] +1);
         return false;
@@ -302,11 +302,11 @@ class quartierDAO extends DAO
      * @param $description
      * @return activite|bool
      */
-    public function createActivite($libelleQuartier, $titre, $description, $coordonnees){
+    public function createActivite($libelleQuartier, $titre, $description, $coordonnees,$adresse,$telephone){
         $max = $this->queryRow("SELECT MAX(codeActivite) as max FROM activite");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, 100, $titre, null, $coordonnees, null, $description));
+        $result = $this->queryBdd("INSERT INTO activite VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?, ? )", array($max['max'] + 1, $_SESSION["idLang"], $idQuartier, 100, $titre, $adresse, $coordonnees, null, $description,$telephone));
         if($result)
             return $this->getActiviteById($max['max'] +1);
         return false;
@@ -324,7 +324,7 @@ class quartierDAO extends DAO
         $max = $this->queryRow("SELECT MAX(codeRestaurant) as max FROM restaurant");
         $quartier = $this->getQuartierByLibelle($libelleQuartier);
         $idQuartier = $quartier->getCodeQuartier();
-        $result = $this->queryBdd("INSERT INTO restaurant VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $this->getLangId(), $idQuartier, $titre, $adresse, $telephone, $coordonnees, null, $description));
+        $result = $this->queryBdd("INSERT INTO restaurant VALUES(?, ?, ?, ?, ?, ?, ST_GeomFromText(?), ?, ?)", array($max['max'] + 1, $_SESSION["idLang"], $idQuartier, $titre, $adresse, $telephone, $coordonnees, null, $description));
         if($result)
             return $this->getRestaurantById($max['max'] +1);
         return false;

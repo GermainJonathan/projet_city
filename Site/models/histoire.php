@@ -28,7 +28,7 @@ class histoire
         $this->_codeQuartier = $codeQuartier;
         $this->_quartier = $quartier;
         $this->_titre = $titre;
-        if($image == null || !file_exists(PATH_IMAGES.$quartier."/".$image))
+        if($image == null || !file_exists(PATH_IMAGES.strtolower($quartier)."/".$image))
             $this->_image = "undefined.png";
         else
             $this->_image = $image;
