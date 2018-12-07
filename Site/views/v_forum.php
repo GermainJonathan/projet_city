@@ -56,7 +56,7 @@ require_once(PATH_VIEWS.'spinner.php');?>
                     <?php 
                         if ($topic->getCodeEtat() == 4){
                     ?>
-                    <td><img class="imgResoluForum" src="assets/images/core/check.svg"/></td>
+                    <td><img class="imgResoluForum" src="<?= PATH_IMAGES.'core/check.svg' ?>"/></td>
                 </tr>
                     <?php
                         }
